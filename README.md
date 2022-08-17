@@ -1,4 +1,4 @@
-# Nome do projeto
+# Ficha Médica Digital
 
 Escreva um ou dois  parágrafo resumindo o objetivo do seu projeto.
 
@@ -7,12 +7,12 @@ Escreva um ou dois  parágrafo resumindo o objetivo do seu projeto.
 * Nome completo do aluno 1
 * Nome completo do aluno 2
 * Nome completo do aluno 3
-* Nome completo do aluno 4
+* Rodolfo Rocha Rodrigues
 
 ## Orientadores
 
-* Nome completo do professor 1
-* Nome completo do professor 2
+* Cleiton
+* Laerte
 
 ## Instruções de utilização
 
