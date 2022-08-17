@@ -1,7 +1,9 @@
 # Ficha Médica Digital
 
-Criar uma aplicação que irá facilitar a organização da ficha médica dos pacientes, visto que através dela as pessoas poderão mostrar um QRCode para o médico, que ao escanear terá acesso à ficha médica deste paciente.
-O médico pode checar as medicações que esse paciente já consome, como alergias e complicações que ele pode ter, além de funcionalidades que ajudam o paciente.
+
+Atualmente, existem médicos que se especializam em diversas áreas, fazendo com que as pessoas tenham muitas informações em locais diferentes, dificultando na organização de rotinas médicas
+
+Por meio dessa aplicação, nosso grupo deseja facilitar a organização da ficha médica dos pacientes, auxiliar os médicos em suas consultas e promover para os pacientes um ambiente interativo que irá facilitar o cuidado da sua saúde.
 
 ## Integrantes
 
