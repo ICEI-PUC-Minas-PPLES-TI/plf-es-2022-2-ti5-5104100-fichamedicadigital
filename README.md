@@ -1,6 +1,7 @@
 # Ficha Médica Digital
 
-Escreva um ou dois  parágrafo resumindo o objetivo do seu projeto.
+Criar uma aplicação que irá facilitar a organização da ficha médica dos pacientes, visto que através dela as pessoas poderão mostrar um QRCode para o médico, que ao escanear terá acesso à ficha médica deste paciente.
+O médico pode checar as medicações que esse paciente já consome, como alergias e complicações que ele pode ter, além de funcionalidades que ajudam o paciente.
 
 ## Integrantes
 
