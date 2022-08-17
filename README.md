@@ -5,14 +5,14 @@ Escreva um ou dois  parágrafo resumindo o objetivo do seu projeto.
 ## Integrantes
 
 * Nome completo do aluno 1
-* Nome completo do aluno 2
+* Edson Júnior Campolina Silva
 * João Pedro Mayrink de Jesus
 * Rodolfo Rocha Rodrigues
 
 ## Orientadores
 
-* Cleiton
-* Laerte
+* Cleiton Silva Tavares 
+* Jose Laerte Pires Xavier Junior
 
 ## Instruções de utilização
 
