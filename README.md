@@ -4,7 +4,7 @@ Escreva um ou dois  parágrafo resumindo o objetivo do seu projeto.
 
 ## Integrantes
 
-* Nome completo do aluno 1
+* Anna Laura Reis Dornelas Gama
 * Edson Júnior Campolina Silva
 * João Pedro Mayrink de Jesus
 * Rodolfo Rocha Rodrigues
