@@ -18,16 +18,22 @@
 1.2.7  	Diagrama entidade relacionamento
 1.2.8	Diagrama lógico
 1.3	Desenvolvimento de software
-1.3.1 	Desenvolvimento da camada negócio
-1.3.2	Desenvolvimento de de telas estáticas
-1.3.3	Desenvolvimento da camada de serviços
-1.3.4	Desenvolvimento da camada de acesso à dados
-1.3.5 	Criação do banco de dados
-1.3.6 	Desenvolvimento de testes unitários
-1.3.7 	Integração Banck-end com front-end
-1.3.8  	Desenvolvimento de telas dinâmicas com informações vindas do back-end
+1.3.1 	Cadastro de usuário
+1.3.2 	Ficha médica
+1.3.2.1		Escanear QRCode
+1.3.2.2		Cadastrar exames em pdf
+1.3.2.3		Adicionar recomendações médicas
+1.3.3	Login de usuário
+1.3.3.1 	Recuperar a senha
+1.3.4	Chat entre médicos
+1.3.5	Agenda
+1.3.5.1		Checar agenda do usuário
+1.3.5.2		Checar agenda do médico
+1.3.5.3		Histórico de consultas do usuário
+1.3.6	Alarme para medicamentos
+1.3.7 	Gerenciamento de usuários
 1.4  	Implantação
 1.4.1	Hospedagem do banco de dados na Amazon
 1.4.2 	Hospedagem do back-end no Heroku
-1.4.3	Hospedagem do front-end n Heroku	
+1.4.3	Hospedagem do front-end no Heroku	
 1.4.4	Hospedagem da aplicação mobile (AppleStore, PlayStore)	
