@@ -78,14 +78,16 @@ A partir deste projeto, Ficha Médica Digital, espera-se diminuir a ocorrência 
 
 ## 1.2. Objetivos do trabalho
 
-1.2.1 Objetivo Geral
+1.2.1. Objetivo Geral
 
 A Ficha Médica Digital tem como principal objetivo centralizar as informações mais relevantes do paciente, no que refere-se ao âmbito da saúde, em uma ficha médica digital. Dessa forma, o sistema promoverá tanto para o paciente, quanto para os profissionais de saúde envolvidos,uma maior agilidade, qualidade e experiência no atendimento das consultas.
 
-1.2.2 Objetivos Específicos
+1.2.2. Objetivos Específicos
 
 1 - Auxiliar os médicos e secretárias de clínicas e hospitais no cadastro da ficha médica do paciente;
+
 2 - Facilitar o acesso do paciente aos seus exames e à sua ficha médica;
+
 3 - Fornecer um mecanismo de agendamento de consulta com base em uma agenda de horários;
 
 ## 1.3. Definições e Abreviaturas
