@@ -1,19 +1,22 @@
-# TITULO DO PROJETO
+# Ficha Médica Digital
 
 
-**Nome completo do Aluno 1, email do aluno 1**
+**Anna Laura Reis Dornelas Gama, annalaurard@hotmail.com**
 
-**Nome completo do Aluno 2, email do aluno 2**
+**Edson Júnior Campolina Silva, ejsengsoft@gmail.com**
 
-**Nome completo do Aluno 3, email do aluno 3**
+**João Pedro Mayrink de Jesus, joaopmayrinkj@gmail.com**
+
+**Rodolfo Rocha Rodrigues, rodolforrodrigues14@gmail.com**
+
 
 ---
 
 Professores:
 
-**Prof. Nome do Prof 1**
+**Cleiton Silva Tavares**
 
-**Prof. Nome do Prof 2**
+**Jose Laerte Pires Xavier Junior**
 
 
 ---
@@ -24,8 +27,7 @@ _Instituto de Informática e Ciências Exatas – Pontifícia Universidade de Mi
 
 ---
 
-_**Resumo**. Escrever aqui o resumo. O resumo deve contextualizar rapidamente o trabalho, descrever seu objetivo e, ao final, 
-mostrar algum resultado relevante do trabalho (até 10 linhas)._
+_**Resumo**. O projeto da Ficha Médica Digital tem por principal objetivo fornecer para os médicos e secretárias  um sistema que auxilie na rotina de trabalho desses profissionais nas clínicas, de forma a elevar a qualidade, rapidez e eficiênica das consultas. Além disso, será desenvolvido uma versão mobile que terá funcionalidades importantes para o paciente, principalmente no que refere-se ao registro e consulta de sua ficha médica, que poderá ser compartilhada nas suas consultas. Desse modo, espera-se facilitar o procedimento de cadastro de informações do paciente pelo médico e secretária, visto que esses dados geralmente são os mesmo informados em variadas consultas.
 
 ---
 
@@ -33,7 +35,7 @@ mostrar algum resultado relevante do trabalho (até 10 linhas)._
 
 | **Data** | **Autor** | **Descrição** | **Versão** |
 | --- | --- | --- | --- |
-| **[dd/mm/aaaa]** | [Nome do autor] | [Descrever as principais alterações realizadas no documento, evidenciando as seções ou capítulos alterados] | [X] |
+| **[23/08/2022]** | [Rodolfo Rocha Rodrigues] | [Iniciando o documento de arquitetura] | [X] |
 | | | | |
 | | | | |
 
