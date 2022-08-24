@@ -92,7 +92,11 @@ A Ficha Médica Digital tem como principal objetivo centralizar as informações
 
 ## 1.3. Definições e Abreviaturas
 
-Coloque aqui as definições, siglas e abreviaturas utilizadas no trabalho._
+Ficha Médica: informações médicas dos pacientes.
+
+Prontuário: documento valioso para o paciente, para o médico que o assiste e para as instituições de saúde, bem como para o ensino, a pesquisa e os serviços públicos de saúde, além de instrumento de defesa legal.
+
+QR-Code: QR, ou "Quick Response", significa "resposta rápida". Os códigos QR são capazes de armazenar muitos dados.
 
 <a name="requisitos"></a>
 # 2. Requisitos
