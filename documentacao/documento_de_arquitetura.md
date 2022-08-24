@@ -36,7 +36,7 @@ _**Resumo**. O projeto da Ficha Médica Digital tem por principal objetivo forne
 | **Data** | **Autor** | **Descrição** | **Versão** |
 | --- | --- | --- | --- |
 | **[23/08/2022]** | [Rodolfo Rocha Rodrigues] | [Iniciando o documento de arquitetura] | [X] |
-| | | | |
+| **[24/08/2022]** | [Rodolfo Rocha Rodrigues] | [Adicionando descrição do problema e objetivo geral e específico do projeto] | [X] |
 | | | | |
 
 ## SUMÁRIO
@@ -74,11 +74,19 @@ _Faça uma introdução ao projeto, apresentando o contexto onde o projeto se si
 
 ## 1.1. Problema
 
-_Nesse momento você deve apresentar o problema que a sua aplicação deve resolver. No entanto, não é a hora de comentar sobre a aplicação._
+A partir deste projeto, Ficha Médica Digital, espera-se diminuir a ocorrência de divergências de informações nas fichas médicas do paciente, além de reduzir o tempo de espera do paciente em clínicas médicas e hospitais.
 
 ## 1.2. Objetivos do trabalho
 
-_Aqui você deve descrever os objetivos do trabalho indicando que o objetivo geral é apresentar a descrição do projeto arquitetural da aplicação escolhida. Apresente também os objetivos específicos do projeto, descrevendo onde você vai concentrar sua atenção na descrição arquitetural, ou seja, os pontos onde você vai aprofundar no seu trabalho._
+1.2.1 Objetivo Geral
+
+A Ficha Médica Digital tem como principal objetivo centralizar as informações mais relevantes do paciente, no que refere-se ao âmbito da saúde, em uma ficha médica digital. Dessa forma, o sistema promoverá tanto para o paciente, quanto para os profissionais de saúde envolvidos,uma maior agilidade, qualidade e experiência no atendimento das consultas.
+
+1.2.2 Objetivos Específicos
+
+1 - Auxiliar os médicos e secretárias de clínicas e hospitais no cadastro da ficha médica do paciente;
+2 - Facilitar o acesso do paciente aos seus exames e à sua ficha médica;
+3 - Fornecer um mecanismo de agendamento de consulta com base em uma agenda de horários;
 
 ## 1.3. Definições e Abreviaturas
 
