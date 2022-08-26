@@ -37,7 +37,7 @@ _**Resumo**. O projeto da Ficha Médica Digital tem por principal objetivo forne
 | --- | --- | --- | --- |
 | **[23/08/2022]** | [Rodolfo Rocha Rodrigues] | [Iniciando o documento de arquitetura] | [X] |
 | **[24/08/2022]** | [Rodolfo Rocha Rodrigues] | [Adicionando descrição do problema e objetivo geral e específico do projeto] | [X] |
-| | | | |
+| **[25/08/2022]** | [Rodolfo Rocha Rodrigues] | [Adicionando apresentação do projeto] | [X] |
 
 ## SUMÁRIO
 
@@ -69,7 +69,15 @@ _**Resumo**. O projeto da Ficha Médica Digital tem por principal objetivo forne
 <a name="apresentacao"></a>
 # 1. Apresentação
 
-_Faça uma introdução ao projeto, apresentando o contexto onde o projeto se situa. É importante deixar claro para o leitor os aspectos que configuram o problema que será apresentado na sequência. Apresente, se possível, números reais que demonstram a relevância do problema apresentado._
+Atualmente, em um contexto de pandemia e aumento da população adulta e idosa, a demanda por consultas médicas passou por 
+um aumento significativo. Esse cenário ocorre, uma vez que, no Brasil, a tendência é o envelhecimento populacional, devido
+à alta expectativa de vida e a redução da taxa de natalidade. A partir disso, é notório que a demanda por consultas médicas passou 
+por um gradual crescimento, ainda mais se for considerado o fator pós pandemia da covid-19.
+
+Por outra perspectiva, em um mundo globalizado, a demanda pela digitalizaçao é algo presente em diversos setores da sociedade,
+incluindo a área da saúde. Nesse sentido, também surge a necessidade de substituir alguns métodos e práticas ultrapassados, por 
+ferramentas mais modernas, como por exemplo o uso de uma ficha médica digital, que é de fácil acesso e promove uma convergência de 
+informações.
 
 
 ## 1.1. Problema
