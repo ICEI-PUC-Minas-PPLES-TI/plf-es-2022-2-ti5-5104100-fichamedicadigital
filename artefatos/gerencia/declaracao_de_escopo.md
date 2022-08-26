@@ -4,8 +4,11 @@
 **Gerentes de Projeto:**
 
 Anna Laura Reis Dornelas Gama, annalaurard@hotmail.com
+
 Edson Júnior Campolina Silva, ejsengsoft@gmail.com
+
 João Pedro Mayrink de Jesus, joaopmayrinkj@gmail.com
+
 Rodolfo Rocha Rodrigues, rodolforrodrigues14@gmail.com
 
 ---
@@ -13,6 +16,7 @@ Rodolfo Rocha Rodrigues, rodolforrodrigues14@gmail.com
 **Professores:**
 
 Cleiton Silva Tavares
+
 Jose Laerte Pires Xavier Junior
 
 ---
