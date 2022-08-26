@@ -39,6 +39,7 @@ _**Resumo**. O projeto da Ficha Médica Digital tem por principal objetivo forne
 | **[24/08/2022]** | [Rodolfo Rocha Rodrigues] | [Adicionando descrição do problema e objetivo geral e específico do projeto] | [X] |
 | **[25/08/2022]** | [Rodolfo Rocha Rodrigues] | [Adicionando apresentação do projeto] | [X] |
 | **[25/08/2022]** | [Rodolfo Rocha Rodrigues] | [Atualizando problema do projeto] | [X] |
+| **[25/08/2022]** | [Rodolfo Rocha Rodrigues] | [Adicionando restrições arquiteturais do projeto] | [X] |
 
 ## SUMÁRIO
 
@@ -145,13 +146,13 @@ Obs: acrescente mais linhas, se necessário.
 
 ## 2.3. Restrições Arquiteturais
 
-_Enumere as restrições arquiteturais. Lembre-se de que as restrições arquiteturais geralmente não são consideradas requisitos uma vez que limitam a solução candidata. Os requisitos não impõem restrição, mas precisam ser satisfeitos._
-
-As restrições impostas ao projeto que afetam sua arquitetura são (por exemplo):
-
-- O software deverá ser desenvolvido em Python/Django;
-- A comunicação da API deve seguir o padrão RESTful.
-
+- O frontend do software será desenvolvido utilizando a framework React;
+- A comunicação da API deverá seguir o padrão RESTful;
+- O backend do software será desenvolvido utilizando Java com SpringBoot;
+- A versão mobile do software será desenvolvido em Dart/Flutter;
+- O serviço de mensageria do software será desenvolvido utilizando a implementação do kafka;
+- O sistema será hospedado no Heroku.
+- 
 ## 2.4. Mecanismos Arquiteturais
 
 _Visão geral dos mecanismos que compõem a arquitetura do sosftware baseando-se em três estados: (1) análise, (2) design e (3) implementação. Em termos de Análise devem ser listados os aspectos gerais que compõem a arquitetura do software como: persistência, integração com sistemas legados, geração de logs do sistema, ambiente de front end, tratamento de exceções, formato dos testes, formato de distribuição/implantação (deploy), entre outros. Em Design deve-se identificar o padrão tecnológico a seguir para cada mecanismo identificado na análise. Em Implementação, deve-se identificar o produto a ser utilizado na solução.
