@@ -38,6 +38,7 @@ _**Resumo**. O projeto da Ficha Médica Digital tem por principal objetivo forne
 | **[23/08/2022]** | [Rodolfo Rocha Rodrigues] | [Iniciando o documento de arquitetura] | [X] |
 | **[24/08/2022]** | [Rodolfo Rocha Rodrigues] | [Adicionando descrição do problema e objetivo geral e específico do projeto] | [X] |
 | **[25/08/2022]** | [Rodolfo Rocha Rodrigues] | [Adicionando apresentação do projeto] | [X] |
+| **[25/08/2022]** | [Rodolfo Rocha Rodrigues] | [Atualizando problema do projeto] | [X] |
 
 ## SUMÁRIO
 
@@ -82,7 +83,10 @@ informações.
 
 ## 1.1. Problema
 
-A partir deste projeto, Ficha Médica Digital, espera-se diminuir a ocorrência de divergências de informações nas fichas médicas do paciente, além de reduzir o tempo de espera do paciente em clínicas médicas e hospitais.
+Considerando esse cenário, a aplicação proposta nesse trabalho almeja solucionar dois principais problemas.O primeiro 
+refere-se à redução do tempo de atendimento e espera nos atendimentos médicos, que pode sofrer um aumento devido à alta procura por 
+consultas. Já o segundo problema, envolve a descentralização e repetição dos dados do paciente, que possa ocorrer devido à variedade
+de médicos que um mesmo paciente possa consultar.
 
 ## 1.2. Objetivos do trabalho
 
