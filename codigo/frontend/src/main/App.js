@@ -1,11 +1,19 @@
 import './App.css';
+// import Logo from '../components/template/Header'
+import { BrowserRouter} from 'react-router-dom'
+import Logo from '../components/template/Logo/Logo'
+import Nav from '../components/template/Nav/Nav'
+import Footer from '../components/template/Footer/Footer'
+import Main from '../components/template/Main/Main'
 
-function App() {
-  return (
-    <div className="App">
-      Teste
-    </div>
-  );
-}
+export default props =>
 
-export default App;
+    <BrowserRouter>
+        <div className="app">
+            <Logo/>
+            <Nav/>
+            <Main/>
+            {/* <Routes/> */}
+            <Footer/>
+        </div>
+    </BrowserRouter>
