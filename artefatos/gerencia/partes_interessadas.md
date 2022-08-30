@@ -3,16 +3,21 @@
 
 **Gerentes de Projeto:**
 
-Nome completo do Aluno 1, email do aluno 1
-Nome completo do Aluno 2, email do aluno 2
-Nome completo do Aluno 3, email do aluno 3
+Anna Laura Reis Dornelas Gama, annalaurard@hotmail.com
+
+Edson Júnior Campolina Silva, ejsengsoft@gmail.com
+
+João Pedro Mayrink de Jesus, joaopmayrinkj@gmail.com
+
+Rodolfo Rocha Rodrigues, rodolforrodrigues14@gmail.com
 
 ---
 
 **Professores:**
 
-Prof. Nome do Prof 1
-Prof. Nome do Prof 2
+Cleiton Silva Tavares
+
+Jose Laerte Pires Xavier Junior
 
 ---
 
@@ -26,9 +31,10 @@ _Instituto de Informática e Ciências Exatas – Pontifícia Universidade de Mi
 
 | Nome | Posição / Cargo | Papel no Projeto | Email | Telefone
 | --- | --- | --- | --- | --- |
-|   |   |   |   |
-|   |   |   |   |
-|   |   |   |   |
+|  Anna Laura Reis Dornelas Gama  | Gerente de Projeto  | Scrum Master |  annalaurard@hotmail.com  | (31) 9 9292-6603
+|  Edson Júnior Campolina Silva  | Desenvolvedor Backend  | DBA |  ejsengsoft@gmail.com | (31) 9 8791-2780
+|  João Pedro Mayrink de Jesus  | Desenvolvedor Mobile  |  Desenvolvedor Mobile |  joaopmayrinkj@gmail.com  | (31) 9 8912-3666
+|  Rodolfo Rocha Rodrigues  | Desenvolvedor Frontend  | Desenvolvedor Frontend  |  rodolforrodrigues14@gmail.com  | (31) 9 8916-8846
 
 ## Avaliação
 

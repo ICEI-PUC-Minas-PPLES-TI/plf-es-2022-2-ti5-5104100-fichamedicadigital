@@ -37,7 +37,9 @@ _**Resumo**. O projeto da Ficha Médica Digital tem por principal objetivo forne
 | --- | --- | --- | --- |
 | **[23/08/2022]** | [Rodolfo Rocha Rodrigues] | [Iniciando o documento de arquitetura] | [X] |
 | **[24/08/2022]** | [Rodolfo Rocha Rodrigues] | [Adicionando descrição do problema e objetivo geral e específico do projeto] | [X] |
-| | | | |
+| **[25/08/2022]** | [Rodolfo Rocha Rodrigues] | [Adicionando apresentação do projeto] | [X] |
+| **[25/08/2022]** | [Rodolfo Rocha Rodrigues] | [Atualizando problema do projeto] | [X] |
+| **[25/08/2022]** | [Rodolfo Rocha Rodrigues] | [Adicionando restrições arquiteturais do projeto] | [X] |
 
 ## SUMÁRIO
 
@@ -69,12 +71,23 @@ _**Resumo**. O projeto da Ficha Médica Digital tem por principal objetivo forne
 <a name="apresentacao"></a>
 # 1. Apresentação
 
-_Faça uma introdução ao projeto, apresentando o contexto onde o projeto se situa. É importante deixar claro para o leitor os aspectos que configuram o problema que será apresentado na sequência. Apresente, se possível, números reais que demonstram a relevância do problema apresentado._
+Atualmente, em um contexto de pandemia e aumento da população adulta e idosa, a demanda por consultas médicas passou por 
+um aumento significativo. Esse cenário ocorre, uma vez que, no Brasil, a tendência é o envelhecimento populacional, devido
+à alta expectativa de vida e a redução da taxa de natalidade. A partir disso, é notório que a demanda por consultas médicas passou 
+por um gradual crescimento, ainda mais se for considerado o fator pós pandemia da covid-19.
+
+Por outra perspectiva, em um mundo globalizado, a demanda pela digitalizaçao é algo presente em diversos setores da sociedade,
+incluindo a área da saúde. Nesse sentido, também surge a necessidade de substituir alguns métodos e práticas ultrapassados, por 
+ferramentas mais modernas, como por exemplo o uso de uma ficha médica digital, que é de fácil acesso e promove uma convergência de 
+informações.
 
 
 ## 1.1. Problema
 
-A partir deste projeto, Ficha Médica Digital, espera-se diminuir a ocorrência de divergências de informações nas fichas médicas do paciente, além de reduzir o tempo de espera do paciente em clínicas médicas e hospitais.
+Considerando esse cenário, a aplicação proposta nesse trabalho almeja solucionar dois principais problemas.O primeiro 
+refere-se à redução do tempo de atendimento e espera nos atendimentos médicos, que pode sofrer um aumento devido à alta procura por 
+consultas. Já o segundo problema, envolve a descentralização e repetição dos dados do paciente, que possa ocorrer devido à variedade
+de médicos que um mesmo paciente possa consultar.
 
 ## 1.2. Objetivos do trabalho
 
@@ -133,13 +146,13 @@ Obs: acrescente mais linhas, se necessário.
 
 ## 2.3. Restrições Arquiteturais
 
-_Enumere as restrições arquiteturais. Lembre-se de que as restrições arquiteturais geralmente não são consideradas requisitos uma vez que limitam a solução candidata. Os requisitos não impõem restrição, mas precisam ser satisfeitos._
-
-As restrições impostas ao projeto que afetam sua arquitetura são (por exemplo):
-
-- O software deverá ser desenvolvido em Python/Django;
-- A comunicação da API deve seguir o padrão RESTful.
-
+- O frontend do software será desenvolvido utilizando a framework React;
+- A comunicação da API deverá seguir o padrão RESTful;
+- O backend do software será desenvolvido utilizando Java com SpringBoot;
+- A versão mobile do software será desenvolvido em Dart/Flutter;
+- O serviço de mensageria do software será desenvolvido utilizando a implementação do kafka;
+- O sistema será hospedado no Heroku.
+- 
 ## 2.4. Mecanismos Arquiteturais
 
 _Visão geral dos mecanismos que compõem a arquitetura do sosftware baseando-se em três estados: (1) análise, (2) design e (3) implementação. Em termos de Análise devem ser listados os aspectos gerais que compõem a arquitetura do software como: persistência, integração com sistemas legados, geração de logs do sistema, ambiente de front end, tratamento de exceções, formato dos testes, formato de distribuição/implantação (deploy), entre outros. Em Design deve-se identificar o padrão tecnológico a seguir para cada mecanismo identificado na análise. Em Implementação, deve-se identificar o produto a ser utilizado na solução.
