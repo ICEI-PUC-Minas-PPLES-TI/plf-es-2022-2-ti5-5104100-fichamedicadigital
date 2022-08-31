@@ -175,7 +175,7 @@ _Apresente uma visão geral da solução proposta para o projeto e explique brev
 
 ![Visão Geral da Solução](imagens/visao.png "Visão Geral da Solução")
 
-**Figura 1 - Visão Geral da Solução**
+**Figura 1 - Visão Geral da Solução  Fonte: o próprio autor**
 
 ## 3.1. Visão de Negócio (Funcionalidades)
 
@@ -323,11 +323,9 @@ Exemplos de Histórias de Usuário:
 
 ## 3.2. Visão Lógica
 
-_Apresente os artefatos que serão utilizados descrevendo em linhas gerais as motivações que levaram a equipe a utilizar estes diagramas._
-
 ### Diagrama de Classes
 
-![Diagrama de classes](imagens/classes.gif "Diagrama de classes")
+![Diagrama de classes](imagens/DiagramaDeClasse_v01.jpg "Diagrama de classes")
 
 
 **Figura 2 – Diagrama de classes (exemplo). Fonte: o próprio autor.**
