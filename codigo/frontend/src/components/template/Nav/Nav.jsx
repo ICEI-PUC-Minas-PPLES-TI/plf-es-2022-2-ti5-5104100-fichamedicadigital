@@ -14,7 +14,7 @@ export default props =>
         <Link to="/dashboard">
             <i className='fa fa-pie-chart'>  Dashboard</i>
         </Link>
-        <Link to="/dashboard">
+        <Link to="/logout">
             <i className='fa fa-sign-out'>  Sair</i>
         </Link>
         
