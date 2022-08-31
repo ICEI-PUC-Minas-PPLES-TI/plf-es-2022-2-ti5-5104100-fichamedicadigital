@@ -175,17 +175,22 @@ _Apresente uma visão geral da solução proposta para o projeto e explique brev
 
 ![Visão Geral da Solução](imagens/visao.png "Visão Geral da Solução")
 
-**Figura 1 - Visão Geral da Solução (fonte: https://medium.com)**
-
-Obs: substitua esta imagem por outra, adequada ao seu projeto (cada arquitetura é única).
+**Figura 1 - Visão Geral da Solução**
 
 ## 3.1. Visão de Negócio (Funcionalidades)
 
-_Apresente uma lista simples com as funcionalidades previstas no projeto (escopo do produto)._
-
-1. O sistema deve...
-2. O sistema deve...
-3. ...
+1. O paciente deve cadastrar a ficha médica
+2. O sistema deve lembrar o paciente de tomar os remédios
+3. O sistema deve retornar a lista de consultórios por localidade
+4. O cliente pode entrar em contato com o médico através do chat
+5. O cliente pode ver seus exames
+6. O cliente pode marcar consultas com o médico
+7. O médico pode ver a ficha médica do paciente através do código QR
+8. O médico pode gerenciar sua consultas
+9. O administrador pode gerar relatórios com as linhas da tabela
+10. O médico pode inserir sua agenda
+11. O usuário deve cadastrar no sistema
+12. O usuáriod deve logar no sistema
 
 Obs: a quantidade e o escopo das funcionalidades deve ser negociado com os professores/orientadores do trabalho.
 
@@ -195,31 +200,126 @@ _Nesta seção, os casos de uso devem ser resumidos. Esse detalhamento pode ser 
 
 Exemplos de resumo de Casos de Uso:
 
-#### UC01 – NOME DO CASO DE USO 01
+#### UC01 – CADASTRAR FICHA MÉDICA
 
-| **Descrição** | |
+| **Descrição** | Paciente vai cadastrar sua ficha médica|
 | --- | --- |
-| **Atores** | |
-| **Prioridade** | |
-| **Requisitos associados** | |
-| **Fluxo Principal** | |
+| **Atores** | Paciente|
+| **Prioridade** | 1|
+| **Requisitos associados** | 1|
+| **Fluxo Principal** | Paciente entra no cadastro de ficha médica e cadastra sua ficha|
 
-#### UC02 – NOME DO CASO DE USO 02
+#### UC02 – CONSULTAR CONSULTÓRIOS NA REGIÃO
 
-| **Descrição** | |
+| **Descrição** | Paciente vai consutar consultórios na sua região|
 | --- | --- |
-| **Atores** | |
-| **Prioridade** | |
-| **Requisitos associados** | |
-| **Fluxo Principal** | |
+| **Atores** | Paciente|
+| **Prioridade** | 2|
+| **Requisitos associados** | 3|
+| **Fluxo Principal** | Paciente clica no mapa, aceita usar a localização do dispositivo e filtra por funcionalidade do médico|
+
+#### UC03 – LEMBRAR PACIENTE DE TOMAR OS REMÉDIOS
+
+| **Descrição** | Paciente vai ser lembrado pelo sistema dos seus médicamentos|
+| --- | --- |
+| **Atores** | Sistema|
+| **Prioridade** | 5|
+| **Requisitos associados** | 2|
+| **Fluxo Principal** | Sistema envia notificação para o paciente lembrando de tomar o remédio|
+
+#### UC04 – CHAT ENTRE MÉDICO E PACIENTE
+
+| **Descrição** | Paciente quer entrar em contato com o médico pelo chat|
+| --- | --- |
+| **Atores** | Paciente, Médico|
+| **Prioridade** | 4|
+| **Requisitos associados** | 2|
+| **Fluxo Principal** | Cliente clica no chat e envia mensagem para o médico, médico responde o paciente|
+
+#### UC05 – MARCAR CONSULTA
+
+| **Descrição** | Paciente quer marcar consulta|
+| --- | --- |
+| **Atores** | Paciente|
+| **Prioridade** | 6|
+| **Requisitos associados** | 2|
+| **Fluxo Principal** | Paciente depois de consutar o mapa, clica em um dos pins da localização e clica em marcar consulta no card aberto pelo pin, escolhendo a data e horário|
+
+#### UC06 – VER EXAME
+
+| **Descrição** | Paciente quer ver seus exames|
+| --- | --- |
+| **Atores** | Paciente|
+| **Prioridade** | 4|
+| **Requisitos associados** | 4|
+| **Fluxo Principal** | Paciente abre a área de exames e vê exame|
+
+#### UC07 – VER FICHA MÉDICA
+
+| **Descrição** | Médico quer ver a ficha médica do paciente|
+| --- | --- |
+| **Atores** | Médico|
+| **Prioridade** | 1|
+| **Requisitos associados** | 7|
+| **Fluxo Principal** | Médico escaneia o qr code no celular do paciente e ve a ficha médica|
+
+#### UC08 – GERENCIAR CONSULTAR
+
+| **Descrição** | Médico gerencia suas consultas|
+| --- | --- |
+| **Atores** | Médico|
+| **Prioridade** | 2|
+| **Requisitos associados** | 8|
+| **Fluxo Principal** | Médico vê as consultas do dia, marca como atendido ou não|
+
+#### UC09 – INSERIR AGENDA
+
+| **Descrição** | Médico insere a agenda de consultas|
+| --- | --- |
+| **Atores** | Médico|
+| **Prioridade** | 1|
+| **Requisitos associados** | 10|
+| **Fluxo Principal** | Médico entra em minhas consultas, insere a agenda|
+
+#### UC10 – CRIAR RELATÓRIOS
+
+| **Descrição** | Administrador cria relatório|
+| --- | --- |
+| **Atores** | Administrador|
+| **Prioridade** | 5|
+| **Requisitos associados** | 9|
+| **Fluxo Principal** | Administrador filtra por colunas da tabela e cria relatórios|
+
+#### UC11 – CADASTRO NO SISTEMA
+
+| **Descrição** | Paciente faz cadastro no sistema|
+| --- | --- |
+| **Atores** | Paciente|
+| **Prioridade** | 1|
+| **Requisitos associados** | 10|
+| **Fluxo Principal** | Colocar dados e clicar em cadastro|
+
+#### UC11 – LOGIN NO SISTEMA
+
+| **Descrição** | Usuario faz login no sistema|
+| --- | --- |
+| **Atores** | Paciente, Médico|
+| **Prioridade** | 1|
+| **Requisitos associados** | 11|
+| **Fluxo Principal** | Colocar dados e clicar em login|
+
 
 Exemplos de Histórias de Usuário:
 
-- Como Fulano eu quero poder convidar meus amigos para que a gente possa se reunir...
-
-- Como Cicrano eu quero poder organizar minhas tarefas diárias, para que...
-
-- Como gerente eu quero conseguir entender o progresso do trabalho do meu time, para que eu possa ter relatórios periódicos dos nossos acertos e falhas.
+- Como paciente quero cadastrar minha ficha médica
+- Como paciente quero consultar consultórios na minha região
+- Como paciente quero ser lembrado dos meus médicamentos
+- Como paciente quero entrar em contato com os médicos
+- Como paciente quero marcar uma consulta
+- Como paciente quero ver meus exames
+- Como médico quero ver a ficha médica do paciente
+- Como médico quero gerenciar minhas consultas
+- Como médico quero inserir minha agenda
 
 ## 3.2. Visão Lógica
 
