@@ -190,7 +190,7 @@ _Apresente uma visão geral da solução proposta para o projeto e explique brev
 9. O administrador pode gerar relatórios com as linhas da tabela
 10. O médico pode inserir sua agenda
 11. O usuário deve cadastrar no sistema
-12. O usuáriod deve logar no sistema
+12. O usuário deve logar no sistema
 
 Obs: a quantidade e o escopo das funcionalidades deve ser negociado com os professores/orientadores do trabalho.
 
