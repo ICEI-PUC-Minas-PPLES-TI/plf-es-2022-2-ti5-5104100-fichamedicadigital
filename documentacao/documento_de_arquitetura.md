@@ -118,14 +118,21 @@ _Esta seção descreve os requisitos comtemplados nesta descrição arquitetural
 
 ## 2.1. Requisitos Funcionais
 
-
 | **ID** | **Descrição** | **Prioridade** |
 | --- | --- | --- |
-| RF001 | | |
-| RF002 | | |
-| | | |
-| | | |
-| | | |
+| RF001 | Cadastro da ficha médica do paciente| Essencial |
+| RF002 | Notificação dos remédios usados pelo paciente | Opcional |
+| RF003 | Busca de consultórios por localidade | Essencial |
+| RF004 | Visão de exames | Essencial |
+| RF005 | Marcação de consulta | Essencial |
+| RF006 | Visão da ficha médica | Essencial |
+| RF007 | Visão da ficha médica por código QR | Opcional |
+| RF008 | Gerenciamento de consulta | Essencial |
+| RF009 | Geraçãpo de relatório | Desejavel |
+| RF010 | Insersação da agenda do médico | Essencial |
+| RF011 | Cadastro de usuário | Essencial |
+| RF012 | Login de usuário | Essencial |
+
 
 Obs: acrescente mais linhas, se necessário.
 
@@ -135,11 +142,8 @@ _Enumere os requisitos não-funcionais previstos para a sua aplicação. Entre o
 
 | **ID** | **Descrição** |
 | --- | --- |
-| RNF001 | |
-| RNF002 | |
-| | |
-| | |
-| | |
+| RNF001 | O sistema web deve ser acessível para resoluções a partir de 1025 pixels de largura, e resoluções mobile até 360 pixels de largura|
+| RNF002 | A aplicação para dispositivos móveis deve  ser compatível com smartphones IOS e Android, a partir da versão 6.0 (API nº 23)|
 
 Obs: acrescente mais linhas, se necessário.
 
