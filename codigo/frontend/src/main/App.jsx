@@ -1,10 +1,13 @@
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'font-awesome/css/font-awesome.min.css'
 import './App.css';
-// import Logo from '../components/template/Header'
+
 import { BrowserRouter} from 'react-router-dom'
+import Routes from './Routes'
+
 import Logo from '../components/template/Logo/Logo'
 import Nav from '../components/template/Nav/Nav'
 import Footer from '../components/template/Footer/Footer'
-import Main from '../components/template/Main/Main'
 
 export default props =>
 
@@ -12,8 +15,7 @@ export default props =>
         <div className="app">
             <Logo/>
             <Nav/>
-            <Main/>
-            {/* <Routes/> */}
+            <Routes/>
             <Footer/>
         </div>
     </BrowserRouter>
