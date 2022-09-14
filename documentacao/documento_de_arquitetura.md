@@ -342,8 +342,12 @@ _Apresente uma descrição detalhada dos artefatos que constituem o diagrama de 
 
 Ex: conforme diagrama apresentado na Figura X, as entidades participantes da solução são:
 
-- **Componente 1** - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras nunc magna, accumsan eget porta a, tincidunt sed mauris. Suspendisse orci nulla, sagittis a lorem laoreet, tincidunt imperdiet ipsum. Morbi malesuada pretium suscipit.
-- **Componente 2** - Praesent nec nisi hendrerit, ullamcorper tortor non, rutrum sem. In non lectus tortor. Nulla vel tincidunt eros.
+- **Componente 1** - Repository -> Componente responsável por buscar e converter o conteúdo do banco de dados relacional em objetos.
+- **Componente 2** - Service -> Componente responsável por tratar os itens que serão trazidos pelo repositório.
+- **Componente 3** - Banco de dados -> Componente responsável por armazenar as informações.
+- **Componente 4** - Resource -> Componente responsável por tratar as requisições e retornar os itens tratados no Service.
+- **Componente 5** - Front-end -> Componente responsável por gerar uma interface web para interagir com os usuários.
+- **Componente 6** - Mobile -> Componente responsável por gerar uma interface mobile para interagir com os usuários.
 
 ## 3.3. Modelo de dados (opcional)
 
