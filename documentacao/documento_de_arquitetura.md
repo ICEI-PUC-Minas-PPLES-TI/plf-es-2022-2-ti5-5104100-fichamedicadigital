@@ -209,7 +209,7 @@ Exemplos de resumo de Casos de Uso:
 | **Prioridade** | 1|
 | **Requisitos associados** | 1|
 | **Fluxo Principal** | 1. Paciente entra no cadastro de ficha médica 
-| --- | 2. Paciente cadastra sua ficha|
+2. Paciente cadastra sua ficha|
 
 #### UC02 – CONSULTAR CONSULTÓRIOS NA REGIÃO
 
