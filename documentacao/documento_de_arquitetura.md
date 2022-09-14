@@ -195,7 +195,7 @@ Obs: a quantidade e o escopo das funcionalidades deve ser negociado com os profe
 
 ### Descrição resumida dos Casos de Uso / Histórias de Usuário
 
-![Diagrama de Casos de Uso](imagens/casoDeUso_v01.jpg)
+![Diagrama de Casos de Uso](imagens/casoDeUso1_v01.jpg)
 
 Exemplos de resumo de Casos de Uso:
 
