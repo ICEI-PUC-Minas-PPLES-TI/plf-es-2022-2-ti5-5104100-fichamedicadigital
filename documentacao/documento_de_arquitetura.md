@@ -138,7 +138,6 @@ Obs: acrescente mais linhas, se necessário.
 
 ## 2.2. Requisitos Não-Funcionais
 
-_Enumere os requisitos não-funcionais previstos para a sua aplicação. Entre os requisitos não funcionais, inclua todos os requisitos que julgar importante do ponto de vista arquitetural ou seja os requisitos que terão impacto na definição da arquitetura. Os requisitos devem ser descritos de forma completa e preferencialmente quantitativa._
 
 | **ID** | **Descrição** |
 | --- | --- |
@@ -155,7 +154,7 @@ Obs: acrescente mais linhas, se necessário.
 - A versão mobile do software será desenvolvido em Dart/Flutter;
 - O serviço de mensageria do software será desenvolvido utilizando a implementação do kafka;
 - O sistema será hospedado no Heroku.
-- 
+
 ## 2.4. Mecanismos Arquiteturais
 
 | **Análise** | **Design** | **Implementação** |
@@ -172,7 +171,6 @@ Obs: acrescente mais linhas, se necessário.
 <a name="modelagem"></a>
 # 3. Modelagem e projeto arquitetural
 
-_Apresente uma visão geral da solução proposta para o projeto e explique brevemente esse diagrama de visão geral, de forma textual. Esse diagrama não precisa seguir os padrões da UML, e deve ser completo e tão simples quanto possível, apresentando a macroarquitetura da solução._
 
 ![Visão Geral da Solução](imagens/visao.png "Visão Geral da Solução")
 
@@ -197,7 +195,7 @@ Obs: a quantidade e o escopo das funcionalidades deve ser negociado com os profe
 
 ### Descrição resumida dos Casos de Uso / Histórias de Usuário
 
-_Nesta seção, os casos de uso devem ser resumidos. Esse detalhamento pode ser na forma de um texto sintético ou, alternativamente, você pode optar por descrever estórias de usuários seguindo os métodos ágeis. Neste caso a seção deve chamar &quot;Histórias de usuários&quot;. Lembre-se das características de qualidade das estórias de usuários, ou seja, o que é preciso para descrever boas histórias de usuários._
+![Diagrama de Casos de Uso](imagens/CasoDeUso_v01.jpg)
 
 Exemplos de resumo de Casos de Uso:
 
@@ -335,7 +333,6 @@ Obs: Acrescente uma breve descrição sobre o diagrama apresentado na Figura 3.
 
 ### Diagrama de componentes
 
-_Apresente o diagrama de componentes da aplicação, indicando, os elementos da arquitetura e as interfaces entre eles. Liste os estilos/padrões arquiteturais utilizados e faça uma descrição sucinta dos componentes indicando o papel de cada um deles dentro da arquitetura/estilo/padrão arquitetural. Indique também quais componentes serão reutilizados (navegadores, SGBDs, middlewares, etc), quais componentes serão adquiridos por serem proprietários e quais componentes precisam ser desenvolvidos._
 
 ![Diagrama de componentes](imagens/DiagramaDeComponentes_v1.jpg)
 
@@ -350,7 +347,6 @@ Ex: conforme diagrama apresentado na Figura X, as entidades participantes da sol
 
 ## 3.3. Modelo de dados (opcional)
 
-_Caso julgue necessário para explicar a arquitetura, apresente o diagrama de classes ou diagrama de Entidade/Relacionamentos ou tabelas do banco de dados. Este modelo pode ser essencial caso a arquitetura utilize uma solução de banco de dados distribuídos ou um banco NoSQL._
 
 ![Diagrama Lógico ](imagens/DiagramaLogico_v01.png)
 
