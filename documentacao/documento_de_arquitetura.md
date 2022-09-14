@@ -173,6 +173,7 @@ Obs: acrescente mais linhas, se necessário.
 
 
 ![Visão Geral da Solução](imagens/visao.png "Visão Geral da Solução")
+![Visão Geral da Solução](imagens/diagramaArquitetura.png "Visão Geral da Solução")
 
 **Figura 1 - Visão Geral da Solução  Fonte: o próprio autor**
 
