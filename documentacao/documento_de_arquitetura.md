@@ -208,8 +208,7 @@ Exemplos de resumo de Casos de Uso:
 | **Atores** | Paciente|
 | **Prioridade** | 1|
 | **Requisitos associados** | 1|
-| **Fluxo Principal** | 1. Paciente entra no cadastro de ficha médica 
-2. Paciente cadastra sua ficha|
+| **Fluxo Principal** | 1. Paciente entra no cadastro de ficha médica 2. Paciente cadastra sua ficha|
 
 #### UC02 – CONSULTAR CONSULTÓRIOS NA REGIÃO
 
@@ -218,7 +217,7 @@ Exemplos de resumo de Casos de Uso:
 | **Atores** | Paciente|
 | **Prioridade** | 2|
 | **Requisitos associados** | 3|
-| **Fluxo Principal** | Paciente clica no mapa, aceita usar a localização do dispositivo e filtra por funcionalidade do médico|
+| **Fluxo Principal** | 1. Paciente clica no mapa 2. Paciente aceita usar a localização do dispositivo 3. Paciente filtra por funcionalidade do médico|
 
 #### UC03 – LEMBRAR PACIENTE DE TOMAR OS REMÉDIOS
 
@@ -236,7 +235,7 @@ Exemplos de resumo de Casos de Uso:
 | **Atores** | Paciente, Médico|
 | **Prioridade** | 4|
 | **Requisitos associados** | 2|
-| **Fluxo Principal** | Cliente clica no chat e envia mensagem para o médico, médico responde o paciente|
+| **Fluxo Principal** | 1. Paciente clica no chat 2. Paciente envia mensagem para o médico 3. Médico responde o paciente|
 
 #### UC05 – MARCAR CONSULTA
 
@@ -245,7 +244,7 @@ Exemplos de resumo de Casos de Uso:
 | **Atores** | Paciente|
 | **Prioridade** | 6|
 | **Requisitos associados** | 2|
-| **Fluxo Principal** | Paciente depois de consutar o mapa, clica em um dos pins da localização e clica em marcar consulta no card aberto pelo pin, escolhendo a data e horário|
+| **Fluxo Principal** | 1. Paciente depois de consutar o mapa clica em um dos pins da localização 2. Paciente clica em marcar consulta no card aberto pelo pin 3. Paciente escolhe a data e horário|
 
 #### UC06 – VER EXAME
 
@@ -254,7 +253,7 @@ Exemplos de resumo de Casos de Uso:
 | **Atores** | Paciente|
 | **Prioridade** | 4|
 | **Requisitos associados** | 4|
-| **Fluxo Principal** | Paciente abre a área de exames e vê exame|
+| **Fluxo Principal** | 1.Paciente abre a área de exames 2. Paciente clica no exame que deseja ver|
 
 #### UC07 – VER FICHA MÉDICA
 
@@ -263,7 +262,7 @@ Exemplos de resumo de Casos de Uso:
 | **Atores** | Médico|
 | **Prioridade** | 1|
 | **Requisitos associados** | 7|
-| **Fluxo Principal** | Médico escaneia o qr code no celular do paciente e ve a ficha médica|
+| **Fluxo Principal** | 1. Médico escaneia o qr code no celular do paciente 2. Médico ve a ficha médica|
 
 #### UC08 – GERENCIAR CONSULTAR
 
@@ -272,7 +271,7 @@ Exemplos de resumo de Casos de Uso:
 | **Atores** | Médico|
 | **Prioridade** | 2|
 | **Requisitos associados** | 8|
-| **Fluxo Principal** | Médico vê as consultas do dia, marca como atendido ou não|
+| **Fluxo Principal** | 1. Médico vê as consultas do dia 2. Médico marca como atendido ou não|
 
 #### UC09 – INSERIR AGENDA
 
@@ -281,7 +280,7 @@ Exemplos de resumo de Casos de Uso:
 | **Atores** | Médico|
 | **Prioridade** | 1|
 | **Requisitos associados** | 10|
-| **Fluxo Principal** | Médico entra em minhas consultas, insere a agenda|
+| **Fluxo Principal** | 1.Médico entra em minhas consultas 2. Médico insere a agenda|
 
 #### UC10 – CRIAR RELATÓRIOS
 
@@ -290,7 +289,7 @@ Exemplos de resumo de Casos de Uso:
 | **Atores** | Administrador|
 | **Prioridade** | 5|
 | **Requisitos associados** | 9|
-| **Fluxo Principal** | Administrador filtra por colunas da tabela e cria relatórios|
+| **Fluxo Principal** | 1. Administrador filtra por colunas da tabela 2. Administrador cria relatórios|
 
 #### UC11 – CADASTRO NO SISTEMA
 
@@ -299,7 +298,7 @@ Exemplos de resumo de Casos de Uso:
 | **Atores** | Paciente|
 | **Prioridade** | 1|
 | **Requisitos associados** | 10|
-| **Fluxo Principal** | Colocar dados e clicar em cadastro|
+| **Fluxo Principal** | 1. Uusário Coloca os dados cadastrais 2. Usuário clica em cadastro|
 
 #### UC11 – LOGIN NO SISTEMA
 
@@ -308,7 +307,7 @@ Exemplos de resumo de Casos de Uso:
 | **Atores** | Paciente, Médico|
 | **Prioridade** | 1|
 | **Requisitos associados** | 11|
-| **Fluxo Principal** | Colocar dados e clicar em login|
+| **Fluxo Principal** | 1. Usuário coloca login e senha 2. Usuário clica em login|
 
 
 Exemplos de Histórias de Usuário:
