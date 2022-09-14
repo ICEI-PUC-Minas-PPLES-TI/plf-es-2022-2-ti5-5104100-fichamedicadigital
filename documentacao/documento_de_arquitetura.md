@@ -207,7 +207,9 @@ Exemplos de resumo de Casos de Uso:
 | **Atores** | Paciente|
 | **Prioridade** | 1|
 | **Requisitos associados** | 1|
-| **Fluxo Principal** | 1. Paciente entra no cadastro de ficha médica 2. Paciente cadastra sua ficha|
+| **Fluxo Principal** | 1. Paciente entra no cadastro de ficha médica
+
+2. Paciente cadastra sua ficha|
 
 #### UC02 – CONSULTAR CONSULTÓRIOS NA REGIÃO
 
@@ -216,7 +218,9 @@ Exemplos de resumo de Casos de Uso:
 | **Atores** | Paciente|
 | **Prioridade** | 2|
 | **Requisitos associados** | 3|
-| **Fluxo Principal** | 1. Paciente clica no mapa 2. Paciente aceita usar a localização do dispositivo 3. Paciente filtra por funcionalidade do médico|
+| **Fluxo Principal** | 1. Paciente clica no mapa 
+
+2. Paciente aceita usar a localização do dispositivo 3. Paciente filtra por funcionalidade do médico|
 
 #### UC03 – LEMBRAR PACIENTE DE TOMAR OS REMÉDIOS
 
@@ -234,7 +238,10 @@ Exemplos de resumo de Casos de Uso:
 | **Atores** | Paciente, Médico|
 | **Prioridade** | 4|
 | **Requisitos associados** | 2|
-| **Fluxo Principal** | 1. Paciente clica no chat 2. Paciente envia mensagem para o médico 3. Médico responde o paciente|
+| **Fluxo Principal** | 1. Paciente clica no chat 
+
+2. Paciente envia mensagem para o médico 
+3. Médico responde o paciente|
 
 #### UC05 – MARCAR CONSULTA
 
