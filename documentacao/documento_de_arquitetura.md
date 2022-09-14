@@ -160,14 +160,14 @@ Obs: acrescente mais linhas, se necessário.
 
 | **Análise** | **Design** | **Implementação** |
 | --- | --- | --- |
-| Persistência | | PostgreSQL|
-| Front end web | | React|
-| Front end mobile| | Flutter|
-| Back end | | Java|
-| Comunicação | | Rest API|
-| Log do sistema | | PostgreSQL|
-| Teste de Software | | Nativo|
-| Deploy | | Heroku|
+| Persistência | Bancos de dados Relacional | PostgreSQL|
+| Apresentação | Front end web | React|
+| Apresentação | Front end web | Flutter|
+| Negócio | Back end | Java|
+| Comunicação | API | Rest API|
+| Log do sistema | Bancos de dados Relacional | PostgreSQL|
+| Teste de Software | Teste | Nativo|
+| Acesso externo | Deploy | Heroku|
 
 <a name="modelagem"></a>
 # 3. Modelagem e projeto arquitetural
@@ -208,7 +208,8 @@ Exemplos de resumo de Casos de Uso:
 | **Atores** | Paciente|
 | **Prioridade** | 1|
 | **Requisitos associados** | 1|
-| **Fluxo Principal** | Paciente entra no cadastro de ficha médica e cadastra sua ficha|
+| **Fluxo Principal** | 1. Paciente entra no cadastro de ficha médica 
+| --- | 2. Paciente cadastra sua ficha|
 
 #### UC02 – CONSULTAR CONSULTÓRIOS NA REGIÃO
 
@@ -226,7 +227,7 @@ Exemplos de resumo de Casos de Uso:
 | **Atores** | Sistema|
 | **Prioridade** | 5|
 | **Requisitos associados** | 2|
-| **Fluxo Principal** | Sistema envia notificação para o paciente lembrando de tomar o remédio|
+| **Fluxo Principal** | 1. Sistema envia notificação para o paciente lembrando de tomar o remédio|
 
 #### UC04 – CHAT ENTRE MÉDICO E PACIENTE
 
