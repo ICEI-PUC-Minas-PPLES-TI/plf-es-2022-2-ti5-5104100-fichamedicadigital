@@ -337,7 +337,7 @@ Obs: Acrescente uma breve descrição sobre o diagrama apresentado na Figura 3.
 
 _Apresente o diagrama de componentes da aplicação, indicando, os elementos da arquitetura e as interfaces entre eles. Liste os estilos/padrões arquiteturais utilizados e faça uma descrição sucinta dos componentes indicando o papel de cada um deles dentro da arquitetura/estilo/padrão arquitetural. Indique também quais componentes serão reutilizados (navegadores, SGBDs, middlewares, etc), quais componentes serão adquiridos por serem proprietários e quais componentes precisam ser desenvolvidos._
 
-![Diagrama de componentes](imagens/componentes.png "Diagrama de componentes")
+![Diagrama de componentes](imagens/DiagramaDeComponentes_v1.jpg)
 
 **Figura 3 – Diagrama de Componentes (exemplo). Fonte: o próprio autor.**
 
@@ -352,7 +352,7 @@ Ex: conforme diagrama apresentado na Figura X, as entidades participantes da sol
 
 _Caso julgue necessário para explicar a arquitetura, apresente o diagrama de classes ou diagrama de Entidade/Relacionamentos ou tabelas do banco de dados. Este modelo pode ser essencial caso a arquitetura utilize uma solução de banco de dados distribuídos ou um banco NoSQL._
 
-![Diagrama de Entidade Relacionamento (ER) ](imagens/der.png "Diagrama de Entidade Relacionamento (ER) ")
+![Diagrama Lógico ](imagens/DiagramaLogico_v01.png)
 
 **Figura 4 – Diagrama de Entidade Relacionamento (ER) - exemplo. Fonte: o próprio autor.**
 
