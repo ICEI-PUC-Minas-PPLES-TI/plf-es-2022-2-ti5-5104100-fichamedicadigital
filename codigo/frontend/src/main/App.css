@@ -1,6 +1,6 @@
  :root{
     --bg-dark: #1A2F3A;
-
+    --login-height: 1500px;
     --logo-height: 100px;
     --header-height: 100px;
     --menu-top-height: 70px;
@@ -13,6 +13,7 @@
 }
 
 *{
+   overflow:hidden;
    box-sizing: border-box;
    font-family: 'Montserrat', sans-serif;
 }
@@ -31,6 +32,16 @@
        "menu footer";
    height: 100vh;
    background-color: #F5F5F5;
+   
+}
+
+.signin {
+    background: linear-gradient( 120deg, #800080, #551054, #2d102c );
+    margin: 0px;
+    display: grid;
+    grid-template-columns:  var(--login-height);
+    grid-template-rows: var(--login-height);
+    background-color: #F5F5F5;
 }
 
 aside.logo {
