@@ -23,8 +23,8 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 	private JwtTokenStore tokenStore;
 
 	private static final String[] PUBLIC = { "/oauth/token", "/h2-console/**" };
-
-	private static final String[] OPERATOR_OR_ADMIN = { "/products/**", "/categories/**" };
+	
+	private static final String[] USUARIO = { "/usuarios/**" };
 
 	private static final String[] ADMIN = { "/usuarios/**" };
 
@@ -40,9 +40,11 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 			http.headers().frameOptions().disable();
 		}
 
-		http.authorizeRequests().antMatchers(PUBLIC).permitAll().antMatchers(HttpMethod.GET, OPERATOR_OR_ADMIN)
-				.permitAll().antMatchers(OPERATOR_OR_ADMIN).hasAnyRole("OPERATOR", "ADMIN").antMatchers(ADMIN)
-				.hasRole("ADMIN").anyRequest().authenticated();
+		http.authorizeRequests()
+		.antMatchers(PUBLIC).permitAll()
+		.antMatchers(HttpMethod.POST, USUARIO).permitAll()
+		.antMatchers(ADMIN).hasRole("ADMIN")
+		.anyRequest().authenticated();
 	}
 
 }
