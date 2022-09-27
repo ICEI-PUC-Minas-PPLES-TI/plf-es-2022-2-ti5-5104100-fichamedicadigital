@@ -50,14 +50,14 @@ public class UsuarioService implements UserDetailsService {
 	@Transactional(readOnly = true)
 	public UsuarioDTO findById(Long id) {
 		Optional<Usuario> obj = repository.findById(id);
-		Usuario entity = obj.orElseThrow(() -> new ResourceNotFoundException("Entity not found"));
+		Usuario entity = obj.orElseThrow(() -> new ResourceNotFoundException("Usuário não encontrado!"));
 		return new UsuarioDTO(entity);
 	}
 
 	@Transactional
 	public UsuarioDTO insert(UsuarioInsertDTO dto) {
 		Usuario entity = new Usuario();
-		copyDtoToEntity(dto, entity);
+		copyDtoToEntityInsert(dto, entity);
 		entity.setPassword(passwordEncoder.encode(dto.getPassword()));
 		entity = repository.save(entity);
 		return new UsuarioDTO(entity);
@@ -71,7 +71,7 @@ public class UsuarioService implements UserDetailsService {
 			entity = repository.save(entity);
 			return new UsuarioDTO(entity);
 		} catch (EntityNotFoundException e) {
-			throw new ResourceNotFoundException("Id not found " + id);
+			throw new ResourceNotFoundException("Id não encontrado " + id);
 		}
 	}
 
@@ -79,7 +79,7 @@ public class UsuarioService implements UserDetailsService {
 		try {
 			repository.deleteById(id);
 		} catch (EmptyResultDataAccessException e) {
-			throw new ResourceNotFoundException("Id not found " + id);
+			throw new ResourceNotFoundException("Id não encontrado: " + id);
 		} catch (DataIntegrityViolationException e) {
 			throw new DatabaseException("Integrity violation");
 		}
@@ -97,15 +97,23 @@ public class UsuarioService implements UserDetailsService {
 		}
 	}
 
+	private void copyDtoToEntityInsert(UsuarioDTO dto, Usuario entity) {
+		entity.setPrimeiroNome(dto.getPrimeiroNome());
+		entity.setSobreNome(dto.getSobreNome());
+		entity.setEmail(dto.getEmail());
+
+		entity.getRoles().clear();
+	}
+
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
 		Usuario user = repository.findByEmail(username);
 		if (user == null) {
-			logger.error("User not found: " + username);
-			throw new UsernameNotFoundException("Email not found");
+			logger.error("Usuário não encontrado: " + username);
+			throw new UsernameNotFoundException("Email não encontrado.");
 		}
-		logger.info("User found: " + username);
+		logger.info("Usuário encontrado: " + username);
 		return user;
 	}
 
