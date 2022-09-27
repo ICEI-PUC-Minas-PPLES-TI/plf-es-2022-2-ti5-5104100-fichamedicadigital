@@ -1,13 +1,32 @@
 import React, { useState } from "react";
+import { useContext } from "react";
 import './Login.css'
+import { BASE_URL} from '../../../services/api'
+import axios from 'axios'
+import App from '../../../main/App'
+import Context from "../../../services/Context";
+
 const Login =  () => {
 
     const [email,setEmail] = useState('')
     const [password,setPassword] = useState('');
+    const [post, setPost] = React.useState(null);
+    const [token, setToken] = useContext(Context);
 
     const handleLogin = (event) => {
         event.preventDefault()
+
+        // axios.get(`${BASE_URL}/oauth/token`, {
+        //     email: email,
+        //     password: password,
+        //     CLIENT_ID:'fichamedicadigital',
+        // }).then((response) => {
+        //     setPost(response.data);
+        //     console.log(response)
+        //   });
         console.log(email,password)
+       setToken(true)
+        
     }
 
     return (

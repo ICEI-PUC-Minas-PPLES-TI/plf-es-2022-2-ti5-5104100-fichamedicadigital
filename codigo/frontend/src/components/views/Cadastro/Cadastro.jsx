@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import './Cadastro.css'
 import axios from 'axios'
+import { BASE_URL} from '../../../services/api'
 
-const baseURL = "http://localhost:8080/usuarios";
 
 const Cadastro = () => {
 
@@ -33,7 +33,7 @@ const Cadastro = () => {
             email:  email,
             emailConfimr: emailConfirm
         }
-        axios.post(baseURL, user).then((response) => {
+        axios.post(BASE_URL, user).then((response) => {
             setPost(response.data);
             console.log(response)
           });
