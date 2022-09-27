@@ -1,11 +1,15 @@
-import React from "react";
+import React from "react"
+import { Link } from "react-router-dom";
 import { useState } from "react";
 import './Cadastro.css'
+import axios from 'axios'
+
+const baseURL = "http://localhost:8080/usuarios";
 
 const Cadastro = () => {
 
     const [name,setName] = useState('');
-    const [SurName,setSurname] = useState('');
+    const [surName,setSurname] = useState('');
     const [birthdate,setBirthdate] = useState('');
     const [passwordConfirm,setPasswordConfirm] = useState('');
     const [password,setPassword] = useState('');
@@ -13,8 +17,26 @@ const Cadastro = () => {
     const [emailConfirm,setEmailConfirm] = useState('');
 
 
-    const handleSignup = () =>{
-        console.log('Cadastro')
+
+    const [post, setPost] = React.useState(null);
+        
+
+    const handleSignup = (event) => {
+        event.preventDefault()
+
+        const user = {
+            primeiroNome: name,
+            sobreNome: surName,
+            birthdate: birthdate,
+            passwordConfirm: passwordConfirm,
+            password: password,
+            email:  email,
+            emailConfimr: emailConfirm
+        }
+        axios.post(baseURL, user).then((response) => {
+            setPost(response.data);
+            console.log(response)
+          });
     }
 
     return (
@@ -28,7 +50,6 @@ const Cadastro = () => {
                                 <label className="form-label w-50 font-monospace">Nome:</label>
                                 <input type="text"
                                     className="form-control w-50"
-                                    name="name"
                                     onChange={e=>{setName(e.target.value)}}
                                      />
                             </div>
@@ -36,7 +57,6 @@ const Cadastro = () => {
                                 <label className="form-label w-50 font-monospace">Sobrenome:</label>
                                 <input type="text"
                                     className="form-control w-50"
-                                    name="Surname"
                                     onChange={e=>{setSurname(e.target.value)}}
                                      />
                             </div>
@@ -44,7 +64,6 @@ const Cadastro = () => {
                                 <label className="form-label w-50 font-monospace">Data de Nascimento:</label>
                                 <input type="date"
                                     className="form-control w-50"
-                                    name="birthdate"
                                     onChange={e=>{setBirthdate(e.target.value)}}
                                      />
                             </div>
@@ -52,7 +71,6 @@ const Cadastro = () => {
                                 <label className="form-label w-50 font-monospace">Email:</label>
                                 <input type="email"
                                     className="form-control w-50"
-                                    name="email"
                                     onChange={e=>{setEmail(e.target.value)}}
                                      />
                             </div>
@@ -60,7 +78,6 @@ const Cadastro = () => {
                                 <label className="form-label w-50 font-monospace">Confirme seu Email:</label>
                                 <input type="email"
                                     className="form-control w-50"
-                                    name="emailConfirm"
                                     onChange={e=>{setEmailConfirm(e.target.value)}}
                                      />
                             </div>
@@ -68,7 +85,6 @@ const Cadastro = () => {
                                 <label className="form-label w-50 font-monospace">Senha:</label>
                                 <input type="password"
                                     className="form-control w-50"
-                                    name="password"
                                     onChange={e=>{setPassword(e.target.value)}}
                                      />
                             </div>
@@ -76,7 +92,6 @@ const Cadastro = () => {
                                 <label className="form-label w-50 font-monospace">Confirme sua Senha:</label>
                                 <input type="password"
                                     className="form-control w-50"
-                                    name="passwordConfirm"
                                     onChange={e=>{setPasswordConfirm(e.target.value)}}
                                      />
                             </div>

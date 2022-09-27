@@ -3,7 +3,7 @@ import 'font-awesome/css/font-awesome.min.css'
 import './App.css';
 
 import Routes from './Routes'
-import {Switch, Route,Redirect} from 'react-router'
+import {Routes as Rotas, Route,Navigate, BrowserRouter} from 'react-router-dom'
 import Logo from '../components/template/Logo/Logo'
 import Nav from '../components/template/Nav/Nav'
 import Footer from '../components/template/Footer/Footer'
@@ -19,19 +19,23 @@ const App = () => {
         <>
             {!isLogged  &&
                 <div className='signin'>
-                    <Switch>
-                        <Route exact path='/' component={Login}/>
-                        <Route exact path='/signup' component={Cadastro}/>
-                        <Redirect from='*' to='/'/>
-                    </Switch>
+                    <BrowserRouter>
+                        <Rotas>
+                            <Route exact path='/' element={<Login/>}/>
+                            <Route exact path='/signup' element={<Cadastro/>}/>
+                        </Rotas>
+                            {/* <Navigate from='*' to='/'/> */}
+                    </BrowserRouter>
                 </div>
             }
             {isLogged  &&
                 <div className="app">
-                    <Logo/>
-                    <Nav/>
-                    <Routes/>
-                    <Footer/>
+                    <BrowserRouter>
+                        <Logo/>
+                        <Nav/>
+                        <Routes/>
+                        <Footer/>
+                    </BrowserRouter>
                 </div>
             }
         </>
