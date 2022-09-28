@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mobile/services/UserService.dart';
 import 'package:mobile/view/Register.dart';
-import 'package:mobile/view/main.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -73,9 +73,7 @@ class _LoginPageState extends State<LoginPage> {
                         padding: const EdgeInsets.only(top: 32.0),
                         child: ElevatedButton(
                           onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context) => const HomePage(title: 'Ficha do usuário logado')));
+                            UserService().login(_emailController.text, _passwordController.text, context);
                           },
                           style: const ButtonStyle(
                             backgroundColor: MaterialStatePropertyAll(Colors.purple),

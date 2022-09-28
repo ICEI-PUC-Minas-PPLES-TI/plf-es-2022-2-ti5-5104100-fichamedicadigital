@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:mobile/services/UserService.dart';
 
 import 'Login.dart';
 
@@ -126,7 +127,7 @@ class RegisterPage extends StatelessWidget {
                         padding: const EdgeInsets.only(top: 32.0),
                         child: ElevatedButton(
                             onPressed: () {
-                              // not implemented yet
+                              UserService().register(context);
                             },
                             style: const ButtonStyle(
                               backgroundColor: MaterialStatePropertyAll(Colors.purple),
