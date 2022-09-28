@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'Login.dart';
 import 'MedicalRecord.dart';
 
 void main() {
@@ -25,7 +26,8 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const HomePage(title: 'Flutter Demo Home Page'),
+      // home: const HomePage(title: 'Flutter Demo Home Page'),
+      home: false ? HomePage(title: 'Ficha Médica Digital') : LoginPage(),
     );
   }
 }
@@ -122,13 +124,13 @@ class _HomePageState extends State<HomePage> {
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentPage,
-        unselectedItemColor: Colors.white,
-        selectedItemColor: Colors.amber,
-        onTap: _onTabTapped,
-        items: [],
-      ),
+      // bottomNavigationBar: BottomNavigationBar(
+      //   currentIndex: _currentPage,
+      //   unselectedItemColor: Colors.white,
+      //   selectedItemColor: Colors.amber,
+      //   onTap: _onTabTapped,
+      //   items: [],
+      // ),
     );
   }
 }
