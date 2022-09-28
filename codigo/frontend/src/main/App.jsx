@@ -22,8 +22,8 @@ const App = () => {
                 <div className='signin'>
                     <BrowserRouter>
                         <Rotas>
-                            <Route exact path='/' element={<Login/>}/>
-                            <Route exact path='/signup' element={<Cadastro/>}/>
+                            <Route path='/' element={<Login/>}/>
+                            <Route path='/signup' element={<Cadastro/>}/>
                         </Rotas>
                             {/* <Navigate from='*' to='/'/> */}
                     </BrowserRouter>

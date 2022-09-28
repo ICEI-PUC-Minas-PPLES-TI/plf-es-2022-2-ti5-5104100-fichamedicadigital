@@ -1,9 +1,11 @@
 import React from "react"
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import { useState } from "react";
 import './Cadastro.css'
 import axios from 'axios'
 import { BASE_URL} from '../../../services/api'
+import { useContext } from "react";
+import Context from "../../../services/Context";
 
 
 const Cadastro = () => {
@@ -19,7 +21,7 @@ const Cadastro = () => {
 
 
     const [post, setPost] = React.useState(null);
-        
+    const [token, setToken] = useContext(Context);
 
     const handleSignup = (event) => {
         event.preventDefault()
@@ -33,10 +35,12 @@ const Cadastro = () => {
             email:  email,
             emailConfimr: emailConfirm
         }
-        axios.post(BASE_URL, user).then((response) => {
+        axios.post(`${BASE_URL}/usuarios`, user).then((response) => {
             setPost(response.data);
             console.log(response)
-          });
+        });
+          setToken(true)  
+
     }
 
     return (
@@ -98,10 +102,10 @@ const Cadastro = () => {
                             <div className="d-flex justify-content-center mt-4">
                                 <button className="btn btn-primary w-75  font-monospace">Cadastrar</button>
                             </div>
-                            <div className="d-flex justify-content-center mt-3">
-                                <button className="btn btn-primary w-75  font-monospace">Já possui cadastro? Logar</button>
-                            </div>
                         </form>
+                            <div className="d-flex justify-content-center mt-3">
+                                <Link to={"/"}  className="btn btn-primary  w-75 font-monospace">Já possui cadastro? Logar</Link>
+                            </div>
                     </div>
                 </div>
             </div>

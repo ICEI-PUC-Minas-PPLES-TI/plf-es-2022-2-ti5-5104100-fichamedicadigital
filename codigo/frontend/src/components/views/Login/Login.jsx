@@ -3,8 +3,8 @@ import { useContext } from "react";
 import './Login.css'
 import { BASE_URL} from '../../../services/api'
 import axios from 'axios'
-import App from '../../../main/App'
 import Context from "../../../services/Context";
+import { Link } from "react-router-dom";
 
 const Login =  () => {
 
@@ -16,17 +16,23 @@ const Login =  () => {
     const handleLogin = (event) => {
         event.preventDefault()
 
-        // axios.get(`${BASE_URL}/oauth/token`, {
-        //     email: email,
-        //     password: password,
-        //     CLIENT_ID:'fichamedicadigital',
-        // }).then((response) => {
-        //     setPost(response.data);
-        //     console.log(response)
-        //   });
+        const user = {
+            email: email,
+            password: password,
+            grant_type:'password'
+        }
+        axios.post(`${BASE_URL}/oauth/token`, user,{
+            auth: {
+                Username: 'fichamedicadigital',
+                Password:  'fichamedicadigital123'
+            }
+        }
+        ).then((response) => {
+            setPost(response.data);
+            console.log(response)
+          });
         console.log(email,password)
-       setToken(true)
-        
+       setToken(true)  
     }
 
     return (
@@ -54,10 +60,10 @@ const Login =  () => {
                         <div className="d-flex justify-content-center mt-5">
                             <button type="submit" className="btn btn-primary w-75 font-monospace ">Logar</button>
                         </div>
-                        <div className="d-flex justify-content-center mt-3">
-                             <button className="btn btn-primary  w-75 font-monospace">Cadastrar</button>
-                        </div>
                     </form>
+                        <div className="d-flex justify-content-center mt-3">
+                             <Link to="/signup"  className="btn btn-primary  w-75 font-monospace">Sem cadastro? Cadastrar</Link>
+                        </div>
                 </div>
             </div>
         </>
