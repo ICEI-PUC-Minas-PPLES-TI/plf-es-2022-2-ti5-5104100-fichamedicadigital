@@ -18,4 +18,10 @@ flutter:
     - images/icon.png
     - images/streamlinehq-alarm-bell-interface-essential-48.svg
     - images/streamlinehq-logout-2-interface-essential-48.png
+    - images/profileIcon.jpeg
+    - images/medicalFile.png
+    - images/chat.png
+    - images/examination.png
+    - images/myAppoinments.png
+    - images/appointment.png
   uses-material-design: true
