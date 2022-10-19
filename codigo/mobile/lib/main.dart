@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'exam.dart';
 import 'userData.dart';
 
 void main() {
@@ -24,37 +25,36 @@ class _MainScreenState extends State<MainScreen> {
           title: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-            Image.asset('images/icon.png', width: 46, height: 46),
-            const Padding(
-                padding: EdgeInsets.only(left: 15),
-                child: Text('Ficha Médica Digital', style:
-                      TextStyle(fontSize: 20)),
+                Image.asset('images/icon.png', width: 46, height: 46),
+                const Padding(
+                  padding: EdgeInsets.only(left: 15),
+                  child: Text('Ficha Médica Digital',
+                      style: TextStyle(fontSize: 20)),
                 ),
-            // ignore: prefer_const_constructors
-            Row(children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.only(right: 5),
-                child: SvgPicture.asset(
-                    'images/streamlinehq-alarm-bell-interface-essential-48.svg',
-                    width: 20,
-                    height: 20,
-                    semanticsLabel: 'Notificação'),
-              ),
-              Image.asset(
-                  'images/streamlinehq-logout-2-interface-essential-48.png',
-                  width: 20,
-                  height: 20),
-            ]),
-          ]),
+                // ignore: prefer_const_constructors
+                Row(children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.only(right: 5),
+                    child: SvgPicture.asset(
+                        'images/streamlinehq-alarm-bell-interface-essential-48.svg',
+                        width: 20,
+                        height: 20,
+                        semanticsLabel: 'Notificação'),
+                  ),
+                  Image.asset(
+                      'images/streamlinehq-logout-2-interface-essential-48.png',
+                      width: 20,
+                      height: 20),
+                ]),
+              ]),
           backgroundColor: const Color.fromARGB(255, 62, 173, 173),
         ),
         body: Column(
           children: <Widget>[
             Container(
               constraints: BoxConstraints.expand(
-                height:
-                    Theme.of(context).textTheme.headline4!.fontSize! * 1.1 +
-                        200.0,
+                height: Theme.of(context).textTheme.headline4!.fontSize! * 1.1 +
+                    200.0,
               ),
               margin: const EdgeInsets.only(bottom: 15),
               alignment: Alignment.center,
@@ -77,8 +77,7 @@ class _MainScreenState extends State<MainScreen> {
                   ),
                   const Text(
                     'Fulano da Silva',
-                    style:
-                        TextStyle(fontSize: 20, fontWeight: FontWeight.w800),
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800),
                   ),
                   const Text('Tipo sanguíneo: O+'),
                   const Text('Soropositivo: positivo')
@@ -107,8 +106,7 @@ class _MainScreenState extends State<MainScreen> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          Image.asset('images/chat.png',
-                              width: 55, height: 57),
+                          Image.asset('images/chat.png', width: 55, height: 57),
                           const Padding(
                               padding: EdgeInsets.only(top: 10),
                               child: Text("Chat",
@@ -150,12 +148,8 @@ class _MainScreenState extends State<MainScreen> {
                     fit: FlexFit.loose,
                     child: ElevatedButton(
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => SegundaTela(
-                                  valor: _textEditingController.text)),
-                        );
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => Exam()));
                       },
                       style: ElevatedButton.styleFrom(
                           fixedSize: const Size(130, 110),
