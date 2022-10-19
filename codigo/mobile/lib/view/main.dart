@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'Login.dart';
-import 'MedicalRecord.dart';
 
 void main() {
   runApp(const MyApp());
@@ -55,7 +54,6 @@ class _HomePageState extends State<HomePage> {
   int _currentPage = 0;
   final List<Widget> _pages = [
     const HomePage(title: "Flutter Demo Home Page"),
-    MedicalRecordPage()
   ];
 
   void _incrementCounter() {
