@@ -118,29 +118,31 @@ _Esta seção descreve os requisitos comtemplados nesta descrição arquitetural
 
 ## 2.1. Requisitos Funcionais
 
-_Enumere os requisitos funcionais previstos para a sua aplicação. Concentre-se nos requisitos funcionais que sejam críticos para a definição arquitetural. Lembre-se de listar todos os requisitos que são necessários para garantir cobertura arquitetural. Esta seção deve conter uma lista de requisitos ainda sem modelagem. Na coluna Prioridade utilize uma escala (do mais prioritário para o menos): Essencial, Desejável, Opcional._
-
 | **ID** | **Descrição** | **Prioridade** |
 | --- | --- | --- |
-| RF001 | | |
-| RF002 | | |
-| | | |
-| | | |
-| | | |
+| RF001 | Cadastro da ficha médica do paciente| Essencial |
+| RF002 | Notificação dos remédios usados pelo paciente | Opcional |
+| RF003 | Busca de consultórios por localidade | Essencial |
+| RF004 | Visão de exames | Essencial |
+| RF005 | Marcação de consulta | Essencial |
+| RF006 | Visão da ficha médica | Essencial |
+| RF007 | Visão da ficha médica por código QR | Opcional |
+| RF008 | Gerenciamento de consulta | Essencial |
+| RF009 | Geraçãpo de relatório | Desejavel |
+| RF010 | Insersação da agenda do médico | Essencial |
+| RF011 | Cadastro de usuário | Essencial |
+| RF012 | Login de usuário | Essencial |
+
 
 Obs: acrescente mais linhas, se necessário.
 
 ## 2.2. Requisitos Não-Funcionais
 
-_Enumere os requisitos não-funcionais previstos para a sua aplicação. Entre os requisitos não funcionais, inclua todos os requisitos que julgar importante do ponto de vista arquitetural ou seja os requisitos que terão impacto na definição da arquitetura. Os requisitos devem ser descritos de forma completa e preferencialmente quantitativa._
 
 | **ID** | **Descrição** |
 | --- | --- |
-| RNF001 | |
-| RNF002 | |
-| | |
-| | |
-| | |
+| RNF001 | O sistema web deve ser acessível para resoluções a partir de 1025 pixels de largura, e resoluções mobile até 360 pixels de largura|
+| RNF002 | A aplicação para dispositivos móveis deve  ser compatível com smartphones IOS e Android, a partir da versão 6.0 (API nº 23)|
 
 Obs: acrescente mais linhas, se necessário.
 
@@ -152,82 +154,178 @@ Obs: acrescente mais linhas, se necessário.
 - A versão mobile do software será desenvolvido em Dart/Flutter;
 - O serviço de mensageria do software será desenvolvido utilizando a implementação do kafka;
 - O sistema será hospedado no Heroku.
-- 
-## 2.4. Mecanismos Arquiteturais
 
-_Visão geral dos mecanismos que compõem a arquitetura do sosftware baseando-se em três estados: (1) análise, (2) design e (3) implementação. Em termos de Análise devem ser listados os aspectos gerais que compõem a arquitetura do software como: persistência, integração com sistemas legados, geração de logs do sistema, ambiente de front end, tratamento de exceções, formato dos testes, formato de distribuição/implantação (deploy), entre outros. Em Design deve-se identificar o padrão tecnológico a seguir para cada mecanismo identificado na análise. Em Implementação, deve-se identificar o produto a ser utilizado na solução.
- Ex: Análise (Persistência), Design (ORM), Implementação (Hibernate)._
+## 2.4. Mecanismos Arquiteturais
 
 | **Análise** | **Design** | **Implementação** |
 | --- | --- | --- |
-| Persistência | | |
-| Front end | | |
-| Back end | | |
-| Integração | | |
-| Log do sistema | | |
-| Teste de Software | | |
-| Deploy | | |
+| Persistência | Bancos de dados Relacional | PostgreSQL|
+| Apresentação | Front end web | React|
+| Apresentação | Front end web | Flutter|
+| Negócio | Back end | Java|
+| Comunicação | API | Rest API|
+| Log do sistema | Bancos de dados Relacional | PostgreSQL|
+| Teste de Software | Teste | Nativo|
+| Acesso externo | Deploy | Heroku|
 
 <a name="modelagem"></a>
 # 3. Modelagem e projeto arquitetural
 
-_Apresente uma visão geral da solução proposta para o projeto e explique brevemente esse diagrama de visão geral, de forma textual. Esse diagrama não precisa seguir os padrões da UML, e deve ser completo e tão simples quanto possível, apresentando a macroarquitetura da solução._
 
 ![Visão Geral da Solução](imagens/visao.png "Visão Geral da Solução")
+![Visão Geral da Solução](imagens/diagramaArquitetura.png "Visão Geral da Solução")
 
-**Figura 1 - Visão Geral da Solução (fonte: https://medium.com)**
-
-Obs: substitua esta imagem por outra, adequada ao seu projeto (cada arquitetura é única).
+**Figura 1 - Visão Geral da Solução  Fonte: o próprio autor**
 
 ## 3.1. Visão de Negócio (Funcionalidades)
 
-_Apresente uma lista simples com as funcionalidades previstas no projeto (escopo do produto)._
-
-1. O sistema deve...
-2. O sistema deve...
-3. ...
+1. O paciente deve cadastrar a ficha médica
+2. O sistema deve lembrar o paciente de tomar os remédios
+3. O sistema deve retornar a lista de consultórios por localidade
+4. O cliente pode entrar em contato com o médico através do chat
+5. O cliente pode ver seus exames
+6. O cliente pode marcar consultas com o médico
+7. O médico pode ver a ficha médica do paciente através do código QR
+8. O médico pode gerenciar sua consultas
+9. O administrador pode gerar relatórios com as linhas da tabela
+10. O médico pode inserir sua agenda
+11. O usuário deve cadastrar no sistema
+12. O usuário deve logar no sistema
 
 Obs: a quantidade e o escopo das funcionalidades deve ser negociado com os professores/orientadores do trabalho.
 
 ### Descrição resumida dos Casos de Uso / Histórias de Usuário
 
-_Nesta seção, os casos de uso devem ser resumidos. Esse detalhamento pode ser na forma de um texto sintético ou, alternativamente, você pode optar por descrever estórias de usuários seguindo os métodos ágeis. Neste caso a seção deve chamar &quot;Histórias de usuários&quot;. Lembre-se das características de qualidade das estórias de usuários, ou seja, o que é preciso para descrever boas histórias de usuários._
+![Diagrama de Casos de Uso](imagens/casoDeUso1_v01.jpg)
 
 Exemplos de resumo de Casos de Uso:
 
-#### UC01 – NOME DO CASO DE USO 01
+#### UC01 – CADASTRAR FICHA MÉDICA
 
-| **Descrição** | |
+| **Descrição** | Paciente vai cadastrar sua ficha médica|
 | --- | --- |
-| **Atores** | |
-| **Prioridade** | |
-| **Requisitos associados** | |
-| **Fluxo Principal** | |
+| **Atores** | Paciente|
+| **Prioridade** | 1|
+| **Requisitos associados** | 1|
+| **Fluxo Principal** | 1. Paciente entra no cadastro de ficha médica 2. Paciente cadastra sua ficha|
 
-#### UC02 – NOME DO CASO DE USO 02
+#### UC02 – CONSULTAR CONSULTÓRIOS NA REGIÃO
 
-| **Descrição** | |
+| **Descrição** | Paciente vai consutar consultórios na sua região|
 | --- | --- |
-| **Atores** | |
-| **Prioridade** | |
-| **Requisitos associados** | |
-| **Fluxo Principal** | |
+| **Atores** | Paciente|
+| **Prioridade** | 2|
+| **Requisitos associados** | 3|
+| **Fluxo Principal** | 1. Paciente clica no mapa 2. Paciente aceita usar a localização do dispositivo 3. Paciente filtra por funcionalidade do médico|
+
+#### UC03 – LEMBRAR PACIENTE DE TOMAR OS REMÉDIOS
+
+| **Descrição** | Paciente vai ser lembrado pelo sistema dos seus médicamentos|
+| --- | --- |
+| **Atores** | Sistema|
+| **Prioridade** | 5|
+| **Requisitos associados** | 2|
+| **Fluxo Principal** | 1. Sistema envia notificação para o paciente lembrando de tomar o remédio|
+
+#### UC04 – CHAT ENTRE MÉDICO E PACIENTE
+
+| **Descrição** | Paciente quer entrar em contato com o médico pelo chat|
+| --- | --- |
+| **Atores** | Paciente, Médico|
+| **Prioridade** | 4|
+| **Requisitos associados** | 2|
+| **Fluxo Principal** | 1. Paciente clica no chat 2. Paciente envia mensagem para o médico 3. Médico responde o paciente|
+
+#### UC05 – MARCAR CONSULTA
+
+| **Descrição** | Paciente quer marcar consulta|
+| --- | --- |
+| **Atores** | Paciente|
+| **Prioridade** | 6|
+| **Requisitos associados** | 2|
+| **Fluxo Principal** | 1. Paciente depois de consutar o mapa clica em um dos pins da localização 2. Paciente clica em marcar consulta no card aberto pelo pin 3. Paciente escolhe a data e horário|
+
+#### UC06 – VER EXAME
+
+| **Descrição** | Paciente quer ver seus exames|
+| --- | --- |
+| **Atores** | Paciente|
+| **Prioridade** | 4|
+| **Requisitos associados** | 4|
+| **Fluxo Principal** | 1.Paciente abre a área de exames 2. Paciente clica no exame que deseja ver|
+
+#### UC07 – VER FICHA MÉDICA
+
+| **Descrição** | Médico quer ver a ficha médica do paciente|
+| --- | --- |
+| **Atores** | Médico|
+| **Prioridade** | 1|
+| **Requisitos associados** | 7|
+| **Fluxo Principal** | 1. Médico escaneia o qr code no celular do paciente 2. Médico ve a ficha médica|
+
+#### UC08 – GERENCIAR CONSULTAR
+
+| **Descrição** | Médico gerencia suas consultas|
+| --- | --- |
+| **Atores** | Médico|
+| **Prioridade** | 2|
+| **Requisitos associados** | 8|
+| **Fluxo Principal** | 1. Médico vê as consultas do dia 2. Médico marca como atendido ou não|
+
+#### UC09 – INSERIR AGENDA
+
+| **Descrição** | Médico insere a agenda de consultas|
+| --- | --- |
+| **Atores** | Médico|
+| **Prioridade** | 1|
+| **Requisitos associados** | 10|
+| **Fluxo Principal** | 1.Médico entra em minhas consultas 2. Médico insere a agenda|
+
+#### UC10 – CRIAR RELATÓRIOS
+
+| **Descrição** | Administrador cria relatório|
+| --- | --- |
+| **Atores** | Administrador|
+| **Prioridade** | 5|
+| **Requisitos associados** | 9|
+| **Fluxo Principal** | 1. Administrador filtra por colunas da tabela 2. Administrador cria relatórios|
+
+#### UC11 – CADASTRO NO SISTEMA
+
+| **Descrição** | Paciente faz cadastro no sistema|
+| --- | --- |
+| **Atores** | Paciente|
+| **Prioridade** | 1|
+| **Requisitos associados** | 10|
+| **Fluxo Principal** | 1. Uusário Coloca os dados cadastrais 2. Usuário clica em cadastro|
+
+#### UC11 – LOGIN NO SISTEMA
+
+| **Descrição** | Usuario faz login no sistema|
+| --- | --- |
+| **Atores** | Paciente, Médico|
+| **Prioridade** | 1|
+| **Requisitos associados** | 11|
+| **Fluxo Principal** | 1. Usuário coloca login e senha 2. Usuário clica em login|
+
 
 Exemplos de Histórias de Usuário:
 
-- Como Fulano eu quero poder convidar meus amigos para que a gente possa se reunir...
-
-- Como Cicrano eu quero poder organizar minhas tarefas diárias, para que...
-
-- Como gerente eu quero conseguir entender o progresso do trabalho do meu time, para que eu possa ter relatórios periódicos dos nossos acertos e falhas.
+- Como paciente quero cadastrar minha ficha médica
+- Como paciente quero consultar consultórios na minha região
+- Como paciente quero ser lembrado dos meus médicamentos
+- Como paciente quero entrar em contato com os médicos
+- Como paciente quero marcar uma consulta
+- Como paciente quero ver meus exames
+- Como médico quero ver a ficha médica do paciente
+- Como médico quero gerenciar minhas consultas
+- Como médico quero inserir minha agenda
 
 ## 3.2. Visão Lógica
 
-_Apresente os artefatos que serão utilizados descrevendo em linhas gerais as motivações que levaram a equipe a utilizar estes diagramas._
-
 ### Diagrama de Classes
 
-![Diagrama de classes](imagens/classes.gif "Diagrama de classes")
+![Diagrama de classes](imagens/DiagramaDeClasse_v01.jpg "Diagrama de classes")
 
 
 **Figura 2 – Diagrama de classes (exemplo). Fonte: o próprio autor.**
@@ -236,9 +334,8 @@ Obs: Acrescente uma breve descrição sobre o diagrama apresentado na Figura 3.
 
 ### Diagrama de componentes
 
-_Apresente o diagrama de componentes da aplicação, indicando, os elementos da arquitetura e as interfaces entre eles. Liste os estilos/padrões arquiteturais utilizados e faça uma descrição sucinta dos componentes indicando o papel de cada um deles dentro da arquitetura/estilo/padrão arquitetural. Indique também quais componentes serão reutilizados (navegadores, SGBDs, middlewares, etc), quais componentes serão adquiridos por serem proprietários e quais componentes precisam ser desenvolvidos._
 
-![Diagrama de componentes](imagens/componentes.png "Diagrama de componentes")
+![Diagrama de componentes](imagens/DiagramaDeComponentes_v1.jpg)
 
 **Figura 3 – Diagrama de Componentes (exemplo). Fonte: o próprio autor.**
 
@@ -246,14 +343,17 @@ _Apresente uma descrição detalhada dos artefatos que constituem o diagrama de 
 
 Ex: conforme diagrama apresentado na Figura X, as entidades participantes da solução são:
 
-- **Componente 1** - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras nunc magna, accumsan eget porta a, tincidunt sed mauris. Suspendisse orci nulla, sagittis a lorem laoreet, tincidunt imperdiet ipsum. Morbi malesuada pretium suscipit.
-- **Componente 2** - Praesent nec nisi hendrerit, ullamcorper tortor non, rutrum sem. In non lectus tortor. Nulla vel tincidunt eros.
+- **Componente 1** - Repository -> Componente responsável por buscar e converter o conteúdo do banco de dados relacional em objetos.
+- **Componente 2** - Service -> Componente responsável por tratar os itens que serão trazidos pelo repositório.
+- **Componente 3** - Banco de dados -> Componente responsável por armazenar as informações.
+- **Componente 4** - Resource -> Componente responsável por tratar as requisições e retornar os itens tratados no Service.
+- **Componente 5** - Front-end -> Componente responsável por gerar uma interface web para interagir com os usuários.
+- **Componente 6** - Mobile -> Componente responsável por gerar uma interface mobile para interagir com os usuários.
 
 ## 3.3. Modelo de dados (opcional)
 
-_Caso julgue necessário para explicar a arquitetura, apresente o diagrama de classes ou diagrama de Entidade/Relacionamentos ou tabelas do banco de dados. Este modelo pode ser essencial caso a arquitetura utilize uma solução de banco de dados distribuídos ou um banco NoSQL._
 
-![Diagrama de Entidade Relacionamento (ER) ](imagens/der.png "Diagrama de Entidade Relacionamento (ER) ")
+![Diagrama Lógico ](imagens/DiagramaLogico_v01.png)
 
 **Figura 4 – Diagrama de Entidade Relacionamento (ER) - exemplo. Fonte: o próprio autor.**
 

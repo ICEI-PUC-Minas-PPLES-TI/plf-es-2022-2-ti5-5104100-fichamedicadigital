@@ -73,3 +73,6 @@
 1.4.4	Hospedagem da aplicação mobile (AppleStore, PlayStore)	
 
 
+![EAP](/documentacao/imagens/EAP.png)
+
+
