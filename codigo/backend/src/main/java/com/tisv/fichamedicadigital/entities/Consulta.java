@@ -9,34 +9,32 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.tisv.fichamedicadigital.dto.UsuarioDTO;
+import com.tisv.fichamedicadigital.entities.enums.StatusConsulta;
 
 @Entity
 @Table(name = "tb_consultas")
 public class Consulta implements Serializable {
-
 	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String data;
 	private String horario;
+	private StatusConsulta status;
 
-	private Long idMedico;
+	private Paciente paciente;
 
-	private Long idPaciente;
-
-	private UsuarioDTO paciente;
-	private UsuarioDTO medico;
+	private Medico medico;
 
 	public Consulta() {
 
 	}
 
-	public Consulta(Long id, Long medico, Long paciente, String data, String horario) {
+	public Consulta(Long id, Medico medico, Paciente paciente, String data, String horario) {
 		this.id = id;
-		this.idMedico = medico;
-		this.idPaciente = paciente;
+		this.medico = medico;
+		this.paciente = paciente;
 		this.data = data;
 		this.horario = horario;
 	}
@@ -65,36 +63,28 @@ public class Consulta implements Serializable {
 		this.horario = horario;
 	}
 
-	public Long getIdMedico() {
-		return idMedico;
-	}
-
-	public void setIdMedico(Long idMedico) {
-		this.idMedico = idMedico;
-	}
-
-	public Long getIdPaciente() {
-		return idPaciente;
-	}
-
-	public void setIdPaciente(Long idPaciente) {
-		this.idPaciente = idPaciente;
-	}
-
-	public void setPaciente(UsuarioDTO paciente) {
-		this.paciente = paciente;
-	}
-
-	public void setMedico(UsuarioDTO medico) {
-		this.medico = medico;
-	}
-
-	public UsuarioDTO getPaciente() {
+	public Paciente getPaciente() {
 		return paciente;
 	}
 
-	public UsuarioDTO getMedico() {
+	public void setPaciente(Paciente paciente) {
+		this.paciente = paciente;
+	}
+
+	public Medico getMedico() {
 		return medico;
+	}
+
+	public void setMedico(Medico medico) {
+		this.medico = medico;
+	}
+
+	public StatusConsulta getStatus() {
+		return status;
+	}
+
+	public void setStatus(StatusConsulta status) {
+		this.status = status;
 	}
 
 	@Override

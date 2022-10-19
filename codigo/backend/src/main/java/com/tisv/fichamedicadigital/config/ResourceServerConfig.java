@@ -33,7 +33,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
 	private static final String[] USUARIO = { "/usuarios/**" };
 
-	private static final String[] ADMIN = { "/usuarios/**" };
+	//private static final String[] ADMIN = { "/usuarios/**" };
 
 	@Override
 	public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
@@ -47,8 +47,11 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 			http.headers().frameOptions().disable();
 		}
 
-		http.authorizeRequests().antMatchers(PUBLIC).permitAll().antMatchers(HttpMethod.POST, USUARIO).permitAll()
-				.antMatchers(ADMIN).hasRole("ADMIN").anyRequest().authenticated();
+		http.authorizeRequests()
+				.antMatchers(PUBLIC).permitAll()
+				.antMatchers(HttpMethod.POST, USUARIO).permitAll()
+				//.antMatchers(ADMIN).hasRole("ADMIN")
+				.anyRequest().authenticated();
 
 		http.cors().configurationSource(corsConfigurationSource());
 	}

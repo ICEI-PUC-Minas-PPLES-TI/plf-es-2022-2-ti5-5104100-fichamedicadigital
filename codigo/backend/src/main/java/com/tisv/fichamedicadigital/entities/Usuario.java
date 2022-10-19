@@ -15,8 +15,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -30,7 +28,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
 @Table(name = "tb_usuarios")
-@Inheritance(strategy = InheritanceType.JOINED)
 public class Usuario implements UserDetails, Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -59,6 +56,10 @@ public class Usuario implements UserDetails, Serializable {
 
 	public Usuario() {
 
+	}
+
+	public Usuario(Long id) {
+		this.id = id;
 	}
 
 	public Usuario(Long id, String primeiroNome, String sobreNome, String email, String password) {
@@ -141,7 +142,7 @@ public class Usuario implements UserDetails, Serializable {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(email, id, password, primeiroNome, roles, sobreNome);
+		return Objects.hash(id);
 	}
 
 	@Override
@@ -153,9 +154,7 @@ public class Usuario implements UserDetails, Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Usuario other = (Usuario) obj;
-		return Objects.equals(email, other.email) && Objects.equals(id, other.id)
-				&& Objects.equals(password, other.password) && Objects.equals(primeiroNome, other.primeiroNome)
-				&& Objects.equals(roles, other.roles) && Objects.equals(sobreNome, other.sobreNome);
+		return Objects.equals(id, other.id);
 	}
 
 	@Override
@@ -187,5 +186,14 @@ public class Usuario implements UserDetails, Serializable {
 	public boolean isEnabled() {
 		return true;
 	}
+	
+	public boolean hasRole(String roleName) {
+		for (Role role : roles) {
+			if (role.getAuthority().equals(roleName)) {
+				return true;
+			}
+		}
+		return false;
+	}	
 
 }

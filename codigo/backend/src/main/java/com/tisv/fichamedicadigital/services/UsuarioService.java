@@ -39,28 +39,91 @@ public class UsuarioService implements UserDetailsService {
 	private UsuarioRepository repository;
 
 	@Autowired
+	private AuthService authService;
+
+	@Autowired
 	private RoleRepository roleRepository;
 
+	@Autowired
+	private PacienteService pacienteService;
+
+	/***
+	 * Retorna lista paginada de todos os usuários
+	 * @param Paginação
+	 * @return Lista paginada de usuários
+	 */
 	@Transactional(readOnly = true)
 	public Page<UsuarioDTO> findAllPaged(Pageable pageable) {
 		Page<Usuario> list = repository.findAll(pageable);
 		return list.map(x -> new UsuarioDTO(x));
 	}
 
+	/***
+	 * Método para retornar uma usuário a partir do seu Id
+	 * 
+	 * @param Id do usuário
+	 * @return Usuário
+	 */
 	@Transactional(readOnly = true)
 	public UsuarioDTO findById(Long id) {
+		authService.validateSelfOrAdmin(id);
 		Optional<Usuario> obj = repository.findById(id);
 		Usuario entity = obj.orElseThrow(() -> new ResourceNotFoundException("Usuário não encontrado!"));
 		return new UsuarioDTO(entity);
 	}
 
+	/***
+	 * Método que irá criar um Usuário, além disso, também criará o paciente a
+	 * partir desse usuário e dará a role paciente desse usuário
+	 * 
+	 * @param Usuário que será inserido
+	 * @return Retorna o usuário criado
+	 */
 	@Transactional
 	public UsuarioDTO insert(UsuarioInsertDTO dto) {
 		Usuario entity = new Usuario();
 		copyDtoToEntityInsert(dto, entity);
 		entity.setPassword(passwordEncoder.encode(dto.getPassword()));
+		entity.getRoles().add(roleRepository.findByAuthority("ROLE_PACIENTE").get());
 		entity = repository.save(entity);
+		pacienteService.criaPaciente(entity.getId());
 		return new UsuarioDTO(entity);
+	}
+
+	/***
+	 * Método para adicionar uma Role a um usuario
+	 * 
+	 * @param Id   do usuário
+	 * @param Nome da role
+	 * @throws Pode lançar ResourceNotFoundException caso a role não exista
+	 */
+	@Transactional
+	public void adicionaRole(Long id, String nomeRole) {
+		Usuario user = repository.getReferenceById(id);
+		try {
+			user.getRoles().add(roleRepository.findByAuthority(nomeRole).get());
+			repository.save(user);
+		} catch (Exception e) {
+			throw new ResourceNotFoundException("Role inexistente: " + nomeRole);
+		}
+	}
+
+	/***
+	 * Método para remover uma Role de um usuario
+	 * 
+	 * @param Id   do usuário
+	 * @param Nome da role
+	 */
+	@Transactional
+	public void retiraRole(Long id, String nomeRole) {
+		Usuario user = repository.getReferenceById(id);
+		try {
+			Role roleDelete = roleRepository.findByAuthority(nomeRole).get();
+			user.getRoles().remove(roleDelete);
+			repository.save(user);
+		} catch (Exception e) {
+		}
+
 	}
 
 	@Transactional

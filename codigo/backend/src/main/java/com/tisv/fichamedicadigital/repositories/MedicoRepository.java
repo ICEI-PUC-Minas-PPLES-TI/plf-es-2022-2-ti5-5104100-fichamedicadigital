@@ -5,11 +5,11 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.tisv.fichamedicadigital.entities.Role;
+import com.tisv.fichamedicadigital.entities.Medico;
 
 @Repository
-public interface RoleRepository extends JpaRepository<Role, Long> {
+public interface MedicoRepository extends JpaRepository<Medico, Long> {
 
-	Optional<Role> findByAuthority(String authority);
-
+	Optional<Medico> findByUsuario(Long id);
+	
 }
