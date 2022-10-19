@@ -1,3 +1,18 @@
-.Logo{
-    
+aside.logo {
+    background: linear-gradient( 120deg, #800080, #551054, #2d102c );
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+aside.logo img {
+    padding: 0px 15px;
+    width: 200px;
+    height: 100px;
+}
+
+@media(max-width: 576px) {
+    aside.logo img {
+        width: 350px;
+    }
 }
