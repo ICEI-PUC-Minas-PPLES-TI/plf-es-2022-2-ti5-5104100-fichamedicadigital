@@ -41,7 +41,7 @@ public class Usuario implements UserDetails, Serializable {
 	@Column(unique = true)
 	private String email;
 	private String password;
-
+  
 	@Column(columnDefinition = "smalldatetime")
 	private Date dataNascimento;
 
@@ -113,7 +113,7 @@ public class Usuario implements UserDetails, Serializable {
 	public Set<Role> getRoles() {
 		return roles;
 	}
-
+  
 	public Date getDataNascimento() {
 		return dataNascimento;
 	}

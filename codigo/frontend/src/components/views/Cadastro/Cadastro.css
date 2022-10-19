@@ -1,0 +1,15 @@
+.cadastro-content{
+    color: rgb(130, 6, 107);
+    margin-left: 405px;
+    margin-top: 10px;
+    width: 500px;
+    height: 600px;
+    background-color: #F5F5F5;
+    box-shadow: 0px 0px 5px #0004;
+    border-top-right-radius: 15% ;
+    border-bottom-left-radius: 15% ;
+
+}
+.form-control{
+    height: 30px;
+}
