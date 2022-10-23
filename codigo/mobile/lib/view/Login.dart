@@ -17,7 +17,8 @@ class _LoginPageState extends State<LoginPage> {
       backgroundColor: Colors.purpleAccent,
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.only(left: 32.0, top: 0.0, right: 32.0, bottom: 0.0),
+          padding: const EdgeInsets.only(
+              left: 32.0, top: 0.0, right: 32.0, bottom: 0.0),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -40,11 +41,9 @@ class _LoginPageState extends State<LoginPage> {
                               keyboardType: TextInputType.emailAddress,
                               enabled: true,
                               decoration: const InputDecoration(
-                                labelText: "E-mail",
-                                  labelStyle: const TextStyle(
-                                      color: Colors.white
-                                  )
-                              ),
+                                  labelText: "E-mail",
+                                  labelStyle:
+                                      const TextStyle(color: Colors.white)),
                             ),
                           )
                         ],
@@ -60,11 +59,9 @@ class _LoginPageState extends State<LoginPage> {
                               keyboardType: TextInputType.emailAddress,
                               enabled: true,
                               decoration: const InputDecoration(
-                                labelText: "Senha",
-                                labelStyle: const TextStyle(
-                                  color: Colors.white
-                                )
-                              ),
+                                  labelText: "Senha",
+                                  labelStyle:
+                                      const TextStyle(color: Colors.white)),
                             ),
                           )
                         ],
@@ -72,18 +69,24 @@ class _LoginPageState extends State<LoginPage> {
                       Padding(
                         padding: const EdgeInsets.only(top: 32.0),
                         child: ElevatedButton(
-                          onPressed: () {
-                            UserService().login(_emailController.text, _passwordController.text, context);
-                          },
-                          style: const ButtonStyle(
-                            backgroundColor: MaterialStatePropertyAll(Colors.purple),
-                            textStyle: MaterialStatePropertyAll(TextStyle(fontWeight: FontWeight.bold)),
-                          ),
-                          child: const Padding(
-                            padding: EdgeInsets.only(left: 32.0, top: 16.0, right: 32.0, bottom: 16.0),
-                            child: Text("ENTRAR"),
-                          )
-                    ),
+                            onPressed: () {
+                              UserService().login(_emailController.text,
+                                  _passwordController.text);
+                            },
+                            style: const ButtonStyle(
+                              backgroundColor:
+                                  MaterialStatePropertyAll(Colors.purple),
+                              textStyle: MaterialStatePropertyAll(
+                                  TextStyle(fontWeight: FontWeight.bold)),
+                            ),
+                            child: const Padding(
+                              padding: EdgeInsets.only(
+                                  left: 32.0,
+                                  top: 16.0,
+                                  right: 32.0,
+                                  bottom: 16.0),
+                              child: Text("ENTRAR"),
+                            )),
                       )
                     ],
                   ),
@@ -94,25 +97,28 @@ class _LoginPageState extends State<LoginPage> {
                 height: 100,
                 child: Center(
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: <Widget>[
-                        const Padding(
-                          padding: EdgeInsets.only(right: 16.0),
-                          child: Text("Não tem uma conta?"),
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: <Widget>[
+                    const Padding(
+                      padding: EdgeInsets.only(right: 16.0),
+                      child: Text("Não tem uma conta?"),
+                    ),
+                    ElevatedButton(
+                        style: const ButtonStyle(
+                          backgroundColor:
+                              MaterialStatePropertyAll(Colors.deepPurple),
+                          textStyle: MaterialStatePropertyAll(
+                              TextStyle(fontWeight: FontWeight.bold)),
                         ),
-                        ElevatedButton(
-                          style: const ButtonStyle(
-                            backgroundColor: MaterialStatePropertyAll(Colors.deepPurple),
-                            textStyle: MaterialStatePropertyAll(TextStyle(fontWeight: FontWeight.bold)),
-                          ),
-                          onPressed: () {
-                            Navigator.push(
+                        onPressed: () {
+                          Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => RegisterPage()));
-                          },
-                          child: const Text("Cadastre-se"))
-                      ],
-                    )),
+                              MaterialPageRoute(
+                                  builder: (context) => RegisterPage()));
+                        },
+                        child: const Text("Cadastre-se"))
+                  ],
+                )),
               )
             ],
           ),
