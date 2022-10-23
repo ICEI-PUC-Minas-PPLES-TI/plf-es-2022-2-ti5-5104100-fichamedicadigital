@@ -13,8 +13,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -34,12 +39,17 @@ public class FichaMedica implements Serializable {
 	private Boolean desmaioOuConvulsao;
 	private Boolean intoleranciaLactose;
 
-	@ElementCollection
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@ElementCollection()
 	@CollectionTable(name = "tb_doencas")
 	private List<String> doencas = new ArrayList<String>();
+	
+	@LazyCollection(LazyCollectionOption.FALSE)
 	@ElementCollection
 	@CollectionTable(name = "tb_medicamentos")
 	private List<String> medicamentos = new ArrayList<String>();
+	
+	@LazyCollection(LazyCollectionOption.FALSE)
 	@ElementCollection
 	@CollectionTable(name = "tb_medicamentos_alergia")
 	private List<String> medicamentosAlergia = new ArrayList<String>();
@@ -52,6 +62,10 @@ public class FichaMedica implements Serializable {
 	@JsonIgnore
 	@OneToMany(mappedBy = "fichaMedica")
 	private Set<Vacina> vacinas = new HashSet<Vacina>();
+
+	@OneToOne
+	@JoinColumn(name = "usuario_id")
+	private Usuario usuario;
 
 	public Long getId() {
 		return id;
@@ -155,6 +169,14 @@ public class FichaMedica implements Serializable {
 
 	public void setTipoSanguineo(String tipoSanguineo) {
 		this.tipoSanguineo = tipoSanguineo;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 	@Override

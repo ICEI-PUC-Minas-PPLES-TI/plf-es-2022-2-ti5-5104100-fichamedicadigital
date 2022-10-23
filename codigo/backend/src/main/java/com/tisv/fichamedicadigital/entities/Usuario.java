@@ -18,6 +18,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
@@ -25,6 +26,8 @@ import javax.persistence.Table;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "tb_usuarios")
@@ -53,6 +56,10 @@ public class Usuario implements UserDetails, Serializable {
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "tb_usuarios_roles", joinColumns = @JoinColumn(name = "id_usuario"), inverseJoinColumns = @JoinColumn(name = "id_role"))
 	private Set<Role> roles = new HashSet<>();
+
+	@JsonIgnore
+	@OneToOne(mappedBy = "usuario")
+	private FichaMedica fichaMedica;
 
 	public Usuario() {
 
@@ -129,6 +136,14 @@ public class Usuario implements UserDetails, Serializable {
 
 	public Instant getUpdatedAt() {
 		return updatedAt;
+	}
+
+	public FichaMedica getFichaMedica() {
+		return fichaMedica;
+	}
+
+	public void setFichaMedica(FichaMedica fichaMedica) {
+		this.fichaMedica = fichaMedica;
 	}
 
 	@PrePersist
