@@ -49,6 +49,7 @@ public class UsuarioService implements UserDetailsService {
 
 	/***
 	 * Retorna lista paginada de todos os usuários
+	 * 
 	 * @param Paginação
 	 * @return Lista paginada de usuários
 	 */
@@ -88,6 +89,24 @@ public class UsuarioService implements UserDetailsService {
 		entity = repository.save(entity);
 		pacienteService.criaPaciente(entity.getId());
 		return new UsuarioDTO(entity);
+	}
+
+	@Transactional
+	public UsuarioDTO login(String email, String senha) {
+		logger.info("Email: " + email);
+		logger.info("Senha: " + senha);
+		Usuario entity = new Usuario();
+
+		entity = repository.findByEmail(email);
+		if (entity == null) {
+			throw new ResourceNotFoundException("Email inexistente!");
+		}
+		if (passwordEncoder.matches(senha, entity.getPassword())) {
+			return new UsuarioDTO(entity);
+		} else {
+			throw new ResourceNotFoundException("Senha incorreta!");
+		}
+
 	}
 
 	/***
@@ -152,6 +171,7 @@ public class UsuarioService implements UserDetailsService {
 		entity.setPrimeiroNome(dto.getPrimeiroNome());
 		entity.setSobreNome(dto.getSobreNome());
 		entity.setEmail(dto.getEmail());
+		entity.setDataNascimento(dto.getDataNascimento());
 
 		entity.getRoles().clear();
 		for (RoleDTO roleDto : dto.getRoles()) {
@@ -164,6 +184,7 @@ public class UsuarioService implements UserDetailsService {
 		entity.setPrimeiroNome(dto.getPrimeiroNome());
 		entity.setSobreNome(dto.getSobreNome());
 		entity.setEmail(dto.getEmail());
+		entity.setDataNascimento(dto.getDataNascimento());
 
 		entity.getRoles().clear();
 	}

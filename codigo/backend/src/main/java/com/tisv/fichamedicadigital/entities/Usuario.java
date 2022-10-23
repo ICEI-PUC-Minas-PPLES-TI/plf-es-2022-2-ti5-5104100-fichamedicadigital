@@ -41,8 +41,8 @@ public class Usuario implements UserDetails, Serializable {
 	@Column(unique = true)
 	private String email;
 	private String password;
-  
-	@Column(columnDefinition = "smalldatetime")
+
+	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
 	private Date dataNascimento;
 
 	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
@@ -62,12 +62,13 @@ public class Usuario implements UserDetails, Serializable {
 		this.id = id;
 	}
 
-	public Usuario(Long id, String primeiroNome, String sobreNome, String email, String password) {
+	public Usuario(Long id, String primeiroNome, String sobreNome, String email, String password, Date dataNascimento) {
 		this.id = id;
 		this.primeiroNome = primeiroNome;
 		this.sobreNome = sobreNome;
 		this.email = email;
 		this.password = password;
+		this.dataNascimento = dataNascimento;
 	}
 
 	public Long getId() {
@@ -113,7 +114,7 @@ public class Usuario implements UserDetails, Serializable {
 	public Set<Role> getRoles() {
 		return roles;
 	}
-  
+
 	public Date getDataNascimento() {
 		return dataNascimento;
 	}
@@ -186,7 +187,7 @@ public class Usuario implements UserDetails, Serializable {
 	public boolean isEnabled() {
 		return true;
 	}
-	
+
 	public boolean hasRole(String roleName) {
 		for (Role role : roles) {
 			if (role.getAuthority().equals(roleName)) {
@@ -194,6 +195,6 @@ public class Usuario implements UserDetails, Serializable {
 			}
 		}
 		return false;
-	}	
+	}
 
 }

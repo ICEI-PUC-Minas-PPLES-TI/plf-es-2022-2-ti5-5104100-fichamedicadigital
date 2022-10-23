@@ -15,12 +15,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.tisv.fichamedicadigital.dto.UsuarioDTO;
 import com.tisv.fichamedicadigital.dto.UsuarioInsertDTO;
 import com.tisv.fichamedicadigital.dto.UsuarioUpdateDTO;
+import com.tisv.fichamedicadigital.entities.Usuario;
 import com.tisv.fichamedicadigital.services.UsuarioService;
 
 @RestController
@@ -45,6 +47,13 @@ public class UsuarioResource {
 	@PostMapping
 	public ResponseEntity<UsuarioDTO> insert(@Valid @RequestBody UsuarioInsertDTO dto) {
 		UsuarioDTO newDto = service.insert(dto);
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newDto.getId()).toUri();
+		return ResponseEntity.created(uri).body(newDto);
+	}
+
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public ResponseEntity<UsuarioDTO> login(@RequestBody Usuario dto) {
+		UsuarioDTO newDto = service.login(dto.getEmail(), dto.getPassword());
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newDto.getId()).toUri();
 		return ResponseEntity.created(uri).body(newDto);
 	}

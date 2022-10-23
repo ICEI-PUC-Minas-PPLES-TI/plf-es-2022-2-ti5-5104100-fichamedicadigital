@@ -26,6 +26,11 @@ public class PacienteService {
 	@Autowired
 	private PacienteRepository pacienteRepository;
 
+	/***
+	 * Método para retornar todos os pacientes paginados
+	 * @param Número da página/Quantidade de médicos por página/Campo de ordenação (page=0&size=12&sort=id)
+	 * @return Lista com os pacientes
+	 */
 	@Transactional(readOnly = true)
 	public Page<Paciente> findAllPaged(Pageable pageable) {
 		return pacienteRepository.findAll(pageable);

@@ -1,6 +1,7 @@
 package com.tisv.fichamedicadigital.entities;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Objects;
 
 import javax.persistence.Entity;
@@ -19,8 +20,9 @@ public class Consulta implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String data;
-	private String horario;
+	private Date data;
+	private Date horarioInicio;
+	private Date horaFim;
 	private StatusConsulta status;
 
 	private Paciente paciente;
@@ -31,12 +33,16 @@ public class Consulta implements Serializable {
 
 	}
 
-	public Consulta(Long id, Medico medico, Paciente paciente, String data, String horario) {
+	public Consulta(Long id, Date data, Date horarioInicio, Date horaFim, StatusConsulta status, Paciente paciente,
+			Medico medico) {
+		super();
 		this.id = id;
-		this.medico = medico;
-		this.paciente = paciente;
 		this.data = data;
-		this.horario = horario;
+		this.horarioInicio = horarioInicio;
+		this.horaFim = horaFim;
+		this.status = status;
+		this.paciente = paciente;
+		this.medico = medico;
 	}
 
 	public Long getId() {
@@ -47,20 +53,28 @@ public class Consulta implements Serializable {
 		this.id = id;
 	}
 
-	public String getData() {
+	public Date getData() {
 		return data;
 	}
 
-	public void setData(String data) {
+	public void setData(Date data) {
 		this.data = data;
 	}
 
-	public String getHorario() {
-		return horario;
+	public Date getHorarioInicio() {
+		return horarioInicio;
 	}
 
-	public void setHorario(String horario) {
-		this.horario = horario;
+	public void setHorarioInicio(Date horarioInicio) {
+		this.horarioInicio = horarioInicio;
+	}
+
+	public Date getHoraFim() {
+		return horaFim;
+	}
+
+	public void setHoraFim(Date horaFim) {
+		this.horaFim = horaFim;
 	}
 
 	public Paciente getPaciente() {

@@ -2,15 +2,21 @@ package com.tisv.fichamedicadigital.entities;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
+import javax.persistence.CollectionTable;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "tb_fichas_medicas")
@@ -29,17 +35,23 @@ public class FichaMedica implements Serializable {
 	private Boolean intoleranciaLactose;
 
 	@ElementCollection
+	@CollectionTable(name = "tb_doencas")
 	private List<String> doencas = new ArrayList<String>();
 	@ElementCollection
+	@CollectionTable(name = "tb_medicamentos")
 	private List<String> medicamentos = new ArrayList<String>();
 	@ElementCollection
+	@CollectionTable(name = "tb_medicamentos_alergia")
 	private List<String> medicamentosAlergia = new ArrayList<String>();
 
 	private String numeroCarteirinha;
 	private String convenio;
 	private String cartaoSus;
+	private String tipoSanguineo;
 
-	// private Set<Vacina> vacinas = new HashSet<Vacina>();
+	@JsonIgnore
+	@OneToMany(mappedBy = "fichaMedica")
+	private Set<Vacina> vacinas = new HashSet<Vacina>();
 
 	public Long getId() {
 		return id;
@@ -133,9 +145,17 @@ public class FichaMedica implements Serializable {
 		return medicamentosAlergia;
 	}
 
-//	public  Set<Vacina> getVacinas() {
-//		return vacinas;
-//	}
+	public Set<Vacina> getVacinas() {
+		return vacinas;
+	}
+
+	public String getTipoSanguineo() {
+		return tipoSanguineo;
+	}
+
+	public void setTipoSanguineo(String tipoSanguineo) {
+		this.tipoSanguineo = tipoSanguineo;
+	}
 
 	@Override
 	public int hashCode() {

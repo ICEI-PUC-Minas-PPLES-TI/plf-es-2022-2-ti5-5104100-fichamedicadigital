@@ -1,11 +1,14 @@
 package com.tisv.fichamedicadigital.dto;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import com.tisv.fichamedicadigital.entities.Usuario;
 
@@ -18,6 +21,9 @@ public class UsuarioDTO implements Serializable {
 	@NotBlank(message = "Campo obrigatório")
 	private String primeiroNome;
 	private String sobreNome;
+
+	@DateTimeFormat
+	private Date dataNascimento;
 
 	@Email(message = "Favor entrar com email válido")
 	private String email;
@@ -41,6 +47,7 @@ public class UsuarioDTO implements Serializable {
 		sobreNome = entity.getSobreNome();
 		email = entity.getEmail();
 		entity.getRoles().forEach(role -> this.roles.add(new RoleDTO(role)));
+		dataNascimento = entity.getDataNascimento();
 	}
 
 	public Long getId() {
@@ -77,6 +84,14 @@ public class UsuarioDTO implements Serializable {
 
 	public Set<RoleDTO> getRoles() {
 		return roles;
+	}
+
+	public Date getDataNascimento() {
+		return dataNascimento;
+	}
+
+	public void setDataNascimento(Date dataNascimento) {
+		this.dataNascimento = dataNascimento;
 	}
 
 }
