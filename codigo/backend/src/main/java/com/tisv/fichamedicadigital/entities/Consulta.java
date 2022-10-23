@@ -4,10 +4,13 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.tisv.fichamedicadigital.entities.enums.StatusConsulta;
@@ -20,13 +23,20 @@ public class Consulta implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
 	private Date data;
-	private Date horarioInicio;
+	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
+	private Date horaInicio;
+	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
 	private Date horaFim;
 	private StatusConsulta status;
 
+	@ManyToOne
+	@JoinColumn(name = "paciente_id")
 	private Paciente paciente;
-
+	
+	@ManyToOne
+	@JoinColumn(name = "medico_id")
 	private Medico medico;
 
 	public Consulta() {
@@ -38,7 +48,7 @@ public class Consulta implements Serializable {
 		super();
 		this.id = id;
 		this.data = data;
-		this.horarioInicio = horarioInicio;
+		this.horaInicio = horarioInicio;
 		this.horaFim = horaFim;
 		this.status = status;
 		this.paciente = paciente;
@@ -61,12 +71,12 @@ public class Consulta implements Serializable {
 		this.data = data;
 	}
 
-	public Date getHorarioInicio() {
-		return horarioInicio;
+	public Date getHoraInicio() {
+		return horaInicio;
 	}
 
-	public void setHorarioInicio(Date horarioInicio) {
-		this.horarioInicio = horarioInicio;
+	public void setHoraInicio(Date horarioInicio) {
+		this.horaInicio = horarioInicio;
 	}
 
 	public Date getHoraFim() {
