@@ -143,7 +143,8 @@ class _SegundaTelaState extends State<SegundaTela> {
               ),
               Row(
                 children: <Widget>[
-                  const Text("Tem/teve problema no coração: ", style: TextStyle(fontSize: 14)),
+                  const Text("Tem/teve problema no coração: ",
+                      style: TextStyle(fontSize: 14)),
                   Padding(
                       padding: const EdgeInsets.only(left: 15),
                       child: Text("não",
@@ -154,7 +155,8 @@ class _SegundaTelaState extends State<SegundaTela> {
               ),
               Row(
                 children: <Widget>[
-                  const Text("Medicamentos com alergia: ", style: TextStyle(fontSize: 14)),
+                  const Text("Medicamentos com alergia: ",
+                      style: TextStyle(fontSize: 14)),
                   Padding(
                       padding: const EdgeInsets.only(left: 15),
                       child: Text("Tilenol",
@@ -165,7 +167,8 @@ class _SegundaTelaState extends State<SegundaTela> {
               ),
               Row(
                 children: <Widget>[
-                  const Text("Intolerância a lactose: ", style: TextStyle(fontSize: 14)),
+                  const Text("Intolerância a lactose: ",
+                      style: TextStyle(fontSize: 14)),
                   Padding(
                       padding: const EdgeInsets.only(left: 15),
                       child: Text("não",
@@ -187,7 +190,8 @@ class _SegundaTelaState extends State<SegundaTela> {
               ),
               Row(
                 children: <Widget>[
-                  const Text("Desmaio ou convulsão: ", style: TextStyle(fontSize: 14)),
+                  const Text("Desmaio ou convulsão: ",
+                      style: TextStyle(fontSize: 14)),
                   Padding(
                       padding: const EdgeInsets.only(left: 15),
                       child: Text("não",
@@ -242,7 +246,8 @@ class _SegundaTelaState extends State<SegundaTela> {
               ),
               Row(
                 children: <Widget>[
-                  const Text("Já recebeu transfusão? ", style: TextStyle(fontSize: 14)),
+                  const Text("Já recebeu transfusão? ",
+                      style: TextStyle(fontSize: 14)),
                   Padding(
                       padding: const EdgeInsets.only(left: 15),
                       child: Text("sim",

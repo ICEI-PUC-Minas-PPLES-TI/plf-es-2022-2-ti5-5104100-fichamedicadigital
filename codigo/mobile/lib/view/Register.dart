@@ -1,24 +1,40 @@
+// ignore: file_names
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:mobile/services/UserService.dart';
 
 import 'Login.dart';
 
-class RegisterPage extends StatelessWidget {
+class RegisterPage extends StatefulWidget {
+  const RegisterPage({Key? key}) : super(key: key);
+
+  @override
+  _RegisterPageState createState() => _RegisterPageState();
+}
+
+class _RegisterPageState extends State<RegisterPage> {
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _confirmEmailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _confirmPasswordController =
+      TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _sobrenomeController = TextEditingController();
+  DateTime date = DateTime(2022);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.purpleAccent,
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.only(left: 32.0, top: 0.0, right: 32.0, bottom: 0.0),
+          padding: const EdgeInsets.only(
+              left: 32.0, top: 0.0, right: 32.0, bottom: 0.0),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               Container(
                 color: Colors.deepPurple,
                 width: 400,
-                height: 450,
+                height: 540,
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Column(
@@ -30,15 +46,12 @@ class RegisterPage extends StatelessWidget {
                           Expanded(
                             child: TextFormField(
                               textAlign: TextAlign.start,
-                              // controller: _emailController,
+                              controller: _nameController,
                               keyboardType: TextInputType.text,
                               enabled: true,
                               decoration: const InputDecoration(
                                   labelText: "Nome",
-                                  labelStyle: const TextStyle(
-                                      color: Colors.white
-                                  )
-                              ),
+                                  labelStyle: TextStyle(color: Colors.white)),
                             ),
                           )
                         ],
@@ -50,15 +63,29 @@ class RegisterPage extends StatelessWidget {
                           Expanded(
                             child: TextFormField(
                               textAlign: TextAlign.start,
-                              // controller: _emailController,
+                              controller: _sobrenomeController,
+                              keyboardType: TextInputType.text,
+                              enabled: true,
+                              decoration: const InputDecoration(
+                                  labelText: "Sobrenome",
+                                  labelStyle: TextStyle(color: Colors.white)),
+                            ),
+                          )
+                        ],
+                      ),
+                      Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[
+                          Expanded(
+                            child: TextFormField(
+                              textAlign: TextAlign.start,
+                              controller: _emailController,
                               keyboardType: TextInputType.emailAddress,
                               enabled: true,
                               decoration: const InputDecoration(
                                   labelText: "E-mail",
-                                  labelStyle: const TextStyle(
-                                      color: Colors.white
-                                  )
-                              ),
+                                  labelStyle: TextStyle(color: Colors.white)),
                             ),
                           )
                         ],
@@ -70,16 +97,36 @@ class RegisterPage extends StatelessWidget {
                           Expanded(
                             child: TextFormField(
                               textAlign: TextAlign.start,
-                              // controller: _emailController,
+                              controller: _confirmEmailController,
                               keyboardType: TextInputType.emailAddress,
                               enabled: true,
                               decoration: const InputDecoration(
                                   labelText: "Confirmar e-mail",
-                                  labelStyle: const TextStyle(
-                                      color: Colors.white
-                                  )
-                              ),
+                                  labelStyle: TextStyle(color: Colors.white)),
                             ),
+                          )
+                        ],
+                      ),
+                      Column(
+                        children: <Widget>[
+                          const Padding(padding: EdgeInsets.only(top: 8)),
+                          const Text("Data de nascimento:",
+                              style: TextStyle(color: Colors.white)),
+                          ElevatedButton(
+                            onPressed: () async {
+                              await showDatePicker(
+                                context: context,
+                                initialDate: date,
+                                firstDate: DateTime(1900),
+                                lastDate: DateTime(2100),
+                              ).then((value) {
+                                setState(() {
+                                  date = value!;
+                                });
+                                return null;
+                              });
+                            },
+                            child: const Text('Selecionar data'),
                           )
                         ],
                       ),
@@ -90,15 +137,12 @@ class RegisterPage extends StatelessWidget {
                           Expanded(
                             child: TextFormField(
                               textAlign: TextAlign.start,
-                              // controller: _passwordController,
+                              controller: _passwordController,
                               keyboardType: TextInputType.emailAddress,
                               enabled: true,
                               decoration: const InputDecoration(
                                   labelText: "Senha",
-                                  labelStyle: const TextStyle(
-                                      color: Colors.white
-                                  )
-                              ),
+                                  labelStyle: TextStyle(color: Colors.white)),
                             ),
                           )
                         ],
@@ -110,15 +154,12 @@ class RegisterPage extends StatelessWidget {
                           Expanded(
                             child: TextFormField(
                               textAlign: TextAlign.start,
-                              // controller: _passwordController,
+                              controller: _confirmPasswordController,
                               keyboardType: TextInputType.emailAddress,
                               enabled: true,
                               decoration: const InputDecoration(
                                   labelText: "Confirmar senha",
-                                  labelStyle: const TextStyle(
-                                      color: Colors.white
-                                  )
-                              ),
+                                  labelStyle: TextStyle(color: Colors.white)),
                             ),
                           )
                         ],
@@ -127,46 +168,60 @@ class RegisterPage extends StatelessWidget {
                         padding: const EdgeInsets.only(top: 32.0),
                         child: ElevatedButton(
                             onPressed: () {
-                              UserService().register(context);
+                              UserService().register(
+                                  context,
+                                  date,
+                                  _emailController,
+                                  _nameController,
+                                  _passwordController,
+                                  _sobrenomeController);
                             },
                             style: const ButtonStyle(
-                              backgroundColor: MaterialStatePropertyAll(Colors.purple),
-                              textStyle: MaterialStatePropertyAll(TextStyle(fontWeight: FontWeight.bold)),
+                              backgroundColor:
+                                  MaterialStatePropertyAll(Colors.purple),
+                              textStyle: MaterialStatePropertyAll(
+                                  TextStyle(fontWeight: FontWeight.bold)),
                             ),
                             child: const Padding(
-                              padding: EdgeInsets.only(left: 32.0, top: 16.0, right: 32.0, bottom: 16.0),
+                              padding: EdgeInsets.only(
+                                  left: 32.0,
+                                  top: 16.0,
+                                  right: 32.0,
+                                  bottom: 16.0),
                               child: Text("CADASTRAR"),
-                            )
-                        ),
+                            )),
                       )
                     ],
                   ),
                 ),
               ),
-              Container(
+              SizedBox(
                 width: 400,
                 height: 100,
                 child: Center(
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(right: 16.0),
-                          child: const Text("Já possui uma conta?"),
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.only(right: 16.0),
+                      child: Text("Já possui uma conta?"),
+                    ),
+                    ElevatedButton(
+                        style: const ButtonStyle(
+                          backgroundColor:
+                              MaterialStatePropertyAll(Colors.deepPurple),
+                          textStyle: MaterialStatePropertyAll(
+                              TextStyle(fontWeight: FontWeight.bold)),
                         ),
-                        ElevatedButton(
-                            style: const ButtonStyle(
-                              backgroundColor: MaterialStatePropertyAll(Colors.deepPurple),
-                              textStyle: MaterialStatePropertyAll(TextStyle(fontWeight: FontWeight.bold)),
-                            ),
-                            onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(builder: (context) => LoginPage()));
-                            },
-                            child: const Text("Entrar"))
-                      ],
-                    )),
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => LoginPage()));
+                        },
+                        child: const Text("Entrar"))
+                  ],
+                )),
               )
             ],
           ),

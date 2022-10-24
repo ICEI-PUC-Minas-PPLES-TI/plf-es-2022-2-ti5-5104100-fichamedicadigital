@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
       ),
       // home: const HomePage(title: 'Flutter Demo Home Page'),
       // ignore: dead_code
-      home: false ? MainPage() : LoginPage(),
+      home: false ? null : LoginPage(),
     );
   }
 }

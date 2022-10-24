@@ -90,28 +90,30 @@ class _examState extends State<Exam> {
                 );
               }).toList()),
           Center(
-            child: Column(
+              child: Column(
             children: data.map((personone) {
               return Container(
-                margin: const EdgeInsets.only(bottom: 10.0),
+                  margin: const EdgeInsets.only(bottom: 10.0),
                   child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  fixedSize: const Size(328, 74),
-                  backgroundColor: const Color.fromARGB(255, 208, 243, 239),
-                ),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => ExamUnit(
-                            name: personone.exame, date: personone.date)),
-                  );
-                },
-                child: ListTile(
-                  title: Text(personone.exame, style: TextStyle(fontSize: 20)),
-                  subtitle: Text('${personone.medico}\n${personone.date}', style: TextStyle(fontSize: 14)),
-                ),
-              ));
+                    style: ElevatedButton.styleFrom(
+                      fixedSize: const Size(328, 74),
+                      backgroundColor: const Color.fromARGB(255, 208, 243, 239),
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ExamUnit(
+                                name: personone.exame, date: personone.date)),
+                      );
+                    },
+                    child: ListTile(
+                      title:
+                          Text(personone.exame, style: TextStyle(fontSize: 20)),
+                      subtitle: Text('${personone.medico}\n${personone.date}',
+                          style: TextStyle(fontSize: 14)),
+                    ),
+                  ));
             }).toList(),
           )),
         ]));

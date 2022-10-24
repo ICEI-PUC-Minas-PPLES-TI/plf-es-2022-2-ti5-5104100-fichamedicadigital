@@ -14,7 +14,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.purpleAccent,
+      backgroundColor: Color.fromARGB(255, 208, 243, 239),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.only(
@@ -23,7 +23,7 @@ class _LoginPageState extends State<LoginPage> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Container(
-                color: Colors.deepPurple,
+                color: Color.fromARGB(255, 78, 174, 163),
                 width: 400,
                 height: 250,
                 child: Padding(
@@ -71,11 +71,11 @@ class _LoginPageState extends State<LoginPage> {
                         child: ElevatedButton(
                             onPressed: () {
                               UserService().login(_emailController.text,
-                                  _passwordController.text);
+                                  _passwordController.text, context);
                             },
                             style: const ButtonStyle(
-                              backgroundColor:
-                                  MaterialStatePropertyAll(Colors.purple),
+                              backgroundColor: MaterialStatePropertyAll(
+                                  Color.fromARGB(255, 36, 121, 155)),
                               textStyle: MaterialStatePropertyAll(
                                   TextStyle(fontWeight: FontWeight.bold)),
                             ),
@@ -92,7 +92,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
               ),
-              Container(
+              SizedBox(
                 width: 400,
                 height: 100,
                 child: Center(
@@ -105,8 +105,8 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     ElevatedButton(
                         style: const ButtonStyle(
-                          backgroundColor:
-                              MaterialStatePropertyAll(Colors.deepPurple),
+                          backgroundColor: MaterialStatePropertyAll(
+                              Color.fromARGB(255, 25, 53, 98)),
                           textStyle: MaterialStatePropertyAll(
                               TextStyle(fontWeight: FontWeight.bold)),
                         ),

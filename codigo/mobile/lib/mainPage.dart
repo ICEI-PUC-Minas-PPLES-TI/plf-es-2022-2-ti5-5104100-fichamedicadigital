@@ -1,16 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:mobile/services/UserService.dart';
 import 'package:mobile/userData.dart';
 
 import 'exam.dart';
 
 class MainPage extends StatefulWidget {
+  String nome, id;
+  MainPage({required this.nome, required this.id});
   @override
   _MainPageState createState() => _MainPageState();
 }
 
 class _MainPageState extends State<MainPage> {
   final TextEditingController _textEditingController = TextEditingController();
+  @override
+  void initState() {
+    int? meuId = int.tryParse(widget.id);
+    if(meuId == null) return;
+    UserService().userData(meuId).then((value){
+      print(value);
+    });
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,8 +81,8 @@ class _MainPageState extends State<MainPage> {
                             image: AssetImage('images/profileIcon.jpeg'))),
                   ),
                 ),
-                const Text(
-                  'Fulano da Silva',
+                Text(
+                  widget.nome,
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800),
                 ),
                 const Text('Tipo sanguíneo: O+'),
