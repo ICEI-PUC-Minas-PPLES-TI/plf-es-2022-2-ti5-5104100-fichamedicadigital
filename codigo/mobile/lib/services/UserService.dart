@@ -17,7 +17,7 @@ class UserService {
           data: {"email": email, "password": password});
           var nome = response.data["primeiroNome"] + " " +  response.data["sobreNome"];
       Navigator.push(
-          context, MaterialPageRoute(builder: (context) => MainPage(nome: nome, id: response.data["id"].toString())));
+          context, MaterialPageRoute(builder: (context) => MainPage(nome: nome, id: response.data["id"])));
     } catch (e) {
       throw e.toString();
     }
@@ -41,15 +41,14 @@ class UserService {
       });
       var nome = response.data["primeiroNome"] + " " + response.data["sobreNome"];
       Navigator.push(
-          context, MaterialPageRoute(builder: (context) => MainPage(nome: nome, id: response.data["id"].toString())));
+          context, MaterialPageRoute(builder: (context) => MainPage(nome: nome, id: response.data["id"])));
     } catch (e) {
       throw e.toString();
     }
   }
 userData(int id) async{
-  print(id);
-    Response response = await dio.get("https://fichamedicadigital.herokuapp.com/fichas/1");
-    return response.data.toString();
+    Response response = await dio.get("https://fichamedicadigital.herokuapp.com/fichas/$id");
+    return response.data;
   }
 }
 

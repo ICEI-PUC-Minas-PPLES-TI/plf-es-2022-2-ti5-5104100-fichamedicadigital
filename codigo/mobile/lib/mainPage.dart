@@ -6,7 +6,8 @@ import 'package:mobile/userData.dart';
 import 'exam.dart';
 
 class MainPage extends StatefulWidget {
-  String nome, id;
+  String nome;
+  int id;
   MainPage({required this.nome, required this.id});
   @override
   _MainPageState createState() => _MainPageState();
@@ -14,15 +15,6 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   final TextEditingController _textEditingController = TextEditingController();
-  @override
-  void initState() {
-    int? meuId = int.tryParse(widget.id);
-    if(meuId == null) return;
-    UserService().userData(meuId).then((value){
-      print(value);
-    });
-    super.initState();
-  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -94,6 +86,7 @@ class _MainPageState extends State<MainPage> {
             spacing: 10.0,
             runSpacing: 8.0,
             children: <Widget>[
+              
               Flexible(
                   fit: FlexFit.loose,
                   child: ElevatedButton(
@@ -102,34 +95,7 @@ class _MainPageState extends State<MainPage> {
                         context,
                         MaterialPageRoute(
                             builder: (context) => SegundaTela(
-                                valor: _textEditingController.text)),
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(
-                        fixedSize: const Size(130, 110),
-                        backgroundColor:
-                            const Color.fromARGB(255, 62, 173, 173)),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Image.asset('images/chat.png', width: 55, height: 57),
-                        const Padding(
-                            padding: EdgeInsets.only(top: 10),
-                            child: Text("Chat",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(fontSize: 16))),
-                      ],
-                    ),
-                  )),
-              Flexible(
-                  fit: FlexFit.loose,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => SegundaTela(
-                                valor: _textEditingController.text)),
+                                valor: _textEditingController.text, id: widget.id)),
                       );
                     },
                     style: ElevatedButton.styleFrom(
@@ -178,12 +144,12 @@ class _MainPageState extends State<MainPage> {
                   fit: FlexFit.loose,
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => SegundaTela(
-                                valor: _textEditingController.text)),
-                      );
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(
+                      //       builder: (context) => SegundaTela(
+                      //           valor: _textEditingController.text)),
+                      // );
                     },
                     style: ElevatedButton.styleFrom(
                         fixedSize: const Size(130, 110),
@@ -206,12 +172,12 @@ class _MainPageState extends State<MainPage> {
                   fit: FlexFit.loose,
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => SegundaTela(
-                                valor: _textEditingController.text)),
-                      );
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(
+                      //       builder: (context) => SegundaTela(
+                      //           valor: _textEditingController.text)),
+                      // );
                     },
                     style: ElevatedButton.styleFrom(
                         fixedSize: const Size(130, 110),
