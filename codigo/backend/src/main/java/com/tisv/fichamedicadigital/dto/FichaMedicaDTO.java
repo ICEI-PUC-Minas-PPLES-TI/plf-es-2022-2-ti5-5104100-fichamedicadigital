@@ -1,37 +1,18 @@
-package com.tisv.fichamedicadigital.entities;
+package com.tisv.fichamedicadigital.dto;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Objects;
 import java.util.Set;
 
-import javax.persistence.CollectionTable;
-import javax.persistence.Column;
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import com.tisv.fichamedicadigital.entities.FichaMedica;
+import com.tisv.fichamedicadigital.entities.Vacina;
 
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-@Entity
-@Table(name = "tb_fichas_medicas")
-public class FichaMedica implements Serializable {
+public class FichaMedicaDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	private Boolean cardiaco;
@@ -41,19 +22,10 @@ public class FichaMedica implements Serializable {
 	private Boolean desmaioOuConvulsao;
 	private Boolean intoleranciaLactose;
 
-	@LazyCollection(LazyCollectionOption.FALSE)
-	@ElementCollection()
-	@CollectionTable(name = "tb_doencas")
 	private List<String> doencas = new ArrayList<String>();
 
-	@LazyCollection(LazyCollectionOption.FALSE)
-	@ElementCollection
-	@CollectionTable(name = "tb_medicamentos")
 	private List<String> medicamentos = new ArrayList<String>();
 
-	@LazyCollection(LazyCollectionOption.FALSE)
-	@ElementCollection
-	@CollectionTable(name = "tb_medicamentos_alergia")
 	private List<String> medicamentosAlergia = new ArrayList<String>();
 
 	private String numeroCarteirinha;
@@ -62,18 +34,39 @@ public class FichaMedica implements Serializable {
 	private String tipoSanguineo;
 	private String motivoInternado;
 
-	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
 	private Date dataTransfusao;
-	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
-	private Date dataDesmaio;
+	private Date dataDesmaioConvulsao;
 
-	@JsonIgnore
-	@OneToMany(mappedBy = "fichaMedica")
 	private Set<Vacina> vacinas = new HashSet<Vacina>();
 
-	@OneToOne
-	@JoinColumn(name = "usuario_id")
-	private Usuario usuario;
+	private UsuarioDTO usuario;
+
+	public FichaMedicaDTO() {
+
+	}
+
+	public FichaMedicaDTO(FichaMedica ficha) {
+		this.id = ficha.getId();
+		this.cardiaco = ficha.getCardiaco();
+		this.diabetico = ficha.getDiabetico();
+		this.internado = ficha.getInternado();
+		this.transfusao = ficha.getTransfusao();
+		this.desmaioOuConvulsao = ficha.getDesmaioOuConvulsao();
+		this.intoleranciaLactose = ficha.getIntoleranciaLactose();
+		this.setDoencas(ficha.getDoencas());
+		this.setMedicamentos(ficha.getMedicamentos());
+		this.setMedicamentosAlergia(ficha.getMedicamentosAlergia());
+		this.numeroCarteirinha = ficha.getNumeroCarteirinha();
+		this.convenio = ficha.getConvenio();
+		this.cartaoSus = ficha.getCartaoSus();
+		this.tipoSanguineo = ficha.getTipoSanguineo();
+		this.setVacinas(ficha.getVacinas());
+		this.usuario = new UsuarioDTO(ficha.getUsuario());
+		this.motivoInternado = ficha.getMotivoInternado();
+		this.dataTransfusao = ficha.getDataTransfusao();
+		this.dataDesmaioConvulsao = ficha.getDataDesmaio();
+
+	}
 
 	public Long getId() {
 		return id;
@@ -131,6 +124,14 @@ public class FichaMedica implements Serializable {
 		this.intoleranciaLactose = intoleranciaLactose;
 	}
 
+	public List<String> getDoencas() {
+		return doencas;
+	}
+
+	public void setDoencas(List<String> doencas) {
+		this.doencas = doencas;
+	}
+
 	public String getNumeroCarteirinha() {
 		return numeroCarteirinha;
 	}
@@ -155,8 +156,20 @@ public class FichaMedica implements Serializable {
 		this.cartaoSus = cartaoSus;
 	}
 
-	public List<String> getDoencas() {
-		return doencas;
+	public String getTipoSanguineo() {
+		return tipoSanguineo;
+	}
+
+	public void setTipoSanguineo(String tipoSanguineo) {
+		this.tipoSanguineo = tipoSanguineo;
+	}
+
+	public UsuarioDTO getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(UsuarioDTO usuario) {
+		this.usuario = usuario;
 	}
 
 	public List<String> getMedicamentos() {
@@ -171,20 +184,16 @@ public class FichaMedica implements Serializable {
 		return vacinas;
 	}
 
-	public String getTipoSanguineo() {
-		return tipoSanguineo;
+	public void setMedicamentos(List<String> medicamentos) {
+		this.medicamentos = medicamentos;
 	}
 
-	public void setTipoSanguineo(String tipoSanguineo) {
-		this.tipoSanguineo = tipoSanguineo;
+	public void setMedicamentosAlergia(List<String> medicamentosAlergia) {
+		this.medicamentosAlergia = medicamentosAlergia;
 	}
 
-	public Usuario getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+	public void setVacinas(Set<Vacina> vacinas) {
+		this.vacinas = vacinas;
 	}
 
 	public String getMotivoInternado() {
@@ -203,29 +212,12 @@ public class FichaMedica implements Serializable {
 		this.dataTransfusao = dataTransfusao;
 	}
 
-	public Date getDataDesmaio() {
-		return dataDesmaio;
+	public Date getDataDesmaioConvulsao() {
+		return dataDesmaioConvulsao;
 	}
 
-	public void setDataDesmaio(Date dataDesmaio) {
-		this.dataDesmaio = dataDesmaio;
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(id);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		FichaMedica other = (FichaMedica) obj;
-		return Objects.equals(id, other.id);
+	public void setDataDesmaioConvulsao(Date dataDesmaioConvulsao) {
+		this.dataDesmaioConvulsao = dataDesmaioConvulsao;
 	}
 
 }

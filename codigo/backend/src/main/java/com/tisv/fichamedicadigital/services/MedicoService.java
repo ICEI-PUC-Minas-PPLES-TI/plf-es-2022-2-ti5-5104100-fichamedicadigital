@@ -40,7 +40,7 @@ public class MedicoService {
 
 	@Transactional(readOnly = true)
 	public Medico findByUsuario(Long id) {
-		Optional<Medico> obj = medicoRepository.findByUsuario(id);
+		Optional<Medico> obj = medicoRepository.findByUsuario(new Usuario(id));
 		Medico entity = obj.orElseThrow(() -> new ResourceNotFoundException("Usuário não encontrado!"));
 		return entity;
 	}

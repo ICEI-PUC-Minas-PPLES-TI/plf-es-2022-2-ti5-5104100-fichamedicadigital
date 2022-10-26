@@ -1,5 +1,8 @@
 package com.tisv.fichamedicadigital.resources;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -10,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.tisv.fichamedicadigital.dto.PacienteDTO;
 import com.tisv.fichamedicadigital.entities.Paciente;
 import com.tisv.fichamedicadigital.services.PacienteService;
 
@@ -21,15 +25,19 @@ public class PacienteResource {
 	private PacienteService service;
 
 	@GetMapping
-	public ResponseEntity<Page<Paciente>> findAll(Pageable pageable) {
+	public ResponseEntity<List<PacienteDTO>> findAll(Pageable pageable) {
 		Page<Paciente> list = service.findAllPaged(pageable);
-		return ResponseEntity.ok().body(list);
+		List<PacienteDTO> listaDto = new ArrayList<>();
+		for (Paciente paciente : list) {
+			listaDto.add(new PacienteDTO(paciente));
+		}
+		return ResponseEntity.ok().body(listaDto);
 	}
 
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<Paciente> findBydId(@PathVariable Long id) {
+	public ResponseEntity<PacienteDTO> findBydId(@PathVariable Long id) {
 		Paciente paciente = service.findByUsuario(id);
-		return ResponseEntity.ok().body(paciente);
+		return ResponseEntity.ok().body(new PacienteDTO(paciente));
 	}
 
 	@DeleteMapping(value = "/{id}")
