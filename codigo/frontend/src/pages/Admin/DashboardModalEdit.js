@@ -1,7 +1,7 @@
 import './Dashboard'
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { userRegister, reset } from "../../slices/userSlice";
+import { userUpdate, reset } from "../../slices/userSlice";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { BsFillPencilFill } from 'react-icons/bs'
@@ -31,7 +31,7 @@ const DashboardModalEdit = () => {
             password: email,
             email: email,
         }
-        // dispatch(userRegister(user))
+        dispatch(userUpdate(user))
         
         setShow(true)
     }
@@ -103,7 +103,7 @@ const DashboardModalEdit = () => {
                         Fechar
                     </Button>
                     <Button variant="secondary" onClick={handleSubmit}>
-                        Salvar
+                        Atualizar
                     </Button>
                 </Modal.Footer>
             </Modal>

@@ -2,7 +2,7 @@ import './Dashboard.css'
 import Modal from './DashboardModal'
 import ModalEdit from './DashboardModalEdit'
 import ModalView from './DashboardModalView'
-import {userFindAll, reset } from "../../slices/userSlice";
+import { userFindAll, reset, userDelete } from "../../slices/userSlice";
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import {
@@ -11,18 +11,24 @@ import {
 
 const Dashboard = () => {
 
-    const dispatch  = useDispatch()
-    const {userData} = useSelector((state) => state.user || {})
-    
+    const dispatch = useDispatch()
+    const { userData } = useSelector((state) => state.user || {})
+
     useEffect(() => {
         dispatch(userFindAll())
-    },[])
+    }, [])
+
+    const handleDelete = (e, id) => {
+        e.preventDefault()
+
+        dispatch(userDelete(id))
+    }
 
     return (
         <div id="dashboard" className="mt-4 mb-4">
             <h2>Gerenciamento de Usuários</h2>
             <div className="crud-usuarios">
-                <Modal/>
+                <Modal />
                 <table className="table table-striped mt-4">
                     <thead>
                         <tr>
@@ -35,21 +41,21 @@ const Dashboard = () => {
                     </thead>
                     <tbody>
                         {userData.content != undefined && userData.content.map((user) => (
-                             <tr key={user.id}>
+                            <tr key={user.id}>
                                 <td scope="col">{user.id}</td>
                                 <td scope="col">{user.primeiroNome}</td>
                                 <td scope="col">{user.email}</td>
-                                <td scope="col">{user.roles[0].authority =='ROLE_ADMIN' ? 'ADMIN' : (user.roles[0].authority =='ROLE_PACIENTE' ? 'PACIENTE' : (user.roles[0].authority =='ROLE_MEDICO' && 'MÉDICO') )}</td>
+                                <td scope="col">{user.roles[0].authority == 'ROLE_ADMIN' ? 'ADMIN' : (user.roles[0].authority == 'ROLE_PACIENTE' ? 'PACIENTE' : (user.roles[0].authority == 'ROLE_MEDICO' && 'MÉDICO'))}</td>
                                 <td className='actions'>
-                                        <button className='btn me-3'>
-                                            <ModalView/>
-                                        </button>
-                                        <button className='btn me-3'>
-                                            <ModalEdit/>
-                                        </button>
-                                        <button className='btn'>
-                                            <BsFillTrashFill/>
-                                        </button>
+                                    <button className='btn me-3'>
+                                        <ModalView />
+                                    </button>
+                                    <button className='btn me-3'>
+                                        <ModalEdit />
+                                    </button>
+                                    <button className='btn' onClick={(e) => handleDelete(e, user.id)}>
+                                        <BsFillTrashFill />
+                                    </button>
                                 </td>
                             </tr>
                         ))}
