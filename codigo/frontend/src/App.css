@@ -1,0 +1,10 @@
+.container {
+  min-height: 110vh;
+  
+}
+.app{
+  background: linear-gradient( 120deg, #800080, #551054, #2d102c );
+  padding: 60px;
+}
+
+@import url("https://cdn.syncfusion.com/ej2/material.css")

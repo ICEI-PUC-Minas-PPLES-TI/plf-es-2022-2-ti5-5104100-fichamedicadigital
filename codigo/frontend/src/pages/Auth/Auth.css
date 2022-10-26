@@ -1,0 +1,28 @@
+#login,
+#register {
+    background-color: rgb(211, 211, 211);
+    padding: 1.5em 2em;
+    max-width: 55%;
+    margin: 0 auto;
+    color: rgb(130, 6, 107);
+    background-color: #F5F5F5;
+    box-shadow: 0px 0px 5px #0004;
+    border-top-right-radius: 15%;
+    border-bottom-left-radius: 15%;
+}
+#login {
+    max-width: 33%;
+}
+.btn{
+    background-color: #82066b;
+    color: #fff;
+}
+.btn:hover {
+    background-color: #ca08a7;
+    color: #fff;
+}
+.subtitle {
+    font-weight: bold;
+    color: #d797cb;
+    margin-bottom: 1.5em;
+}

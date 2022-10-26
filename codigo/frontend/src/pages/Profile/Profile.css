@@ -1,0 +1,28 @@
+.profile {
+    margin-top: 50px;
+}
+
+.profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 1em;
+    background-color: rgb(240, 46, 220);
+  }
+
+.section-profile{
+    margin-bottom: 50px;
+}
+.nav-link{
+    color: #f40edd;
+}
+.react-tabs__tab--selected{
+    background-color: #800080 !important;
+    color: hsl(330, 100%, 96%);
+}
+.nav-link:hover,
+.nav-link:focus{
+    background-color: #f40edd;
+    color: #fff;
+    cursor: pointer;
+}

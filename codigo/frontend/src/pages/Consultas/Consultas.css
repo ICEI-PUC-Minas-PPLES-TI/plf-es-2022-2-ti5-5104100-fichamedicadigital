@@ -1,0 +1,19 @@
+.title-consultas{
+    color: #e88cd2;
+}
+.actions span{
+    color: #82066b;
+}
+.consulta-modal h2 {
+    color: #e88cd2;
+}
+h2:hover{
+    color: #e88cd2;
+}
+.title{
+    color: #e88cd2;
+}
+.span-time{
+    width: 20px;
+    line-height: 50px;
+}

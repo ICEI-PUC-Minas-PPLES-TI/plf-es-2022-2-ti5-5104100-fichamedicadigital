@@ -1,0 +1,14 @@
+.box-content {
+    height: 200px;
+    text-align: center;
+    align-items: center;
+    box-shadow: 0px 0px 40px #0004;
+    background-color: #F5F5F5;
+    margin: 10px auto;
+    padding: 0;
+}
+
+.box-content:hover {
+    background-color: #e88cd2;
+    color: #fff;
+}
