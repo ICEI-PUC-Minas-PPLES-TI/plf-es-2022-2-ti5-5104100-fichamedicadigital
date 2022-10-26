@@ -121,17 +121,27 @@ _Esta seção descreve os requisitos comtemplados nesta descrição arquitetural
 | **ID** | **Descrição** | **Prioridade** |
 | --- | --- | --- |
 | RF001 | Cadastro da ficha médica do paciente| Essencial |
-| RF002 | Notificação dos remédios usados pelo paciente | Opcional |
-| RF003 | Busca de consultórios por localidade | Essencial |
-| RF004 | Visão de exames | Essencial |
-| RF005 | Marcação de consulta | Essencial |
-| RF006 | Visão da ficha médica | Essencial |
-| RF007 | Visão da ficha médica por código QR | Opcional |
-| RF008 | Gerenciamento de consulta | Essencial |
-| RF009 | Geraçãpo de relatório | Desejavel |
-| RF010 | Insersação da agenda do médico | Essencial |
-| RF011 | Cadastro de usuário | Essencial |
-| RF012 | Login de usuário | Essencial |
+| RF002 | Notificação de mudança de status da consulta para o paciente | Essencial |
+| RF003 | Mostrar consultários por especialidade e localização | Essencial |
+| RF004 | Marcar consulta | Essencial |
+| RF005 | Mostar consultas do paciente | Essencial |
+| RF006 | Medico anexa exame à consulta do paciente | Desejavel |
+| RF007 | Paciente visualiza exames | Desejavel |
+| RF008 | Paciente filtra exames por especialdiade| Desejavel |
+| RF009 | Visão da ficha médica pelo paciente| Essencial |
+| RF010 | Visão da ficha médica pelo médico | Essencial |
+| RF011 | Médico visualiza consultas marcadas | Essencial |
+| RF011 | Médico aceita ou cancela consultas pendentes | Essencial |
+| RF011 | Médico recebe alerta de consulta | Essencial |
+| RF012 | Geração de relatório | Desejavel |
+| RF013 | Médico preenche dias disponíveis da sua agenda | Essencial |
+| RF014 | Médico pode alterar seu perfil | Desejavel |
+| RF015 | Administrador cadastra usuarios | Essencial |
+| RF016 | Administrador promove usuario a médico | Essencial |
+| RF017 | Médico pode cadastrar consulta para paciente | Essencial |
+| RF018 | Médico pode cadastrar paciente não cadastrado | Desejavel |
+| RF019 | Cadastro de usuário | Essencial |
+| RF020 | Login de usuário | Essencial |
 
 
 Obs: acrescente mais linhas, se necessário.
