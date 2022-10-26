@@ -40,8 +40,8 @@ class _SegundaTelaState extends State<SegundaTela> {
           : value['cartaoSus'].toString();
       cardiaco = value['cardiaco'];
       doencas = value['doencas'];
-      // sobreNome = value['usuario']['sobreNome'].toString();
-      primeiroNome = value['usuario'].toString();
+      sobreNome = value['usuario']['sobreNome'].toString();
+      primeiroNome = value['usuario']['primeiroNome'].toString();
       medicamentos = value['medicamentos'];
       medicamentosAlergia = value['medicamentosAlergia'];
       desmaioOuConvulsao = value['desmaioOuConvulsao'];
@@ -113,7 +113,7 @@ class _SegundaTelaState extends State<SegundaTela> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          Text("primeiroNome + sobreNome",
+                          Text(primeiroNome + sobreNome,
                               style: const TextStyle(fontSize: 24)),
                           Row(
                             children: [
@@ -203,14 +203,17 @@ class _SegundaTelaState extends State<SegundaTela> {
                             children: <Widget>[
                               const Text("Doenças que já teve:",
                                   style: TextStyle(fontSize: 14)),
-                              Container(
-                                  height: MediaQuery.of(context).size.height,
+                              Expanded(
                                   child: ListView.builder(
                                       shrinkWrap: true,
                                       itemCount: doencas.length,
                                       itemBuilder:
                                           (BuildContext context, int index) {
-                                        return Text(doencas[index]);
+                                        return Text(doencas[index],
+                                            style: TextStyle(
+                                                fontSize: 14,
+                                                color: Colors.black
+                                                    .withOpacity(0.5)));
                                       })),
                             ],
                           ),
@@ -245,16 +248,18 @@ class _SegundaTelaState extends State<SegundaTela> {
                                               fontSize: 14,
                                               color: Colors.black
                                                   .withOpacity(0.5))))
-                                  : Container(
-                                      height:
-                                          MediaQuery.of(context).size.height,
+                                  : Expanded(
                                       child: ListView.builder(
                                           shrinkWrap: true,
                                           itemCount: medicamentosAlergia.length,
                                           itemBuilder: (BuildContext context,
                                               int index) {
                                             return Text(
-                                                medicamentosAlergia[index]);
+                                                medicamentosAlergia[index],
+                                                style: TextStyle(
+                                                    fontSize: 14,
+                                                    color: Colors.black
+                                                        .withOpacity(0.5)));
                                           })),
                             ],
                           ),
@@ -302,15 +307,17 @@ class _SegundaTelaState extends State<SegundaTela> {
                                               fontSize: 14,
                                               color: Colors.black
                                                   .withOpacity(0.5))))
-                                  : Container(
-                                      height:
-                                          MediaQuery.of(context).size.height,
+                                  : Expanded(
                                       child: ListView.builder(
                                           shrinkWrap: true,
                                           itemCount: medicamentos.length,
                                           itemBuilder: (BuildContext context,
                                               int index) {
-                                            return Text(medicamentos[index]);
+                                            return Text(medicamentos[index],
+                                                style: TextStyle(
+                                                    fontSize: 14,
+                                                    color: Colors.black
+                                                        .withOpacity(0.5)));
                                           })),
                             ],
                           ),
