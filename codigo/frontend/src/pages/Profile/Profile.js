@@ -6,8 +6,41 @@ import {
     BsFillPencilFill,
     BsFillTrashFill
 } from "react-icons/bs";
+import { useDispatch,useSelector } from 'react-redux';
+import { useState,useEffect } from 'react';
+import {reset,medicalFindById} from '../../slices/medicalSlice'
 
 const Profile = () => {
+
+    const user = JSON.parse(localStorage.getItem("user"));
+    
+    const {fichaMedica} = useSelector((state) => state.medical)
+    const dispatch = useDispatch()
+
+    // useEffect(() => {
+    //     dispatch(medicalFindById(user.id))
+    // })
+
+    const handleView = (e) =>{
+        e.preventDefault()
+    }
+
+    const handleEdit = (e,id) =>{
+        e.preventDefault()
+    }
+
+    const handleDelete = (e,id) =>{
+        e.preventDefault()
+    }
+
+    const handleViewFicha = (e) =>{
+        e.preventDefault()
+    }
+    
+    const handleEditFicha = (e,id) =>{
+        e.preventDefault()
+    }
+
     return (
         <div className='profile'>
             <div className='section-profile row'>
@@ -52,13 +85,13 @@ const Profile = () => {
                                 <td>Ativa</td>
                                 <td className='actions'>
                                     <button className='btn me-3'>
-                                        <BsFillEyeFill/>
+                                        <BsFillEyeFill onClick={handleView}/>
                                     </button>
                                     <button className='btn me-3'>
-                                        <BsFillPencilFill/>
+                                        <BsFillPencilFill onClick={handleEdit}/>
                                     </button>
                                     <button className='btn'>
-                                        <BsFillTrashFill/>
+                                        <BsFillTrashFill onClick={handleDelete}/>
                                     </button>
                                 </td>
                             </tr>
@@ -87,13 +120,10 @@ const Profile = () => {
                                 <td>Ativa</td>
                                 <td className='actions'>
                                     <button className='btn me-3'>
-                                        <BsFillEyeFill/>
+                                        <BsFillEyeFill onClick={handleViewFicha}/>
                                     </button>
                                     <button className='btn me-3'>
-                                        <BsFillPencilFill/>
-                                    </button>
-                                    <button className='btn'>
-                                        <BsFillTrashFill/>
+                                        <BsFillPencilFill onClick={handleEditFicha}/>
                                     </button>
                                 </td>
                             </tr>

@@ -10,7 +10,7 @@ const initialState = {
 };
 
 export const medicalRegister = createAsyncThunk(
-  "auth/medicalRegister",
+  "medical/medicalRegister",
   async (medicalData, thunkAPI) => {
     
     const data = await medicalService.medicalRegister(medicalData);
@@ -21,6 +21,45 @@ export const medicalRegister = createAsyncThunk(
     return data;
   }
 );
+
+export const medicalFindById = createAsyncThunk(
+  "medical/medicalFindById",
+  async (id,thunkAPI) => {
+
+    const data = await medicalService.medicalFindById(id)
+
+    if(data.errors) {
+      return thunkAPI.rejectWithValue(data.errors[0])
+    }
+    return data
+  }
+)
+
+export const medicalDelete = createAsyncThunk(
+  "medical/medicalDelete",
+  async (idFicha,thunkAPI) => {
+
+    const data = await medicalService.medicalFindById(idFicha)
+
+    if(data.errors) {
+      return thunkAPI.rejectWithValue(data.errors[0])
+    }
+    return data
+  }
+)
+
+export const medicalUpdate = createAsyncThunk(
+  "medical/medicalUpdate",
+  async (medicalData,thunkAPI) => {
+
+    const data = await medicalService.medicalFindById(medicalData)
+
+    if(data.errors) {
+      return thunkAPI.rejectWithValue(data.errors[0])
+    }
+    return data
+  }
+)
 
 
 export const medicalSlice = createSlice({
@@ -45,6 +84,33 @@ export const medicalSlice = createSlice({
         state.error = null;
       })
       .addCase(medicalRegister.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      .addCase(medicalUpdate.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(medicalUpdate.fulfilled, (state, action) => {
+        state.loading = false;
+        state.success = true;
+        state.error = null;
+        state.medicalData = action.payload
+      })
+      .addCase(medicalUpdate.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      .addCase(medicalDelete.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(medicalDelete.fulfilled, (state, action) => {
+        state.loading = false;
+        state.success = true;
+        state.error = null;
+      })
+      .addCase(medicalDelete.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       })
