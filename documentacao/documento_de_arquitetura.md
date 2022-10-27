@@ -131,17 +131,17 @@ _Esta seção descreve os requisitos comtemplados nesta descrição arquitetural
 | RF009 | Visão da ficha médica pelo paciente| Essencial |
 | RF010 | Visão da ficha médica pelo médico | Essencial |
 | RF011 | Médico visualiza consultas marcadas | Essencial |
-| RF011 | Médico aceita ou cancela consultas pendentes | Essencial |
-| RF011 | Médico recebe alerta de consulta | Essencial |
-| RF012 | Geração de relatório | Desejavel |
-| RF013 | Médico preenche dias disponíveis da sua agenda | Essencial |
-| RF014 | Médico pode alterar seu perfil | Desejavel |
-| RF015 | Administrador cadastra usuarios | Essencial |
-| RF016 | Administrador promove usuario a médico | Essencial |
-| RF017 | Médico pode cadastrar consulta para paciente | Essencial |
-| RF018 | Médico pode cadastrar paciente não cadastrado | Desejavel |
-| RF019 | Cadastro de usuário | Essencial |
-| RF020 | Login de usuário | Essencial |
+| RF012 | Médico aceita ou cancela consultas pendentes | Essencial |
+| RF013 | Médico recebe alerta de consulta | Essencial |
+| RF014 | Geração de relatório | Desejavel |
+| RF015 | Médico preenche dias disponíveis da sua agenda | Essencial |
+| RF016 | Médico pode alterar seu perfil | Desejavel |
+| RF017 | Administrador cadastra usuarios | Essencial |
+| RF018 | Administrador promove usuario a médico | Essencial |
+| RF019 | Médico pode cadastrar consulta para paciente | Essencial |
+| RF020 | Médico pode cadastrar paciente não cadastrado | Desejavel |
+| RF021 | Cadastro de usuário | Essencial |
+| RF022 | Login de usuário | Essencial |
 
 
 Obs: acrescente mais linhas, se necessário.
@@ -188,20 +188,28 @@ Obs: acrescente mais linhas, se necessário.
 **Figura 1 - Visão Geral da Solução  Fonte: o próprio autor**
 
 ## 3.1. Visão de Negócio (Funcionalidades)
-
-1. O paciente deve cadastrar a ficha médica
-2. O sistema deve lembrar o paciente de tomar os remédios
-3. O sistema deve retornar a lista de consultórios por localidade
-4. O cliente pode entrar em contato com o médico através do chat
-5. O cliente pode ver seus exames
-6. O cliente pode marcar consultas com o médico
-7. O médico pode ver a ficha médica do paciente através do código QR
-8. O médico pode gerenciar sua consultas
-9. O administrador pode gerar relatórios com as linhas da tabela
-10. O médico pode inserir sua agenda
-11. O usuário deve cadastrar no sistema
-12. O usuário deve logar no sistema
-
+1. Cadastro da ficha médica do paciente
+2. Notificação de mudança de status da consulta para o paciente
+3. Mostrar consultários por especialidade e localização 
+4. Marcar consulta 
+5. Mostar consultas do paciente 
+6. Medico anexa exame à consulta do paciente 
+7. Paciente visualiza exames 
+8. Paciente filtra exames por especialdiade
+9. Visão da ficha médica pelo paciente
+10. Visão da ficha médica pelo médico 
+11. Médico visualiza consultas marcadas 
+12. Médico aceita ou cancela consultas pendentes 
+13. Médico recebe alerta de consulta 
+14. Geração de relatório 
+15. Médico preenche dias disponíveis da sua agenda 
+16. Médico pode alterar seu perfil
+17. Administrador cadastra usuarios 
+18. Administrador promove usuario a médico 
+19. Médico pode cadastrar consulta para paciente 
+20. Médico pode cadastrar paciente não cadastrado 
+21. Cadastro de usuário 
+22. Login de usuário 
 Obs: a quantidade e o escopo das funcionalidades deve ser negociado com os professores/orientadores do trabalho.
 
 ### Descrição resumida dos Casos de Uso / Histórias de Usuário
@@ -210,18 +218,18 @@ Obs: a quantidade e o escopo das funcionalidades deve ser negociado com os profe
 
 Exemplos de resumo de Casos de Uso:
 
-#### UC01 – CADASTRAR FICHA MÉDICA
+#### UC01 – Cadastro da ficha médica do paciente
 
-| **Descrição** | Paciente vai cadastrar sua ficha médica|
+| **Descrição** | Médico vai cadastrar a ficha médica do paciente|
 | --- | --- |
-| **Atores** | Paciente|
-| **Prioridade** | 1|
+| **Atores** | Médico|
+| **Prioridade** | Essencial|
 | **Requisitos associados** | 1|
-| **Fluxo Principal** | 1. Paciente entra no cadastro de ficha médica 2. Paciente cadastra sua ficha|
+| **Fluxo Principal** | 1. Médico entra em cadastrar ficha médica 2. Clica no paciente desejado 3. cadastra a ficha médica|
 
-#### UC02 – CONSULTAR CONSULTÓRIOS NA REGIÃO
+#### UC02 – Notificação de mudança de status da consulta para o paciente
 
-| **Descrição** | Paciente vai consutar consultórios na sua região|
+| **Descrição** | Paciente recebe do sistema uma notificação de mudança do status da consulta|
 | --- | --- |
 | **Atores** | Paciente|
 | **Prioridade** | 2|
