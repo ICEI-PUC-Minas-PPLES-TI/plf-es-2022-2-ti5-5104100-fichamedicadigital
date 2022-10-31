@@ -28,6 +28,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.tisv.fichamedicadigital.dto.UsuarioDTO;
 
 @Entity
 @Table(name = "tb_usuarios")
@@ -76,6 +77,14 @@ public class Usuario implements UserDetails, Serializable {
 		this.email = email;
 		this.password = password;
 		this.dataNascimento = dataNascimento;
+	}
+
+	public Usuario(UsuarioDTO dto) {
+		this.id = dto.getId();
+		this.primeiroNome = dto.getPrimeiroNome();
+		this.sobreNome = dto.getSobreNome();
+		this.email = dto.getEmail();
+		this.dataNascimento = dto.getDataNascimento();
 	}
 
 	public Long getId() {

@@ -1,6 +1,8 @@
 package com.tisv.fichamedicadigital.resources;
 
 import java.net.URI;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.tisv.fichamedicadigital.dto.ConsultaDTO;
 import com.tisv.fichamedicadigital.entities.Consulta;
 import com.tisv.fichamedicadigital.entities.enums.StatusConsulta;
 import com.tisv.fichamedicadigital.services.ConsultaService;
@@ -31,34 +34,49 @@ public class ConsultaResource {
 	private ConsultaService service;
 
 	@GetMapping
-	public ResponseEntity<Page<Consulta>> findAll(Pageable pageable) {
+	public ResponseEntity<List<ConsultaDTO>> findAll(Pageable pageable) {
 		Page<Consulta> list = service.findAllPaged(pageable);
-		return ResponseEntity.ok().body(list);
+		List<ConsultaDTO> retorno = new ArrayList<>();
+		for (Consulta consulta : list) {
+			retorno.add(new ConsultaDTO(consulta));
+		}
+		return ResponseEntity.ok().body(retorno);
 	}
 
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<Consulta> findBydId(@PathVariable Long id) {
+	public ResponseEntity<ConsultaDTO> findBydId(@PathVariable Long id) {
 		Consulta dto = service.findById(id);
-		return ResponseEntity.ok().body(dto);
+		return ResponseEntity.ok().body(new ConsultaDTO(dto));
+	}
+
+	@GetMapping(value = "/usuario/{id}")
+	public ResponseEntity<List<ConsultaDTO>> findBydIdUsuario(@PathVariable Long id) {
+		List<Consulta> dto = service.findByIdUsuario(id);
+		List<ConsultaDTO> retorno = new ArrayList<>();
+		for (Consulta consulta : dto) {
+			retorno.add(new ConsultaDTO(consulta));
+		}
+		return ResponseEntity.ok().body(retorno);
 	}
 
 	@PostMapping
-	public ResponseEntity<Consulta> insert(@Valid @RequestBody Consulta dto) {
-		Consulta newDto = service.insert(dto);
+	public ResponseEntity<ConsultaDTO> insert(@Valid @RequestBody ConsultaDTO dto) {
+		Consulta newDto = service.insert(new Consulta(dto));
+		newDto = service.findById(newDto.getId());
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newDto.getId()).toUri();
-		return ResponseEntity.created(uri).body(newDto);
+		return ResponseEntity.created(uri).body(new ConsultaDTO(newDto));
 	}
 
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<Consulta> update(@PathVariable Long id, @Valid @RequestBody Consulta dto) {
-		Consulta newDto = service.update(id, dto);
-		return ResponseEntity.ok().body(newDto);
+	public ResponseEntity<ConsultaDTO> update(@PathVariable Long id, @Valid @RequestBody ConsultaDTO dto) {
+		Consulta newDto = service.update(id, new Consulta(dto));
+		return ResponseEntity.ok().body(new ConsultaDTO(newDto));
 	}
 
 	@RequestMapping(value = "/status/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<Consulta> alteraStatus(@PathVariable Long id, @RequestBody StatusConsulta status) {
+	public ResponseEntity<ConsultaDTO> alteraStatus(@PathVariable Long id, @RequestBody StatusConsulta status) {
 		Consulta newDto = service.alteraStatus(id, status);
-		return ResponseEntity.ok().body(newDto);
+		return ResponseEntity.ok().body(new ConsultaDTO(newDto));
 	}
 
 	@DeleteMapping(value = "/{id}")

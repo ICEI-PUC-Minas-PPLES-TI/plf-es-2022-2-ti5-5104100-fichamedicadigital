@@ -24,6 +24,7 @@ import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.tisv.fichamedicadigital.dto.FichaMedicaDTO;
 
 @Entity
 @Table(name = "tb_fichas_medicas")
@@ -67,6 +68,7 @@ public class FichaMedica implements Serializable {
 	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
 	private Date dataDesmaio;
 
+	@LazyCollection(LazyCollectionOption.FALSE)
 	@JsonIgnore
 	@OneToMany(mappedBy = "fichaMedica")
 	private Set<Vacina> vacinas = new HashSet<Vacina>();
@@ -74,6 +76,40 @@ public class FichaMedica implements Serializable {
 	@OneToOne
 	@JoinColumn(name = "usuario_id")
 	private Usuario usuario;
+
+	public FichaMedica() {
+
+	}
+
+	public FichaMedica(FichaMedicaDTO dto) {
+		this.cardiaco = dto.getCardiaco();
+		this.diabetico = dto.getDiabetico();
+		this.internado = dto.getInternado();
+		this.transfusao = dto.getTransfusao();
+		this.desmaioOuConvulsao = dto.getDesmaioOuConvulsao();
+		this.intoleranciaLactose = dto.getIntoleranciaLactose();
+		this.numeroCarteirinha = dto.getNumeroCarteirinha();
+		this.convenio = dto.getConvenio();
+		this.cartaoSus = dto.getCartaoSus();
+		this.tipoSanguineo = dto.getTipoSanguineo();
+		this.motivoInternado = dto.getMotivoInternado();
+		this.dataTransfusao = dto.getDataTransfusao();
+		this.dataDesmaio = dto.getDataDesmaioConvulsao();
+		this.usuario = new Usuario(dto.getUsuario());
+		for (Vacina vacina : dto.getVacinas()) {
+			this.getVacinas().add(vacina);
+		}
+		for (String doenca : dto.getDoencas()) {
+			this.getDoencas().add(doenca);
+		}
+		for (String alergia : dto.getMedicamentosAlergia()) {
+			this.getMedicamentosAlergia().add(alergia);
+		}
+		for (String medicamento : dto.getMedicamentos()) {
+			this.getMedicamentos().add(medicamento);
+		}
+
+	}
 
 	public Long getId() {
 		return id;

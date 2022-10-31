@@ -19,6 +19,8 @@ import javax.persistence.PrePersist;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.tisv.fichamedicadigital.dto.ConsultaDTO;
+import com.tisv.fichamedicadigital.dto.MedicoDTO;
 
 @Entity
 @Table(name = "tb_medicos")
@@ -41,6 +43,19 @@ public class Medico implements Serializable {
 
 	public Medico() {
 
+	}
+	
+	public Medico(MedicoDTO medico) {
+		this.id = medico.getId();
+		this.usuario = new Usuario();
+		this.usuario.setId(medico.getIdUsuario());
+		this.usuario.setPrimeiroNome(medico.getPrimeiroNome());
+		this.usuario.setSobreNome(medico.getUltimoNome());
+		this.usuario.setEmail(medico.getEmail());
+		this.usuario.setDataNascimento(medico.getDataNascimento());
+		for(ConsultaDTO consulta : medico.getConsultas()) {
+			this.getConsultas().add(new Consulta(consulta));
+		}
 	}
 
 	public Medico(Usuario usuario) {

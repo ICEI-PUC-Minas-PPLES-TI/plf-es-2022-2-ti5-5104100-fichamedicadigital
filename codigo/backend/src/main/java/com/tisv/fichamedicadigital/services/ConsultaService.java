@@ -15,8 +15,16 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.tisv.fichamedicadigital.entities.Consulta;
+import com.tisv.fichamedicadigital.entities.Medico;
+import com.tisv.fichamedicadigital.entities.Paciente;
+import com.tisv.fichamedicadigital.entities.Role;
+import com.tisv.fichamedicadigital.entities.Usuario;
 import com.tisv.fichamedicadigital.entities.enums.StatusConsulta;
 import com.tisv.fichamedicadigital.repositories.ConsultaRepository;
+import com.tisv.fichamedicadigital.repositories.MedicoRepository;
+import com.tisv.fichamedicadigital.repositories.PacienteRepository;
+import com.tisv.fichamedicadigital.repositories.RoleRepository;
+import com.tisv.fichamedicadigital.repositories.UsuarioRepository;
 import com.tisv.fichamedicadigital.services.exceptions.DatabaseException;
 import com.tisv.fichamedicadigital.services.exceptions.ResourceNotFoundException;
 
@@ -25,6 +33,18 @@ public class ConsultaService {
 
 	@Autowired
 	private ConsultaRepository repository;
+
+	@Autowired
+	private UsuarioRepository usuarioRepository;
+
+	@Autowired
+	private RoleRepository roleRepository;
+
+	@Autowired
+	private MedicoRepository medicoRepository;
+
+	@Autowired
+	private PacienteRepository pacienteRepository;
 
 	@Transactional(readOnly = true)
 	public Page<Consulta> findAllPaged(Pageable pageable) {
@@ -37,6 +57,21 @@ public class ConsultaService {
 		Optional<Consulta> obj = repository.findById(id);
 		Consulta entity = obj.orElseThrow(() -> new ResourceNotFoundException("Consulta não encontrada!"));
 		return entity;
+	}
+
+	@Transactional(readOnly = true)
+	public List<Consulta> findByIdUsuario(Long id) {
+		Role roleMedico = roleRepository.findById(2L).get();
+		Usuario user = usuarioRepository.findById(id).get();
+		List<Consulta> consultas;
+		if (user.getRoles().contains(roleMedico)) {
+			Medico medico = medicoRepository.findByUsuario(user).get();
+			consultas = repository.findByMedico(medico);
+		} else {
+			Paciente paciente = pacienteRepository.findByUsuario(user).get();
+			consultas = repository.findByPaciente(paciente);
+		}
+		return consultas;
 	}
 
 	@Transactional

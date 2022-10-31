@@ -1,6 +1,8 @@
 package com.tisv.fichamedicadigital.resources;
 
 import java.net.URI;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.tisv.fichamedicadigital.dto.FichaMedicaDTO;
 import com.tisv.fichamedicadigital.entities.FichaMedica;
 import com.tisv.fichamedicadigital.services.FichaMedicaService;
 
@@ -29,15 +32,19 @@ public class FichaMedicaResource {
 	private FichaMedicaService service;
 
 	@GetMapping
-	public ResponseEntity<Page<FichaMedica>> findAll(Pageable pageable) {
+	public ResponseEntity<List<FichaMedicaDTO>> findAll(Pageable pageable) {
 		Page<FichaMedica> list = service.findAllPaged(pageable);
-		return ResponseEntity.ok().body(list);
+		List<FichaMedicaDTO> retorno = new ArrayList<>();
+		for (FichaMedica ficha : list) {
+			retorno.add(new FichaMedicaDTO(ficha));
+		}
+		return ResponseEntity.ok().body(retorno);
 	}
 
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<FichaMedica> findBydId(@PathVariable Long id) {
-		FichaMedica paciente = service.findByUsuario(id);
-		return ResponseEntity.ok().body(paciente);
+	public ResponseEntity<FichaMedicaDTO> findBydId(@PathVariable Long id) {
+		FichaMedica ficha = service.findByUsuario(id);
+		return ResponseEntity.ok().body(new FichaMedicaDTO(ficha));
 	}
 
 	/***
@@ -46,16 +53,18 @@ public class FichaMedicaResource {
 	 * @return Retorna a ficha medica
 	 */
 	@PostMapping
-	public ResponseEntity<FichaMedica> insert(@RequestBody FichaMedica fichaMedica) {
-		FichaMedica ficha = service.insert(fichaMedica);
+	public ResponseEntity<FichaMedicaDTO> insert(@RequestBody FichaMedicaDTO fichaMedica) {
+		FichaMedica ficha = service.insert(new FichaMedica(fichaMedica));
+		//ficha = service.findById(ficha.getId());
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(ficha.getId()).toUri();
-		return ResponseEntity.created(uri).body(ficha);
+		return ResponseEntity.created(uri).body(new FichaMedicaDTO(ficha));
 	}
 
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<FichaMedica> update(@Valid @PathVariable Long id, @Valid @RequestBody FichaMedica dto) {
-		FichaMedica newDto = service.update(id, dto);
-		return ResponseEntity.ok().body(newDto);
+	public ResponseEntity<FichaMedicaDTO> update(@Valid @PathVariable Long id, @Valid @RequestBody FichaMedicaDTO dto) {
+		FichaMedica newDto = service.update(id, new FichaMedica(dto));
+		newDto = service.findById(newDto.getId());
+		return ResponseEntity.ok().body(new FichaMedicaDTO(newDto));
 	}
 
 	@DeleteMapping(value = "/{id}")

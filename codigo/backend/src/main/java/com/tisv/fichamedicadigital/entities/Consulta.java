@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.tisv.fichamedicadigital.dto.ConsultaDTO;
 import com.tisv.fichamedicadigital.entities.enums.StatusConsulta;
 
 @Entity
@@ -34,7 +35,7 @@ public class Consulta implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "paciente_id")
 	private Paciente paciente;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "medico_id")
 	private Medico medico;
@@ -53,6 +54,15 @@ public class Consulta implements Serializable {
 		this.status = status;
 		this.paciente = paciente;
 		this.medico = medico;
+	}
+
+	public Consulta(ConsultaDTO dto) {
+		this.data = dto.getData();
+		this.horaFim = dto.getHoraFim();
+		this.horaInicio = dto.getHoraInicio();
+		this.status = dto.getStatus();
+		this.paciente = new Paciente(dto.getPaciente());
+		this.medico = new Medico(dto.getMedico());
 	}
 
 	public Long getId() {
