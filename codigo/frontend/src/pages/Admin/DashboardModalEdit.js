@@ -6,17 +6,20 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { BsFillPencilFill } from 'react-icons/bs'
 
-const DashboardModalEdit = () => {
+const DashboardModalEdit = (usuario) => {
 
     const [show, setShow] = useState(false);
-
+    let data = new Date(usuario.props.dataNascimento)
+    data = data.getDate() + "/" + ((data.getMonth() + 1)) + "/" + data.getFullYear()
+    console.log(usuario)
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const [name, setName] = useState('');
-    const [surName, setSurname] = useState('');
-    const [birthdate, setBirthdate] = useState('');
-    const [email, setEmail] = useState('');
+    const [id, setId] = useState(usuario.props.id)
+    const [name, setName] = useState(usuario.props.primeiroNome);
+    const [surName, setSurname] = useState(usuario.props.sobreNome);
+    const [email, setEmail] = useState(usuario.props.email);
+    const [roles,setRoles] = useState(usuario.props.roles)
 
     const dispatch = useDispatch();
 
@@ -24,13 +27,30 @@ const DashboardModalEdit = () => {
 
         e.preventDefault()
 
+        let status = ''
+
+        if(roles == 1) {
+            status = 'ROLE_ADMIN'
+        } else if( roles == 2) {
+            status = 'ROLE_MEDICO'
+        }
+        else if( roles == 3) {
+            status = 'ROLE_PACIENTE'
+        }
+
         const user = {
             primeiroNome: name,
             sobreNome: surName,
-            dataNascimento: birthdate,
             password: email,
             email: email,
+            roles: [
+                {
+                    id:roles,
+                    authority: status
+                }
+            ]
         }
+
         dispatch(userUpdate(user))
         
         setShow(true)
@@ -49,52 +69,58 @@ const DashboardModalEdit = () => {
                     <Modal.Title> <span className='title'>Editar Usuário</span> </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <div className='dashboard-modal'>
-                        <div>
-                            <div className='d-flex justify-content-center mb-3'>
-                                <label className='form-label w-50'>Nome:</label>
-                                <input
-                                    className='form-control w-50'
-                                    type="text"
-                                    placeholder="Nome"
-                                    name="name"
-                                    onChange={(e) => setName(e.target.value)}
-                                    value={name}
-                                />
-                            </div>
-                            <div className='d-flex justify-content-center mb-3'>
-                                <label className='form-label w-50'>Sobrenome:</label>
-                                <input
-                                    className='form-control w-50'
-                                    type="text"
-                                    placeholder="Sobrenome"
-                                    name="surname"
-                                    onChange={(e) => setSurname(e.target.value)}
-                                    value={surName}
-                                />
-                            </div>
-                            <div className='d-flex justify-content-center mb-3'>
-                                <label className='form-label w-50'>Email:</label>
-                                <input
-                                    className='form-control w-50'
-                                    type="email"
-                                    placeholder="E-mail"
-                                    name="email"
-                                    onChange={(e) => setEmail(e.target.value)}
-                                    value={email}
-                                />
-                            </div>
-                            <div className='d-flex justify-content-center mb-3 '>
-                                <label className='form-label w-50'>Data de Nascimento:</label>
-                                <input
-                                    className='form-control w-50'
-                                    type="date"
-                                    placeholder="Data de Nascimento"
-                                    name="birthdate"
-                                    onChange={(e) => setBirthdate(e.target.value)}
-                                    value={birthdate}
-                                />
-                            </div>
+                <div className='dashboard-modal'>
+                        <div className='d-flex justify-content-center mb-3'>
+                            <label className='form-label w-50'>ID:</label>
+                            <input
+                                className='form-control w-50'
+                                type="text"
+                                name="id"
+                                value={usuario.props.id}
+                                disabled
+                            />
+                        </div>
+                        <div className='d-flex justify-content-center mb-3'>
+                            <label className='form-label w-50'>Nome:</label>
+                            <input
+                                className='form-control w-50'
+                                type="text"
+                                name="name"
+                                onChange={(e) => setName(e.target.value)}
+                                value={name}
+                            />
+                        </div>
+                        <div className='d-flex justify-content-center mb-3'>
+                            <label className='form-label w-50'>Sobrenome:</label>
+                            <input
+                                className='form-control w-50'
+                                type="text"
+                                name="surname"
+                                onChange={(e) => setSurname(e.target.value)}
+                                value={surName}
+                            />
+                        </div>
+                        <div className='d-flex justify-content-center mb-3'>
+                            <label className='form-label w-50'>Email:</label>
+                            <input
+                                className='form-control w-50'
+                                type="email"
+                                name="email"
+                                onChange={(e) => setEmail(e.target.value)}
+                                value={email}
+                            />
+                        </div>
+                        <div className='d-flex justify-content-center mb-3'>
+                            <label className='form-label w-50'>Status:</label>
+                            <select 
+                                className="form-select w-50" 
+                                aria-label="Default select example"
+                                onChange={(e) => setRoles(e.target.value)}
+                                value={roles[0].id}>
+                                <option value="3">PACIENTE</option>
+                                <option value="2">MÉDICO</option>
+                                <option value="1">ADMIN</option>
+                            </select>
                         </div>
                     </div>
                 </Modal.Body>

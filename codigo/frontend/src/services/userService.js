@@ -17,7 +17,7 @@ const userRegister = async (data) => {
 const userUpdate = async (data) => {
     const config = requestConfig("PUT", data);
     try {
-      const res = await fetch(api + "/usuarios", config)
+      const res = await fetch(api + "/usuarios/5", config)
         .then((res) => res.json())
         .catch((err) => err);
   

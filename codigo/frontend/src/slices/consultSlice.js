@@ -3,7 +3,7 @@ import consultService from "../services/consultService";
 
 
 const initialState = {
-    consultData: {},
+    consultData: [],
     error: false,
     success: false,
     loading: false,
@@ -38,7 +38,7 @@ export const consultUpdate = createAsyncThunk(
 export const consultDelete = createAsyncThunk(
     "consult/consultDelete",
     async (id,thunkAPI) => {
-        
+
         const data = await consultService.consultDelete(id)
 
         if(data.errors) {

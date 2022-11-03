@@ -16,7 +16,7 @@ const medicalRegister = async (data) => {
 
 const medicalUpdate = async (data)=> {
   const config = requestConfig("PUT",data)
-console.log(data)
+
   try {
     const res = await fetch(api+"/fichas",config)
       .then((res) => res.json())

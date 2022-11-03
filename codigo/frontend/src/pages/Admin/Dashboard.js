@@ -18,9 +18,7 @@ const Dashboard = () => {
         dispatch(userFindAll())
     }, [])
 
-    const handleDelete = (e, id) => {
-        e.preventDefault()
-
+    const handleDelete = (id) => {
         dispatch(userDelete(id))
     }
 
@@ -48,12 +46,12 @@ const Dashboard = () => {
                                 <td scope="col">{user.roles[0].authority == 'ROLE_ADMIN' ? 'ADMIN' : (user.roles[0].authority == 'ROLE_PACIENTE' ? 'PACIENTE' : (user.roles[0].authority == 'ROLE_MEDICO' && 'MÉDICO'))}</td>
                                 <td className='actions'>
                                     <button className='btn me-3'>
-                                        <ModalView />
+                                        <ModalView props={user} />
                                     </button>
                                     <button className='btn me-3'>
-                                        <ModalEdit />
+                                        <ModalEdit props={user}/>
                                     </button>
-                                    <button className='btn' onClick={(e) => handleDelete(e, user.id)}>
+                                    <button className='btn' onClick={(e) => handleDelete(user.id)}>
                                         <BsFillTrashFill />
                                     </button>
                                 </td>

@@ -34,7 +34,7 @@ const DashboardModal = () => {
         }
         dispatch(userRegister(user))
         
-        setShow(true)
+        setShow(false)
     }
 
     useEffect(() => {
