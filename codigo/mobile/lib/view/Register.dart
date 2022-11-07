@@ -23,7 +23,7 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.purpleAccent,
+      backgroundColor: Color.fromARGB(255, 208, 243, 239),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.only(
@@ -32,7 +32,7 @@ class _RegisterPageState extends State<RegisterPage> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Container(
-                color: Colors.deepPurple,
+                color: Color.fromARGB(255, 78, 174, 163),
                 width: 400,
                 height: 540,
                 child: Padding(
@@ -178,7 +178,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             },
                             style: const ButtonStyle(
                               backgroundColor:
-                                  MaterialStatePropertyAll(Colors.purple),
+                                  MaterialStatePropertyAll(Color.fromARGB(255, 25, 53, 98)),
                               textStyle: MaterialStatePropertyAll(
                                   TextStyle(fontWeight: FontWeight.bold)),
                             ),
@@ -209,7 +209,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     ElevatedButton(
                         style: const ButtonStyle(
                           backgroundColor:
-                              MaterialStatePropertyAll(Colors.deepPurple),
+                              MaterialStatePropertyAll(Color.fromARGB(255, 25, 53, 98)),
                           textStyle: MaterialStatePropertyAll(
                               TextStyle(fontWeight: FontWeight.bold)),
                         ),

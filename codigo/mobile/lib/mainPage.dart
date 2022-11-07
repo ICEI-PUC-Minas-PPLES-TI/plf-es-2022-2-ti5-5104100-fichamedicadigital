@@ -4,6 +4,7 @@ import 'package:mobile/services/UserService.dart';
 import 'package:mobile/userData.dart';
 
 import 'exam.dart';
+import 'myAppointment.dart';
 
 class MainPage extends StatefulWidget {
   String nome;
@@ -144,12 +145,11 @@ class _MainPageState extends State<MainPage> {
                   fit: FlexFit.loose,
                   child: ElevatedButton(
                     onPressed: () {
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //       builder: (context) => SegundaTela(
-                      //           valor: _textEditingController.text)),
-                      // );
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                             builder: (context) => myAppointment())
+                      );
                     },
                     style: ElevatedButton.styleFrom(
                         fixedSize: const Size(130, 110),
@@ -172,12 +172,11 @@ class _MainPageState extends State<MainPage> {
                   fit: FlexFit.loose,
                   child: ElevatedButton(
                     onPressed: () {
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //       builder: (context) => SegundaTela(
-                      //           valor: _textEditingController.text)),
-                      // );
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => myAppointment()),
+                      );
                     },
                     style: ElevatedButton.styleFrom(
                         fixedSize: const Size(130, 110),
