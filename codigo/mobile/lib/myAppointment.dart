@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:mobile/services/Appoinment.dart';
 import 'examUnit.dart';
 
-const List<String> list = <String>['Todos', 'Nutricionista', 'Dermatologista'];
+const List<String> list = <String>['Todos', 'Pedente', 'Cancelado', 'Marcada', 'Finalizada'];
 
-class Exam extends StatefulWidget {
+class myAppointment extends StatefulWidget {
   @override
-  _examState createState() => _examState();
+  _myAppointmentState  createState() => _myAppointmentState();
 }
 
 class ExamData {
@@ -15,12 +16,23 @@ class ExamData {
   ExamData({required this.exame, required this.medico, required this.date});
 }
 
-class _examState extends State<Exam> {
+class _myAppointmentState extends State<myAppointment> {
+  @override
+  late List<dynamic> content;
+  void initState() {
+    AppointmentService().getAppointments().then((value) {
+      content = value["content"];
+    });
+  }
   String dropdownValue = list.first;
+  Iterable<ExamData> filter = [];
   List<ExamData> data = [];
   int i = 0;
   @override
   Widget build(BuildContext context) {
+    return FutureBuilder<dynamic>(
+        future: AppointmentService().getAppointments(),
+        builder: (context, snapshot) {
     return Scaffold(
         appBar: AppBar(
             title: Container(
@@ -45,41 +57,69 @@ class _examState extends State<Exam> {
                     height: 20),
               ]),
             ]))),
-        body: Column(children: <Widget>[
+        body: snapshot.hasData? Column(children: <Widget>[
           DropdownButton(
               value: dropdownValue,
-              onChanged: (String? value) {
+              onChanged: (dynamic? value) {
                 setState(() {
                   dropdownValue = value!;
                 });
               },
-              items: list.map<DropdownMenuItem<String>>((String value) {
+              items: list.map<DropdownMenuItem<dynamic>>((String value) {
                 data = [];
                 if (dropdownValue == 'Todos') {
                   i = 0;
-                  while (i < 8) {
+                  while (i < content.length) {
                     data.add(ExamData(
-                        exame: "Bolsa de cocô",
-                        medico: "Bolonaro",
-                        date: "22/10/2018"));
+                        exame: content[i]["status"],
+                        medico: content[i]["medico"]["usuario"]["primeiroNome"]+" "+content[i]["medico"]["usuario"]["sobreNome"],
+                        date: content[i]["horaInicio"]));
                     i++;
                   }
-                } else if (dropdownValue == 'Nutricionista') {
+                } else if (dropdownValue == 'Pedente') {
                   i = 0;
-                  while (i < 5) {
-                    data.add(ExamData(
-                        exame: "Brilha uma estrela",
-                        medico: "Lulala",
-                        date: "22/10/2018"));
+                  while (i < content.length) {
+                    if(content[i]["status"] == "PENDENTE"){
+                      data.add(ExamData(
+                        exame: content[i]["status"],
+                        medico: content[i]["medico"]["usuario"]["primeiroNome"]+" "+content[i]["medico"]["usuario"]["sobreNome"],
+                        date: content[i]["horaInicio"]));
+                    }                    
+                    i++;
+                  }
+                }
+                else if (dropdownValue == 'Cancelado') {
+                  i = 0;
+                  while (i < content.length) {
+                    if(content[i]["status"] == "CANCELADA"){
+                      data.add(ExamData(
+                        exame: content[i]["status"],
+                        medico: content[i]["medico"]["usuario"]["primeiroNome"]+" "+content[i]["medico"]["usuario"]["sobreNome"],
+                        date: content[i]["horaInicio"]));
+                    }                    
+                    i++;
+                  }
+                }
+                else if (dropdownValue == 'Marcada') {
+                  i = 0;
+                  while (i < content.length) {
+                    if(content[i]["status"] == "MARCADA"){
+                      data.add(ExamData(
+                        exame: content[i]["status"],
+                        medico: content[i]["medico"]["usuario"]["primeiroNome"]+" "+content[i]["medico"]["usuario"]["sobreNome"],
+                        date: content[i]["horaInicio"]));
+                    }                    
                     i++;
                   }
                 } else {
                   i = 0;
-                  while (i < 3) {
-                    data.add(ExamData(
-                        exame: "Laerte laerte laerte",
-                        medico: "Cleiton",
-                        date: "22/10/2018"));
+                  while (i < content.length) {
+                    if(content[i]["status"] == "FINALIZADA"){
+                      data.add(ExamData(
+                        exame: content[i]["status"],
+                        medico: content[i]["medico"]["usuario"]["primeiroNome"]+" "+content[i]["medico"]["usuario"]["sobreNome"],
+                        date: content[i]["horaInicio"]));
+                    }                    
                     i++;
                   }
                 }
@@ -109,13 +149,14 @@ class _examState extends State<Exam> {
                     },
                     child: ListTile(
                       title:
-                          Text(personone.exame, style: TextStyle(fontSize: 20)),
-                      subtitle: Text('${personone.medico}\n${personone.date}',
+                          Text("Médico: " + personone.medico, style: TextStyle(fontSize: 20)),
+                      subtitle: Text('${personone.exame}\n${personone.date}',
                           style: TextStyle(fontSize: 14)),
                     ),
                   ));
             }).toList(),
           )),
-        ]));
+        ]): Column());
+        });
   }
 }
