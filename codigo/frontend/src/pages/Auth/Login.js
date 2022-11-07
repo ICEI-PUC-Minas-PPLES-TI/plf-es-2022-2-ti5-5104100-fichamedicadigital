@@ -56,7 +56,9 @@ const Login = () => {
                     />
                 </div>
                 <div className='d-flex justify-content-end'>
-                    <button type="submit" className='btn'>Entrar</button>
+                    {loading && <button className="btn" disabled>Aguarde...</button>}
+                    {!loading && <button type="submit" className='btn'>Entrar</button>}
+                    {error && <div>Erro</div>}
                 </div>
             </form>
             <p className='d-flex justify-content-end mt-3'>
