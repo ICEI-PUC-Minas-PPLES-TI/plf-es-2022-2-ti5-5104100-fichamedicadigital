@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:mobile/services/UserService.dart';
 import 'package:mobile/userData.dart';
+import 'package:mobile/view/maps.dart';
 
 import 'exam.dart';
 import 'myAppointment.dart';
@@ -30,7 +31,6 @@ class _MainPageState extends State<MainPage> {
                 child: Text('Ficha Médica Digital',
                     style: TextStyle(fontSize: 20)),
               ),
-              // ignore: prefer_const_constructors
               Row(children: <Widget>[
                 Padding(
                   padding: const EdgeInsets.only(right: 5),
@@ -76,7 +76,7 @@ class _MainPageState extends State<MainPage> {
                 ),
                 Text(
                   widget.nome,
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800),
+                  style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w800),
                 ),
                 const Text('Tipo sanguíneo: O+'),
                 const Text('Soropositivo: positivo')
@@ -175,7 +175,7 @@ class _MainPageState extends State<MainPage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => myAppointment()),
+                            builder: (context) => MapsPage()),
                       );
                     },
                     style: ElevatedButton.styleFrom(
