@@ -17,7 +17,7 @@ import Dashboard from './pages/Admin/Dashboard';
 
 
 function App() {
-    const { auth, loading } = useAuth();
+    const { auth, loading,role } = useAuth();
     if (loading) {
         return <p>Carregando...</p>;
     }
@@ -52,7 +52,7 @@ function App() {
                         />
                         <Route
                             path="/dashboard"
-                            element={auth ? <Dashboard /> : <Navigate to="/login" />}
+                            element={auth && role == 'ROLE_ADMIN' ? <Dashboard /> : auth  ? <Home /> : <Navigate to="/login" />}
                         />
                         <Route
                             path="login"

@@ -6,16 +6,17 @@ export const useAuth = () => {
 
   const [auth, setAuth] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [role,setRole] = useState('')
 
   useEffect(() => {
     if (user) {
       setAuth(true);
+      setRole(user.roles[0].authority)
     } else {
       setAuth(false);
     }
-
     setLoading(false);
   }, [user]);
 
-  return { auth, loading };
+  return { auth, loading,role };
 };

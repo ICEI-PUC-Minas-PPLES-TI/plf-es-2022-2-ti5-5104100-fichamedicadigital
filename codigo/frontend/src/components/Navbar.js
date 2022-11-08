@@ -18,7 +18,7 @@ import { useNavigate } from "react-router-dom";
 import { logout, reset } from "../slices/authSlice";
 
 const NavBar = () => {
-    const { auth } = useAuth();
+    const { auth,role } = useAuth();
     const { user } = useSelector((state) => state.auth);
 
     const navigate = useNavigate();
@@ -55,11 +55,13 @@ const NavBar = () => {
                                 <BsFillCalendarFill />
                             </NavLink>
                         </li>
-                        <li>
+                        {role == 'ROLE_ADMIN' &&
+                            <li>
                             <NavLink to="/dashboard">
                                 <BsFillPieChartFill />
                             </NavLink>
                         </li>
+                        }
                         <li>
                             <NavLink to="/profile">
                                 <BsFillPersonFill />
