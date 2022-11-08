@@ -1,3 +1,3 @@
 class Environment {
-  final String BASE_URL = 'https://localhost:8080';
+  final String BASE_URL = 'https://fichamedicadigital.herokuapp.com';
 }
