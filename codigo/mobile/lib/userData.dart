@@ -370,26 +370,7 @@ class _SegundaTelaState extends State<SegundaTela> {
                                                   .withOpacity(0.5)))),
                             ],
                           ),
-                          // transfusao
-                          //     ? Row(
-                          //         children: <Widget>[
-                          //           const Text("Quando: ",
-                          //               style: TextStyle(fontSize: 14)),
-                          //           Padding(
-                          //               padding:
-                          //                   const EdgeInsets.only(left: 15),
-                          //               child: Text(
-                          //                   dataTransfusao.day.toString() +
-                          //                       dataTransfusao.month
-                          //                           .toString() +
-                          //                       dataTransfusao.year.toString(),
-                          //                   style: TextStyle(
-                          //                       fontSize: 14,
-                          //                       color: Colors.black
-                          //                           .withOpacity(0.5)))),
-                          //         ],
-                          //       )
-                          //     : Row()
+                          // 
                         ],
                       ),
                     )
