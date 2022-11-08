@@ -21,7 +21,7 @@ class _myAppointmentState extends State<myAppointment> {
   late List<dynamic> content;
   void initState() {
     AppointmentService().getAppointments().then((value) {
-      content = value["content"];
+      content = value;
     });
   }
   String dropdownValue = list.first;
@@ -72,7 +72,7 @@ class _myAppointmentState extends State<myAppointment> {
                   while (i < content.length) {
                     data.add(ExamData(
                         exame: content[i]["status"],
-                        medico: content[i]["medico"]["usuario"]["primeiroNome"]+" "+content[i]["medico"]["usuario"]["sobreNome"],
+                        medico: content[i]["medico"]["primeiroNome"]+" "+content[i]["medico"]["ultimoNome"],
                         date: content[i]["horaInicio"]));
                     i++;
                   }
@@ -82,7 +82,7 @@ class _myAppointmentState extends State<myAppointment> {
                     if(content[i]["status"] == "PENDENTE"){
                       data.add(ExamData(
                         exame: content[i]["status"],
-                        medico: content[i]["medico"]["usuario"]["primeiroNome"]+" "+content[i]["medico"]["usuario"]["sobreNome"],
+                        medico: content[i]["medico"]["primeiroNome"]+" "+content[i]["medico"]["ultimoNome"],
                         date: content[i]["horaInicio"]));
                     }                    
                     i++;
@@ -94,7 +94,7 @@ class _myAppointmentState extends State<myAppointment> {
                     if(content[i]["status"] == "CANCELADA"){
                       data.add(ExamData(
                         exame: content[i]["status"],
-                        medico: content[i]["medico"]["usuario"]["primeiroNome"]+" "+content[i]["medico"]["usuario"]["sobreNome"],
+                        medico: content[i]["medico"]["primeiroNome"]+" "+content[i]["medico"]["ultimoNome"],
                         date: content[i]["horaInicio"]));
                     }                    
                     i++;
@@ -106,7 +106,7 @@ class _myAppointmentState extends State<myAppointment> {
                     if(content[i]["status"] == "MARCADA"){
                       data.add(ExamData(
                         exame: content[i]["status"],
-                        medico: content[i]["medico"]["usuario"]["primeiroNome"]+" "+content[i]["medico"]["usuario"]["sobreNome"],
+                        medico: content[i]["medico"]["primeiroNome"]+" "+content[i]["medico"]["ultimoNome"],
                         date: content[i]["horaInicio"]));
                     }                    
                     i++;
@@ -117,7 +117,7 @@ class _myAppointmentState extends State<myAppointment> {
                     if(content[i]["status"] == "FINALIZADA"){
                       data.add(ExamData(
                         exame: content[i]["status"],
-                        medico: content[i]["medico"]["usuario"]["primeiroNome"]+" "+content[i]["medico"]["usuario"]["sobreNome"],
+                        medico: content[i]["medico"]["primeiroNome"]+" "+content[i]["medico"]["ultimoNome"],
                         date: content[i]["horaInicio"]));
                     }                    
                     i++;

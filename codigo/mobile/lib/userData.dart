@@ -49,15 +49,11 @@ class _SegundaTelaState extends State<SegundaTela> {
       internado = value['internado'];
       intoleranciaLactose = value['intoleranciaLactose'];
       transfusao = value['transfusao'];
-      dataTransfusao = value['dataTransfusao'] == null
-          ? DateTime.now()
-          : value['dataTransfusao'];
-      convenio = value['convenio'] == null
-          ? "Não possui"
-          : value['convenio'].toString();
-      numeroCarteirinha = value['numeroCarteirinha'] == null
-          ? "Não possui"
-          : value['numeroCarteirinha'].toString();
+      // dataTransfusao = value['dataTransfusao'] == null
+      //     ? DateTime.now()
+      //     : value['dataTransfusao'];
+      // convenio = value['convenio'] = value['convenio'].toString();
+      // numeroCarteirinha = value['numeroCarteirinha'].toString();
       tipoSanguineo = value['tipoSanguineo'].toString();
       // vacinas = value['vacinas'];
       // if(!vacinas.isEmpty){
@@ -134,32 +130,32 @@ class _SegundaTelaState extends State<SegundaTela> {
                                   style: TextStyle(
                                       fontSize: 20,
                                       fontWeight: FontWeight.w800))),
-                          Row(
-                            children: <Widget>[
-                              const Text("Nº da carteirinha: ",
-                                  style: TextStyle(fontSize: 14)),
-                              Padding(
-                                  padding: const EdgeInsets.only(left: 15),
-                                  child: Text(numeroCarteirinha,
-                                      style: TextStyle(
-                                          fontSize: 14,
-                                          color:
-                                              Colors.black.withOpacity(0.5)))),
-                            ],
-                          ),
-                          Row(
-                            children: <Widget>[
-                              const Text("Convênio",
-                                  style: TextStyle(fontSize: 14)),
-                              Padding(
-                                  padding: const EdgeInsets.only(left: 15),
-                                  child: Text(convenio,
-                                      style: TextStyle(
-                                          fontSize: 14,
-                                          color:
-                                              Colors.black.withOpacity(0.5)))),
-                            ],
-                          ),
+                          // Row(
+                          //   children: <Widget>[
+                          //     const Text("Nº da carteirinha: ",
+                          //         style: TextStyle(fontSize: 14)),
+                          //     Padding(
+                          //         padding: const EdgeInsets.only(left: 15),
+                          //         child: Text(numeroCarteirinha,
+                          //             style: TextStyle(
+                          //                 fontSize: 14,
+                          //                 color:
+                          //                     Colors.black.withOpacity(0.5)))),
+                          //   ],
+                          // ),
+                          // Row(
+                          //   children: <Widget>[
+                          //     const Text("Convênio",
+                          //         style: TextStyle(fontSize: 14)),
+                          //     Padding(
+                          //         padding: const EdgeInsets.only(left: 15),
+                          //         child: Text(convenio,
+                          //             style: TextStyle(
+                          //                 fontSize: 14,
+                          //                 color:
+                          //                     Colors.black.withOpacity(0.5)))),
+                          //   ],
+                          // ),
                           // Column(
                           //   children: [
                           //     data.isEmpty
@@ -374,26 +370,26 @@ class _SegundaTelaState extends State<SegundaTela> {
                                                   .withOpacity(0.5)))),
                             ],
                           ),
-                          transfusao
-                              ? Row(
-                                  children: <Widget>[
-                                    const Text("Quando: ",
-                                        style: TextStyle(fontSize: 14)),
-                                    Padding(
-                                        padding:
-                                            const EdgeInsets.only(left: 15),
-                                        child: Text(
-                                            dataTransfusao.day.toString() +
-                                                dataTransfusao.month
-                                                    .toString() +
-                                                dataTransfusao.year.toString(),
-                                            style: TextStyle(
-                                                fontSize: 14,
-                                                color: Colors.black
-                                                    .withOpacity(0.5)))),
-                                  ],
-                                )
-                              : Row()
+                          // transfusao
+                          //     ? Row(
+                          //         children: <Widget>[
+                          //           const Text("Quando: ",
+                          //               style: TextStyle(fontSize: 14)),
+                          //           Padding(
+                          //               padding:
+                          //                   const EdgeInsets.only(left: 15),
+                          //               child: Text(
+                          //                   dataTransfusao.day.toString() +
+                          //                       dataTransfusao.month
+                          //                           .toString() +
+                          //                       dataTransfusao.year.toString(),
+                          //                   style: TextStyle(
+                          //                       fontSize: 14,
+                          //                       color: Colors.black
+                          //                           .withOpacity(0.5)))),
+                          //         ],
+                          //       )
+                          //     : Row()
                         ],
                       ),
                     )
