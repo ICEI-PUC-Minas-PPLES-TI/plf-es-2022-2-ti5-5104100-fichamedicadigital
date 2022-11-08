@@ -80,6 +80,7 @@ export const userSlice = createSlice({
             .addCase(userRegister.fulfilled, (state, action) => {
                 state.loading = false;
                 state.success = true;
+                state.userData = action.payload;
                 state.error = null;
             })
             .addCase(userRegister.rejected, (state, action) => {

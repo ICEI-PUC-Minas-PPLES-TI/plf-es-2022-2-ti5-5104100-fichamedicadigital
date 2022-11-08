@@ -1,8 +1,8 @@
 import './Consultas.css'
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { register, reset } from "../../slices/authSlice";
 import { consultRegister } from "../../slices/consultSlice";
+import {userFindAll,userRegister} from '../../slices/userSlice'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
@@ -29,29 +29,45 @@ const ConsultaModal = () => {
 
     const dispatch = useDispatch();
 
+    const usuarios = useSelector((state) => state.user.userData.content)
+    const auth = useSelector((state) => state.auth.user)
+
+    useEffect(() => {
+        dispatch(userFindAll())
+    },[dispatch])
+
     const handleSubmit = (e) => {
 
         e.preventDefault()
 
         const user = {
-            name,
-            surName,
-            birthdate,
+            primeiroNome:name,
+            sobreNome:surName,
+            dataNascimento: birthdate,
+            password:email,
             email,
         }
+        dispatch(userRegister(user))
+        dispatch(userFindAll())
 
+        let indiceArray = usuarios.length - 1
+        
+        const idPaciente = usuarios[indiceArray].id + 1
+        let date = new Date()
         const consulta = {
             data,
-            horaInicio,
-            horaFim
+            horaInicio: date.toISOString(horaInicio),
+            horaFim: date.toISOString(horaFim),
+            paciente: {
+                id: idPaciente
+            },
+            medico: {
+                id: auth.id
+            } 
         }
         dispatch(consultRegister(consulta))
         setShow(true)
     }
-
-    useEffect(() => {
-        dispatch(reset());
-    }, [dispatch]);
 
     return (
         <>
@@ -130,9 +146,10 @@ const ConsultaModal = () => {
                             ) : (
                                 <div>
                                     <select className="form-select w-25 mt-3 mb-5" aria-label="Default select example">
-                                        <option value="">SELECIONE</option>
-                                        <option value="SIM">Jão</option>
-                                        <option value="NAO">Rodolfo</option>
+                                        <option  value="">SELECIONE</option>
+                                        {usuarios && usuarios.map((usuario) => ( usuario.roles[0].id == 3 && 
+                                            <option key={usuario.id} value={usuario.id}>{usuario.primeiroNome}</option>
+                                        ))}
                                     </select>
                                 </div>
                             )}

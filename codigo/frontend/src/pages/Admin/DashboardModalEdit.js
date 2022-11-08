@@ -41,7 +41,6 @@ const DashboardModalEdit = (usuario) => {
         const user = {
             primeiroNome: name,
             sobreNome: surName,
-            password: email,
             email: email,
             roles: [
                 {

@@ -29,6 +29,7 @@ const userUpdate = async (data) => {
 
 const userFindAll = async () => {
     const config = requestConfig("GET")
+    
     try {
         const res = await fetch(api + "/usuarios",config)
             .then((res) => res.json())

@@ -1,15 +1,14 @@
 import './Consultas.css'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import {
-    BsFillEyeFill,
-    BsFillPencilFill,
     BsFillTrashFill
 } from "react-icons/bs";
 import Modal from './ConsultaModal';
 import ModalEdit from './ConsultaModalEdit';
+import ModalView from './ConsultaModalView'
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { consultFindById,consultDelete,consultRegister,consultUpdate } from '../../slices/consultSlice';
+import { consultFindById,consultDelete } from '../../slices/consultSlice';
 
 
 const Consultas = () => {
@@ -22,14 +21,6 @@ const Consultas = () => {
     useEffect(() => {
         dispatch(consultFindById(user.id))
     },[])
-
-    const handleView = () => {
-
-    }
-
-    const handleEdit = () => {
-
-    }
 
     const handleDelete = (id) => {
         dispatch(consultDelete(id))
@@ -81,7 +72,7 @@ const Consultas = () => {
                                     <td scope="row">{consulta.status}</td>
                                     <td scope="row" className='actions'>
                                         <button className='btn me-3'>
-                                            <BsFillEyeFill onClick={handleView(consulta.id)}/>
+                                            <ModalView props={consulta}/>
                                         </button>
                                         <button className='btn me-3'>
                                             <ModalEdit props={consulta}/>
