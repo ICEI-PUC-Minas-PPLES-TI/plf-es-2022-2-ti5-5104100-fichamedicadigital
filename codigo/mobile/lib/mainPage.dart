@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:mobile/services/UserService.dart';
 import 'package:mobile/userData.dart';
+import 'package:mobile/view/maps.dart';
 
 import 'exam.dart';
+import 'myAppointment.dart';
 
 class MainPage extends StatefulWidget {
   String nome;
@@ -29,7 +31,6 @@ class _MainPageState extends State<MainPage> {
                 child: Text('Ficha Médica Digital',
                     style: TextStyle(fontSize: 20)),
               ),
-              // ignore: prefer_const_constructors
               Row(children: <Widget>[
                 Padding(
                   padding: const EdgeInsets.only(right: 5),
@@ -75,7 +76,7 @@ class _MainPageState extends State<MainPage> {
                 ),
                 Text(
                   widget.nome,
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800),
+                  style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w800),
                 ),
                 const Text('Tipo sanguíneo: O+'),
                 const Text('Soropositivo: positivo')
@@ -144,12 +145,11 @@ class _MainPageState extends State<MainPage> {
                   fit: FlexFit.loose,
                   child: ElevatedButton(
                     onPressed: () {
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //       builder: (context) => SegundaTela(
-                      //           valor: _textEditingController.text)),
-                      // );
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                             builder: (context) => myAppointment())
+                      );
                     },
                     style: ElevatedButton.styleFrom(
                         fixedSize: const Size(130, 110),
@@ -172,12 +172,11 @@ class _MainPageState extends State<MainPage> {
                   fit: FlexFit.loose,
                   child: ElevatedButton(
                     onPressed: () {
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //       builder: (context) => SegundaTela(
-                      //           valor: _textEditingController.text)),
-                      // );
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => MapsPage()),
+                      );
                     },
                     style: ElevatedButton.styleFrom(
                         fixedSize: const Size(130, 110),
