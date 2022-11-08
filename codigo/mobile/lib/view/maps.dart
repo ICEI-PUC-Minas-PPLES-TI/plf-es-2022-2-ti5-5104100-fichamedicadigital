@@ -26,8 +26,6 @@ class _MapsPageState extends State<MapsPage> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              ElevatedButton(onPressed: () => {}, child: const Text('teste')),
-
               SizedBox(
                 width: 300,
                 height: 480,
