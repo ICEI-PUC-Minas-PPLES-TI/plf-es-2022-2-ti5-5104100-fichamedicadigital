@@ -15,9 +15,11 @@ const userRegister = async (data) => {
 };
 
 const userUpdate = async (data) => {
-    const config = requestConfig("PUT", data);
-    try {
-      const res = await fetch(api + "/usuarios/5", config)
+
+  const config = requestConfig("PUT", data[0]);
+console.log(config.body)
+  try {
+      const res = await fetch(api + "/usuarios/"+data[1], config)
         .then((res) => res.json())
         .catch((err) => err);
   

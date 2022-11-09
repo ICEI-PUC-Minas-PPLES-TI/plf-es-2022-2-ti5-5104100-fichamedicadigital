@@ -15,11 +15,10 @@ const DashboardModalEdit = (usuario) => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const [id, setId] = useState(usuario.props.id)
     const [name, setName] = useState(usuario.props.primeiroNome);
     const [surName, setSurname] = useState(usuario.props.sobreNome);
     const [email, setEmail] = useState(usuario.props.email);
-    const [roles,setRoles] = useState(usuario.props.roles)
+    const [roles,setRoles] = useState(usuario.props.roles[0].id)
 
     const dispatch = useDispatch();
 
@@ -38,21 +37,27 @@ const DashboardModalEdit = (usuario) => {
             status = 'ROLE_PACIENTE'
         }
 
+
         const user = {
             primeiroNome: name,
             sobreNome: surName,
             email: email,
             roles: [
                 {
-                    id:roles,
-                    authority: status
+                    authority: status,
+                    id: roles                    
                 }
             ]
         }
-
-        dispatch(userUpdate(user))
+        console.log(user)
         
-        setShow(true)
+        
+        const id = usuario.props.id
+        const userData = [user,id]
+
+        dispatch(userUpdate(userData))
+        
+        setShow(false)
     }
 
     useEffect(() => {
@@ -115,7 +120,7 @@ const DashboardModalEdit = (usuario) => {
                                 className="form-select w-50" 
                                 aria-label="Default select example"
                                 onChange={(e) => setRoles(e.target.value)}
-                                value={roles[0].id}>
+                                value={roles}>
                                 <option value="3">PACIENTE</option>
                                 <option value="2">MÉDICO</option>
                                 <option value="1">ADMIN</option>
