@@ -1,4 +1,5 @@
 import './Profile.css'
+import MedicalRecordView from '../MedicalRecord/MedicalRecordView';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import {
     BsPlusCircleFill,
@@ -9,6 +10,7 @@ import {
 import { useDispatch,useSelector } from 'react-redux';
 import { useState,useEffect } from 'react';
 import {reset,medicalFindById} from '../../slices/medicalSlice'
+import {pacientesFindAll} from '../../slices/userSlice'
 import {consultFindById,consultDelete} from '../../slices/consultSlice'
 
 const Profile = () => {
@@ -17,15 +19,15 @@ const Profile = () => {
     const user = JSON.parse(localStorage.getItem("user"));
     let data = new Date( user.dataNascimento);
     let dataFormatada = ((data.getDate() )) + "/" + ((data.getMonth() + 1)) + "/" + data.getFullYear(); 
-    const {fichaMedica} = useSelector((state) => state.medical)
-
+    const pacientes = useSelector((state) => state.user.pacienteData || {})
     const {consultData} = useSelector((state) => state.consult || {})
+    const [pacienteId,setPacienteId] = useState('')
 
-    
     useEffect(() => {
         // dispatch(medicalFindById(user.id))
         dispatch(consultFindById(user.id))
-    },[])
+        dispatch(pacientesFindAll())
+    },[dispatch])
 
     const handleData = (date) => {
         let data = new Date(date)
@@ -93,7 +95,7 @@ const Profile = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {consultData !== undefined && consultData.map((consulta) => (
+                            {consultData && consultData.map((consulta) => (
                                 
                                 <tr key={consulta.id}>
                                     <td scope="row">{consulta.id}</td>
@@ -119,36 +121,20 @@ const Profile = () => {
                     </table>
                 </TabPanel>
                 <TabPanel>
-                <table className="table table-striped mt-4">
-                        <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Nome do Paciente</th>
-                                <th scope="col">Data da Consulta</th>
-                                <th scope="col">Hora da Consulta</th>
-                                <th scope="col">Status</th>
-                                <th scope="col">Ações</th>
-
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Edson Junior</td>
-                                <td>24/10/2022</td>
-                                <td>12:00:00</td>
-                                <td>Ativa</td>
-                                <td className='actions'>
-                                    <button className='btn me-3'>
-                                        <BsFillEyeFill onClick={handleViewFicha}/>
-                                    </button>
-                                    <button className='btn me-3'>
-                                        <BsFillPencilFill onClick={handleEditFicha}/>
-                                    </button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <select
+                    className="form-select w-25" 
+                    aria-label="Default select example"
+                    onChange={(e) => setPacienteId(e.target.value)}
+                    value={pacienteId}>
+                        <option value="">----- SELECIONE O PACIENTE -----</option>
+                        {pacientes && pacientes.map((paciente) => (
+                            <option key={paciente.idUsuario} value={paciente.idUsuario}>{paciente.primeiroNome}</option>
+                        ))
+                        }
+                </select>
+                {pacienteId && 
+                    <MedicalRecordView props={pacienteId}/>
+                }
                 </TabPanel>
             </Tabs>
         </div>

@@ -43,6 +43,20 @@ const userFindAll = async () => {
     }
 }
 
+const pacientesFindAll = async () => {
+  const config = requestConfig("GET")
+
+  try {
+    const res = await fetch(api+ "/pacientes",config)
+      .then((res) => res.json())
+      .catch((err) => err)
+
+      return res
+  } catch(error) {
+    console.log(error)
+  }
+}
+
 
 const userDelete = async (id) => {
   const config = requestConfig("DELETE")
@@ -62,7 +76,8 @@ const userService = {
 userRegister,
 userFindAll,
 userDelete,
-userUpdate
+userUpdate,
+pacientesFindAll
 };
 
 export default userService;

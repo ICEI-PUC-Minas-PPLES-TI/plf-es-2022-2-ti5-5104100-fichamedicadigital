@@ -9,7 +9,7 @@ const ConsultaModalView = (consulta) => {
    
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-console.log(consulta.props)
+
     const handleData = (date) => {
         let data = new Date(date)
         return ((data.getDate() )) + "/" + ((data.getMonth() + 1)) + "/" + data.getFullYear();

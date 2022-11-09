@@ -4,6 +4,7 @@ import userService from "../services/userService";
 
 const initialState = {
     userData: [],
+    pacienteData: [],
     error: false,
     success: false,
     loading: false,
@@ -52,6 +53,18 @@ export const userFindAll = createAsyncThunk(
     "user/userFindAll",
     async (thunkAPI) => {
         const data = await userService.userFindAll()
+
+        if (data.errors) {
+            return thunkAPI.rejectWithValue(data.errors[0])
+        }
+        return data
+    }
+)
+
+export const pacientesFindAll = createAsyncThunk(
+    "user/pacientesFindAll",
+    async (thunkAPI) => {
+        const data = await userService.pacientesFindAll()
 
         if (data.errors) {
             return thunkAPI.rejectWithValue(data.errors[0])
@@ -124,6 +137,20 @@ export const userSlice = createSlice({
                 state.userData = action.payload
             })
             .addCase(userFindAll.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.payload;
+            })
+            .addCase(pacientesFindAll.pending, (state) => {
+                state.loading = true;
+                state.error = null;
+            })
+            .addCase(pacientesFindAll.fulfilled, (state, action) => {
+                state.loading = false;
+                state.success = true;
+                state.error = null;
+                state.pacienteData = action.payload
+            })
+            .addCase(pacientesFindAll.rejected, (state, action) => {
                 state.loading = false;
                 state.error = action.payload;
             })

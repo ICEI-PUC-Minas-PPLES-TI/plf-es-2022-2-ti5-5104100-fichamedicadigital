@@ -114,6 +114,20 @@ export const medicalSlice = createSlice({
         state.loading = false;
         state.error = action.payload;
       })
+      .addCase(medicalFindById.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(medicalFindById.fulfilled, (state, action) => {
+        state.loading = false;
+        state.success = true;
+        state.error = null;
+        state.medicalData = action.payload
+      })
+      .addCase(medicalFindById.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
   },
 });
 

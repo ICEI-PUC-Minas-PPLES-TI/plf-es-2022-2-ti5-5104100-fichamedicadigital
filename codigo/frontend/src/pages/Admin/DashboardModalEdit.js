@@ -11,7 +11,7 @@ const DashboardModalEdit = (usuario) => {
     const [show, setShow] = useState(false);
     let data = new Date(usuario.props.dataNascimento)
     data = data.getDate() + "/" + ((data.getMonth() + 1)) + "/" + data.getFullYear()
-    console.log(usuario)
+
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
