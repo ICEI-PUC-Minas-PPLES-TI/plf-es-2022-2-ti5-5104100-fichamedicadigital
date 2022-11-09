@@ -1,5 +1,6 @@
 package com.tisv.fichamedicadigital.services;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Optional;
@@ -76,7 +77,16 @@ public class ConsultaService {
 
 	@Transactional
 	public Consulta insert(Consulta dto) {
-		List<Consulta> listaConsultas = repository.findByData(dto.getData());
+		List<Consulta> listaConsultas = new ArrayList<>();
+		List<Consulta> listaDeConsultas = repository.findAll();
+		for (Consulta consulta : listaDeConsultas) {
+			if (consulta.getData().getDay() == dto.getData().getDay()
+					&& consulta.getData().getMonth() == dto.getData().getMonth()
+					&& consulta.getData().getYear() == dto.getData().getYear()) {
+				listaConsultas.add(consulta);
+			}
+		}
+
 		Calendar horaInicioConsulta = Calendar.getInstance();
 		horaInicioConsulta.setTime(dto.getHoraInicio());
 		Calendar horaFimConsulta = Calendar.getInstance();

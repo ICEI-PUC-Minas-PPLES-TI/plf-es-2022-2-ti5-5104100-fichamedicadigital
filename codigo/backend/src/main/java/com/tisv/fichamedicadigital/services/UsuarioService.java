@@ -59,8 +59,8 @@ public class UsuarioService implements UserDetailsService {
 	@Autowired
 	private PacienteRepository pacienteRepository;
 
-	@Autowired
-	private AuthService authService;
+	//@Autowired
+	//private AuthService authService;
 
 	@Autowired
 	private RoleRepository roleRepository;
