@@ -26,8 +26,8 @@ class _SegundaTelaState extends State<SegundaTela> {
       intoleranciaLactose,
       transfusao;
   List<VacinaData> data = [];
-  late String cartaoSus, convenio, numeroCarteirinha, tipoSanguineo;
-  late List<dynamic> doencas, medicamentos, medicamentosAlergia;
+  late String cartaoSus, convenio, nCarteirinha, tipoSanguineo;
+  late List<dynamic> doencas, medicamentos, medicamentosAlergia, vacinas;
   late String sobreNome, primeiroNome;
   late DateTime dataTransfusao;
   int i = 0;
@@ -35,9 +35,16 @@ class _SegundaTelaState extends State<SegundaTela> {
   void initState() {
     int meuId = widget.id;
     UserService().userData(meuId).then((value) {
+      print(value);
       cartaoSus = value['cartaoSus'] == null
           ? "Não possui"
           : value['cartaoSus'].toString();
+      nCarteirinha = value['numeroCarteirinha'] == null
+          ? "Não possui"
+          : value['numeroCarteirinha'].toString();
+      convenio = value['convenio'] == null
+          ? "Não possui"
+          : value['convenio'].toString();
       cardiaco = value['cardiaco'];
       doencas = value['doencas'];
       sobreNome = value['usuario']['sobreNome'].toString();
@@ -49,20 +56,18 @@ class _SegundaTelaState extends State<SegundaTela> {
       internado = value['internado'];
       intoleranciaLactose = value['intoleranciaLactose'];
       transfusao = value['transfusao'];
-      // dataTransfusao = value['dataTransfusao'] == null
-      //     ? DateTime.now()
-      //     : value['dataTransfusao'];
-      // convenio = value['convenio'] = value['convenio'].toString();
-      // numeroCarteirinha = value['numeroCarteirinha'].toString();
+      dataTransfusao = value['dataTransfusao'] == null
+          ? DateTime.now()
+          : value['dataTransfusao'];
       tipoSanguineo = value['tipoSanguineo'].toString();
-      // vacinas = value['vacinas'];
-      // if(!vacinas.isEmpty){
-      //   while (i < vacinas.length) {
-      //     data.add(
-      //         VacinaData(nome: vacinas[i]['nome'], doses: vacinas[i]['doses']));
-      //     i++;
-      //   }
-      // }
+      vacinas = value['vacinas'];
+      if(!vacinas.isEmpty){
+        while (i < vacinas.length) {
+          data.add(
+              VacinaData(nome: vacinas[i]['nome'], doses: vacinas[i]['doses']));
+          i++;
+        }
+      }
     });
     super.initState();
   }
@@ -109,7 +114,7 @@ class _SegundaTelaState extends State<SegundaTela> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          Text(primeiroNome + sobreNome,
+                          Text('$primeiroNome $sobreNome',
                               style: const TextStyle(fontSize: 24)),
                           Row(
                             children: [
@@ -130,64 +135,64 @@ class _SegundaTelaState extends State<SegundaTela> {
                                   style: TextStyle(
                                       fontSize: 20,
                                       fontWeight: FontWeight.w800))),
-                          // Row(
-                          //   children: <Widget>[
-                          //     const Text("Nº da carteirinha: ",
-                          //         style: TextStyle(fontSize: 14)),
-                          //     Padding(
-                          //         padding: const EdgeInsets.only(left: 15),
-                          //         child: Text(numeroCarteirinha,
-                          //             style: TextStyle(
-                          //                 fontSize: 14,
-                          //                 color:
-                          //                     Colors.black.withOpacity(0.5)))),
-                          //   ],
-                          // ),
-                          // Row(
-                          //   children: <Widget>[
-                          //     const Text("Convênio",
-                          //         style: TextStyle(fontSize: 14)),
-                          //     Padding(
-                          //         padding: const EdgeInsets.only(left: 15),
-                          //         child: Text(convenio,
-                          //             style: TextStyle(
-                          //                 fontSize: 14,
-                          //                 color:
-                          //                     Colors.black.withOpacity(0.5)))),
-                          //   ],
-                          // ),
-                          // Column(
-                          //   children: [
-                          //     data.isEmpty
-                          //         ? Column()
-                          //         : Column(
-                          //             children: [
-                          //               const Padding(
-                          //                   padding: EdgeInsets.only(top: 15),
-                          //                   child: Text("Dados de Vacinação: ",
-                          //                       style: TextStyle(
-                          //                           fontSize: 20,
-                          //                           fontWeight:
-                          //                               FontWeight.w800))),
-                          //               Row(
-                          //                 children: vacinas.map((item) {
-                          //                   return Column(children: [
-                          //                     ListTile(
-                          //                       title: Text(item.exame,
-                          //                           style: const TextStyle(
-                          //                               fontSize: 20)),
-                          //                       subtitle: Text(
-                          //                           '${item.nome}\n${item.doses}',
-                          //                           style: const TextStyle(
-                          //                               fontSize: 14)),
-                          //                     )
-                          //                   ]);
-                          //                 }).toList(),
-                          //               )
-                          //             ],
-                          //           ),
-                          //   ],
-                          // ),
+                          Row(
+                            children: <Widget>[
+                              const Text("Nº da carteirinha: ",
+                                  style: TextStyle(fontSize: 14)),
+                              Padding(
+                                  padding: const EdgeInsets.only(left: 15),
+                                  child: Text(nCarteirinha,
+                                      style: TextStyle(
+                                          fontSize: 14,
+                                          color:
+                                              Colors.black.withOpacity(0.5)))),
+                            ],
+                          ),
+                          Row(
+                            children: <Widget>[
+                              const Text("Convênio",
+                                  style: TextStyle(fontSize: 14)),
+                              Padding(
+                                  padding: const EdgeInsets.only(left: 15),
+                                  child: Text(convenio,
+                                      style: TextStyle(
+                                          fontSize: 14,
+                                          color:
+                                              Colors.black.withOpacity(0.5)))),
+                            ],
+                          ),
+                          Column(
+                            children: [
+                              data.isEmpty
+                                  ? Column()
+                                  : Column(
+                                      children: [
+                                        const Padding(
+                                            padding: EdgeInsets.only(top: 15),
+                                            child: Text("Dados de Vacinação: ",
+                                                style: TextStyle(
+                                                    fontSize: 20,
+                                                    fontWeight:
+                                                        FontWeight.w800))),
+                                        // Row(
+                                        //   children: vacinas.map((item) {
+                                        //     return Column(children: [
+                                        //       ListTile(
+                                        //         title: Text(item.exame,
+                                        //             style: const TextStyle(
+                                        //                 fontSize: 20)),
+                                        //         subtitle: Text(
+                                        //             '${item.nome}\n${item.doses}',
+                                        //             style: const TextStyle(
+                                        //                 fontSize: 14)),
+                                        //       )
+                                        //     ]);
+                                        //   }).toList(),
+                                        // )
+                                      ],
+                                    ),
+                            ],
+                          ),
                           const Padding(
                               padding: EdgeInsets.only(top: 15),
                               child: Text("Dados: ",
@@ -370,7 +375,7 @@ class _SegundaTelaState extends State<SegundaTela> {
                                                   .withOpacity(0.5)))),
                             ],
                           ),
-                          // 
+                          //
                         ],
                       ),
                     )
