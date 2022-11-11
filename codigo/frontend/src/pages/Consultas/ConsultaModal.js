@@ -2,7 +2,7 @@ import './Consultas.css'
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { consultRegister } from "../../slices/consultSlice";
-import {userFindAll,userRegister} from '../../slices/userSlice'
+import {medicosFindAll, pacientesFindAll, userFindAll,userRegister,medicosFindById} from '../../slices/userSlice'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
@@ -22,6 +22,7 @@ const ConsultaModal = () => {
     const [surName, setSurname] = useState('');
     const [birthdate, setBirthdate] = useState('');
     const [email, setEmail] = useState('');
+    const [idPacienteSelect,setIdPacienteSelect] = useState('');
 
     const [data, setData] = useState("")
     const [horaInicio, setHoraInicio] = useState("")
@@ -29,44 +30,66 @@ const ConsultaModal = () => {
 
     const dispatch = useDispatch();
 
-    const usuarios = useSelector((state) => state.user.userData.content)
+    const pacientes = useSelector((state) => state.user.pacienteData)
+    const medicos = useSelector((state) => state.user.medicoData)
+    const medicoLogado = useSelector((state) => state.user.medicoLogado)
     const auth = useSelector((state) => state.auth.user)
 
     useEffect(() => {
-        dispatch(userFindAll())
+        dispatch(pacientesFindAll())
+        dispatch(medicosFindAll())
+        dispatch(medicosFindById(auth.id))
     },[dispatch])
+
+    const handleReset = () => {
+        setName('')
+        setSurname('')
+        setBirthdate('')
+        setEmail('')
+    }
 
     const handleSubmit = (e) => {
 
         e.preventDefault()
 
-        const user = {
-            primeiroNome:name,
-            sobreNome:surName,
-            dataNascimento: birthdate,
-            password:email,
-            email,
-        }
-        dispatch(userRegister(user))
-        dispatch(userFindAll())
+        var idPaciente = '';
+        var idMedico = medicoLogado.id
 
-        let indiceArray = usuarios.length - 1
+        if(name != '' && surName != '' && birthdate != '' && email != '') {
+            const user = {
+                primeiroNome:name,
+                sobreNome:surName,
+                dataNascimento: birthdate,
+                password:email,
+                email,
+            }
+            dispatch(userRegister(user))
+
+            dispatch(pacientesFindAll())
+
+            let indiceArray = pacientes.length - 1
         
-        const idPaciente = usuarios[indiceArray].id + 1
+        idPaciente = pacientes[indiceArray].id + 1
+
+        } else {
+            idPaciente = idPacienteSelect
+        }
+        
         let date = new Date()
+
         const consulta = {
-            data,
+            data: date.toISOString(data),
             horaInicio: date.toISOString(horaInicio),
             horaFim: date.toISOString(horaFim),
             paciente: {
                 id: idPaciente
             },
             medico: {
-                id: auth.id
+                id: idMedico
             } 
         }
         dispatch(consultRegister(consulta))
-        setShow(true)
+        setShow(false)
     }
 
     return (
@@ -92,6 +115,7 @@ const ConsultaModal = () => {
                                     checked={checked}
                                     value="1"
                                     onChange={(e) => setChecked(e.currentTarget.checked)}
+                                    onClick={handleReset}
                                 >
                                     {checked ? 'Sim' : 'Não'}
                                 </ToggleButton>
@@ -145,11 +169,11 @@ const ConsultaModal = () => {
                                 </div>
                             ) : (
                                 <div>
-                                    <select className="form-select w-25 mt-3 mb-5" aria-label="Default select example">
+                                    <select className="form-select w-25 mt-3 mb-5" aria-label="Default select example" value={idPacienteSelect} onChange={(e) => setIdPacienteSelect(e.target.value)}>
                                         <option  value="">SELECIONE</option>
-                                        {usuarios && usuarios.map((usuario) => ( usuario.roles[0].id == 3 && 
+                                        {pacientes && pacientes.map((usuario) => 
                                             <option key={usuario.id} value={usuario.id}>{usuario.primeiroNome}</option>
-                                        ))}
+                                        )}
                                     </select>
                                 </div>
                             )}

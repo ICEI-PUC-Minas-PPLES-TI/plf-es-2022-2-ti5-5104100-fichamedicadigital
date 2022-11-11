@@ -5,6 +5,8 @@ import userService from "../services/userService";
 const initialState = {
     userData: [],
     pacienteData: [],
+    medicoData: [],
+    medicoLogado: [],
     error: false,
     success: false,
     loading: false,
@@ -65,6 +67,30 @@ export const pacientesFindAll = createAsyncThunk(
     "user/pacientesFindAll",
     async (thunkAPI) => {
         const data = await userService.pacientesFindAll()
+
+        if (data.errors) {
+            return thunkAPI.rejectWithValue(data.errors[0])
+        }
+        return data
+    }
+)
+
+export const medicosFindAll = createAsyncThunk(
+    "user/medicosFindAll",
+    async (thunkAPI) => {
+        const data = await userService.medicosFindAll()
+
+        if (data.errors) {
+            return thunkAPI.rejectWithValue(data.errors[0])
+        }
+        return data
+    }
+)
+
+export const medicosFindById = createAsyncThunk(
+    "user/medicosFindById",
+    async (id,thunkAPI) => {
+        const data = await userService.medicosFindById(id)
 
         if (data.errors) {
             return thunkAPI.rejectWithValue(data.errors[0])
@@ -154,6 +180,35 @@ export const userSlice = createSlice({
                 state.loading = false;
                 state.error = action.payload;
             })
+            .addCase(medicosFindAll.pending, (state) => {
+                state.loading = true;
+                state.error = null;
+            })
+            .addCase(medicosFindAll.fulfilled, (state, action) => {
+                state.loading = false;
+                state.success = true;
+                state.error = null;
+                state.medicoData = action.payload
+            })
+            .addCase(medicosFindAll.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.payload;
+            })
+            .addCase(medicosFindById.pending, (state) => {
+                state.loading = true;
+                state.error = null;
+            })
+            .addCase(medicosFindById.fulfilled, (state, action) => {
+                state.loading = false;
+                state.success = true;
+                state.error = null;
+                state.medicoLogado = action.payload
+            })
+            .addCase(medicosFindById.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.payload;
+            })
+            
     },
 });
 

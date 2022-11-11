@@ -57,6 +57,34 @@ const pacientesFindAll = async () => {
   }
 }
 
+const medicosFindAll = async () => {
+  const config = requestConfig("GET")
+
+  try {
+    const res = await fetch(api+ "/medicos",config)
+      .then((res) => res.json())
+      .catch((err) => err)
+
+      return res
+  } catch(error) {
+    console.log(error)
+  }
+}
+
+const medicosFindById = async (id) => {
+  const config = requestConfig("GET")
+
+  try {
+    const res = await fetch(api+ "/medicos/"+id,config)
+      .then((res) => res.json())
+      .catch((err) => err)
+
+      return res
+  } catch(error) {
+    console.log(error)
+  }
+}
+
 
 const userDelete = async (id) => {
   const config = requestConfig("DELETE")
@@ -77,7 +105,9 @@ userRegister,
 userFindAll,
 userDelete,
 userUpdate,
-pacientesFindAll
+pacientesFindAll,
+medicosFindAll,
+medicosFindById
 };
 
 export default userService;

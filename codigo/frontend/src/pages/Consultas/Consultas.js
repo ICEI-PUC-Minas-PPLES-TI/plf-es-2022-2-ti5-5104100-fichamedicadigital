@@ -8,19 +8,19 @@ import ModalEdit from './ConsultaModalEdit';
 import ModalView from './ConsultaModalView'
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { consultFindById,consultDelete } from '../../slices/consultSlice';
+import { consultFindById, consultDelete } from '../../slices/consultSlice';
 
 
 const Consultas = () => {
 
-    const {user} = useSelector((state) => state.auth)
-    const {consultData} = useSelector((state) => state.consult || {})
+    const { user } = useSelector((state) => state.auth)
+    const { consultData } = useSelector((state) => state.consult || {})
 
     const dispatch = useDispatch()
 
     useEffect(() => {
         dispatch(consultFindById(user.id))
-    },[])
+    }, [])
 
     const handleDelete = (id) => {
         dispatch(consultDelete(id))
@@ -28,11 +28,11 @@ const Consultas = () => {
 
     const handleData = (date) => {
         let data = new Date(date)
-        return ((data.getDate() )) + "/" + ((data.getMonth() + 1)) + "/" + data.getFullYear();
+        return ((data.getDate())) + "/" + ((data.getMonth() + 1)) + "/" + data.getFullYear();
     }
     const handleHora = (time) => {
         let hora = new Date(time)
-        return ((hora.getHours() )) + ":" + ((hora.getMinutes()));
+        return ((hora.getHours())) + ":" + ((hora.getMinutes()));
     }
     return (
         <div id='Consultas'>
@@ -46,7 +46,7 @@ const Consultas = () => {
                 </TabList>
 
                 <TabPanel>
-                    <Modal/>
+                    <Modal />
                     <table className="table table-striped mt-4">
                         <thead>
                             <tr>
@@ -62,27 +62,28 @@ const Consultas = () => {
                         </thead>
                         <tbody>
                             {consultData !== undefined && consultData.map((consulta) => (
-                                
+                                (consulta.status != 'CANCELADA' && consulta.status != 'FINALIZADA' ) &&
                                 <tr key={consulta.id}>
                                     <td scope="row">{consulta.id}</td>
-                                    <td scope="row">{consulta.paciente.primeiroNome}</td>
+                                    <td scope="row">{`${consulta.paciente.primeiroNome} ${consulta.paciente.ultimoNome}`}</td>
                                     <td scope="row">{handleData(consulta.data)}</td>
                                     <td scope="row">{handleHora(consulta.horaInicio)}</td>
                                     <td scope="row">{handleHora(consulta.horaFim)}</td>
                                     <td scope="row">{consulta.status}</td>
                                     <td scope="row" className='actions'>
                                         <button className='btn me-3'>
-                                            <ModalView props={consulta}/>
+                                            <ModalView props={consulta} />
                                         </button>
                                         <button className='btn me-3'>
-                                            <ModalEdit props={consulta}/>
+                                            <ModalEdit props={consulta} />
                                         </button>
                                         <button className='btn'>
-                                            <BsFillTrashFill onClick={() => handleDelete(consulta.id)}/>
+                                            <BsFillTrashFill onClick={() => handleDelete(consulta.id)} />
                                         </button>
                                     </td>
                                 </tr>
-                            ))}
+                            )
+                            )}
                         </tbody>
                     </table>
                 </TabPanel>
@@ -93,16 +94,23 @@ const Consultas = () => {
                                 <th scope="col">#</th>
                                 <th scope="col">Nome do Paciente</th>
                                 <th scope="col">Data da Consulta</th>
+                                <th scope="col">Hora Início</th>
+                                <th scope="col">Hora Fim</th>
                                 <th scope="col">Status</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                            </tr>
+                            {consultData !== undefined && consultData.map((consulta) => (
+                                (consulta.status == 'CANCELADA' || consulta.status == 'FINALIZADA' ) &&
+                                <tr key={consulta.id}>
+                                    <td scope="row">{consulta.id}</td>
+                                    <td scope="row">{`${consulta.paciente.primeiroNome} ${consulta.paciente.ultimoNome}`}</td>
+                                    <td scope="row">{handleData(consulta.data)}</td>
+                                    <td scope="row">{handleHora(consulta.horaInicio)}</td>
+                                    <td scope="row">{handleHora(consulta.horaFim)}</td>
+                                    <td scope="row">{consulta.status}</td>
+                                </tr>
+                            ))}
                         </tbody>
                     </table>
                 </TabPanel>

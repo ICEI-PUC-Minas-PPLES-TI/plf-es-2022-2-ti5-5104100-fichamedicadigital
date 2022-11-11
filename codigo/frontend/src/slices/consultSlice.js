@@ -12,7 +12,7 @@ const initialState = {
 export const consultRegister = createAsyncThunk(
     "consult/consultRegister",
     async (consultData, thunkAPI) => {
-
+        
         const data = await consultService.consultRegister(consultData);
 
         if (data.errors) {

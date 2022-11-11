@@ -142,10 +142,10 @@ const MedicalRecordView = (idPaciente) => {
             <div className='row mt-4'>
                 <h3 className='d-flex justify-content-center mt-3 mb-3'>Vacinas</h3>
                 {medicalData.vacinas != '' ? medicalData.vacinas.map((vacina)=> (
-                    <div className='col-3'>
-                        <input type="text" className='form-control w-50' disabled value={vacina.nomeVacina}/>
-                        <input type="text" className='form-control w-50' disabled value={vacina.numeroDoses}/>
-                        <input type="text" className='form-control w-50' disabled value={vacina.diaVacina}/>
+                    <div className='col-6 d-flex justify-contetn-center border pt-3 pb-3'>
+                        <input type="text" className='form-control me-3' disabled value={vacina.nomeVacina}/>
+                        <input type="text" className='form-control me-3' disabled value={`Doses: ${vacina.numeroDoses}`}/>
+                        <input type="text" className='form-control' disabled value={handleData(vacina.diaVacina)}/>
                     </div>
                 )) : (
                     <p className='d-flex justify-content-center mt-4'>Nenhuma vacina cadastrada!</p>
