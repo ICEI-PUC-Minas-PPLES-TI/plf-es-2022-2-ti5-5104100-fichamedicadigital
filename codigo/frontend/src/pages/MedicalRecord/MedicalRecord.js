@@ -57,18 +57,18 @@ const MedicalRecord = () => {
     const [birthdate, setBirthdate] = useState('');
     const [email, setEmail] = useState('');
 
-    const [cardiaco, setCardiaco] = useState('');
+    var [cardiaco, setCardiaco] = useState('');
     var [desmaioConvulsao, setDesmaioConvulsao] = useState('');
     const [dataDesmaioConvulsao, setDataDesmaioConvulsao] = useState('false');
-    const [diabetico, setDiabetico] = useState('');
+    var [diabetico, setDiabetico] = useState('');
     const [medicamentos, setMedicamentos] = useState([]);
     const [vacinas, setVacinas] = useState([]);
     const [doencas,setDoencas] = useState([])
     const [tipoSanguineo, setTipoSanguineo] = useState('');
-    const [internado, setInternado] = useState('');
+    var [internado, setInternado] = useState('');
     const [internadoMotivo, setInternadoMotivo] = useState('');
-    const [intoleranteLactose, setIntoleranteLactose] = useState('');
-    const [transfusao, setTransfusao] = useState('');
+    var [intoleranteLactose, setIntoleranteLactose] = useState('');
+    var [transfusao, setTransfusao] = useState('');
     const [dataTransfusao, setDataTransfusao] = useState('')
     const [cartaoSus, setCartaoSus] = useState('');
     const [numeroConvenio, setNumeroConvenio] = useState('');
@@ -142,16 +142,42 @@ const MedicalRecord = () => {
         } else if(desmaioConvulsao == 'false') {
             desmaioConvulsao = false
         }
+        if(cardiaco == 'true') {
+            cardiaco = true
+        } else if(cardiaco == 'false') {
+            cardiaco = false
+        }
+        if(diabetico == 'true') {
+            diabetico = true
+        } else if(diabetico == 'false') {
+            diabetico = false
+        }
+        if(internado == 'true') {
+            internado = true
+        } else if(internado == 'false') {
+            internado = false
+        }
+        if(intoleranteLactose == 'true') {
+            intoleranteLactose = true
+        } else if(intoleranteLactose == 'false') {
+            intoleranteLactose = false
+        }
+        if(transfusao == 'true') {
+            transfusao = true
+        } else if(transfusao == 'false') {
+            transfusao = false
+        }
+        let date = new Date()
 
         const medicalData = {
             cardiaco: cardiaco,
             desmaioOuConvulsao: desmaioConvulsao,
-            dataDesmaioConvulsao: dataDesmaioConvulsao,
+            dataDesmaioConvulsao: date.toISOString(dataDesmaioConvulsao),
             diabetico: diabetico,
             internado: internado,
             intoleranciaLactose: intoleranteLactose,
             transfusao:transfusao,
-            dataTransfusao: dataTransfusao,
+            dataTransfusao: date.toISOString(dataTransfusao),
             cartaoSus: cartaoSus,
             numeroCarteirinha: numeroConvenio,
             convenio: convenio,
@@ -160,9 +186,10 @@ const MedicalRecord = () => {
             doencas:doencas,
             tipoSanguineo: tipoSanguineo,
             internadoMotivo: internadoMotivo,
-            dataDesmaioConvulsao:dataDesmaioConvulsao,
             vacinas: vacinas,
-            idPaciente:idPaciente
+            usuario: {
+                id: idPaciente
+            }
         }
         console.log(medicalData)
         dispatch(medicalRegister(medicalData));
@@ -237,9 +264,9 @@ const MedicalRecord = () => {
                         </div>
                         <div className='col-6'>
                             <select className="form-select " aria-label="Default select example" onChange={(e)=> setCardiaco(e.target.value)} value={cardiaco}>
-                                <option value="">SELECIONE</option>
-                                <option value="SIM">SIM</option>
-                                <option value="NAO">NÃO</option>
+                                <option value="false">SELECIONE</option>
+                                <option value="true">SIM</option>
+                                <option value="false">NÃO</option>
                             </select>
                         </div>
                     </div>
@@ -290,9 +317,9 @@ const MedicalRecord = () => {
                         </div>
                         <div className="col-6">
                             <select className="form-select" aria-label="Default select example" onChange={(e)=> setDiabetico(e.target.value)} value={diabetico}>
-                                <option value="">SELECIONE</option>
-                                <option value="SIM">SIM</option>
-                                <option value="NAO">NÃO</option>
+                                <option value="false">SELECIONE</option>
+                                <option value="true">SIM</option>
+                                <option value="false">NÃO</option>
                             </select>
                         </div>
                     </div>
@@ -302,13 +329,13 @@ const MedicalRecord = () => {
                         </div>
                         <div className="col-6">
                             <select className="form-select" aria-label="Default select example" onChange={(e)=> setInternado(e.target.value)} value={internado}>
-                                <option value="">SELECIONE</option>
-                                <option value="SIM">SIM</option>
-                                <option value="NAO">NÃO</option>
+                                <option value="false">SELECIONE</option>
+                                <option value="true">SIM</option>
+                                <option value="false">NÃO</option>
                             </select>
                         </div>
                     </div>
-                    {internado == 'SIM' &&
+                    {internado == 'true' &&
                         <div className='row mt-3'>
                             <div className="col-6">
                                 <label className='form-label'>Motivo:</label>
@@ -326,9 +353,9 @@ const MedicalRecord = () => {
                         </div>
                         <div className="col-6">
                             <select className="form-select" aria-label="Default select example" onChange={(e)=> setIntoleranteLactose(e.target.value)} value={intoleranteLactose}>
-                                <option value="">SELECIONE</option>
-                                <option value="SIM">SIM</option>
-                                <option value="NAO">NÃO</option>
+                                <option value="false">SELECIONE</option>
+                                <option value="true">SIM</option>
+                                <option value="false">NÃO</option>
                             </select>
                         </div>                    </div>
                     <div className='row mt-3'>
@@ -337,13 +364,13 @@ const MedicalRecord = () => {
                         </div>
                         <div className="col-6">
                             <select className="form-select" aria-label="Default select example" onChange={(e)=> setTransfusao(e.target.value)} value={transfusao}>
-                                <option value="">SELECIONE</option>
-                                <option value="SIM">SIM</option>
-                                <option value="NAO">NÃO</option>
+                                <option value="false">SELECIONE</option>
+                                <option value="true">SIM</option>
+                                <option value="false">NÃO</option>
                             </select>
                         </div>
                     </div>
-                    {transfusao == "SIM" && 
+                    {transfusao == "true" && 
                         <div className='row mt-3'>
                             <div className='col-6'>
                                 <label className='form-label'>Data da Transfusão:</label>
