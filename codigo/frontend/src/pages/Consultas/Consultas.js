@@ -9,6 +9,7 @@ import ModalView from './ConsultaModalView'
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { consultFindById, consultDelete } from '../../slices/consultSlice';
+import ConsultaModalView from './ConsultaModalView';
 
 
 const Consultas = () => {
@@ -97,6 +98,7 @@ const Consultas = () => {
                                 <th scope="col">Hora Início</th>
                                 <th scope="col">Hora Fim</th>
                                 <th scope="col">Status</th>
+                                <th scope="col">Ação</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -109,6 +111,11 @@ const Consultas = () => {
                                     <td scope="row">{handleHora(consulta.horaInicio)}</td>
                                     <td scope="row">{handleHora(consulta.horaFim)}</td>
                                     <td scope="row">{consulta.status}</td>
+                                    <td>
+                                        <button className='btn me-3'>
+                                            <ConsultaModalView props={consulta}/>
+                                        </button>
+                                    </td>
                                 </tr>
                             ))}
                         </tbody>

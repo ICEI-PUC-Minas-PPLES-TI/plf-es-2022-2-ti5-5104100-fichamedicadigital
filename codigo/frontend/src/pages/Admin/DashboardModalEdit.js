@@ -49,9 +49,7 @@ const DashboardModalEdit = (usuario) => {
                 }
             ]
         }
-        console.log(user)
-        
-        
+     
         const id = usuario.props.id
         const userData = [user,id]
 

@@ -35,6 +35,19 @@ export const consultUpdate = createAsyncThunk(
     }
 )
 
+export const consultUpdateStatus = createAsyncThunk(
+    "consult/consultUpdateStatus",
+    async (consultData, thunkAPI) => {
+
+        const data = await consultService.consultUpdateStatus(consultData)
+
+        if (data.errors) {
+            return thunkAPI.rejectWithValue(data.errors[0])
+        }
+        return data
+    }
+)
+
 export const consultDelete = createAsyncThunk(
     "consult/consultDelete",
     async (id,thunkAPI) => {
@@ -97,6 +110,19 @@ export const consultSlice = createSlice({
                 state.error = null;
             })
             .addCase(consultUpdate.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.payload;
+            })
+            .addCase(consultUpdateStatus.pending, (state) => {
+                state.loading = true;
+                state.error = null;
+            })
+            .addCase(consultUpdateStatus.fulfilled, (state, action) => {
+                state.loading = false;
+                state.success = true;
+                state.error = null;
+            })
+            .addCase(consultUpdateStatus.rejected, (state, action) => {
                 state.loading = false;
                 state.error = action.payload;
             })
