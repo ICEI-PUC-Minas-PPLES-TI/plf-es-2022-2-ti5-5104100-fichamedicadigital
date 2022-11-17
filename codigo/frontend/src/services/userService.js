@@ -33,7 +33,7 @@ const userFindAll = async () => {
     const config = requestConfig("GET")
     
     try {
-        const res = await fetch(api + "/usuarios",config)
+        const res = await fetch(api + "/usuarios?sort=id,asc",config)
             .then((res) => res.json())
             .catch((err) => err)
 
