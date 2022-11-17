@@ -96,8 +96,10 @@ const MedicalRecord = () => {
     const dispatch = useDispatch();
 
     const findLastId = () => {
-        let indiceArray = usuarios.content.length - 1
-        return usuarios.content[indiceArray].id
+        if(usuarios != undefined){
+            let indiceArray = usuarios.content.length - 1
+            return usuarios.content[indiceArray].id
+        } 
     }
 
     const addInputButton = (e) =>{
@@ -202,8 +204,10 @@ const MedicalRecord = () => {
         }
         let date = new Date()
 
-        const idPaciente = findLastId()
-
+        for(var i = 0; i<3; i++) {
+            var idPaciente = findLastId()
+            console.log(idPaciente)
+        }
         const medicalData = {
             cardiaco: cardiaco,
             desmaioOuConvulsao: desmaioConvulsao,

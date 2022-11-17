@@ -24,7 +24,6 @@ const Profile = () => {
     const [pacienteId,setPacienteId] = useState('')
 
     useEffect(() => {
-        // dispatch(medicalFindById(user.id))
         dispatch(consultFindById(user.id))
         dispatch(pacientesFindAll())
     },[dispatch])

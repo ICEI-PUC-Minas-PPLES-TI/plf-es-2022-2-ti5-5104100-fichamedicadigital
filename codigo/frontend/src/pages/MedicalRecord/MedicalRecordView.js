@@ -26,8 +26,7 @@ const MedicalRecordView = (idPaciente) => {
         return transfusaoData.getDate() + "/" + ((transfusaoData.getMonth() + 1)) + "/" + transfusaoData.getFullYear()
     }
 
-    console.log(medicalData)
-    return (medicalData.usuario && (
+    return (medicalData.usuario ? (
         <div className='ficha row mt-4 mb-5'>
             <div className='row mb-5'>
                 <h3 className='d-flex justify-content-center mt-3 mb-3'>#id_{`${medicalData.usuario.id}`} - Dados do Paciente </h3>
@@ -151,6 +150,10 @@ const MedicalRecordView = (idPaciente) => {
                     <p className='d-flex justify-content-center mt-4'>Nenhuma vacina cadastrada!</p>
                 )}
             </div>
+        </div>
+    ) : (
+        <div className='d-flex justify-content-center mt-5'>
+            Nenhuma Ficha Médica cadastrada para esse paciente!
         </div>
     )
     )
