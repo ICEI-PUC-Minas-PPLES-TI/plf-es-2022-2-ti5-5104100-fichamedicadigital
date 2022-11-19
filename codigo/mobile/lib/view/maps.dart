@@ -27,8 +27,8 @@ class _MapsPageState extends State<MapsPage> {
             mainAxisSize: MainAxisSize.min,
             children: [
               SizedBox(
-                width: 300,
-                height: 480,
+                width: 360,
+                height: 640,
                 child: OSMFlutter(
                   controller:controller,
                   trackMyPosition: false,
@@ -36,12 +36,15 @@ class _MapsPageState extends State<MapsPage> {
                   minZoomLevel: 4,
                   maxZoomLevel: 16,
                   stepZoom: 1.0,
+                  mapIsLoading: const Center(
+                    child: CircularProgressIndicator(strokeWidth: 5,),
+                  ),
                   userLocationMarker: UserLocationMaker(
                     personMarker: const MarkerIcon(
                       icon: Icon(
                         Icons.location_history_rounded,
                         color: Colors.red,
-                        size: 48,
+                        size: 64,
                       ),
                     ),
                     directionArrowMarker: const MarkerIcon(
@@ -68,8 +71,47 @@ class _MapsPageState extends State<MapsPage> {
                           color: Colors.blue,
                           size: 56,
                         ),
-                      )
+                      ),
+                    advancedPickerMarker: const MarkerIcon(
+                      icon: Icon(
+                        Icons.pin_drop,
+                        color: Colors.deepOrangeAccent,
+                        size: 64,
+                      ),
+                    )
                   ),
+                  staticPoints: [
+                    StaticPositionGeoPoint(
+                      '1',
+                      const MarkerIcon(
+                        icon: Icon(
+                          Icons.pin_drop,
+                          color: Colors.deepOrangeAccent,
+                          size: 64,
+                        ),
+                      ),
+                      [
+                        GeoPoint(latitude: -19.9326675, longitude: -43.938214),
+                        GeoPoint(latitude: -19.8264536, longitude: -43.959169),
+                        GeoPoint(latitude: -19.9228571, longitude: -43.9947837),
+                      ]
+                    ),
+                  ],
+                  onMapIsReady: (bool value) async {
+                    print('teste to pronto');
+                    if (value) {
+                      Future.delayed(const Duration(seconds: 1), () async {
+                        await controller.currentLocation();
+                      });
+
+                    }
+                  },
+                  onLocationChanged: (data) {
+                    print('onLocationChanged $data');
+                  },
+                  onGeoPointClicked: (data) {
+                    print('onGeoPointClicked $data');
+                  },
                 ),
               )
             ],
