@@ -18,6 +18,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
@@ -57,6 +58,10 @@ public class Usuario implements UserDetails, Serializable {
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "tb_usuarios_roles", joinColumns = @JoinColumn(name = "id_usuario"), inverseJoinColumns = @JoinColumn(name = "id_role"))
 	private Set<Role> roles = new HashSet<>();
+
+	@JsonIgnore
+	@OneToMany(mappedBy = "usuario", fetch = FetchType.EAGER)
+	private Set<Exame> exames = new HashSet<>();
 
 	@JsonIgnore
 	@OneToOne(mappedBy = "usuario")
