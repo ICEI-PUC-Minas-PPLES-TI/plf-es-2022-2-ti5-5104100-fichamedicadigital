@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_osm_plugin/flutter_osm_plugin.dart';
+import 'package:mobile/view/styles/MapsStyle.dart';
 
 class MapsPage extends StatefulWidget {
   const MapsPage({Key? key}) : super(key: key);
@@ -18,7 +19,7 @@ class _MapsPageState extends State<MapsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 208, 243, 239),
+      backgroundColor: MapsStyle.primaryColor,
       body: Center(
         child: Padding(
           padding: const EdgeInsets.only(
@@ -40,13 +41,7 @@ class _MapsPageState extends State<MapsPage> {
                     child: CircularProgressIndicator(strokeWidth: 5,),
                   ),
                   userLocationMarker: UserLocationMaker(
-                    personMarker: const MarkerIcon(
-                      icon: Icon(
-                        Icons.location_history_rounded,
-                        color: Colors.red,
-                        size: 64,
-                      ),
-                    ),
+                    personMarker: MapsStyle.userMarker,
                     directionArrowMarker: const MarkerIcon(
                       icon: Icon(
                         Icons.double_arrow,
@@ -65,31 +60,13 @@ class _MapsPageState extends State<MapsPage> {
                     roadColor: Colors.yellowAccent,
                   ),
                   markerOption: MarkerOption(
-                      defaultMarker: const MarkerIcon(
-                        icon: Icon(
-                          Icons.person_pin_circle,
-                          color: Colors.blue,
-                          size: 56,
-                        ),
-                      ),
-                    advancedPickerMarker: const MarkerIcon(
-                      icon: Icon(
-                        Icons.pin_drop,
-                        color: Colors.deepOrangeAccent,
-                        size: 64,
-                      ),
-                    )
+                    defaultMarker: MapsStyle.defaultMarker,
+                    advancedPickerMarker: MapsStyle.advancedPickerMarker,
                   ),
                   staticPoints: [
                     StaticPositionGeoPoint(
                       '1',
-                      const MarkerIcon(
-                        icon: Icon(
-                          Icons.pin_drop,
-                          color: Colors.deepOrangeAccent,
-                          size: 64,
-                        ),
-                      ),
+                      MapsStyle.staticPointMarker,
                       [
                         GeoPoint(latitude: -19.9326675, longitude: -43.938214),
                         GeoPoint(latitude: -19.8264536, longitude: -43.959169),
