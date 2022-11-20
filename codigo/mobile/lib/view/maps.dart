@@ -83,11 +83,40 @@ class _MapsPageState extends State<MapsPage> {
 
                     }
                   },
-                  onLocationChanged: (data) {
+                  onLocationChanged: (GeoPoint data) {
                     print('onLocationChanged $data');
                   },
-                  onGeoPointClicked: (data) {
+                  onGeoPointClicked: (GeoPoint data) async {
                     print('onGeoPointClicked $data');
+                    switch(await showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return SimpleDialog(
+                            title: const Text('Select assignment'),
+                            children: <Widget>[
+                              SimpleDialogOption(
+                                onPressed: () { Navigator.pop(context, 'a'); },
+                                child: Text('Latitude ${data.latitude}'),
+                              ),
+                              SimpleDialogOption(
+                                onPressed: () { Navigator.pop(context, 'b'); },
+                                child: Text('Longitude ${data.longitude}'),
+                              ),
+                            ],
+                          );
+                        })) {
+                      case 'a':
+                        print('deu a');
+                      // ...
+                        break;
+                      case 'b':
+                        print('deu b');
+                      // ...
+                        break;
+                      case null:
+                      // dialog dismissed
+                        break;
+                    }
                   },
                 ),
               )

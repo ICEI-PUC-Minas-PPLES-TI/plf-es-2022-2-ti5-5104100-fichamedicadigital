@@ -37,4 +37,36 @@ class MapsStyle {
       size: 64,
     ),
   );
+
+  Future<void> askedToLead(context) async {
+    switch (await showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return SimpleDialog(
+            title: const Text('Select assignment'),
+            children: <Widget>[
+              SimpleDialogOption(
+                onPressed: () { Navigator.pop(context, 'a'); },
+                child: const Text('Treasury department'),
+              ),
+              SimpleDialogOption(
+                onPressed: () { Navigator.pop(context, 'b'); },
+                child: const Text('State department'),
+              ),
+            ],
+          );
+        }
+    )) {
+      case 'a':
+      // Let's go.
+      // ...
+        break;
+      case 'b':
+      // ...
+        break;
+      case null:
+      // dialog dismissed
+        break;
+    }
+  }
 }
