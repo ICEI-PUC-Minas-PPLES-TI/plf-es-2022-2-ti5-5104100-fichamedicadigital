@@ -12,7 +12,7 @@ import '../mainPage.dart';
 class ExamService {
   Dio dio = Dio();
   getPdf(String url) async {
-    PDFDocument doc = await PDFDocument.fromURL(url);
+    PDFDocument doc = await PDFDocument.fromURL("images/2e6792a4-7b7f-4de5-b067-a741761d7755.pdf");
     return doc;
   }
   
