@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_osm_plugin/flutter_osm_plugin.dart';
+import 'package:mobile/mainPage.dart';
+import 'package:mobile/services/Appoinment.dart';
 import 'package:mobile/view/styles/MapsStyle.dart';
 
 // class MapsPage extends StatefulWidget {
@@ -16,6 +18,9 @@ import 'package:mobile/view/styles/MapsStyle.dart';
     initPosition: GeoPoint(latitude: -19.9326675, longitude: -43.938214),
     areaLimit: BoundingBox( east: 10.4922941, north: 47.8084648, south: 45.817995, west: 5.9559113,),
   );
+  
+  AppointmentService appointmentService = AppointmentService();
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -88,29 +93,38 @@ import 'package:mobile/view/styles/MapsStyle.dart';
                   },
                   onGeoPointClicked: (GeoPoint data) async {
                     print('onGeoPointClicked $data');
+                    Object consultas = await appointmentService.getAppointmentsByOfficeId(data.toString());
                     switch(await showDialog(
                         context: context,
                         builder: (BuildContext context) {
                           return SimpleDialog(
-                            title: const Text('Select assignment'),
+                            title: Text('Selecione um horário para ${data.latitude} e ${data.longitude}'),
                             children: <Widget>[
                               SimpleDialogOption(
                                 onPressed: () { Navigator.pop(context, 'a'); },
-                                child: Text('Latitude ${data.latitude}'),
+                                child: Text('$consultas'),
                               ),
                               SimpleDialogOption(
                                 onPressed: () { Navigator.pop(context, 'b'); },
-                                child: Text('Longitude ${data.longitude}'),
+                                child: Text('$consultas'),
                               ),
                             ],
                           );
                         })) {
                       case 'a':
                         print('deu a');
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => MainPage(nome: '', id: 1))
+                        );
                       // ...
                         break;
                       case 'b':
                         print('deu b');
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => MainPage(nome: '', id: 1))
+                        );
                       // ...
                         break;
                       case null:

@@ -1,10 +1,6 @@
-import 'dart:convert';
-import 'dart:io';
-
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
+import 'package:mobile/env.dart';
 
-import '../mainPage.dart';
 class AppointmentService{
   Dio dio = Dio();
   // final String endpointUsers = '${Environment().BASE_URL}/users';
@@ -16,6 +12,17 @@ class AppointmentService{
       return response.data;
     } catch (e) {
       throw e.toString();
+    }
+  }
+
+  getAppointmentsByOfficeId(String id) async {
+    Dio dio = Dio();
+    try {
+      dio.options.headers['Content-Type'] = 'application/json';
+      Response response = await dio.get('$BASE_URL/consultas?id=$id');
+      return response;
+    } catch (e) {
+      rethrow;
     }
   }
 }
