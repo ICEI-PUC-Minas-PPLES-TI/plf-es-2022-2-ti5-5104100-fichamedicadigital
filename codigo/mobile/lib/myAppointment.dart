@@ -6,6 +6,8 @@ import 'examUnit.dart';
 const List<String> list = <String>['Todos', 'Pedente', 'Cancelado', 'Marcada', 'Finalizada'];
 
 class myAppointment extends StatefulWidget {
+  int id;
+  myAppointment({required this.id});
   @override
   _myAppointmentState  createState() => _myAppointmentState();
 }
@@ -20,7 +22,8 @@ class _myAppointmentState extends State<myAppointment> {
   @override
   late List<dynamic> content;
   void initState() {
-    AppointmentService().getAppointments().then((value) {
+    int meuId = widget.id;
+    AppointmentService().getAppointments(meuId).then((value) {
       content = value;
     });
   }
@@ -30,8 +33,9 @@ class _myAppointmentState extends State<myAppointment> {
   int i = 0;
   @override
   Widget build(BuildContext context) {
+    int meuId = widget.id;
     return FutureBuilder<dynamic>(
-        future: AppointmentService().getAppointments(),
+        future: AppointmentService().getAppointments(meuId),
         builder: (context, snapshot) {
     return Scaffold(
         appBar: AppBar(
@@ -140,12 +144,6 @@ class _myAppointmentState extends State<myAppointment> {
                       backgroundColor: const Color.fromARGB(255, 208, 243, 239),
                     ),
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => ExamUnit(
-                                name: personone.exame, date: personone.date)),
-                      );
                     },
                     child: ListTile(
                       title:

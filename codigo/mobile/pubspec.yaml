@@ -30,7 +30,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  rxdart: ^0.20.0
+  rxdart: ^0.26.0
   dio:
 
   # The following adds the Cupertino Icons font to your application.
@@ -38,6 +38,11 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_svg: ^1.1.5
   flutter_osm_plugin: ^0.40.3
+  advance_pdf_viewer: any
+  flutter_cache_manager: ^3.0.0
+  flutter_document_picker: ^5.1.0
+  file_picker: ^5.2.2
+
 
 dev_dependencies:
   flutter_test:

@@ -8,11 +8,11 @@ import '../mainPage.dart';
 class AppointmentService{
   Dio dio = Dio();
   // final String endpointUsers = '${Environment().BASE_URL}/users';
-  getAppointments() async {
+  getAppointments(int id) async {
     dio.options.headers['Content-Type'] = 'application/json';
     try {
       Response response = await dio.get(
-          "https://fichamedicadigital.herokuapp.com/consultas");
+          "https://fichamedicadigital.herokuapp.com/consultas/usuario$id");
       return response.data;
     } catch (e) {
       throw e.toString();

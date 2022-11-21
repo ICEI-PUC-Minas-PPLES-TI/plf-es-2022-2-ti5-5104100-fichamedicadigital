@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:mobile/createExam.dart';
 import 'package:mobile/services/UserService.dart';
 import 'package:mobile/userData.dart';
 import 'package:mobile/view/maps.dart';
@@ -122,7 +123,7 @@ class _MainPageState extends State<MainPage> {
                   child: ElevatedButton(
                     onPressed: () {
                       Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Exam()));
+                          MaterialPageRoute(builder: (context) => Exam(id: widget.id)));
                     },
                     style: ElevatedButton.styleFrom(
                         fixedSize: const Size(130, 110),
@@ -148,7 +149,7 @@ class _MainPageState extends State<MainPage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                             builder: (context) => myAppointment())
+                             builder: (context) => myAppointment(id: widget.id))
                       );
                     },
                     style: ElevatedButton.styleFrom(
@@ -175,7 +176,7 @@ class _MainPageState extends State<MainPage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => MapsPage()),
+                            builder: (context) => CreateExame()),
                       );
                     },
                     style: ElevatedButton.styleFrom(
@@ -190,6 +191,33 @@ class _MainPageState extends State<MainPage> {
                         const Padding(
                             padding: EdgeInsets.only(top: 10),
                             child: Text("Agendar Consulta",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(fontSize: 16))),
+                      ],
+                    ),
+                  )),
+                  Flexible(
+                  fit: FlexFit.loose,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => CreateExame()),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                        fixedSize: const Size(130, 110),
+                        backgroundColor:
+                            const Color.fromARGB(255, 62, 173, 173)),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Image.asset('images/appointment.png',
+                            width: 55, height: 57),
+                        const Padding(
+                            padding: EdgeInsets.only(top: 10),
+                            child: Text("Cadastrar Exame",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(fontSize: 16))),
                       ],

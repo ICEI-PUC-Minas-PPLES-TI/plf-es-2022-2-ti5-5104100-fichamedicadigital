@@ -1,14 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:advance_pdf_viewer/advance_pdf_viewer.dart';
+import 'package:mobile/services/examService.dart';
 
 class ExamUnit extends StatefulWidget {
-  String name, date;
-  ExamUnit({required this.name, required this.date});
+  String name, exame;
+  ExamUnit({required this.name, required this.exame});
   @override
   _ExamUnitState createState() => _ExamUnitState();
 }
 
 class _ExamUnitState extends State<ExamUnit> {
+  bool _isLoading = true;
+  late PDFDocument content;
+  void initState() {
+    String meuExame = widget.exame;
+    ExamService().getPdf(meuExame).then((value) {
+      print(value);
+      content = value;
+      _isLoading = false;
+    });
+  }
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,7 +30,6 @@ class _ExamUnitState extends State<ExamUnit> {
             child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-              Image.asset('images/icon.png', width: 46, height: 46),
               const Padding(
                 padding: EdgeInsets.only(left: 15),
                 child: Text('Ficha Médica Digital',
@@ -43,7 +55,8 @@ class _ExamUnitState extends State<ExamUnit> {
       ),
       body: Column(children: <Widget>[
         Text(widget.name),
-        Text(widget.date),
+        const Text("20/03/2022"),
+        _isLoading? Center(child: CircularProgressIndicator()): PDFViewer(document: content),
         const Text("Baixar Exame")
       ]),
     );
