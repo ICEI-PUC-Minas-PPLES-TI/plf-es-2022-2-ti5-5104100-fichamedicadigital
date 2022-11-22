@@ -1,21 +1,10 @@
-import 'dart:convert';
 import 'dart:io';
-import 'dart:math';
-import 'package:advance_pdf_viewer/advance_pdf_viewer.dart';
 import 'package:dio/dio.dart';
-import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:mobile/examUnit.dart';
 
-import '../mainPage.dart';
-
 class ExamService {
   Dio dio = Dio();
-  getPdf(String url) async {
-    PDFDocument doc = await PDFDocument.fromURL("images/2e6792a4-7b7f-4de5-b067-a741761d7755.pdf");
-    return doc;
-  }
-  
 
   uploadFile(File file, String nome, context) async {
     if (file == null) {

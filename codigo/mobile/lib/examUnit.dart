@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:advance_pdf_viewer/advance_pdf_viewer.dart';
-import 'package:mobile/services/examService.dart';
-import 'package:pdf_render/pdf_render.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
 String examePdf = "";
@@ -16,8 +13,7 @@ class ExamUnit extends StatefulWidget {
 
 class _ExamUnitState extends State<ExamUnit> {
    final GlobalKey<SfPdfViewerState> _pdfViewerKey = GlobalKey();
-  bool _isLoading = true;
-  late PDFDocument _doc;
+
   @override
   Widget build(BuildContext context) {
     print(widget.exame);
