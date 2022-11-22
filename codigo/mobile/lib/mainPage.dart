@@ -203,7 +203,7 @@ class _MainPageState extends State<MainPage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => CreateExame()),
+                            builder: (context) => MapsPage()),
                       );
                     },
                     style: ElevatedButton.styleFrom(
