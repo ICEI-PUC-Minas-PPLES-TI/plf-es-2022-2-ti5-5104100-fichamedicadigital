@@ -22,9 +22,11 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.tisv.fichamedicadigital.dto.ConsultaDTO;
+import com.tisv.fichamedicadigital.dto.NotificacaoDTO;
 import com.tisv.fichamedicadigital.entities.Consulta;
 import com.tisv.fichamedicadigital.entities.enums.StatusConsulta;
 import com.tisv.fichamedicadigital.services.ConsultaService;
+import com.tisv.fichamedicadigital.services.RabbitMQService;
 
 @RestController
 @RequestMapping(value = "/consultas")
@@ -32,6 +34,9 @@ public class ConsultaResource {
 
 	@Autowired
 	private ConsultaService service;
+
+	@Autowired
+	private RabbitMQService rabbitService;
 
 	@GetMapping
 	public ResponseEntity<List<ConsultaDTO>> findAll(Pageable pageable) {
@@ -64,6 +69,19 @@ public class ConsultaResource {
 		Consulta newDto = service.insert(new Consulta(dto));
 		newDto = service.findById(newDto.getId());
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newDto.getId()).toUri();
+
+		try {
+			NotificacaoDTO notificacao = new NotificacaoDTO();
+			notificacao.setIdConsulta(newDto.getId().toString());
+			notificacao.setDescricao(
+					"Uma consulta foi marcada para o paciente: " + newDto.getPaciente().getUsuario().getPrimeiroNome());
+			notificacao.setNovoStatus(newDto.getStatus().toString());
+			rabbitService.enviaMensagem("NOTIFICACOES", notificacao);
+			rabbitService.enviaMensagem("NOTIFICACOES", notificacao);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+
 		return ResponseEntity.created(uri).body(new ConsultaDTO(newDto));
 	}
 
@@ -76,6 +94,18 @@ public class ConsultaResource {
 	@RequestMapping(value = "/status/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<ConsultaDTO> alteraStatus(@PathVariable Long id, @RequestBody StatusConsulta status) {
 		Consulta newDto = service.alteraStatus(id, status);
+
+		try {
+			NotificacaoDTO notificacao = new NotificacaoDTO();
+			notificacao.setIdConsulta(newDto.getId().toString());
+			notificacao.setDescricao("Status da consulta foi alterada para: " + newDto.getStatus().toString());
+			notificacao.setNovoStatus(newDto.getStatus().toString());
+			rabbitService.enviaMensagem("NOTIFICACOES", notificacao);
+			rabbitService.enviaMensagem("NOTIFICACOES", notificacao);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+
 		return ResponseEntity.ok().body(new ConsultaDTO(newDto));
 	}
 
