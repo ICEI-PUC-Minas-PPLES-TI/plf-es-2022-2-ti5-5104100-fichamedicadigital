@@ -29,7 +29,7 @@ function App() {
                 {auth && (
                     <Navbar />
                 )}
-                <Mensageria/>
+                {auth && <Mensageria/> }
                 <div className="container">
                     <Routes>
                         <Route
