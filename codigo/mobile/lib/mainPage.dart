@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:mobile/createExam.dart';
+import 'package:mobile/services/AppointmentService.dart';
 import 'package:mobile/services/UserService.dart';
 import 'package:mobile/userData.dart';
 import 'package:mobile/view/maps.dart';
-
+import "package:dart_amqp/dart_amqp.dart";
+import 'dart:async';
 import 'exam.dart';
 import 'myAppointment.dart';
 
@@ -16,7 +18,32 @@ class MainPage extends StatefulWidget {
   _MainPageState createState() => _MainPageState();
 }
 
+
 class _MainPageState extends State<MainPage> {
+  @override
+  late List<dynamic> content;
+  final Completer connected = Completer();
+  final Client client;
+  _MainPageState() : client = Client() {
+    _init();
+  }
+  void _init() async{
+    ConnectionSettings settings = ConnectionSettings(
+      host: "20.206.234.220",
+      port: 5672,
+      authProvider: const PlainAuthenticator("admin", "123456")
+    );
+    Client client = Client(settings: settings);
+    // Allocate a private queue for server responses
+     Channel channel = await client
+        .channel();
+    Queue queue = await channel.queue("NOTIFICACOES");
+    Consumer consumer = await queue.consume();
+    consumer.listen((AmqpMessage message) {
+      print(message);
+    });
+    connected.complete();
+  }
   final TextEditingController _textEditingController = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -176,7 +203,7 @@ class _MainPageState extends State<MainPage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => CreateExame()),
+                            builder: (context) => CreateExame(id: widget.id)),
                       );
                     },
                     style: ElevatedButton.styleFrom(
@@ -190,7 +217,7 @@ class _MainPageState extends State<MainPage> {
                             width: 55, height: 57),
                         const Padding(
                             padding: EdgeInsets.only(top: 10),
-                            child: Text("Agendar Consulta",
+                            child: Text("Cadastrar exame",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(fontSize: 16))),
                       ],
@@ -217,7 +244,7 @@ class _MainPageState extends State<MainPage> {
                             width: 55, height: 57),
                         const Padding(
                             padding: EdgeInsets.only(top: 10),
-                            child: Text("Cadastrar Exame",
+                            child: Text("Agendar Consulta",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(fontSize: 16))),
                       ],
