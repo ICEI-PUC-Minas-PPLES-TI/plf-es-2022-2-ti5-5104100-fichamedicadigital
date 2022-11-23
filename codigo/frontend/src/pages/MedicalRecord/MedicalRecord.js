@@ -231,7 +231,7 @@ const MedicalRecord = () => {
             }
         }
         dispatch(medicalRegister(medicalData));
-        // navigate("/profile")
+        navigate("/profile")
     }
 
     useEffect(() => {
