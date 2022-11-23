@@ -7,6 +7,7 @@ const initialState = {
     pacienteData: [],
     medicoData: [],
     medicoLogado: [],
+    userProfile: [],
     error: false,
     success: false,
     loading: false,
@@ -91,6 +92,18 @@ export const medicosFindById = createAsyncThunk(
     "user/medicosFindById",
     async (id,thunkAPI) => {
         const data = await userService.medicosFindById(id)
+
+        if (data.errors) {
+            return thunkAPI.rejectWithValue(data.errors[0])
+        }
+        return data
+    }
+)
+
+export const userFindById = createAsyncThunk(
+    "user/userFindById",
+    async (id,thunkAPI) => {
+        const data = await userService.userFindById(id)
 
         if (data.errors) {
             return thunkAPI.rejectWithValue(data.errors[0])
@@ -205,6 +218,20 @@ export const userSlice = createSlice({
                 state.medicoLogado = action.payload
             })
             .addCase(medicosFindById.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.payload;
+            })
+            .addCase(userFindById.pending, (state) => {
+                state.loading = true;
+                state.error = null;
+            })
+            .addCase(userFindById.fulfilled, (state, action) => {
+                state.loading = false;
+                state.success = true;
+                state.error = null;
+                state.userProfile = action.payload
+            })
+            .addCase(userFindById.rejected, (state, action) => {
                 state.loading = false;
                 state.error = action.payload;
             })

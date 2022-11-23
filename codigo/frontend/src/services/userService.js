@@ -85,6 +85,20 @@ const medicosFindById = async (id) => {
     }
 }
 
+const userFindById = async (id) => {
+    const config = requestConfig("GET")
+
+    try {
+        const res = await fetch(api + "/usuarios/" + id, config)
+            .then((res) => res.json())
+            .catch((err) => err)
+
+        return res
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 
 const userDelete = async (id) => {
     const config = requestConfig("DELETE")
@@ -107,7 +121,8 @@ const userService = {
     userUpdate,
     pacientesFindAll,
     medicosFindAll,
-    medicosFindById
+    medicosFindById,
+    userFindById
 };
 
 export default userService;

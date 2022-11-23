@@ -10,13 +10,25 @@ import {
 import { useDispatch,useSelector } from 'react-redux';
 import { useState,useEffect } from 'react';
 import {reset,medicalFindById} from '../../slices/medicalSlice'
-import {pacientesFindAll} from '../../slices/userSlice'
+import {pacientesFindAll, userFindById} from '../../slices/userSlice'
 import {consultFindById,consultDelete} from '../../slices/consultSlice'
+import ModalEdit from '../Admin/DashboardModalEdit';
 
 const Profile = () => {
 
     const dispatch = useDispatch()
+
     const user = JSON.parse(localStorage.getItem("user"));
+    var userProfile = useSelector((state) => state.user.userProfile)
+
+    var userProfile = {
+        ...userProfile,
+        roles: [
+            {
+                id:2
+            }
+        ]
+    }
     let data = new Date( user.dataNascimento);
     let dataFormatada = ((data.getDate() )) + "/" + ((data.getMonth() + 1)) + "/" + data.getFullYear(); 
     const pacientes = useSelector((state) => state.user.pacienteData || {})
@@ -26,36 +38,19 @@ const Profile = () => {
     useEffect(() => {
         dispatch(consultFindById(user.id))
         dispatch(pacientesFindAll())
+        dispatch(userFindById(user.id))
     },[])
 
-    const handleData = (date) => {
-        let data = new Date(date)
-        return ((data.getDate() )) + "/" + ((data.getMonth() + 1)) + "/" + data.getFullYear();
-    }
-    const handleHora = (time) => {
-        let hora = new Date(time)
-        return ((hora.getHours() )) + ":" + ((hora.getMinutes()));
-    }
-
-    const handleView = (e) =>{
-        e.preventDefault()
-    }
-
-    const handleEdit = (e,id) =>{
-        e.preventDefault()
-    }
-
-    const handleDelete = (id) =>{
-        dispatch(consultDelete(id))
-    }
-
-    const handleViewFicha = (e) =>{
-        e.preventDefault()
-    }
+    // const handleData = (date) => {
+    //     let data = new Date(date)
+    //     return ((data.getDate() )) + "/" + ((data.getMonth() + 1)) + "/" + data.getFullYear();
+    // }
+    // const handleHora = (time) => {
+    //     let hora = new Date(time)
+    //     return ((hora.getHours() )) + ":" + ((hora.getMinutes()));
+    // }
     
-    const handleEditFicha = (e,id) =>{
-        e.preventDefault()
-    }
+
 
     return (
         <div className='profile'>
@@ -64,22 +59,26 @@ const Profile = () => {
 
                 </div>
                 <div className='profile-info col-6 ms-5 mt-1'>
-                    <p>Nome: {user.primeiroNome}</p>
-                    <p>Sobrenome: {user.sobreNome}</p>
-                    <p>Email: {user.email}</p>
+                    <p>Nome: {userProfile.primeiroNome}</p>
+                    <p>Sobrenome: {userProfile.sobreNome}</p>
+                    <p>Email: {userProfile.email}</p>
                     <p>Data de Nascimento: {dataFormatada}</p>
                 </div>
+                
             </div>
+            <button className='btn'>
+                    <ModalEdit props={userProfile}/>
+                </button>
             <hr />
             <Tabs>
                 <TabList>
                     <div className="nav nav-tabs" id="nav-tab" role="tablist">
-                    <Tab className="nav-link">Consultas</Tab>
+                    {/* <Tab className="nav-link">Consultas</Tab> */}
                     <Tab className="nav-link">Fichas Médicas</Tab>
                     </div>
                 </TabList>
 
-                <TabPanel>
+                {/* <TabPanel>
                     <table className="table table-striped mt-4">
                         <thead>
                             <tr>
@@ -118,7 +117,7 @@ const Profile = () => {
                             ))}
                         </tbody>
                     </table>
-                </TabPanel>
+                </TabPanel> */}
                 <TabPanel>
                 <select
                     className="form-select w-25" 

@@ -2,6 +2,7 @@ import './MedicalRecord.css'
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { medicalFindById, medicalUpdate } from '../../slices/medicalSlice'
+import MedicalRecordEdit from './MedicalRecordEdit'
 
 
 const MedicalRecordView = (idPaciente) => {
@@ -88,7 +89,7 @@ const MedicalRecordView = (idPaciente) => {
                     }
                 </div>
                 <div className='col-3'>
-                    <label className='form-label'>Transfusão</label>
+                    <label className='form-label'>Desmaio/Convulsão</label>
                     <input type="text" className='form-control w-50' disabled value={medicalData.desmaioOuConvulsao == true ? 'SIM' : 'NÃO'} />
                     {medicalData.desmaioOuConvulsao == true &&
                         <input type="text" className='form-control mt-3 w-50' disabled value={handleDataDesmaioConvulsao(medicalData.dataDesmaioConvulsao)} />
@@ -149,6 +150,11 @@ const MedicalRecordView = (idPaciente) => {
                 )) : (
                     <p className='d-flex justify-content-center mt-4'>Nenhuma vacina cadastrada!</p>
                 )}
+            </div>
+            <div className='d-flex justify-content-end'>
+                <button className='btn mt-4 editar-ficha '> 
+                    <MedicalRecordEdit props={medicalData}/>
+                </button>
             </div>
         </div>
     ) : (

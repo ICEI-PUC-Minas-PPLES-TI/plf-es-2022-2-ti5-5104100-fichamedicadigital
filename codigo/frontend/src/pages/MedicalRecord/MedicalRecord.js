@@ -351,7 +351,6 @@ const MedicalRecord = () => {
                                 <option value="B-">B-</option>
                                 <option value="AB-">AB-</option>
                                 <option value="O-">O-</option>
-
                             </select>
                         </div>
                     </div>
@@ -419,7 +418,7 @@ const MedicalRecord = () => {
                         </div>
                         <div className="col-6">
                             <select className="form-select" aria-label="Default select example" onChange={(e)=> setIntoleranteLactose(e.target.value)} value={intoleranteLactose}>
-                                <option value="false">SELECIONE</option>
+                                <option value="">SELECIONE</option>
                                 <option value="true">SIM</option>
                                 <option value="false">NÃO</option>
                             </select>
