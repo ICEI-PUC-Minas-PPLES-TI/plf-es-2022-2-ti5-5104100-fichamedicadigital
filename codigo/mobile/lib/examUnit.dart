@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:advance_pdf_viewer/advance_pdf_viewer.dart';
-import 'package:mobile/services/examService.dart';
+import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
+
+String examePdf = "";
 
 class ExamUnit extends StatefulWidget {
   String name, exame;
@@ -11,19 +12,12 @@ class ExamUnit extends StatefulWidget {
 }
 
 class _ExamUnitState extends State<ExamUnit> {
-  bool _isLoading = true;
-  late PDFDocument content;
-  void initState() {
-    String meuExame = widget.exame;
-    ExamService().getPdf(meuExame).then((value) {
-      print(value);
-      content = value;
-      _isLoading = false;
-    });
-  }
-  
+   final GlobalKey<SfPdfViewerState> _pdfViewerKey = GlobalKey();
+
   @override
   Widget build(BuildContext context) {
+    print(widget.exame);
+
     return Scaffold(
       appBar: AppBar(
         title: Container(
@@ -53,12 +47,11 @@ class _ExamUnitState extends State<ExamUnit> {
             ])),
         backgroundColor: const Color.fromARGB(255, 62, 173, 173),
       ),
-      body: Column(children: <Widget>[
-        Text(widget.name),
-        const Text("20/03/2022"),
-        _isLoading? Center(child: CircularProgressIndicator()): PDFViewer(document: content),
-        const Text("Baixar Exame")
-      ]),
-    );
+      body: SfPdfViewer.asset("images/arquivo.pdf",
+         key: _pdfViewerKey)
+
+
+      );
+    
   }
 }

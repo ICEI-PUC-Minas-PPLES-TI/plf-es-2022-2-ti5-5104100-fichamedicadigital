@@ -4,14 +4,14 @@ import 'package:mobile/mainPage.dart';
 import 'package:mobile/services/Appoinment.dart';
 import 'package:mobile/view/styles/MapsStyle.dart';
 
-// class MapsPage extends StatefulWidget {
-//   const MapsPage({Key? key}) : super(key: key);
+class MapsPage extends StatefulWidget {
+  const MapsPage({Key? key}) : super(key: key);
 
-//   @override
-//   _MapsPageState createState() => _MapsPageState();
-// }
+  @override
+  _MapsPageState createState() => _MapsPageState();
+}
 
-// class _MapsPageState extends State<MapsPage> {
+class _MapsPageState extends State<MapsPage> {
 
   MapController controller = MapController(
     initMapWithUserPosition: false,
@@ -140,3 +140,4 @@ import 'package:mobile/view/styles/MapsStyle.dart';
       ),
     );
   }
+}
