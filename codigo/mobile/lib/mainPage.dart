@@ -18,32 +18,9 @@ class MainPage extends StatefulWidget {
   _MainPageState createState() => _MainPageState();
 }
 
-
 class _MainPageState extends State<MainPage> {
   @override
   late List<dynamic> content;
-  final Completer connected = Completer();
-  final Client client;
-  _MainPageState() : client = Client() {
-    _init();
-  }
-  void _init() async{
-    ConnectionSettings settings = ConnectionSettings(
-      host: "20.206.234.220",
-      port: 5672,
-      authProvider: const PlainAuthenticator("admin", "123456")
-    );
-    Client client = Client(settings: settings);
-    // Allocate a private queue for server responses
-     Channel channel = await client
-        .channel();
-    Queue queue = await channel.queue("NOTIFICACOES");
-    Consumer consumer = await queue.consume();
-    consumer.listen((AmqpMessage message) {
-      print(message);
-    });
-    connected.complete();
-  }
   final TextEditingController _textEditingController = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -104,7 +81,8 @@ class _MainPageState extends State<MainPage> {
                 ),
                 Text(
                   widget.nome,
-                  style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w800),
+                  style: const TextStyle(
+                      fontSize: 20, fontWeight: FontWeight.w800),
                 ),
                 const Text('Tipo sanguíneo: O+'),
                 const Text('Soropositivo: positivo')
@@ -115,7 +93,6 @@ class _MainPageState extends State<MainPage> {
             spacing: 10.0,
             runSpacing: 8.0,
             children: <Widget>[
-              
               Flexible(
                   fit: FlexFit.loose,
                   child: ElevatedButton(
@@ -124,7 +101,8 @@ class _MainPageState extends State<MainPage> {
                         context,
                         MaterialPageRoute(
                             builder: (context) => SegundaTela(
-                                valor: _textEditingController.text, id: widget.id)),
+                                valor: _textEditingController.text,
+                                id: widget.id)),
                       );
                     },
                     style: ElevatedButton.styleFrom(
@@ -149,8 +127,10 @@ class _MainPageState extends State<MainPage> {
                   fit: FlexFit.loose,
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Exam(id: widget.id)));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Exam(id: widget.id)));
                     },
                     style: ElevatedButton.styleFrom(
                         fixedSize: const Size(130, 110),
@@ -174,10 +154,10 @@ class _MainPageState extends State<MainPage> {
                   child: ElevatedButton(
                     onPressed: () {
                       Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                             builder: (context) => myAppointment(id: widget.id))
-                      );
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  myAppointment(id: widget.id)));
                     },
                     style: ElevatedButton.styleFrom(
                         fixedSize: const Size(130, 110),
@@ -223,14 +203,13 @@ class _MainPageState extends State<MainPage> {
                       ],
                     ),
                   )),
-                  Flexible(
+              Flexible(
                   fit: FlexFit.loose,
                   child: ElevatedButton(
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                            builder: (context) => MapsPage()),
+                        MaterialPageRoute(builder: (context) => MapsPage()),
                       );
                     },
                     style: ElevatedButton.styleFrom(

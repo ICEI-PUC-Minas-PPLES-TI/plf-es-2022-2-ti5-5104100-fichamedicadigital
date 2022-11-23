@@ -247,8 +247,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.8.0"
-<<<<<<< Updated upstream
-=======
   mqtt_client:
     dependency: "direct main"
     description:
@@ -256,14 +254,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "9.7.2"
-  numberpicker:
-    dependency: transitive
-    description:
-      name: numberpicker
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.1.1"
->>>>>>> Stashed changes
   path:
     dependency: transitive
     description:

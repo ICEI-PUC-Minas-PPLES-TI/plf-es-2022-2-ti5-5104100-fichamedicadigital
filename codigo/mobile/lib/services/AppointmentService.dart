@@ -7,10 +7,9 @@ import "package:dart_amqp/dart_amqp.dart";
 class MensageriaLocal {
   callNotify() async {
     ConnectionSettings settings = ConnectionSettings(
-      host: "20.206.234.220",
-      port: 5672,
-      authProvider: const PlainAuthenticator("admin", "123456")
-    );
+        host: "20.206.234.220",
+        port: 5672,
+        authProvider: const PlainAuthenticator("admin", "123456"));
     Client client = Client(settings: settings);
 
     Channel channel = await client
