@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:mobile/createConsult.dart';
 import 'package:mobile/createExam.dart';
 import 'package:mobile/services/AppointmentService.dart';
 import 'package:mobile/services/UserService.dart';
 import 'package:mobile/userData.dart';
 import 'package:mobile/view/maps.dart';
-import "package:dart_amqp/dart_amqp.dart";
 import 'dart:async';
 import 'exam.dart';
 import 'myAppointment.dart';
@@ -209,7 +209,7 @@ class _MainPageState extends State<MainPage> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => MapsPage()),
+                        MaterialPageRoute(builder: (context) => CreateConsult(id: widget.id)),
                       );
                     },
                     style: ElevatedButton.styleFrom(

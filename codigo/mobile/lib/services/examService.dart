@@ -34,7 +34,7 @@ class ExamService {
     dio.options.headers['Content-Type'] = 'application/json';
     try {
       Response response = await dio.get(
-          "https://fichamedicadigital.herokuapp.com/exames/usuario/3");
+          "https://fichamedicadigital.herokuapp.com/exames/usuario/$id");
 
       return response.data;
     } catch (e) {
