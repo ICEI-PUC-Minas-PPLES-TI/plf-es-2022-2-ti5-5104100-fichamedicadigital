@@ -18,13 +18,14 @@ const ConsultaModalEdit = (consulta) => {
         setData("")
         setHoraInicio("")
         setHoraFim("")
+        setStatus("")
     };
     const handleShow = () => setShow(true);
 
-    const [data, setData] = useState("")
-    const [horaInicio, setHoraInicio] = useState("")
-    const [horaFim, setHoraFim] = useState("")
-    const [status,setStatus] = useState("")
+    const [data, setData] = useState(consultaPaciente.data)
+    const [horaInicio, setHoraInicio] = useState(consultaPaciente.horaInicio)
+    const [horaFim, setHoraFim] = useState(consultaPaciente.horaFim)
+    const [status,setStatus] = useState(consultaPaciente.status)
 
     const dispatch = useDispatch();
 
@@ -34,40 +35,53 @@ const ConsultaModalEdit = (consulta) => {
 
     const handleData = (diaConsulta) => {
         let dia = new Date(diaConsulta);
-        return  ((dia.getFullYear() )) + "-" + ((dia.getMonth() + 1)) + "-" + (dia.getDate() ); 
+        let diaStr = dia.getDate().toString()
+        if(diaStr.length == 1) {
+            return  ((dia.getFullYear() )) + "-" + ((dia.getMonth() + 1)) + "-"  + "0"+(dia.getDate() + 1 ); 
+        }
+        return  ((dia.getFullYear() )) + "-" + ((dia.getMonth() + 1)) + "-" + (dia.getDate() + 1 ); 
     }
 
     const handleHora = (time) => {
         let hora = new Date(time)
-        return ((hora.getHours())) + ":" + ((hora.getMinutes()));
+        let retorno = ((hora.getHours() + 3)) + ":" + ((hora.getMinutes()))
+        if((((hora.getHours() +3).toString())).length == 1) {
+            return ("0"+retorno);
+        }
+        if(retorno.substr(4,1) == "") {
+            return (retorno+"0");
+        }
+        return retorno;
     }
 
     const handleSubmit = (e) => {
         e.preventDefault()
         
-        let date = new Date()
         const idPaciente = consultaPaciente.paciente.id
         const idMedico = consultaPaciente.medico.id
+        // const consulta = {
+        //     data: new Date(data).toISOString(),
+        //     horaInicio: (`${data}T${horaInicio}:00.185Z`),
+        //     horaFim: (`${data}T${horaFim}:00.185Z`),
+        //     paciente: {
+        //         id: idPaciente
+        //     },
+        //     medico: {
+        //         id: idMedico
+        //     },
+        //     status:status
+        // }
+        // const consultData = [idConsulta,consulta]
 
-        const consulta = {
-            data: date.toISOString(data),
-            horaInicio: date.toISOString(horaInicio),
-            horaFim: date.toISOString(horaFim),
-            paciente: {
-                id: idPaciente
-            },
-            medico: {
-                id: idMedico
-            },
-        }
-        const consultData = [idConsulta,consulta]
-
-        dispatch(consultUpdate(consultData))
+        // dispatch(consultUpdate(consultData))
 
         const param = [idConsulta,status]
         dispatch(consultUpdateStatus(param))
-       
+
         setShow(false)
+        setTimeout(function() {
+            window.location.reload(1);
+          }, 1200);
     }
 
     return (
@@ -82,18 +96,18 @@ const ConsultaModalEdit = (consulta) => {
                 <Modal.Body>
                     <div className='consulta-modal'>
                         <div className='row'>
-                            <input className='form-control w-25 ms-3 me-5' type="date" onChange={(e) => setData(e.target.value)} value={!data ? handleData(consultaPaciente.data) : data}/>
-                            <input className='form-control w-25' name='horario_inicio' type="time" onChange={(e) => setHoraInicio(e.target.value)} value={!horaInicio ? handleHora(consultaPaciente.horaInicio) : horaInicio} />
+                            <input className='form-control w-25 ms-3 me-5' type="date" disabled onChange={(e) => setData(e.target.value)} value={handleData(consultaPaciente.data)}/>
+                            <input className='form-control w-25' name='horario_inicio' disabled type="time" onChange={(e) => setHoraInicio(e.target.value)} value={handleHora(consultaPaciente.horaInicio)} />
                             <span className="span-time">às</span>
-                            <input className='form-control w-25 ms-4' name='horario_fim' type="time"onChange={(e) => setHoraFim(e.target.value)} value={!horaFim ? handleHora(consultaPaciente.horaFim) : horaFim}/>
+                            <input className='form-control w-25 ms-4' name='horario_fim' disabled type="time"onChange={(e) => setHoraFim(e.target.value)} value={handleHora(consultaPaciente.horaFim)}/>
                         </div>
                         <div className='row'>
                             <div className='col-6'>
                                 <label className='form-label mt-4'>Alterar Status:</label> 
-                                <select className="form-select " aria-label="Default select example" onChange={(e)=> setStatus(e.target.value)} value={status}>
-                                    <option value="">SELECIONE</option>
+                                <select className="form-select " aria-label="Default select example" onChange={(e)=> setStatus(e.target.value)} value={!status ? consultaPaciente.status : status}>
                                     <option value="MARCADA">MARCADA</option>
                                     <option value="CANCELADA">CANCELADA</option>
+                                    <option value="PENDENTE">PENDENTE</option>
                                     <option value="FINALIZADA">FINALIZADA</option>
                                 </select>
                             </div>

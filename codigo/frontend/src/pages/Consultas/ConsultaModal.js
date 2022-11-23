@@ -52,28 +52,28 @@ const ConsultaModal = () => {
 
         e.preventDefault()
 
-        var idPaciente = '';
+        var idPaciente = idPacienteSelect;
         var idMedico = medicoLogado.id
 
-        if(name != '' && surName != '' && birthdate != '' && email != '') {
-            const user = {
-                primeiroNome:name,
-                sobreNome:surName,
-                dataNascimento: birthdate,
-                password:email,
-                email,
-            }
-            dispatch(userRegister(user))
+        // if(name != '' && surName != '' && birthdate != '' && email != '') {
+        //     const user = {
+        //         primeiroNome:name,
+        //         sobreNome:surName,
+        //         dataNascimento: birthdate,
+        //         password:email,
+        //         email,
+        //     }
+        //     dispatch(userRegister(user))
 
-            dispatch(pacientesFindAll())
+        //     dispatch(pacientesFindAll())
 
-            let indiceArray = pacientes.length - 1
+        //     let indiceArray = pacientes.length - 1
         
-        idPaciente = pacientes[indiceArray].id + 1
+        // idPaciente = pacientes[indiceArray].id + 1
 
-        } else {
-            idPaciente = idPacienteSelect
-        }
+        // } else {
+        //     idPaciente = idPacienteSelect
+        // }
 
         const consulta = {
             data: new Date(data).toISOString(),
@@ -90,7 +90,7 @@ const ConsultaModal = () => {
         setShow(false)
         setTimeout(function() {
             window.location.reload(1);
-          }, 1200);
+          }, 1000);
         setData("")
         setHoraFim("")
         setHoraInicio("")
@@ -113,7 +113,7 @@ const ConsultaModal = () => {
                 <Modal.Body>
                     <div className='consulta-modal'>
                         <div>
-                            <h2 className='mb-4'>Paciente já possui Cadastro?</h2>
+                            {/* <h2 className='mb-4'>Paciente já possui Cadastro?</h2>
                             <ButtonGroup className="mb-2">
                                 <ToggleButton
                                     id="toggle-check"
@@ -175,7 +175,7 @@ const ConsultaModal = () => {
                                         />
                                     </div>
                                 </div>
-                            ) : (
+                            ) : ( */}
                                 <div>
                                     <select className="form-select w-25 mt-3 mb-5" aria-label="Default select example" value={idPacienteSelect} onChange={(e) => setIdPacienteSelect(e.target.value)}>
                                         <option  value="">SELECIONE</option>
@@ -184,7 +184,7 @@ const ConsultaModal = () => {
                                         )}
                                     </select>
                                 </div>
-                            )}
+                            {/* )} */}
                         </div>
                         <div className='row'>
                             <input className='form-control w-25 ms-3 me-5' type="date" onChange={(e) => setData(e.target.value)} value={data}/>

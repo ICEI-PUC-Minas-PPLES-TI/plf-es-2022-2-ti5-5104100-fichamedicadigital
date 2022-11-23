@@ -35,6 +35,9 @@ const DashboardModal = () => {
         dispatch(userRegister(user))
         
         setShow(false)
+        setTimeout(function() {
+            window.location.reload(1);
+          }, 1200)
     }
 
     useEffect(() => {

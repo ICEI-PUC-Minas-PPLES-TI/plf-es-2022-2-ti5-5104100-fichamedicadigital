@@ -6,6 +6,7 @@ import {
 import Modal from './ConsultaModal';
 import ModalEdit from './ConsultaModalEdit';
 import ModalView from './ConsultaModalView'
+import ModalUser from '../Admin/DashboardModal'
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { consultFindById, consultDelete } from '../../slices/consultSlice';
@@ -40,7 +41,14 @@ const Consultas = () => {
     }
     const handleHora = (time) => {
         let hora = new Date(time)
-        return ((hora.getHours() + 3)) + ":" + ((hora.getMinutes()));
+        let retorno = ((hora.getHours() + 3)) + ":" + ((hora.getMinutes()))
+        if((((hora.getHours() +3).toString())).length == 1) {
+            return ("0"+retorno);
+        }
+        if(retorno.substr(4,1) == "") {
+            return (retorno+"0");
+        }
+        return retorno;
     }
 
     return (
@@ -56,6 +64,7 @@ const Consultas = () => {
 
                 <TabPanel>
                     <Modal />
+                    <ModalUser/>
                     <table className="table table-striped mt-4">
                         <thead>
                             <tr>

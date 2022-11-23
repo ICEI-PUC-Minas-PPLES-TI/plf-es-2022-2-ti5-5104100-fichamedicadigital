@@ -12,11 +12,11 @@ const ConsultaModalView = (consulta) => {
 
     const handleData = (date) => {
         let data = new Date(date)
-        return ((data.getDate() )) + "/" + ((data.getMonth() + 1)) + "/" + data.getFullYear();
+        return ((data.getDate() + 1 )) + "/" + ((data.getMonth() + 1)) + "/" + data.getFullYear();
     }
     const handleHora = (time) => {
         let hora = new Date(time)
-        return ((hora.getHours() )) + ":" + ((hora.getMinutes()));
+        return ((hora.getHours() + 3 )) + ":" + ((hora.getMinutes()));
     }
 
     return (
