@@ -26,7 +26,7 @@ const Profile = () => {
     useEffect(() => {
         dispatch(consultFindById(user.id))
         dispatch(pacientesFindAll())
-    },[dispatch])
+    },[])
 
     const handleData = (date) => {
         let data = new Date(date)

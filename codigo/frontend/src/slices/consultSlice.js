@@ -4,6 +4,7 @@ import consultService from "../services/consultService";
 
 const initialState = {
     consultData: [],
+    notificacoes: [],
     error: false,
     success: false,
     loading: false,
@@ -69,6 +70,32 @@ export const consultFindById = createAsyncThunk(
 
         if(data.errors) {
             return thunkAPI.rejectWithValue(data.erros[0])
+        }
+        return data
+    }
+)
+
+export const mensageria = createAsyncThunk(
+    "consult/mensageria",
+    async (id,thunkAPI) => {
+
+        const data = await consultService.mensageria(id)
+
+        if(data.errors) {
+            return thunkAPI.rejectWithValue(data.erros[0])
+        }
+        return data
+    }
+)
+
+export const mensageriaDelete = createAsyncThunk(
+    "consult/mensageriaDelete",
+    async (id, thunkAPI) => {
+
+        const data = await consultService.mensageriaDelete(id)
+
+        if (data.errors) {
+            return thunkAPI.rejectWithValue(data.errors[0])
         }
         return data
     }
@@ -150,6 +177,33 @@ export const consultSlice = createSlice({
                 state.consultData = action.payload
             })
             .addCase(consultFindById.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.payload;
+            })
+            .addCase(mensageria.pending, (state) => {
+                state.loading = true;
+                state.error = null;
+            })
+            .addCase(mensageria.fulfilled, (state, action) => {
+                state.loading = false;
+                state.success = true;
+                state.error = null;
+                state.notificacoes = action.payload
+            })
+            .addCase(mensageria.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.payload;
+            })
+            .addCase(mensageriaDelete.pending, (state) => {
+                state.loading = true;
+                state.error = null;
+            })
+            .addCase(mensageriaDelete.fulfilled, (state, action) => {
+                state.loading = false;
+                state.success = true;
+                state.error = null;
+            })
+            .addCase(mensageriaDelete.rejected, (state, action) => {
                 state.loading = false;
                 state.error = action.payload;
             })

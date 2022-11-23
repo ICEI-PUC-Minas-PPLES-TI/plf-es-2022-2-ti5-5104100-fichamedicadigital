@@ -56,6 +56,9 @@ const DashboardModalEdit = (usuario) => {
         dispatch(userUpdate(userData))
         
         setShow(false)
+        setTimeout(function() {
+            window.location.reload(1);
+          }, 1200)
     }
 
     useEffect(() => {

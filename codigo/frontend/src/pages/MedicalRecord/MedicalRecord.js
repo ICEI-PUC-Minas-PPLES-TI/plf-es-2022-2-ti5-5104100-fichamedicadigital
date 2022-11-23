@@ -10,6 +10,10 @@ import {BsFillPlusCircleFill,BsTrash,BsFillCheckCircleFill} from "react-icons/bs
 const MedicalRecord = () => {
 
     const navigate = useNavigate()
+    const pacientes = useSelector((state) => state.user.pacienteData)
+    useEffect(() => {
+        dispatch(pacientesFindAll())
+    },[])
     
     const steps = [
         {
@@ -51,19 +55,23 @@ const MedicalRecord = () => {
 
     const [currentStep, setCurrentStep] = useState(0);
 
-    function handleNextStep() {
-
-        if(currentStep == 0) {
-            const user= {
-                primeiroNome: name,
-                sobreNome: surName,
-                dataNascimento: birthdate,
-                email: email,
-                password: email
-            }
-        dispatch(userRegister(user))
-       
+    const handleSubmitUser = (e) => {
+        e.preventDefault()
+        const user= {
+            primeiroNome: name,
+            sobreNome: surName,
+            dataNascimento: birthdate,
+            email: email,
+            password: email
         }
+    dispatch(userRegister(user))
+    setUserExistente(true)
+    setTimeout(function() {
+        window.location.reload(1);
+      }, 1200);
+    }
+
+    function handleNextStep() {
         setCurrentStep((prevState) => prevState + 1);
     }
     function handlePrevStep() {
@@ -74,6 +82,8 @@ const MedicalRecord = () => {
     const [surName, setSurname] = useState('');
     const [birthdate, setBirthdate] = useState('');
     const [email, setEmail] = useState('');
+
+    const [idPaciente,setIdPaciente] = useState("");
 
     var [cardiaco, setCardiaco] = useState('');
     var [desmaioConvulsao, setDesmaioConvulsao] = useState('');
@@ -94,13 +104,6 @@ const MedicalRecord = () => {
     const [convenio, setConvenio] = useState('');
 
     const dispatch = useDispatch();
-
-    const findLastId = () => {
-        if(usuarios != undefined){
-            let indiceArray = usuarios.content.length - 1
-            return usuarios.content[indiceArray].id
-        } 
-    }
 
     const addInputButton = (e) =>{
         e.preventDefault()
@@ -167,6 +170,7 @@ const MedicalRecord = () => {
         dispatch(userFindAll())
     },[])
     const usuarios = useSelector((state) => state.user.userData)
+    console.log(usuarios)
 
     const handleSubmit = (e) => {
 
@@ -203,11 +207,7 @@ const MedicalRecord = () => {
             transfusao = false
         }
         let date = new Date()
-
-        for(var i = 0; i<3; i++) {
-            var idPaciente = findLastId()
-            console.log(idPaciente)
-        }
+        
         const medicalData = {
             cardiaco: cardiaco,
             desmaioOuConvulsao: desmaioConvulsao,
@@ -230,7 +230,6 @@ const MedicalRecord = () => {
                 id: idPaciente
             }
         }
-        console.log(medicalData)
         dispatch(medicalRegister(medicalData));
         // navigate("/profile")
     }
@@ -239,15 +238,39 @@ const MedicalRecord = () => {
         dispatch(reset());
     }, [dispatch]);
 
+    const [userExistente,setUserExistente] = useState(true)
+
+    const handleUserForm = () => {
+        if(userExistente == true){
+            setUserExistente(false)
+        } else {
+            setUserExistente(true)
+        }
+    }
+
     return (
         <div className="ficha-medica mb-5">
             <h2>Ficha Médica do Paciente</h2>
             <div className="progress">
                 <div className="progress-bar" id={steps[currentStep].progress} role="progressbar" aria-valuenow={steps[currentStep].progress} aria-valuemin="0" aria-valuemax="100"></div>
             </div>
-            {steps[currentStep].id === 'user_data' && (
+            {steps[currentStep].id === 'user_data' && userExistente == true ? (
+                <div>
+                    <h2>Pacientes</h2>
+                    { pacientes &&
+                        <select className='form-select mt-4 mb-4' onChange={(e) => setIdPaciente(e.target.value)} value={idPaciente}>
+                            <option value="">Selecione</option>
+                            {pacientes && pacientes.map((paciente) => (
+                                <option key={paciente.idUsuario} value={paciente.idUsuario}>{`${paciente.primeiroNome} ${paciente.ultimoNome}`}</option>
+                            ))
+                            }
+                        </select>
+                    }
+                   <button className="btn" onClick={handleUserForm}>{userExistente == true && 'Paciente Novo?'}</button>
+                </div>
+            ) : ( steps[currentStep].id === 'user_data' &&
                 <div className="fields">
-                    <h3>{steps[currentStep].title}</h3>
+                    <h3>{steps[currentStep].title}</h3>                    
                     <div className='d-flex justify-content-center mb-3 mt-5'>
                         <label className='form-label w-50'>Nome:</label>
                         <input
@@ -292,6 +315,10 @@ const MedicalRecord = () => {
                             value={birthdate}
                         />
                     </div>
+                    <div>
+                        <button className="btn" onClick={handleUserForm}>{userExistente == false && 'Paciente Existente?'}</button>
+                        <button className="btn ms-4" onClick={handleSubmitUser}>Salvar</button>
+                    </div>
                 </div>
             )}
             {steps[currentStep].id === 'medical_data' && (
@@ -303,7 +330,7 @@ const MedicalRecord = () => {
                         </div>
                         <div className='col-6'>
                             <select className="form-select " aria-label="Default select example" onChange={(e)=> setCardiaco(e.target.value)} value={cardiaco}>
-                                <option value="false">SELECIONE</option>
+                                <option value="">SELECIONE</option>
                                 <option value="true">SIM</option>
                                 <option value="false">NÃO</option>
                             </select>
@@ -356,7 +383,7 @@ const MedicalRecord = () => {
                         </div>
                         <div className="col-6">
                             <select className="form-select" aria-label="Default select example" onChange={(e)=> setDiabetico(e.target.value)} value={diabetico}>
-                                <option value="false">SELECIONE</option>
+                                <option value="">SELECIONE</option>
                                 <option value="true">SIM</option>
                                 <option value="false">NÃO</option>
                             </select>
@@ -368,7 +395,7 @@ const MedicalRecord = () => {
                         </div>
                         <div className="col-6">
                             <select className="form-select" aria-label="Default select example" onChange={(e)=> setInternado(e.target.value)} value={internado}>
-                                <option value="false">SELECIONE</option>
+                                <option value="">SELECIONE</option>
                                 <option value="true">SIM</option>
                                 <option value="false">NÃO</option>
                             </select>
@@ -403,7 +430,7 @@ const MedicalRecord = () => {
                         </div>
                         <div className="col-6">
                             <select className="form-select" aria-label="Default select example" onChange={(e)=> setTransfusao(e.target.value)} value={transfusao}>
-                                <option value="false">SELECIONE</option>
+                                <option value="">SELECIONE</option>
                                 <option value="true">SIM</option>
                                 <option value="false">NÃO</option>
                             </select>

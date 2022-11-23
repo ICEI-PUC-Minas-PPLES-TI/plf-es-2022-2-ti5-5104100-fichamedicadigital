@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import Mensageria from './components/Message'
 
 import Home from "./pages/Home/Home";
 import Login from "./pages/Auth/Login";
@@ -15,7 +16,6 @@ import Agenda from './pages/Agenda/Agenda';
 import Consultas from './pages/Consultas/Consultas';
 import Dashboard from './pages/Admin/Dashboard';
 
-
 function App() {
     const { auth, loading,role } = useAuth();
     if (loading) {
@@ -24,10 +24,12 @@ function App() {
 
     return (
         <div className={!auth && 'app'}>
+
             <BrowserRouter>
                 {auth && (
                     <Navbar />
                 )}
+                <Mensageria/>
                 <div className="container">
                     <Routes>
                         <Route

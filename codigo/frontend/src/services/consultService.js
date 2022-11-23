@@ -56,6 +56,33 @@ const consultFindById = async (id) => {
   }
 }
 
+const mensageria = async (id) => {
+  const config = requestConfig("GET")
+  try {
+      const res = await fetch(api + "/notificacoes/"+id,config)
+          .then((res) =>res.json())
+          .catch((err) => err)
+    return res
+  } catch(error) {
+      console.log(error)
+  }
+}
+
+const mensageriaDelete = async (id) => {
+
+  const config = requestConfig("PUT");
+
+  try {
+      const res = await fetch(api + "/notificacoes/"+id, config)
+        .then((res) => res.json())
+        .catch((err) => err);
+  
+        return res;
+  } catch (error) {
+      console.log(error);
+  }
+};
+
 const consultDelete = async (id) => {
     const config = requestConfig("DELETE")
 
@@ -75,7 +102,9 @@ consultRegister,
 consultFindById,
 consultDelete,
 consultUpdate,
-consultUpdateStatus
+consultUpdateStatus,
+mensageria,
+mensageriaDelete
 };
 
 export default consultService;

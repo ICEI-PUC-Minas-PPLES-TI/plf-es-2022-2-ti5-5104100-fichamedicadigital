@@ -20,6 +20,9 @@ const Dashboard = () => {
 
     const handleDelete = (id) => {
         dispatch(userDelete(id))
+        setTimeout(function() {
+            window.location.reload(1);
+          }, 1200)
     }
 
     return (
