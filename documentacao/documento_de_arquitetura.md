@@ -125,9 +125,9 @@ _Esta seção descreve os requisitos comtemplados nesta descrição arquitetural
 | RF003 | Mostrar consultários por especialidade e localização | Desejável |
 | RF004 | Marcar consulta | Essencial |
 | RF005 | Mostar consultas do paciente | Essencial |
-| RF006 | Medico anexa exame à consulta do paciente | Desejavel |
+| RF006 | Paciente anexa exame | Essencial |
 | RF007 | Paciente visualiza exames | Essencial |
-| RF008 | Paciente filtra exames por especialdiade| Desejavel |
+| RF008 | Paciente filtra exames por especialidade| Desejavel |
 | RF009 | Visão da ficha médica pelo paciente| Essencial |
 | RF010 | Visão da ficha médica pelo médico | Essencial |
 | RF011 | Médico visualiza consultas marcadas | Essencial |
@@ -135,13 +135,12 @@ _Esta seção descreve os requisitos comtemplados nesta descrição arquitetural
 | RF013 | Médico recebe alerta de consulta | Essencial |
 | RF014 | Geração de relatório | Desejavel |
 | RF015 | Médico preenche dias disponíveis da sua agenda | Desejável |
-| RF016 | Médico pode alterar seu perfil | Desejavel |
-| RF017 | Administrador cadastra usuarios | Essencial |
-| RF018 | Administrador promove usuario a médico | Essencial |
-| RF019 | Médico pode cadastrar consulta para paciente | Essencial |
-| RF020 | Médico pode cadastrar paciente não cadastrado | Essencial |
-| RF021 | Cadastro de usuário | Essencial |
-| RF022 | Login de usuário | Essencial |
+| RF016 | Administrador cadastra usuarios | Essencial |
+| RF017 | Administrador promove usuario a médico | Essencial |
+| RF018 | Médico pode cadastrar consulta para paciente | Essencial |
+| RF029 | Médico pode cadastrar paciente não cadastrado | Essencial |
+| RF020 | Cadastro de usuário | Essencial |
+| RF021 | Login de usuário | Essencial |
 
 
 Obs: acrescente mais linhas, se necessário.
