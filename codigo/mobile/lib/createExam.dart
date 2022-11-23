@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+
 import 'package:flutter/material.dart';
 import 'dart:io';
 import 'dart:typed_data';
@@ -10,6 +11,8 @@ import 'package:file_picker/file_picker.dart';
 import 'package:mobile/services/examService.dart';
 
 class CreateExame extends StatefulWidget {
+  int id;
+  CreateExame({required this.id});
   @override
   _CreateExameState createState() => _CreateExameState();
 }
@@ -17,7 +20,6 @@ class CreateExame extends StatefulWidget {
 class _CreateExameState extends State<CreateExame> {
   FilePickerResult? result;
   TextEditingController _enomeController = TextEditingController();
-  // TextEditingController _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -92,7 +94,7 @@ class _CreateExameState extends State<CreateExame> {
                                       result!.files.single.path.toString());
                                   // ignore: use_build_context_synchronously
                                   ExamService()
-                                      .uploadFile(file, _enomeController.text, context);
+                                      .uploadFile(file, _enomeController.text, context, widget.id);
                                 }
                               }))),
                 ]))));
