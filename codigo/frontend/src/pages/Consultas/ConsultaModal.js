@@ -39,7 +39,7 @@ const ConsultaModal = () => {
         dispatch(pacientesFindAll())
         dispatch(medicosFindAll())
         dispatch(medicosFindById(auth.id))
-    },[dispatch])
+    },[])
 
     const handleReset = () => {
         setName('')
@@ -74,13 +74,11 @@ const ConsultaModal = () => {
         } else {
             idPaciente = idPacienteSelect
         }
-        
-        let date = new Date()
 
         const consulta = {
-            data: date.toISOString(data),
-            horaInicio: date.toISOString(horaInicio),
-            horaFim: date.toISOString(horaFim),
+            data: new Date(data).toISOString(),
+            horaInicio: (`${data}T${horaInicio}:00.185Z`),
+            horaFim: (`${data}T${horaFim}:00.185Z`),
             paciente: {
                 id: idPaciente
             },
@@ -90,6 +88,16 @@ const ConsultaModal = () => {
         }
         dispatch(consultRegister(consulta))
         setShow(false)
+        setTimeout(function() {
+            window.location.reload(1);
+          }, 1200);
+        setData("")
+        setHoraFim("")
+        setHoraInicio("")
+        setName("")
+        setBirthdate("")
+        setSurname("")
+        setEmail("")
     }
 
     return (

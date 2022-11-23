@@ -15,28 +15,36 @@ import ConsultaModalView from './ConsultaModalView';
 const Consultas = () => {
 
     const { user } = useSelector((state) => state.auth)
-    const { consultData } = useSelector((state) => state.consult || {})
-
+    
+    const { consultData,loading } = useSelector((state) => state.consult || {})
     const dispatch = useDispatch()
 
     useEffect(() => {
         dispatch(consultFindById(user.id))
     }, [])
 
+    if(loading) {
+        return <p>Carregando...</p>;
+    }
+    
     const handleDelete = (id) => {
         dispatch(consultDelete(id))
+        setTimeout(function() {
+            window.location.reload(1);
+          }, 1200);
     }
 
     const handleData = (date) => {
         let data = new Date(date)
-        return ((data.getDate())) + "/" + ((data.getMonth() + 1)) + "/" + data.getFullYear();
+        return ((data.getDate() + 1)) + "/" + ((data.getMonth() + 1)) + "/" + data.getFullYear();
     }
     const handleHora = (time) => {
         let hora = new Date(time)
-        return ((hora.getHours())) + ":" + ((hora.getMinutes()));
+        return ((hora.getHours() + 3)) + ":" + ((hora.getMinutes()));
     }
+
     return (
-        <div id='Consultas'>
+        <div id='Consultas' >
             <h1 className='title-consultas mt-4 mb-4 d-flex aligm-self-center'>Consultas</h1>
             <Tabs>
                 <TabList>

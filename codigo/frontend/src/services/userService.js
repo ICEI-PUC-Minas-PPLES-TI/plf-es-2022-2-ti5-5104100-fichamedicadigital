@@ -2,7 +2,7 @@ import { api, requestConfig } from "../utils/config";
 
 const userRegister = async (data) => {
     const config = requestConfig("POST", data);
-
+    
     try {
         const res = await fetch(api + "/usuarios", config)
             .then((res) => res.json())
