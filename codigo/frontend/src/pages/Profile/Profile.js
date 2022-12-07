@@ -29,7 +29,7 @@ const Profile = () => {
             }
         ]
     }
-    let data = new Date( user.dataNascimento);
+    let data = new Date(user.dataNascimento);
     let dataFormatada = ((data.getDate() )) + "/" + ((data.getMonth() + 1)) + "/" + data.getFullYear(); 
     const pacientes = useSelector((state) => state.user.pacienteData || {})
     const {consultData} = useSelector((state) => state.consult || {})
