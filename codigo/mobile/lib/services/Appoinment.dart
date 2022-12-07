@@ -8,7 +8,7 @@ class AppointmentService{
     dio.options.headers['Content-Type'] = 'application/json';
     try {
       Response response = await dio.get(
-          "https://fichamedicadigital.herokuapp.com/consultas/usuario$id");
+          "https://fichamedicadigital.herokuapp.com/consultas/usuario/$id");
       return response.data;
     } catch (e) {
       throw e.toString();
@@ -23,6 +23,32 @@ class AppointmentService{
       return response;
     } catch (e) {
       rethrow;
+    }
+  }
+  getDoctor() async{
+   dio.options.headers['Content-Type'] = 'application/json';
+    try {
+      Response response = await dio.get(
+          "https://fichamedicadigital.herokuapp.com/medicos");
+
+      return response.data;
+    } catch (e) {
+      throw e.toString();
+    }
+  }
+  postAppointment(idMedico, dataConsulta, horaConsulta, id) async{
+    Response idUsuario = await dio.get(
+          "https://fichamedicadigital.herokuapp.com/pacientes/$id");
+    DateTime newDate1 = new DateTime(dataConsulta.year, dataConsulta.month, dataConsulta.day, horaConsulta.hour, (horaConsulta.minute+30));
+    DateTime newDate = new DateTime(dataConsulta.year, dataConsulta.month, dataConsulta.day, horaConsulta.hour, horaConsulta.minute);
+    dio.options.headers['Content-Type'] = 'application/json';
+    try {
+      Response response = await dio.post(
+          "https://fichamedicadigital.herokuapp.com/consultas", data: {"medico": {"id": idMedico}, "data": newDate.toIso8601String(), "horaFim": newDate1.toIso8601String(), "horaInicio": newDate.toIso8601String(), "paciente": {"id": idUsuario.data["id"]}});
+
+      return response.data;
+    } catch (e) {
+      throw e.toString();
     }
   }
 }
