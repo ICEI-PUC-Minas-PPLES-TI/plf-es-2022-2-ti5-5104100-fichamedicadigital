@@ -71,13 +71,22 @@ public class ConsultaResource {
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newDto.getId()).toUri();
 
 		try {
-			NotificacaoDTO notificacao = new NotificacaoDTO();
-			notificacao.setIdConsulta(newDto.getId().toString());
-			notificacao.setDescricao(
+			NotificacaoDTO notificacaoPaciente = new NotificacaoDTO();
+			notificacaoPaciente.setIdConsulta(newDto.getId().toString());
+			notificacaoPaciente.setDescricao(
 					"Uma consulta foi marcada para o paciente: " + newDto.getPaciente().getUsuario().getPrimeiroNome());
-			notificacao.setNovoStatus(newDto.getStatus().toString());
-			rabbitService.enviaMensagem("NOTIFICACOES", notificacao);
-			rabbitService.enviaMensagem("NOTIFICACOES", notificacao);
+			notificacaoPaciente.setNovoStatus(newDto.getStatus().toString());
+			notificacaoPaciente.setIdUsuario(newDto.getPaciente().getUsuario().getId());
+			rabbitService.enviaMensagem("NOTIFICACOES", notificacaoPaciente);
+
+			NotificacaoDTO notificacaoMedico = new NotificacaoDTO();
+			notificacaoMedico.setIdConsulta(newDto.getId().toString());
+			notificacaoMedico.setDescricao(
+					"Uma consulta foi marcada para o paciente: " + newDto.getPaciente().getUsuario().getPrimeiroNome());
+			notificacaoMedico.setNovoStatus(newDto.getStatus().toString());
+			notificacaoMedico.setIdUsuario(newDto.getMedico().getUsuario().getId());
+			rabbitService.enviaMensagem("NOTIFICACOES", notificacaoMedico);
+
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
@@ -100,8 +109,15 @@ public class ConsultaResource {
 			notificacao.setIdConsulta(newDto.getId().toString());
 			notificacao.setDescricao("Status da consulta foi alterada para: " + newDto.getStatus().toString());
 			notificacao.setNovoStatus(newDto.getStatus().toString());
+			notificacao.setIdUsuario(newDto.getPaciente().getUsuario().getId());
 			rabbitService.enviaMensagem("NOTIFICACOES", notificacao);
-			rabbitService.enviaMensagem("NOTIFICACOES", notificacao);
+
+			NotificacaoDTO notificacaoMedico = new NotificacaoDTO();
+			notificacaoMedico.setIdConsulta(newDto.getId().toString());
+			notificacaoMedico.setDescricao("Status da consulta foi alterada para: " + newDto.getStatus().toString());
+			notificacaoMedico.setNovoStatus(newDto.getStatus().toString());
+			notificacaoMedico.setIdUsuario(newDto.getMedico().getUsuario().getId());
+			rabbitService.enviaMensagem("NOTIFICACOES", notificacaoMedico);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}

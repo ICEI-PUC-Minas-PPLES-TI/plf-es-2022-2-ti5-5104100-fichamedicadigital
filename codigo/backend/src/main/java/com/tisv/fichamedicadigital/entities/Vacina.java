@@ -25,7 +25,8 @@ public class Vacina implements Serializable {
 	private Integer numeroDoses;
 	private String nomeVacina;
 
-	@ManyToOne(cascade = CascadeType.PERSIST)
+	// cascade = CascadeType.PERSIST
+	@ManyToOne()
 	@JoinColumn(name = "ficha_medica_id")
 	private FichaMedica fichaMedica;
 
@@ -84,6 +85,12 @@ public class Vacina implements Serializable {
 			return false;
 		Vacina other = (Vacina) obj;
 		return Objects.equals(id, other.id);
+	}
+
+	@Override
+	public String toString() {
+		return "Vacina [id=" + id + ", diaVacina=" + diaVacina + ", numeroDoses=" + numeroDoses + ", nomeVacina="
+				+ nomeVacina + ", fichaMedica=" + fichaMedica + "]";
 	}
 
 }

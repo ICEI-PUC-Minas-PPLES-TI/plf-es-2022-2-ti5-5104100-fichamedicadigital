@@ -10,20 +10,17 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "tb_consultorio")
-public class Consultorio implements Serializable {
+@Table(name = "tb_notificacoes")
+public class Notificacao implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private Long idMedico;
-	private Long x;
-	private Long y;
-
-	public Consultorio() {
-
-	}
+	private Long idUsuario;
+	private String idConsulta;
+	private String descricao;
+	private String novoStatus;
 
 	public Long getId() {
 		return id;
@@ -33,28 +30,36 @@ public class Consultorio implements Serializable {
 		this.id = id;
 	}
 
-	public Long getIdMedico() {
-		return idMedico;
+	public String getIdConsulta() {
+		return idConsulta;
 	}
 
-	public void setIdMedico(Long idMedico) {
-		this.idMedico = idMedico;
+	public void setIdConsulta(String idConsulta) {
+		this.idConsulta = idConsulta;
 	}
 
-	public Long getX() {
-		return x;
+	public String getDescricao() {
+		return descricao;
 	}
 
-	public void setX(Long x) {
-		this.x = x;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 
-	public Long getY() {
-		return y;
+	public String getNovoStatus() {
+		return novoStatus;
 	}
 
-	public void setY(Long y) {
-		this.y = y;
+	public void setNovoStatus(String novoStatus) {
+		this.novoStatus = novoStatus;
+	}
+
+	public Long getIdUsuario() {
+		return idUsuario;
+	}
+
+	public void setIdUsuario(Long idUsuario) {
+		this.idUsuario = idUsuario;
 	}
 
 	@Override
@@ -70,7 +75,7 @@ public class Consultorio implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Consultorio other = (Consultorio) obj;
+		Notificacao other = (Notificacao) obj;
 		return Objects.equals(id, other.id);
 	}
 

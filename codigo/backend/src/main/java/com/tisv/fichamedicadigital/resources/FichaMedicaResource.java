@@ -22,6 +22,8 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.tisv.fichamedicadigital.dto.FichaMedicaDTO;
 import com.tisv.fichamedicadigital.entities.FichaMedica;
+import com.tisv.fichamedicadigital.entities.Vacina;
+import com.tisv.fichamedicadigital.repositories.VacinaRepository;
 import com.tisv.fichamedicadigital.services.FichaMedicaService;
 
 @RestController
@@ -30,6 +32,9 @@ public class FichaMedicaResource {
 
 	@Autowired
 	private FichaMedicaService service;
+
+	@Autowired
+	private VacinaRepository repositpry;
 
 	@GetMapping
 	public ResponseEntity<List<FichaMedicaDTO>> findAll(Pageable pageable) {
@@ -54,8 +59,16 @@ public class FichaMedicaResource {
 	 */
 	@PostMapping
 	public ResponseEntity<FichaMedicaDTO> insert(@RequestBody FichaMedicaDTO fichaMedica) {
+		for (Vacina item : fichaMedica.getVacinas()) {
+			System.out.println(item);
+		}
 		FichaMedica ficha = service.insert(new FichaMedica(fichaMedica));
-		//ficha = service.findById(ficha.getId());
+		for (Vacina item : fichaMedica.getVacinas()) {
+			item.setFichaMedica(ficha);
+			repositpry.save(item);
+			System.out.println(item);
+		}
+		// ficha = service.findById(ficha.getId());
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(ficha.getId()).toUri();
 		return ResponseEntity.created(uri).body(new FichaMedicaDTO(ficha));
 	}

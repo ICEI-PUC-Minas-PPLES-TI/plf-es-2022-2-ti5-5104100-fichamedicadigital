@@ -77,29 +77,29 @@ public class ConsultaService {
 
 	@Transactional
 	public Consulta insert(Consulta dto) {
-		List<Consulta> listaConsultas = new ArrayList<>();
-		List<Consulta> listaDeConsultas = repository.findAll();
-		for (Consulta consulta : listaDeConsultas) {
-			if (consulta.getData().getDay() == dto.getData().getDay()
-					&& consulta.getData().getMonth() == dto.getData().getMonth()
-					&& consulta.getData().getYear() == dto.getData().getYear()) {
-				listaConsultas.add(consulta);
-			}
-		}
-
-		Calendar horaInicioConsulta = Calendar.getInstance();
-		horaInicioConsulta.setTime(dto.getHoraInicio());
-		Calendar horaFimConsulta = Calendar.getInstance();
-		horaFimConsulta.setTime(dto.getHoraFim());
-		Calendar horaInicioConsultaMarcada = Calendar.getInstance();
-		Calendar horaFimConsultaMarcada = Calendar.getInstance();
-		for (Consulta consulta : listaConsultas) {
-			horaInicioConsultaMarcada.setTime(consulta.getHoraInicio());
-			horaFimConsultaMarcada.setTime(consulta.getHoraFim());
-			if (comparaHoras(horaInicioConsulta, horaFimConsulta, horaInicioConsultaMarcada, horaFimConsultaMarcada)) {
-				throw new ResourceNotFoundException("Horário de consulta indisponível!");
-			}
-		}
+//		List<Consulta> listaConsultas = new ArrayList<>();
+//		List<Consulta> listaDeConsultas = repository.findAll();
+//		for (Consulta consulta : listaDeConsultas) {
+//			if (consulta.getData().getDay() == dto.getData().getDay()
+//					&& consulta.getData().getMonth() == dto.getData().getMonth()
+//					&& consulta.getData().getYear() == dto.getData().getYear()) {
+//				listaConsultas.add(consulta);
+//			}
+//		}
+//		
+//		Calendar horaInicioConsulta = Calendar.getInstance();
+//		horaInicioConsulta.setTime(dto.getHoraInicio());
+//		Calendar horaFimConsulta = Calendar.getInstance();
+//		horaFimConsulta.setTime(dto.getHoraFim());
+//		Calendar horaInicioConsultaMarcada = Calendar.getInstance();
+//		Calendar horaFimConsultaMarcada = Calendar.getInstance();
+//		for (Consulta consulta : listaConsultas) {
+//			horaInicioConsultaMarcada.setTime(consulta.getHoraInicio());
+//			horaFimConsultaMarcada.setTime(consulta.getHoraFim());
+//			if (comparaHoras(horaInicioConsulta, horaFimConsulta, horaInicioConsultaMarcada, horaFimConsultaMarcada)) {
+//				throw new ResourceNotFoundException("Horário de consulta indisponível!");
+//			}
+//		}
 		dto.setStatus(StatusConsulta.PENDENTE);
 		dto = repository.save(dto);
 
@@ -143,18 +143,18 @@ public class ConsultaService {
 		}
 	}
 
-	private boolean comparaHoras(Calendar horaInicioConsulta, Calendar horaFimConsulta,
-			Calendar horaInicioConsultaMarcada, Calendar horaFimConsultaMarcada) {
-		if ((horaInicioConsulta.get(Calendar.HOUR) < horaInicioConsultaMarcada.get(Calendar.HOUR)
-				&& horaInicioConsulta.get(Calendar.MINUTE) < horaInicioConsultaMarcada.get(Calendar.MINUTE)
-				&& horaFimConsulta.get(Calendar.HOUR) < horaInicioConsultaMarcada.get(Calendar.HOUR)
-				&& horaFimConsulta.get(Calendar.MINUTE) < horaInicioConsultaMarcada.get(Calendar.MINUTE))
-				&& (horaInicioConsulta.get(Calendar.HOUR) > horaFimConsultaMarcada.get(Calendar.HOUR)
-						&& horaInicioConsulta.get(Calendar.MINUTE) > horaFimConsultaMarcada.get(Calendar.MINUTE)
-						&& horaFimConsulta.get(Calendar.HOUR) < horaFimConsultaMarcada.get(Calendar.HOUR)
-						&& horaFimConsulta.get(Calendar.MINUTE) < horaFimConsultaMarcada.get(Calendar.MINUTE))) {
-			return false;
-		}
-		return true;
-	}
+//	private boolean comparaHoras(Calendar horaInicioConsulta, Calendar horaFimConsulta,
+//			Calendar horaInicioConsultaMarcada, Calendar horaFimConsultaMarcada) {
+//		if ((horaInicioConsulta.get(Calendar.HOUR) < horaInicioConsultaMarcada.get(Calendar.HOUR)
+//				&& horaInicioConsulta.get(Calendar.MINUTE) < horaInicioConsultaMarcada.get(Calendar.MINUTE)
+//				&& horaFimConsulta.get(Calendar.HOUR) < horaInicioConsultaMarcada.get(Calendar.HOUR)
+//				&& horaFimConsulta.get(Calendar.MINUTE) < horaInicioConsultaMarcada.get(Calendar.MINUTE))
+//				&& (horaInicioConsulta.get(Calendar.HOUR) > horaFimConsultaMarcada.get(Calendar.HOUR)
+//						&& horaInicioConsulta.get(Calendar.MINUTE) > horaFimConsultaMarcada.get(Calendar.MINUTE)
+//						&& horaFimConsulta.get(Calendar.HOUR) < horaFimConsultaMarcada.get(Calendar.HOUR)
+//						&& horaFimConsulta.get(Calendar.MINUTE) < horaFimConsultaMarcada.get(Calendar.MINUTE))) {
+//			return false;
+//		}
+//		return true;
+//	}
 }

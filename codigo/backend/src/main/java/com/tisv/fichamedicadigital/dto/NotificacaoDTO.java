@@ -6,9 +6,10 @@ import java.util.Objects;
 public class NotificacaoDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	public String idConsulta;
-	public String descricao;
-	public String novoStatus;
+	private String idConsulta;
+	private String descricao;
+	private String novoStatus;
+	private Long idUsuario;
 
 	public NotificacaoDTO() {
 
@@ -29,13 +30,21 @@ public class NotificacaoDTO implements Serializable {
 	public void setNovoStatus(String novoStatus) {
 		this.novoStatus = novoStatus;
 	}
-	
+
 	public String getDescricao() {
 		return descricao;
 	}
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+
+	public Long getIdUsuario() {
+		return idUsuario;
+	}
+
+	public void setIdUsuario(Long idUsuario) {
+		this.idUsuario = idUsuario;
 	}
 
 	@Override
