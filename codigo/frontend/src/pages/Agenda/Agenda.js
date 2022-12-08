@@ -5,6 +5,7 @@ const Agenda = () => {
   const dateValue = new Date(new Date().getFullYear(),new Date().getMonth(),20)
   return (
     <div  className='pt-5'>
+      <h2>Calendário</h2>
       <CalendarComponent value={dateValue}></CalendarComponent>
     </div>
   )
