@@ -66,18 +66,18 @@ describe('Testando Medical Record container', () => {
 
 });
 
-// describe('Testando Profile container', () => {
+describe('Testando Profile container', () => {
    
-//     it('O componente Profile deve ser renderizado', () => {
-//         render(
-//             <Provider store={store}>
-//                     <Profile />
-//             </Provider>
-//         );
-//         expect(screen.getByText('Nome')).not.toBeNull;
-//     });
+    it('O componente Profile deve ser renderizado', () => {
+        render(
+            <Provider store={store}>
+                    <Profile />
+            </Provider>
+        );
+        expect(screen.getByText('Nome')).not.toBeNull;
+    });
 
-// });
+});
 
 
 describe('Testando Agenda container', () => {
@@ -102,6 +102,32 @@ describe('Testando Home container', () => {
             </Provider>
         );
         expect(screen.getByText('Bem Vindo')).not.toBeNull;
+    });
+
+});
+
+describe('Testando Login container', () => {
+   
+    it('O componente Login deve ser renderizado', () => {
+        render(
+            <Provider store={store}>
+                    <Login />
+            </Provider>
+        );
+        expect(screen.getByText('Login')).not.toBeNull;
+    });
+
+});
+
+describe('Testando Register container', () => {
+   
+    it('O componente Register deve ser renderizado', () => {
+        render(
+            <Provider store={store}>
+                    <Register />
+            </Provider>
+        );
+        expect(screen.getByText('Cadastrar')).not.toBeNull;
     });
 
 });
