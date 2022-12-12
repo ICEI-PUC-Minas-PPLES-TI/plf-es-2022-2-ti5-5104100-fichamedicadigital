@@ -19,12 +19,11 @@ class VacinaData {
 }
 
 class _SegundaTelaState extends State<SegundaTela> {
-  late bool cardiaco,
-      desmaioOuConvulsao,
-      diabetico,
-      internado,
-      intoleranciaLactose,
-      transfusao;
+  bool intoleranciaLactose = false;
+  bool cardiaco = false,
+      desmaioOuConvulsao = false,
+      internado = false,
+      transfusao = false;
   List<VacinaData> data = [];
   late String cartaoSus, convenio, nCarteirinha, tipoSanguineo;
   late List<dynamic> doencas, medicamentos, medicamentosAlergia, vacinas;
@@ -48,13 +47,10 @@ class _SegundaTelaState extends State<SegundaTela> {
       cardiaco = value['cardiaco'];
       doencas = value['doencas'];
       sobreNome = value['usuario']['sobreNome'].toString();
-      primeiroNome = value['usuario']['primeiroNome'].toString();
       medicamentos = value['medicamentos'];
       medicamentosAlergia = value['medicamentosAlergia'];
       desmaioOuConvulsao = value['desmaioOuConvulsao'];
-      diabetico = value['diabetico'];
       internado = value['internado'];
-      intoleranciaLactose = value['intoleranciaLactose'];
       transfusao = value['transfusao'];
       dataTransfusao = value['dataTransfusao'] == null
           ? DateTime.now()
@@ -77,6 +73,13 @@ class _SegundaTelaState extends State<SegundaTela> {
     return FutureBuilder<dynamic>(
         future: UserService().userData(widget.id),
         builder: (context, snapshot) {
+          if(snapshot.hasData){
+            intoleranciaLactose = snapshot.data['intoleranciaLactose'];
+            transfusao = snapshot.data['transfusao'];
+            desmaioOuConvulsao = snapshot.data['desmaioOuConvulsao'];
+            internado = snapshot.data['internado'];
+            primeiroNome = snapshot.data['usuario']['primeiroNome'].toString();
+          } 
           return Scaffold(
               appBar: AppBar(
                 title: Container(
@@ -324,25 +327,6 @@ class _SegundaTelaState extends State<SegundaTela> {
                           ),
                           Row(
                             children: <Widget>[
-                              const Text("Diabetes: ",
-                                  style: TextStyle(fontSize: 14)),
-                              Padding(
-                                  padding: const EdgeInsets.only(left: 15),
-                                  child: diabetico
-                                      ? Text("sim",
-                                          style: TextStyle(
-                                              fontSize: 14,
-                                              color: Colors.black
-                                                  .withOpacity(0.5)))
-                                      : Text("não",
-                                          style: TextStyle(
-                                              fontSize: 14,
-                                              color: Colors.black
-                                                  .withOpacity(0.5)))),
-                            ],
-                          ),
-                          Row(
-                            children: <Widget>[
                               const Text("Cirurgias: ",
                                   style: TextStyle(fontSize: 14)),
                               Padding(
@@ -379,7 +363,7 @@ class _SegundaTelaState extends State<SegundaTela> {
                         ],
                       ),
                     )
-                  : Column());
+                  :  const Center(child: CircularProgressIndicator()));
         });
   }
 }
