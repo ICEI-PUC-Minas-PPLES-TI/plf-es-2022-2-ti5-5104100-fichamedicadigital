@@ -50,19 +50,19 @@ Passo 1: Clonar o repositório :
 ```
 * Aplicação Web frontend
 
- ** Passo 2: Entrar na pasta do frontend:
+Passo 2: Entrar na pasta do frontend:
  ```
   $ cd plf-es-2022-2-ti5-5104100-fichamedicadigital/codigo/frontend
  ```
- ** Passo 3: Instalar as dependências do projeto frontend:
+Passo 3: Instalar as dependências do projeto frontend:
  ```
   $ npm install
 ```
- ** Passo 4: Inicializar a aplicação localmente:
+Passo 4: Inicializar a aplicação localmente:
  ```
   $ npm start
  ```
- * Frontend estará rodando em http://localhost:3000
+* Frontend estará rodando em http://localhost:3000
  
 
 ## Histórico de versões
