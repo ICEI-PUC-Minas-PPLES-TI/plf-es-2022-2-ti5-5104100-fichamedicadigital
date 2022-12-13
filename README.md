@@ -39,21 +39,27 @@ Por meio dessa aplicação, nosso grupo deseja facilitar a organização da fich
 A seguir um passo a passo instruindo como realizar uma cópia do projeto para rodá-lo em sua máquina local:
 
 * Pré-requisitos:
-  1 - Ter instalado em sua máquina Node >= 10
-  2 - Gerenciador de pacotes npm >= 5.2
+
+  1. Ter instalado em sua máquina Node >= 10
+  
+  2. Gerenciador de pacotes npm >= 5.2
 
 Passo 1: Clonar o repositório : 
+
   $ git clone https://github.com/ICEI-PUC-Minas-PPLES-TI/plf-es-2022-2-ti5-5104100-fichamedicadigital.git
 
 * Aplicação Web frontend
 
  * Passo 2: Entrar na pasta do frontend:
+ 
   $ cd plf-es-2022-2-ti5-5104100-fichamedicadigital/codigo/frontend
   
  * Passo 3: Instalar as dependências do projeto frontend:
+ 
   $ npm install
   
  * Passo 4: Inicializar a aplicação localmente:
+ 
   $ npm start
   
  * Frontend estará rodando em http://localhost:3000
