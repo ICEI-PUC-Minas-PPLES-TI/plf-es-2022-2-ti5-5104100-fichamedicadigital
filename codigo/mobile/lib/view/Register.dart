@@ -168,13 +168,37 @@ class _RegisterPageState extends State<RegisterPage> {
                         padding: const EdgeInsets.only(top: 32.0),
                         child: ElevatedButton(
                             onPressed: () {
-                              UserService().register(
+                              if(_emailController.text.compareTo(_confirmEmailController.text)!= 0){
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return const AlertDialog(
+                                      title: Text("Erro ao cadastrar"),
+                                        content: Text(
+                                            "Os e-mails não combinam"));
+                                  },
+                                );
+                              }
+                              else if(_passwordController.text.compareTo(_confirmPasswordController.text) !=0){
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return const AlertDialog(
+                                      title: Text("Erro ao cadastrar"),
+                                        content: Text(
+                                            "As senhas não combinam"));
+                                  },
+                                );
+                              }else{
+                                UserService().register(
                                   context,
                                   date,
                                   _emailController,
                                   _nameController,
                                   _passwordController,
                                   _sobrenomeController);
+                              }
+                              
                             },
                             style: const ButtonStyle(
                               backgroundColor:
