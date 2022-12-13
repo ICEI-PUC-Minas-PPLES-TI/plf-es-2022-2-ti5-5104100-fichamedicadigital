@@ -19,6 +19,12 @@ Por meio dessa aplicação, nosso grupo deseja facilitar a organização da fich
 
 ## 🤖 Tecnologias
 * Frontend
+   * ReactJs
+   * JavaScript
+   * Bootstrap v5
+   * React Redux Toolkit
+   * React Icons
+   * React toastify
 
 * Mobile
 
