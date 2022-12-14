@@ -127,13 +127,13 @@ _Esta seção descreve os requisitos comtemplados nesta descrição arquitetural
 | RF005 | Mostar consultas do paciente | Essencial |
 | RF006 | Paciente anexa exame | Essencial |
 | RF007 | Paciente visualiza exames | Essencial |
-| RF008 | Paciente filtra exames por especialidade| Desejavel |
+| RF008 | Paciente filtra exames por especialidade| Opcional |
 | RF009 | Visão da ficha médica pelo paciente| Essencial |
 | RF010 | Visão da ficha médica pelo médico | Essencial |
 | RF011 | Médico visualiza consultas marcadas | Essencial |
 | RF012 | Médico aceita ou cancela consultas pendentes | Essencial |
 | RF013 | Médico recebe alerta de consulta | Essencial |
-| RF014 | Geração de relatório | Desejavel |
+| RF014 | Geração de relatório | Opcional |
 | RF015 | Médico preenche dias disponíveis da sua agenda | Desejável |
 | RF016 | Administrador cadastra usuarios | Essencial |
 | RF017 | Administrador promove usuario a médico | Essencial |
