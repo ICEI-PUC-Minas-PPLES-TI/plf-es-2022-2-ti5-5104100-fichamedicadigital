@@ -502,7 +502,7 @@ _Apresente os cenários de testes utilizados na realização dos testes da sua a
 | **Mecanismo:** | A ficha médica é cadastrada pelo médico e visualizada pelo paciente |
 | **Medida de Resposta:** | A ficha médica deve ser visualizada no mobile e no web, sem que configurações adicionais sejam feitas |
 
-[Web](imagens/interoperabilidade1.jpg)
+[Web](imagens/interoperabilidade1.png)
 [Mobile](imagens/interoperabilidade2.jpg)
 
 | **Atributo de Qualidade:** | Manutenibilidade |
