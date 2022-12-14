@@ -483,34 +483,34 @@ _Apresente os cenários de testes utilizados na realização dos testes da sua a
 
 | **Atributo de Qualidade:** | Instalável |
 | --- | --- |
-| **Requisito de Qualidade** | Acesso aos recursos restritos deve ser controlado |
-| **Preocupação:** | Os acessos de usuários devem ser controlados de forma que cada um tenha acesso apenas aos recursos condizentes as suas credenciais. |
+| **Requisito de Qualidade** | O aplicativo deve ser compatível para o Android |
+| **Preocupação:** | O sistema deve ter as bibliotecas instaladas corretamente para que seja compativel em todos os dispositivos mobiles |
 | **Cenários(s):** | Cenário 1 |
-| **Ambiente:** | Sistema em operação normal |
+| **Ambiente:** | Sistema operacioanl Android |
 | **Estímulo:** | Acesso do administrador do sistema as funcionalidades de cadastro de novos produtos e exclusão de produtos. |
-| **Mecanismo:** | O servidor de aplicação (Rails) gera um _token_ de acesso para o usuário que se autentica no sistema. Este _token_ é transferido para a camada de visualização (Angular) após a autenticação e o tratamento visual das funcionalidades podem ser tratados neste nível. |
-| **Medida de Resposta:** | As áreas restritas do sistema devem ser disponibilizadas apenas quando há o acesso de usuários credenciados. |
+| **Mecanismo:** | Aplciação deve ser desenvolvida usando bibliotecaas que funcionarão em dispositivos Android. |
+| **Medida de Resposta:** | Olhar no pub-dev bibliotecas que são compativeis com o Android, antes de implementa-las. |
 
 
 | **Atributo de Qualidade:** | Interoperabilidade |
 | --- | --- |
-| **Requisito de Qualidade** | Acesso aos recursos restritos deve ser controlado |
-| **Preocupação:** | Os acessos de usuários devem ser controlados de forma que cada um tenha acesso apenas aos recursos condizentes as suas credenciais. |
+| **Requisito de Qualidade** | Sistema deve ter funcionalidades no mobile e no web |
+| **Preocupação:** | A aplicação deve rodar tanto no mobile, quanto no web, tendo requisitos próprios |
 | **Cenários(s):** | Cenário 2 |
-| **Ambiente:** | Sistema em operação normal |
-| **Estímulo:** | Acesso do administrador do sistema as funcionalidades de cadastro de novos produtos e exclusão de produtos. |
-| **Mecanismo:** | O servidor de aplicação (Rails) gera um _token_ de acesso para o usuário que se autentica no sistema. Este _token_ é transferido para a camada de visualização (Angular) após a autenticação e o tratamento visual das funcionalidades podem ser tratados neste nível. |
-| **Medida de Resposta:** | As áreas restritas do sistema devem ser disponibilizadas apenas quando há o acesso de usuários credenciados. |
+| **Ambiente:** | Emulador mobile e site web |
+| **Estímulo:** | Login na aplicação |
+| **Mecanismo:** | A ficha médica é cadastrada pelo médico e visualizada pelo paciente |
+| **Medida de Resposta:** | A ficha médica deve ser visualizada no mobile e no web, sem que configurações adicionais sejam feitas |
 
 | **Atributo de Qualidade:** | Manutenibilidade |
 | --- | --- |
-| **Requisito de Qualidade** | Acesso aos recursos restritos deve ser controlado |
-| **Preocupação:** | Os acessos de usuários devem ser controlados de forma que cada um tenha acesso apenas aos recursos condizentes as suas credenciais. |
+| **Requisito de Qualidade** | A manutenção do sitema deve ser fácil |
+| **Preocupação:** | O Manutenções fáceis e eficientes, com evoluções significativas e sem criação de bugs. |
 | **Cenários(s):** | Cenário 3 |
 | **Ambiente:** | Sistema em operação normal |
-| **Estímulo:** | Acesso do administrador do sistema as funcionalidades de cadastro de novos produtos e exclusão de produtos. |
-| **Mecanismo:** | O servidor de aplicação (Rails) gera um _token_ de acesso para o usuário que se autentica no sistema. Este _token_ é transferido para a camada de visualização (Angular) após a autenticação e o tratamento visual das funcionalidades podem ser tratados neste nível. |
-| **Medida de Resposta:** | As áreas restritas do sistema devem ser disponibilizadas apenas quando há o acesso de usuários credenciados. |
+| **Estímulo:** | Evolução do proh |
+| **Mecanismo:** | O desenvolvimento deve fazer uma manutenção ou evolução no código |
+| **Medida de Resposta:** | Classe e variáveis com nomes intuitivos, sistema em MVC |
 
 | **Atributo de Qualidade:** | Desempenho |
 | --- | --- |
