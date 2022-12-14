@@ -39,10 +39,11 @@ const Login = () => {
                     <label className="form-label w-25">Email:</label>
                     <input
                         className="form-control w-75 mb-3"
-                        type="text"
+                        type="email"
                         placeholder="E-mail"
                         onChange={(e) => setEmail(e.target.value)}
                         value={email}
+                        required
                     />
                 </div>
                 <div className="d-flex justify-content-center">
@@ -53,6 +54,7 @@ const Login = () => {
                         placeholder="Senha"
                         onChange={(e) => setPassword(e.target.value)}
                         value={password}
+                        required
                     />
                 </div>
                 <div className='d-flex justify-content-end'>

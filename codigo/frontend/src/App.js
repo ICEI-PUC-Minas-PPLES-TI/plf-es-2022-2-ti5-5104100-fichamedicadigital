@@ -38,11 +38,11 @@ function App() {
                         />
                         <Route
                             path="/medical"
-                            element={auth ? <MedicalRecord /> : <Navigate to="/login" />}
+                            element={auth && role == 'ROLE_MEDICO' || role == 'ROLE_ADMIN' ? <MedicalRecord /> : <Navigate to="/login" />}
                         />
                         <Route
                             path="/consultas"
-                            element={auth ? <Consultas /> : <Navigate to="/login" />}
+                            element={auth && role == 'ROLE_MEDICO' || role == 'ROLE_ADMIN' ? <Consultas /> : <Navigate to="/login" />}
                         />
                         <Route
                             path="/profile"
@@ -50,7 +50,7 @@ function App() {
                         />
                         <Route
                             path="/agenda"
-                            element={auth ? <Agenda /> : <Navigate to="/login" />}
+                            element={auth && role == 'ROLE_MEDICO' || role == 'ROLE_ADMIN' ? <Agenda /> : <Navigate to="/login" />}
                         />
                         <Route
                             path="/dashboard"
