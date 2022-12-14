@@ -3,21 +3,24 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mobile/main.dart';
 
+import 'login_test.dart';
+import 'register_test.dart';
+
 void main() {
-  testeLogin(WidgetTester tester) async {
-    await tester.enterText(find.widgetWithText(TextFormField, 'E-mail'), 'paciente@gmail.com');
-    await tester.enterText(find.widgetWithText(TextFormField, 'Senha'), 'senha123');
-    await tester.tap(find.widgetWithText(ElevatedButton, 'ENTRAR'));
-  }
 
   testeHomePage(WidgetTester tester) async {
     expect(find.widgetWithImage(Container, AssetImage('images/profileIcon.jpeg')), findsOneWidget);
   }
 
-  testWidgets('Teste da tela inicial', (WidgetTester tester) async {
+  testWidgets('Teste do fluxo de usuário', (WidgetTester tester) async {
     await tester.pumpWidget(const MyApp());
-    await testeLogin(tester);
+
+    await LoginTest.testeLogin(tester);
     await tester.pump(const Duration(seconds: 5));
+
+    await RegisterTest.testeRegister(tester);
+    await tester.pump(const Duration(seconds: 5));
+
     await testeHomePage(tester);
   });
 
