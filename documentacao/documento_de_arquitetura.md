@@ -424,7 +424,7 @@ Exemplos de Histórias de Usuário:
 
 ### Diagrama de Classes
 
-![Diagrama de classes](imagens/DiagramaDeClasse_v01.jpg "Diagrama de classes")
+![Diagrama de classes](imagens/DiagramaDeClasse_v02.jpg "Diagrama de classes")
 
 
 **Figura 2 – Diagrama de classes (exemplo). Fonte: o próprio autor.**
