@@ -7,22 +7,22 @@
     height: 150px;
     border-radius: 50%;
     margin-bottom: 1em;
-    background-color: rgb(240, 46, 220);
+    background-color: rgb(75, 240, 229);
   }
 
 .section-profile{
     margin-bottom: 50px;
 }
 .nav-link{
-    color: #f40edd;
+    color: #34ebeb;
 }
 .react-tabs__tab--selected{
-    background-color: #800080 !important;
+    background-color: #076458 !important;
     color: hsl(330, 100%, 96%);
 }
 .nav-link:hover,
 .nav-link:focus{
-    background-color: #f40edd;
+    background-color: #3ce8da;
     color: #fff;
     cursor: pointer;
 }
