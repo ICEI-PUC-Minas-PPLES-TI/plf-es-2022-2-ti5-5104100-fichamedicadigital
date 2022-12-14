@@ -181,8 +181,7 @@ Obs: acrescente mais linhas, se necessário.
 # 3. Modelagem e projeto arquitetural
 
 
-![Visão Geral da Solução](imagens/visao.png "Visão Geral da Solução")
-![Visão Geral da Solução](imagens/diagramaArquitetura.png "Visão Geral da Solução")
+![Visão Geral da Solução](imagens/Doc_Arq.png "Visão Geral da Solução")
 
 **Figura 1 - Visão Geral da Solução  Fonte: o próprio autor**
 
