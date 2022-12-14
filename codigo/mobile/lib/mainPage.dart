@@ -209,7 +209,7 @@ class _MainPageState extends State<MainPage> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => CreateConsult(id: widget.id)),
+                        MaterialPageRoute(builder: (context) => MapsPage(key: widget.key)),
                       );
                     },
                     style: ElevatedButton.styleFrom(

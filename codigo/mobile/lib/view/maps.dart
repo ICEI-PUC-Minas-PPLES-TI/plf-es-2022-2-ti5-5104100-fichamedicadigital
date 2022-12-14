@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_osm_plugin/flutter_osm_plugin.dart';
 import 'package:mobile/mainPage.dart';
 import 'package:mobile/services/Appoinment.dart';
+import 'package:mobile/services/OfficeService.dart';
 import 'package:mobile/view/styles/MapsStyle.dart';
 
 class MapsPage extends StatefulWidget {
@@ -18,8 +19,29 @@ class _MapsPageState extends State<MapsPage> {
     initPosition: GeoPoint(latitude: -19.9326675, longitude: -43.938214),
     areaLimit: BoundingBox( east: 10.4922941, north: 47.8084648, south: 45.817995, west: 5.9559113,),
   );
+
+  late List<GeoPoint> officesData = [];
   
   AppointmentService appointmentService = AppointmentService();
+  OfficeService officeService = OfficeService();
+
+  @override
+  void initState() {
+    super.initState();
+    print('teste initState');
+    // setOfficesData();
+    officeService.getOffices().then((value) => {
+      officesData = value.map((point) => GeoPoint(latitude: point.latitude, longitude: point.longitude)) as List<GeoPoint>,
+      print('teste $officesData'),
+    });
+
+  }
+
+  void setOfficesData() async {
+    var aux = await officeService.getOffices();
+    officesData = aux.map((point) => GeoPoint(latitude: point.latitude, longitude: point.longitude)) as List<GeoPoint>;
+    print('teste $officesData');
+  }
   
   @override
   Widget build(BuildContext context) {
@@ -72,14 +94,10 @@ class _MapsPageState extends State<MapsPage> {
                     StaticPositionGeoPoint(
                       '1',
                       MapsStyle.staticPointMarker,
-                      [
-                        GeoPoint(latitude: -19.9326675, longitude: -43.938214),
-                        GeoPoint(latitude: -19.8264536, longitude: -43.959169),
-                        GeoPoint(latitude: -19.9228571, longitude: -43.9947837),
-                      ]
+                      officesData
                     ),
                   ],
-                  onMapIsReady: (bool value) async {
+                  onMapIsReady: (bool value) {
                     print('teste to pronto');
                     if (value) {
                       Future.delayed(const Duration(seconds: 1), () async {
