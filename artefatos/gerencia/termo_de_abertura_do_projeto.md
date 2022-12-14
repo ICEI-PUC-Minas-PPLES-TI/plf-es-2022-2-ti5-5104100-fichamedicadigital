@@ -7,8 +7,11 @@
 **Integrantes:**
 
 Anna Laura Reis Dornelas Gama, 
+
 Edson Júnior Campolina Silva, 
+
 João Pedro Mayrink, 
+
 Rodolfo Rocha Rodrigues
 
 ---
@@ -108,6 +111,7 @@ Centralização da informação, evitando documentos e atestados redundantes
 **3.1 Prazo previsto (horas):** 400h
 
 **3.2 Data prevista de início:  ** 13/08/2022
+
 **3.3 Data prevista de término: ** 30/11/2022
 
 ## 4. ESTIMATIVA DE CUSTO
