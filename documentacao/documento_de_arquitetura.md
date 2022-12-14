@@ -477,7 +477,6 @@ _Apresente os cenários de testes utilizados na realização dos testes da sua a
 
 **Cenário 5 - Responsividade:** O sistema web deve ser acessível para resoluções a partir de 1025 pixels de largura, e resoluções mobile até 360 pixels de largura
 
-**Cenário 6 - Recuperabilidade:** As informações cadastradas no banco de dados devem ser disponiveis para recuperação nos dipositivos mobiles e no web. A mensageria é utilizada na sincronização dos dados, como notificações de alteração nas consultas.
 
 ## 4.2. Avaliação
 
@@ -514,33 +513,24 @@ _Apresente os cenários de testes utilizados na realização dos testes da sua a
 
 | **Atributo de Qualidade:** | Desempenho |
 | --- | --- |
-| **Requisito de Qualidade** | Acesso aos recursos restritos deve ser controlado |
-| **Preocupação:** | Os acessos de usuários devem ser controlados de forma que cada um tenha acesso apenas aos recursos condizentes as suas credenciais. |
+| **Requisito de Qualidade** | Requisições devem funcionar com tempo médio de 3 segundos |
+| **Preocupação:** | Boa usabilidade do sistema do lado do usuário |
 | **Cenários(s):** | Cenário 4 |
-| **Ambiente:** | Sistema em operação normal |
-| **Estímulo:** | Acesso do administrador do sistema as funcionalidades de cadastro de novos produtos e exclusão de produtos. |
-| **Mecanismo:** | O servidor de aplicação (Rails) gera um _token_ de acesso para o usuário que se autentica no sistema. Este _token_ é transferido para a camada de visualização (Angular) após a autenticação e o tratamento visual das funcionalidades podem ser tratados neste nível. |
-| **Medida de Resposta:** | As áreas restritas do sistema devem ser disponibilizadas apenas quando há o acesso de usuários credenciados. |
+| **Ambiente:** | Sistema fazendo requisições |
+| **Estímulo:** | Uusário utilizando funcionalidades que dependem do tempo de resposta |
+| **Mecanismo:** | Consultar o tempo de resposta das requisições fazer uma média entre elas |
+| **Medida de Resposta:** | Analisar o tempo médio de resposta de cada requisição e mudar consultas se for necessário. |
 
 | **Atributo de Qualidade:** | Responsividade |
 | --- | --- |
-| **Requisito de Qualidade** | Acesso aos recursos restritos deve ser controlado |
-| **Preocupação:** | Os acessos de usuários devem ser controlados de forma que cada um tenha acesso apenas aos recursos condizentes as suas credenciais. |
+| **Requisito de Qualidade** | O sistema deve ser funcional para os diversos tipos de aparelhos |
+| **Preocupação:** |O sistema deve funcionar nos mais diversos dispositivos. |
 | **Cenários(s):** | Cenário 5 |
-| **Ambiente:** | Sistema em operação normal |
-| **Estímulo:** | Acesso do administrador do sistema as funcionalidades de cadastro de novos produtos e exclusão de produtos. |
-| **Mecanismo:** | O servidor de aplicação (Rails) gera um _token_ de acesso para o usuário que se autentica no sistema. Este _token_ é transferido para a camada de visualização (Angular) após a autenticação e o tratamento visual das funcionalidades podem ser tratados neste nível. |
-| **Medida de Resposta:** | As áreas restritas do sistema devem ser disponibilizadas apenas quando há o acesso de usuários credenciados. |
+| **Ambiente:** | Notebooks, celulares |
+| **Estímulo:** | Acesso ao sistema a partir de um celular ou notebook. |
+| **Mecanismo:** | O sistema web deve ser acessível para resoluções a partir de 1025 pixels de largura, e resoluções mobile até 360 pixels de largura |
+| **Medida de Resposta:** | Utilizar de columns e rows, entre outros componentes responsivos |
 
-| **Atributo de Qualidade:** | Recuperabilidade |
-| --- | --- |
-| **Requisito de Qualidade** | Acesso aos recursos restritos deve ser controlado |
-| **Preocupação:** | Os acessos de usuários devem ser controlados de forma que cada um tenha acesso apenas aos recursos condizentes as suas credenciais. |
-| **Cenários(s):** | Cenário 6 |
-| **Ambiente:** | Sistema em operação normal |
-| **Estímulo:** | Acesso do administrador do sistema as funcionalidades de cadastro de novos produtos e exclusão de produtos. |
-| **Mecanismo:** | O servidor de aplicação (Rails) gera um _token_ de acesso para o usuário que se autentica no sistema. Este _token_ é transferido para a camada de visualização (Angular) após a autenticação e o tratamento visual das funcionalidades podem ser tratados neste nível. |
-| **Medida de Resposta:** | As áreas restritas do sistema devem ser disponibilizadas apenas quando há o acesso de usuários credenciados. |
 
 **Considerações sobre a arquitetura:**
 
