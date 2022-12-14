@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: linear-gradient( 120deg, #800080, #551054, #2d102c );
+    background: linear-gradient( 120deg, #20d4b9, #19b29b, #076458 );
     border-bottom: 1px solid #363636;
     padding: 0 1em;
     padding-top: 1em;
@@ -25,14 +25,14 @@
   }
 
   #nav-links a:hover {
-    color: #800080 ;
+    color: #19b29b ;
   }
   h2:hover {
-    color: #440344 ;
+    color: #076458 ;
   }
   .btn-logout {
-    color: #e88cd2;
+    color: #20d4b9;
   }
   .btn-logout:hover{
-    color: #800080 ;
+    color: #19b29b ;
   }

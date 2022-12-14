@@ -7,7 +7,7 @@ body {
     color: #000;
   }
   a {
-    color: #e88cd2;
+    color: #8ce8dd;
     text-decoration: none;
   }
   
@@ -19,5 +19,5 @@ body {
     list-style: none;
   }
 .noauth{
-  background: linear-gradient( 120deg, #800080, #551054, #2d102c );
+  background: linear-gradient( 120deg, #20d4b9, #19b29b, #076458 );
 }
