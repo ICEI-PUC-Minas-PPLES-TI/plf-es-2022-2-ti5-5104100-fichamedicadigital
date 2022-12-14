@@ -63,11 +63,11 @@ Passo 1: Clonar o repositório :
 ```
 * Aplicação Web frontend
 
-Passo 2: Entrar na pasta do frontend:
+Passo 2: Entrar na pasta do frontend web:
  ```
   $ cd plf-es-2022-2-ti5-5104100-fichamedicadigital/codigo/frontend
  ```
-Passo 3: Instalar as dependências do projeto frontend:
+Passo 3: Instalar as dependências do projeto frontend web:
  ```
   $ npm install
 ```
@@ -76,6 +76,21 @@ Passo 4: Inicializar a aplicação localmente:
   $ npm start
  ```
 * Frontend estará rodando em http://localhost:3000
+
+* Aplicação Mobile frontend
+
+Passo 5: Entrar na pasta do frontend mobile:
+ ```
+  $ cd plf-es-2022-2-ti5-5104100-fichamedicadigital/codigo/mobile
+ ```
+Passo 6: Instalar as dependências do projeto frontend mobile:
+ ```
+  $ flutter pub get
+```
+Passo 7: Inicializar a aplicação localmente:
+ ```
+  $ flutter run lib/main.dart
+ ```
  
 
 ## Histórico de versões
