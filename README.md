@@ -27,12 +27,25 @@ Por meio dessa aplicação, nosso grupo deseja facilitar a organização da fich
    * React toastify
 
 * Mobile
+  * Flutter
+  * Dart
+  * Material-UI
+  * dart_amqp
+  * flutter_pdfviwer
 
 * Backend
-
+  * Java
+  * SpringBoot
+  * JUnit Mockito 
+  
 * Database
-
+  * PostgreSql
+  
 * Cloud
+  * Amazon S3
+  * Contâiner Azure
+  * Amazon Database
+  * Heroku
 
 ## 📝 Instruções de utilização
 
