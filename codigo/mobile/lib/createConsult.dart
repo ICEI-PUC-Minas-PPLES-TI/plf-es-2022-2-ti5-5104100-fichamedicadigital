@@ -31,7 +31,8 @@ class _CreateConsultState extends State<CreateConsult> {
     return FutureBuilder<dynamic>(
         future: AppointmentService().getDoctor(),
         builder: (context, snapshot) {
-          if(snapshot.hasData) dropdownvalue = snapshot.data.first["id"].toString();
+          if (snapshot.hasData)
+            dropdownvalue = snapshot.data.first["id"].toString();
           return Scaffold(
               backgroundColor: Color.fromARGB(255, 208, 243, 239),
               appBar: AppBar(
@@ -39,130 +40,140 @@ class _CreateConsultState extends State<CreateConsult> {
                     child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
-                      Image.asset('images/icon.png', width: 46, height: 46),
                       const Padding(
                         padding: EdgeInsets.only(left: 15),
                         child: Text('Ficha Médica Digital',
                             style: TextStyle(fontSize: 20)),
                       ),
                       // ignore: prefer_const_constructors
-                      Row(children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.only(right: 5),
-                          child: SvgPicture.asset(
-                              'images/streamlinehq-alarm-bell-interface-essential-48.svg',
-                              width: 20,
-                              height: 20,
-                              semanticsLabel: 'Notificação'),
-                        ),
-                        Image.asset(
-                            'images/streamlinehq-logout-2-interface-essential-48.png',
-                            width: 20,
-                            height: 20),
-                      ]),
                     ])),
                 backgroundColor: const Color.fromARGB(255, 62, 173, 173),
               ),
               body: snapshot.hasData
-                  ? Center(
-                      child: Padding(
+                  ? Column(children: <Widget>[
+                      const Padding(
+                        padding: EdgeInsets.only(
+                            left: 0.0, top: 32.0, right: 0.0, bottom: 0.0),
+                        child: Text(
+                          "Marcar agendamento",
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 25, 53, 98),
+                              fontSize: 24,
+                              fontWeight: FontWeight.w800),
+                        ),
+                      ),
+                      Padding(
                           padding: const EdgeInsets.only(
-                              left: 32.0, top: 0.0, right: 32.0, bottom: 0.0),
-                          child:
-                              Column(mainAxisSize: MainAxisSize.min, children: [
+                              left: 20.0, top: 32.0, right: 0.0, bottom: 0.0),
+                          child: Column(children: [
                             dropdownvalue.isNotEmpty
-                                ? DropdownButton(
-                                    // Initial Value
-                                    value: dropdownvalue,
+                                ? Row(children: [
+                                    Text("Selecionar Médico: "),
+                                    DropdownButton(
+                                      // Initial Value
+                                      value: dropdownvalue,
 
-                                    // Down Arrow Icon
-                                    icon: const Icon(Icons.keyboard_arrow_down),
+                                      // Down Arrow Icon
+                                      icon:
+                                          const Icon(Icons.keyboard_arrow_down),
 
-                                    // Array list of items
-                                    items:
-                                        (content as List<dynamic>).map((items) {
-                                      print(items);
-                                      return DropdownMenuItem(
-                                        value: items["id"].toString(),
-                                        child: Text(
-                                            items["primeiroNome"].toString() +
-                                                items["ultimoNome"].toString()),
-                                      );
-                                    }).toList(),
-                                    // After selecting the desired option,it will
-                                    // change button value to selected value
-                                    onChanged: (String? newValue) {
-                                      setState(() {
-                                        dropdownvalue = newValue!;
-                                      });
-                                    },
-                                  )
+                                      // Array list of items
+                                      items: (content as List<dynamic>)
+                                          .map((items) {
+                                        print(items);
+                                        return DropdownMenuItem(
+                                          value: items["id"].toString(),
+                                          child: Text(items["primeiroNome"]
+                                                  .toString() +
+                                              items["ultimoNome"].toString()),
+                                        );
+                                      }).toList(),
+                                      // After selecting the desired option,it will
+                                      // change button value to selected value
+                                      onChanged: (String? newValue) {
+                                        setState(() {
+                                          dropdownvalue = newValue!;
+                                        });
+                                      },
+                                    )
+                                  ])
                                 : const Center(
                                     child: CircularProgressIndicator()),
-                            Column(
-                              children: <Widget>[
-                                const Padding(padding: EdgeInsets.only(top: 8)),
-                                const Text("Data da consulta:",
-                                    style: TextStyle(color: Colors.white)),
-                                ElevatedButton(
-                                  onPressed: () async {
-                                    await showDatePicker(
-                                      context: context,
-                                      initialDate: DateTime(2022),
-                                      firstDate: DateTime(1900),
-                                      lastDate: DateTime(2100),
-                                    ).then((value) {
-                                      setState(() {
-                                        date = value!;
+                            Padding(
+                              padding: EdgeInsets.only(top: 16),
+                              child: Row(
+                                children: <Widget>[
+                                  const Text(
+                                    "Data da consulta: ",
+                                  ),
+                                  ElevatedButton(
+                                    onPressed: () async {
+                                      await showDatePicker(
+                                        context: context,
+                                        initialDate: DateTime(2022),
+                                        firstDate: DateTime(1900),
+                                        lastDate: DateTime(2100),
+                                      ).then((value) {
+                                        setState(() {
+                                          date = value!;
+                                        });
+                                        return null;
                                       });
-                                      return null;
-                                    });
-                                  },
-                                  child: const Text('Selecionar data'),
-                                )
-                              ],
+                                    },
+                                    child: const Text('Selecionar data'),
+                                  )
+                                ],
+                              ),
                             ),
-                            Column(
-                              children: <Widget>[
-                                const Padding(padding: EdgeInsets.only(top: 8)),
-                                const Text("Horário da consulta:",
-                                    style: TextStyle(color: Colors.white)),
-                                ElevatedButton(
-                                  onPressed: () async {
-                                    await showTimePicker(
-                                      initialTime: TimeOfDay.now(),
-                                      context: context,
-                                    ).then((value) {
-                                      setState(() {
-                                        time = value!;
+                            Padding(
+                              padding: EdgeInsets.only(top: 16),
+                              child: Row(
+                                children: <Widget>[
+                                  const Padding(
+                                      padding:
+                                          EdgeInsets.only(top: 8, bottom: 20)),
+                                  const Text("Horário da consulta:"),
+                                  ElevatedButton(
+                                    onPressed: () async {
+                                      await showTimePicker(
+                                        initialTime: TimeOfDay.now(),
+                                        context: context,
+                                      ).then((value) {
+                                        setState(() {
+                                          time = value!;
+                                        });
+                                        return null;
                                       });
-                                      return null;
-                                    });
-                                  },
-                                  child: const Text('Selecionar hora'),
-                                )
-                              ],
+                                    },
+                                    child: const Text('Selecionar hora'),
+                                  )
+                                ],
+                              ),
                             ),
-                            ElevatedButton(
-                                onPressed: () {
-                                  AppointmentService().postAppointment(
-                                      dropdownvalue, date, time, widget.id);
-                                },
-                                style: const ButtonStyle(
-                                  backgroundColor: MaterialStatePropertyAll(
-                                      Color.fromARGB(255, 25, 53, 98)),
-                                  textStyle: MaterialStatePropertyAll(
-                                      TextStyle(fontWeight: FontWeight.bold)),
-                                ),
-                                child: const Padding(
-                                  padding: EdgeInsets.only(
-                                      left: 32.0,
-                                      top: 16.0,
-                                      right: 32.0,
-                                      bottom: 16.0),
-                                  child: Text("Marcar Consulta"),
-                                ))
-                          ])))
+                            Padding(
+                                padding: EdgeInsets.only(top: 60),
+                                child: ElevatedButton(
+                                    onPressed: () {
+                                      AppointmentService().postAppointment(
+                                          dropdownvalue, date, time, widget.id);
+                                    },
+                                    style: const ButtonStyle(
+                                      backgroundColor: MaterialStatePropertyAll(
+                                          Color.fromARGB(255, 25, 53, 98)),
+                                      textStyle: MaterialStatePropertyAll(
+                                          TextStyle(
+                                              fontWeight: FontWeight.bold)),
+                                    ),
+                                    child: const Padding(
+                                      padding: EdgeInsets.only(
+                                          left: 32.0,
+                                          top: 16.0,
+                                          right: 32.0,
+                                          bottom: 16.0),
+                                      child: Text("Marcar Consulta"),
+                                    )))
+                          ]))
+                    ])
                   : const Center(child: CircularProgressIndicator()));
         });
   }

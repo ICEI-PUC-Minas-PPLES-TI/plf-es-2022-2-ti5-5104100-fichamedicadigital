@@ -58,6 +58,7 @@ class _LoginPageState extends State<LoginPage> {
                               controller: _passwordController,
                               keyboardType: TextInputType.emailAddress,
                               enabled: true,
+                              obscureText: true,
                               decoration: const InputDecoration(
                                   labelText: "Senha",
                                   labelStyle:
