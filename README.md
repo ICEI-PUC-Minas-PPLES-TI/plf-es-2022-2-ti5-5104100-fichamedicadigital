@@ -30,7 +30,7 @@ Por meio dessa aplicação, nosso grupo deseja facilitar a organização da fich
   * Flutter
   * Dart
   * Material-UI
-  * dart_amqp
+  * flutter_osm_plugin
   * flutter_pdfviwer
 
 * Backend
