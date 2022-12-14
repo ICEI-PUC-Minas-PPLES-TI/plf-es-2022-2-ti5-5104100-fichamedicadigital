@@ -30,7 +30,6 @@ class _MainPageState extends State<MainPage> {
             child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-              Image.asset('images/icon.png', width: 46, height: 46),
               const Padding(
                 padding: EdgeInsets.only(left: 15),
                 child: Text('Ficha Médica Digital',
@@ -84,8 +83,7 @@ class _MainPageState extends State<MainPage> {
                   style: const TextStyle(
                       fontSize: 20, fontWeight: FontWeight.w800),
                 ),
-                const Text('Tipo sanguíneo: O+'),
-                const Text('Soropositivo: positivo')
+                const Text('Tipo sanguíneo: O+')
               ],
             ),
           ),
@@ -209,7 +207,7 @@ class _MainPageState extends State<MainPage> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => MapsPage(key: widget.key)),
+                        MaterialPageRoute(builder: (context) => CreateConsult(id: widget.id)),
                       );
                     },
                     style: ElevatedButton.styleFrom(

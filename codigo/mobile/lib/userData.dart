@@ -76,6 +76,7 @@ class _SegundaTelaState extends State<SegundaTela> {
             desmaioOuConvulsao = snapshot.data['desmaioOuConvulsao'];
             internado = snapshot.data['internado'];
             primeiroNome = snapshot.data['usuario']['primeiroNome'].toString();
+            sobreNome = snapshot.data['usuario']['sobreNome'].toString();
           } 
           return Scaffold(
               appBar: AppBar(

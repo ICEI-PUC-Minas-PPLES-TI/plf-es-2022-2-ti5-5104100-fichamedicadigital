@@ -181,8 +181,7 @@ Obs: acrescente mais linhas, se necessário.
 # 3. Modelagem e projeto arquitetural
 
 
-![Visão Geral da Solução](imagens/visao.png "Visão Geral da Solução")
-![Visão Geral da Solução](imagens/diagramaArquitetura.png "Visão Geral da Solução")
+![Visão Geral da Solução](imagens/Doc_Arq.png "Visão Geral da Solução")
 
 **Figura 1 - Visão Geral da Solução  Fonte: o próprio autor**
 
@@ -490,6 +489,8 @@ _Apresente os cenários de testes utilizados na realização dos testes da sua a
 | **Mecanismo:** | Aplciação deve ser desenvolvida usando bibliotecaas que funcionarão em dispositivos Android. |
 | **Medida de Resposta:** | Olhar no pub-dev bibliotecas que são compativeis com o Android, antes de implementa-las. |
 
+![Instalavel](imagens/instalável.jpg)
+
 
 | **Atributo de Qualidade:** | Interoperabilidade |
 | --- | --- |
@@ -501,6 +502,9 @@ _Apresente os cenários de testes utilizados na realização dos testes da sua a
 | **Mecanismo:** | A ficha médica é cadastrada pelo médico e visualizada pelo paciente |
 | **Medida de Resposta:** | A ficha médica deve ser visualizada no mobile e no web, sem que configurações adicionais sejam feitas |
 
+[Web](imagens/interoperabilidade1.png)
+[Mobile](imagens/interoperabilidade2.jpg)
+
 | **Atributo de Qualidade:** | Manutenibilidade |
 | --- | --- |
 | **Requisito de Qualidade** | A manutenção do sitema deve ser fácil |
@@ -511,6 +515,8 @@ _Apresente os cenários de testes utilizados na realização dos testes da sua a
 | **Mecanismo:** | O desenvolvimento deve fazer uma manutenção ou evolução no código |
 | **Medida de Resposta:** | Classe e variáveis com nomes intuitivos, sistema em MVC |
 
+.[MVC](imagens/manutenibilidade.jpg)
+
 | **Atributo de Qualidade:** | Desempenho |
 | --- | --- |
 | **Requisito de Qualidade** | Requisições devem funcionar com tempo médio de 3 segundos |
@@ -520,6 +526,7 @@ _Apresente os cenários de testes utilizados na realização dos testes da sua a
 | **Estímulo:** | Uusário utilizando funcionalidades que dependem do tempo de resposta |
 | **Mecanismo:** | Consultar o tempo de resposta das requisições fazer uma média entre elas |
 | **Medida de Resposta:** | Analisar o tempo médio de resposta de cada requisição e mudar consultas se for necessário. |
+.[Desempenho](imagens/desempenho.jpg)
 
 | **Atributo de Qualidade:** | Responsividade |
 | --- | --- |
@@ -530,6 +537,8 @@ _Apresente os cenários de testes utilizados na realização dos testes da sua a
 | **Estímulo:** | Acesso ao sistema a partir de um celular ou notebook. |
 | **Mecanismo:** | O sistema web deve ser acessível para resoluções a partir de 1025 pixels de largura, e resoluções mobile até 360 pixels de largura |
 | **Medida de Resposta:** | Utilizar de columns e rows, entre outros componentes responsivos |
+.[Responsividade](imagens/responsividade1.jpg)
+.[Responsividade](imagens/responsividade2.jpg)
 
 
 **Considerações sobre a arquitetura:**
