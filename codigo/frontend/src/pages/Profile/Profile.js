@@ -13,10 +13,12 @@ import {reset,medicalFindById} from '../../slices/medicalSlice'
 import {pacientesFindAll, userFindById} from '../../slices/userSlice'
 import {consultFindById,consultDelete} from '../../slices/consultSlice'
 import ModalEdit from '../Admin/DashboardModalEdit';
+import { useAuth } from '../../hooks/useAuth';
 
 const Profile = () => {
 
     const dispatch = useDispatch()
+    const { auth,role } = useAuth();
 
     const user = JSON.parse(localStorage.getItem("user"));
     var userProfile = useSelector((state) => state.user.userProfile)
@@ -66,11 +68,14 @@ const Profile = () => {
                 </div>
                 
             </div>
-            <button className='btn'>
-                    <ModalEdit props={userProfile}/>
+            {role != 'ROLE_PACIENTE' &&
+                <button className='btn'>
+                <ModalEdit props={userProfile}/>
                 </button>
+            }
             <hr />
-            <Tabs>
+            {role != 'ROLE_PACIENTE' &&
+                <Tabs>
                 <TabList>
                     <div className="nav nav-tabs" id="nav-tab" role="tablist">
                     {/* <Tab className="nav-link">Consultas</Tab> */}
@@ -134,7 +139,8 @@ const Profile = () => {
                     <MedicalRecordView props={pacienteId}/>
                 }
                 </TabPanel>
-            </Tabs>
+                </Tabs>
+            }
         </div>
     )
 }

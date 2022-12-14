@@ -51,6 +51,7 @@ const Register = () => {
                         placeholder="Nome"
                         onChange={(e) => setName(e.target.value)}
                         value={name}
+                        required
                     />
                 </div>
                 <div className='d-flex justify-content-center mb-3'>
@@ -61,6 +62,7 @@ const Register = () => {
                         placeholder="Sobrenome"
                         onChange={(e) => setSurname(e.target.value)}
                         value={surName}
+                        required
                     />
                 </div>
                 <div className='d-flex justify-content-center mb-3'>
@@ -70,6 +72,7 @@ const Register = () => {
                         type="date"
                         onChange={(e) => setBirthdate(e.target.value)}
                         value={birthdate}
+                        required
                     />
                 </div>
                 <div className='d-flex justify-content-center mb-3'>
@@ -80,6 +83,7 @@ const Register = () => {
                         placeholder="E-mail"
                         onChange={(e) => setEmail(e.target.value)}
                         value={email}
+                        required
                     />
                 </div>
                 <div className='d-flex justify-content-center mb-3'>
@@ -90,6 +94,7 @@ const Register = () => {
                         placeholder="E-mail"
                         onChange={(e) => setEmailConfirm(e.target.value)}
                         value={emailConfirm}
+                        required
                     />
                 </div>
                 <div className='d-flex justify-content-center mb-3'>
@@ -100,6 +105,7 @@ const Register = () => {
                         placeholder="Senha"
                         onChange={(e) => setPassword(e.target.value)}
                         value={password}
+                        required
                     />
                 </div>
                 <div className='d-flex justify-content-center mb-3'>
@@ -110,6 +116,7 @@ const Register = () => {
                         placeholder="Confirme a senha"
                         onChange={(e) => setConfirmPassword(e.target.value)}
                         value={confirmPassword}
+                        required
                     />
                 </div>
                 <div className='d-flex justify-content-end'>

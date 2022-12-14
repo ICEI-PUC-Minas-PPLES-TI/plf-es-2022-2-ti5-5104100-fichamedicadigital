@@ -46,14 +46,18 @@ const NavBar = () => {
                             </NavLink>
                         </li>
                         <li>
+                        { role != 'ROLE_PACIENTE' &&
                             <NavLink to="/medical">
-                                <BsFillPersonBadgeFill />
+                            <BsFillPersonBadgeFill />
                             </NavLink>
+                        }
                         </li>
                         <li>
+                        { role != 'ROLE_PACIENTE' &&
                             <NavLink to="/agenda">
-                                <BsFillCalendarFill />
+                            <BsFillCalendarFill />
                             </NavLink>
+                        }
                         </li>
                         {role == 'ROLE_ADMIN' &&
                             <li>
