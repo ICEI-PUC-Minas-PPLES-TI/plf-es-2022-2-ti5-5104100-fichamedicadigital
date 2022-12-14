@@ -467,27 +467,70 @@ _Esta seção descreve a avaliação da arquitetura apresentada, baseada no mét
 
 _Apresente os cenários de testes utilizados na realização dos testes da sua aplicação. Escolha cenários de testes que demonstrem os requisitos não funcionais sendo satisfeitos. Os requisitos a seguir são apenas exemplos de possíveis requisitos, devendo ser revistos, adequados a cada projeto e complementados de forma a terem uma especificação completa e auto-explicativa._
 
-**Cenário 1 - Acessibilidade:** Suspendisse consequat consectetur velit. Sed sem risus, dictum dictum facilisis vitae, commodo quis leo. Vivamus nulla sem, cursus a mollis quis, interdum at nulla. Nullam dictum congue mauris. Praesent nec nisi hendrerit, ullamcorper tortor non, rutrum sem. In non lectus tortor. Nulla vel tincidunt eros.
+**Cenário 1 - Instalável:** O aplicativo mobile deve ser capaz de rodar nos principais dispositivos mobiles (Android)
 
-**Cenário 2 - Interoperabilidade:** Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce ut accumsan erat. Pellentesque in enim tempus, iaculis sem in, semper arcu.
+**Cenário 2 - Interoperabilidade:** O web e o mobile devem conversar entre si e ter funcionalidades próprias. Como o médico cadastrar a ficha médica no web e o paciente conseguir visualizar no mobile
 
-**Cenário 3 - Manutenibilidade:** Phasellus magna tellus, consectetur quis scelerisque eget, ultricies eu ligula. Sed rhoncus fermentum nisi, a ullamcorper leo fringilla id. Nulla lacinia sem vel magna ornare, non tincidunt ipsum rhoncus. Nam euismod semper ante id tristique. Mauris vel elit augue.
+**Cenário 3 - Manutenibilidade:** O aplicativo deve ser de fácil manutenibilidade, com as funções entendiveis e em arquitetura MVC.
 
-**Cenário 4 - Segurança:** Suspendisse consectetur porta tortor non convallis. Sed lobortis erat sed dignissim dignissim. Nunc eleifend elit et aliquet imperdiet. Ut eu quam at lacus tincidunt fringilla eget maximus metus. Praesent finibus, sapien eget molestie porta, neque turpis congue risus, vel porttitor sapien tortor ac nulla. Aliquam erat volutpat.
+**Cenário 4 - Desempenho:** As requisições devem ser feitas com agilidade, tendo tempo máximo de requisição de 3 segundos.
+
+**Cenário 5 - Responsividade:** O sistema web deve ser acessível para resoluções a partir de 1025 pixels de largura, e resoluções mobile até 360 pixels de largura
+
 
 ## 4.2. Avaliação
 
-_Apresente as medidas registradas na coleta de dados. O que não for possível quantificar apresente uma justificativa baseada em evidências qualitativas que suportam o atendimento do requisito não-funcional. Apresente uma avaliação geral da arquitetura indicando os pontos fortes e as limitações da arquitetura proposta._
-
-| **Atributo de Qualidade:** | Segurança |
+| **Atributo de Qualidade:** | Instalável |
 | --- | --- |
-| **Requisito de Qualidade** | Acesso aos recursos restritos deve ser controlado |
-| **Preocupação:** | Os acessos de usuários devem ser controlados de forma que cada um tenha acesso apenas aos recursos condizentes as suas credenciais. |
-| **Cenários(s):** | Cenário 4 |
-| **Ambiente:** | Sistema em operação normal |
+| **Requisito de Qualidade** | O aplicativo deve ser compatível para o Android |
+| **Preocupação:** | O sistema deve ter as bibliotecas instaladas corretamente para que seja compativel em todos os dispositivos mobiles |
+| **Cenários(s):** | Cenário 1 |
+| **Ambiente:** | Sistema operacioanl Android |
 | **Estímulo:** | Acesso do administrador do sistema as funcionalidades de cadastro de novos produtos e exclusão de produtos. |
-| **Mecanismo:** | O servidor de aplicação (Rails) gera um _token_ de acesso para o usuário que se autentica no sistema. Este _token_ é transferido para a camada de visualização (Angular) após a autenticação e o tratamento visual das funcionalidades podem ser tratados neste nível. |
-| **Medida de Resposta:** | As áreas restritas do sistema devem ser disponibilizadas apenas quando há o acesso de usuários credenciados. |
+| **Mecanismo:** | Aplciação deve ser desenvolvida usando bibliotecaas que funcionarão em dispositivos Android. |
+| **Medida de Resposta:** | Olhar no pub-dev bibliotecas que são compativeis com o Android, antes de implementa-las. |
+
+
+| **Atributo de Qualidade:** | Interoperabilidade |
+| --- | --- |
+| **Requisito de Qualidade** | Sistema deve ter funcionalidades no mobile e no web |
+| **Preocupação:** | A aplicação deve rodar tanto no mobile, quanto no web, tendo requisitos próprios |
+| **Cenários(s):** | Cenário 2 |
+| **Ambiente:** | Emulador mobile e site web |
+| **Estímulo:** | Login na aplicação |
+| **Mecanismo:** | A ficha médica é cadastrada pelo médico e visualizada pelo paciente |
+| **Medida de Resposta:** | A ficha médica deve ser visualizada no mobile e no web, sem que configurações adicionais sejam feitas |
+
+| **Atributo de Qualidade:** | Manutenibilidade |
+| --- | --- |
+| **Requisito de Qualidade** | A manutenção do sitema deve ser fácil |
+| **Preocupação:** | O Manutenções fáceis e eficientes, com evoluções significativas e sem criação de bugs. |
+| **Cenários(s):** | Cenário 3 |
+| **Ambiente:** | Sistema em operação normal |
+| **Estímulo:** | Evolução do proh |
+| **Mecanismo:** | O desenvolvimento deve fazer uma manutenção ou evolução no código |
+| **Medida de Resposta:** | Classe e variáveis com nomes intuitivos, sistema em MVC |
+
+| **Atributo de Qualidade:** | Desempenho |
+| --- | --- |
+| **Requisito de Qualidade** | Requisições devem funcionar com tempo médio de 3 segundos |
+| **Preocupação:** | Boa usabilidade do sistema do lado do usuário |
+| **Cenários(s):** | Cenário 4 |
+| **Ambiente:** | Sistema fazendo requisições |
+| **Estímulo:** | Uusário utilizando funcionalidades que dependem do tempo de resposta |
+| **Mecanismo:** | Consultar o tempo de resposta das requisições fazer uma média entre elas |
+| **Medida de Resposta:** | Analisar o tempo médio de resposta de cada requisição e mudar consultas se for necessário. |
+
+| **Atributo de Qualidade:** | Responsividade |
+| --- | --- |
+| **Requisito de Qualidade** | O sistema deve ser funcional para os diversos tipos de aparelhos |
+| **Preocupação:** |O sistema deve funcionar nos mais diversos dispositivos. |
+| **Cenários(s):** | Cenário 5 |
+| **Ambiente:** | Notebooks, celulares |
+| **Estímulo:** | Acesso ao sistema a partir de um celular ou notebook. |
+| **Mecanismo:** | O sistema web deve ser acessível para resoluções a partir de 1025 pixels de largura, e resoluções mobile até 360 pixels de largura |
+| **Medida de Resposta:** | Utilizar de columns e rows, entre outros componentes responsivos |
+
 
 **Considerações sobre a arquitetura:**
 
