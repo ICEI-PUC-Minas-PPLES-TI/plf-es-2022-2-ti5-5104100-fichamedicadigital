@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_osm_plugin/flutter_osm_plugin.dart';
-import 'package:mobile/mainPage.dart';
+import 'package:mobile/createConsult.dart';
 import 'package:mobile/services/Appoinment.dart';
 import 'package:mobile/services/OfficeService.dart';
 import 'package:mobile/view/styles/MapsStyle.dart';
@@ -94,7 +94,11 @@ class _MapsPageState extends State<MapsPage> {
                     StaticPositionGeoPoint(
                       '1',
                       MapsStyle.staticPointMarker,
-                      officesData
+                        [
+                          GeoPoint(latitude: -19.9326675, longitude: -43.938214),
+                          GeoPoint(latitude: -19.8264536, longitude: -43.959169),
+                          GeoPoint(latitude: -19.9228571, longitude: -43.9947837),
+                        ]
                     ),
                   ],
                   onMapIsReady: (bool value) {
@@ -111,44 +115,49 @@ class _MapsPageState extends State<MapsPage> {
                   },
                   onGeoPointClicked: (GeoPoint data) async {
                     print('onGeoPointClicked $data');
-                    Object consultas = await appointmentService.getAppointmentsByOfficeId(data.toString());
-                    switch(await showDialog(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return SimpleDialog(
-                            title: Text('Selecione um horário para ${data.latitude} e ${data.longitude}'),
-                            children: <Widget>[
-                              SimpleDialogOption(
-                                onPressed: () { Navigator.pop(context, 'a'); },
-                                child: Text('$consultas'),
-                              ),
-                              SimpleDialogOption(
-                                onPressed: () { Navigator.pop(context, 'b'); },
-                                child: Text('$consultas'),
-                              ),
-                            ],
-                          );
-                        })) {
-                      case 'a':
-                        print('deu a');
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => MainPage(nome: '', id: 1))
-                        );
-                      // ...
-                        break;
-                      case 'b':
-                        print('deu b');
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => MainPage(nome: '', id: 1))
-                        );
-                      // ...
-                        break;
-                      case null:
-                      // dialog dismissed
-                        break;
-                    }
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => CreateConsult(id: 1)),
+                    );
+                    // Object consultas = await appointmentService.getAppointmentsByOfficeId(data.toString());
+                    // switch(await showDialog(
+                    //     context: context,
+                    //     builder: (BuildContext context) {
+                    //       return SimpleDialog(
+                    //         title: Text('Selecione um horário para ${data.latitude} e ${data.longitude}'),
+                    //         children: <Widget>[
+                    //           SimpleDialogOption(
+                    //             onPressed: () { Navigator.pop(context, 'a'); },
+                    //             child: Text('$consultas'),
+                    //           ),
+                    //           SimpleDialogOption(
+                    //             onPressed: () { Navigator.pop(context, 'b'); },
+                    //             child: Text('$consultas'),
+                    //           ),
+                    //         ],
+                    //       );
+                    //     })) {
+                    //   case 'a':
+                    //     print('deu a');
+                    //     Navigator.push(
+                    //         context,
+                    //         MaterialPageRoute(builder: (context) => MainPage(nome: '', id: 1))
+                    //     );
+                    //   // ...
+                    //     break;
+                    //   case 'b':
+                    //     print('deu b');
+                    //     Navigator.push(
+                    //         context,
+                    //         MaterialPageRoute(builder: (context) => MainPage(nome: '', id: 1))
+                    //     );
+                    //   // ...
+                    //     break;
+                    //   case null:
+                    //   // dialog dismissed
+                    //     break;
+                    // }
                   },
                 ),
               )
