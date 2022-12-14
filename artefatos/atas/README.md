@@ -1,4 +1,4 @@
-# Lista das Atas de Reuniõwa
+# Lista das Atas de Reunião
 
 * ATA-2022-08-10.md - Ata de abertura do projeto.
 * ATA-2022-09-23.md - Ata de distribuição das tarefas da Sprint 1.
