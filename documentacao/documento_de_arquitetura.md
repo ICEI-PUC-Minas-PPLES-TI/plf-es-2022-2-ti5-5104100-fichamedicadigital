@@ -121,7 +121,7 @@ _Esta seção descreve os requisitos comtemplados nesta descrição arquitetural
 | **ID** | **Descrição** | **Prioridade** |
 | --- | --- | --- |
 | RF001 | Cadastro da ficha médica do paciente| Essencial |
-| RF002 | Notificação de mudança de status da consulta para o paciente | Essencial |
+| RF002 | Notificação de mudança de status da consulta para o paciente | Desejável |
 | RF003 | Mostrar consultários por especialidade e localização | Desejável |
 | RF004 | Marcar consulta | Essencial |
 | RF005 | Mostar consultas do paciente | Essencial |
@@ -138,7 +138,7 @@ _Esta seção descreve os requisitos comtemplados nesta descrição arquitetural
 | RF016 | Administrador cadastra usuarios | Essencial |
 | RF017 | Administrador promove usuario a médico | Essencial |
 | RF018 | Médico pode cadastrar consulta para paciente | Essencial |
-| RF029 | Médico pode cadastrar paciente não cadastrado | Essencial |
+| RF019 | Médico pode cadastrar paciente não cadastrado | Essencial |
 | RF020 | Cadastro de usuário | Essencial |
 | RF021 | Login de usuário | Essencial |
 
@@ -231,99 +231,181 @@ Exemplos de resumo de Casos de Uso:
 | **Descrição** | Paciente recebe do sistema uma notificação de mudança do status da consulta|
 | --- | --- |
 | **Atores** | Paciente|
-| **Prioridade** | 2|
-| **Requisitos associados** | 3|
-| **Fluxo Principal** | 1. Paciente clica no mapa 2. Paciente aceita usar a localização do dispositivo 3. Paciente filtra por funcionalidade do médico|
+| **Prioridade** | Desejável|
+| **Requisitos associados** | 2,  11, 12, 13, 04|
+| **Fluxo Principal** |1. Sistema envia notificação para o paciente quando o status da consulta é alterado|
 
-#### UC03 – LEMBRAR PACIENTE DE TOMAR OS REMÉDIOS
+#### UC03 – Mostrar consultários por especialidade e localização	
 
-| **Descrição** | Paciente vai ser lembrado pelo sistema dos seus médicamentos|
-| --- | --- |
-| **Atores** | Sistema|
-| **Prioridade** | 5|
-| **Requisitos associados** | 2|
-| **Fluxo Principal** | 1. Sistema envia notificação para o paciente lembrando de tomar o remédio|
-
-#### UC04 – CHAT ENTRE MÉDICO E PACIENTE
-
-| **Descrição** | Paciente quer entrar em contato com o médico pelo chat|
-| --- | --- |
-| **Atores** | Paciente, Médico|
-| **Prioridade** | 4|
-| **Requisitos associados** | 2|
-| **Fluxo Principal** | 1. Paciente clica no chat 2. Paciente envia mensagem para o médico 3. Médico responde o paciente|
-
-#### UC05 – MARCAR CONSULTA
-
-| **Descrição** | Paciente quer marcar consulta|
+| **Descrição** | Paciente vai filtrar pela especialidade dos consultários e ver a localização no mapa|
 | --- | --- |
 | **Atores** | Paciente|
-| **Prioridade** | 6|
-| **Requisitos associados** | 2|
-| **Fluxo Principal** | 1. Paciente depois de consutar o mapa clica em um dos pins da localização 2. Paciente clica em marcar consulta no card aberto pelo pin 3. Paciente escolhe a data e horário|
+| **Prioridade** | Desejável|
+| **Requisitos associados** | 3|
+| **Fluxo Principal** |1. Paciente clica no mapa 2. Paciente aceita usar a localização do dispositivo 3. Paciente filtra por funcionalidade do médico|
 
-#### UC06 – VER EXAME
+#### UC04 – Marcar consulta
+
+| **Descrição** | Paciente marca consulta|
+| --- | --- |
+| **Atores** | Paciente, Médico|
+| **Prioridade** | Essencial|
+| **Requisitos associados** | 4|
+| **Fluxo Principal** | 1. Paciente escolhe o médico 2. Paciente escolhe a data da consulta 3. Paciente escolhe o horário da consulta 4. Paciente clica em marcar consulta|
+
+#### UC05 – Mostar consultas do paciente
+
+| **Descrição** | Paciente quer ver suas consultas consulta|
+| --- | --- |
+| **Atores** | Paciente|
+| **Prioridade** | Essencial|
+| **Requisitos associados** | 4, 5|
+| **Fluxo Principal** | 1. Paciente clica em ver consultas 2. filtra por status |
+
+#### UC06 – Paciente anexa exame
+
+| **Descrição** | Paciente anexa exames feitos por ele|
+| --- | --- |
+| **Atores** | Paciente|
+| **Prioridade** | Essencial|
+| **Requisitos associados** | 6|
+| **Fluxo Principal** | 1.Paciente clica em anexar exames 2. Paciente clica no exame que deseja enviar 3. Clica em Salvar|
+
+#### UC07 – Paciente visualiza exames
 
 | **Descrição** | Paciente quer ver seus exames|
 | --- | --- |
 | **Atores** | Paciente|
-| **Prioridade** | 4|
-| **Requisitos associados** | 4|
-| **Fluxo Principal** | 1.Paciente abre a área de exames 2. Paciente clica no exame que deseja ver|
+| **Prioridade** | Essencial|
+| **Requisitos associados** | 6, 7|
+| **Fluxo Principal** | 1.Paciente clica em ver meus exames 2. Paciente clica no exame específico|
 
-#### UC07 – VER FICHA MÉDICA
+#### UC08 – Paciente filtra exames por especialidade
 
-| **Descrição** | Médico quer ver a ficha médica do paciente|
-| --- | --- |
-| **Atores** | Médico|
-| **Prioridade** | 1|
-| **Requisitos associados** | 7|
-| **Fluxo Principal** | 1. Médico escaneia o qr code no celular do paciente 2. Médico ve a ficha médica|
-
-#### UC08 – GERENCIAR CONSULTAR
-
-| **Descrição** | Médico gerencia suas consultas|
-| --- | --- |
-| **Atores** | Médico|
-| **Prioridade** | 2|
-| **Requisitos associados** | 8|
-| **Fluxo Principal** | 1. Médico vê as consultas do dia 2. Médico marca como atendido ou não|
-
-#### UC09 – INSERIR AGENDA
-
-| **Descrição** | Médico insere a agenda de consultas|
-| --- | --- |
-| **Atores** | Médico|
-| **Prioridade** | 1|
-| **Requisitos associados** | 10|
-| **Fluxo Principal** | 1.Médico entra em minhas consultas 2. Médico insere a agenda|
-
-#### UC10 – CRIAR RELATÓRIOS
-
-| **Descrição** | Administrador cria relatório|
-| --- | --- |
-| **Atores** | Administrador|
-| **Prioridade** | 5|
-| **Requisitos associados** | 9|
-| **Fluxo Principal** | 1. Administrador filtra por colunas da tabela 2. Administrador cria relatórios|
-
-#### UC11 – CADASTRO NO SISTEMA
-
-| **Descrição** | Paciente faz cadastro no sistema|
+| **Descrição** | Paciente filtra exames por especialidade|
 | --- | --- |
 | **Atores** | Paciente|
-| **Prioridade** | 1|
-| **Requisitos associados** | 10|
-| **Fluxo Principal** | 1. Uusário Coloca os dados cadastrais 2. Usuário clica em cadastro|
+| **Prioridade** | Opcional|
+| **Requisitos associados** | 6, 7, 8|
+| **Fluxo Principal** | 1. Médico vê as consultas do dia 2. Médico marca como atendido ou não|
 
-#### UC11 – LOGIN NO SISTEMA
+#### UC09 – Visão da ficha médica pelo paciente	
+
+| **Descrição** | Paciente ve ficha médica cadastrada pelo médico|
+| --- | --- |
+| **Atores** | Paciente|
+| **Prioridade** | Essencial|
+| **Requisitos associados** | 1, 9|
+| **Fluxo Principal** | 1. Paciente entra em ficha médica|
+
+#### UC10 – Visão da ficha médica pelo médico
+
+| **Descrição** | Médico ve ficha médica do paciente|
+| --- | --- |
+| **Atores** | Médico|
+| **Prioridade** | Essencial|
+| **Requisitos associados** | 1, 10|
+| **Fluxo Principal** | 1. Médico clica em fichas médicas 2. Médico escolhe a ficha médica do paciente|
+
+#### UC11 – Médico visualiza consultas marcadas
+
+| **Descrição** | Médico quer ver consultas marcadas|
+| --- | --- |
+| **Atores** | Médico|
+| **Prioridade** | Essencial|
+| **Requisitos associados** | 4, 11|
+| **Fluxo Principal** | 1.Médico vai em minhas consultas|
+
+#### UC12 – Médico aceita ou cancela consultas pendentes
+
+| **Descrição** | Médico muda status das consultas|
+| --- | --- |
+| **Atores** | Médico|
+| **Prioridade** | Essencial|
+| **Requisitos associados** | 4, 11, 12|
+| **Fluxo Principal** | 1. Usuário coloca login e senha 2. Usuário clica em login|
+
+#### UC13 – Médico recebe alerta de consulta
+
+| **Descrição** | Sistema alerta médico das consultas criadas|
+| --- | --- |
+| **Atores** | Sistema, Médico|
+| **Prioridade** | Essencial|
+| **Requisitos associados** | 4, 13|
+| **Fluxo Principal** | 1. Sistema alerta médico das consultas|
+
+#### UC14 – Geração de relatório
+
+| **Descrição** | Gerar relatório|
+| --- | --- |
+| **Atores** | Admin|
+| **Prioridade** | Opcional|
+| **Requisitos associados** | 14|
+| **Fluxo Principal** | 1. Admin clica no dado desejado 2. cria relatório|
+
+#### UC15 – Médico preenche dias disponíveis da sua agenda
+
+| **Descrição** | Médico preenche dias disponíveis|
+| --- | --- |
+| **Atores** | Médico|
+| **Prioridade** | Desejável|
+| **Requisitos associados** | 15|
+| **Fluxo Principal** | 1. Médico clica em sua agenda 2. Coloca dias disponiveis|
+
+#### UC16 – Administrador cadastra usuarios
+
+| **Descrição** | Administrador vai cadastrar usuarios|
+| --- | --- |
+| **Atores** | Admin|
+| **Prioridade** | Essencial|
+| **Requisitos associados** | 16|
+| **Fluxo Principal** | 1. Administrador cadastra usuário|
+
+#### UC17 – Administrador promove usuario a médico
+
+| **Descrição** | Administrador vai promover usuário|
+| --- | --- |
+| **Atores** | Admin|
+| **Prioridade** | Essencial|
+| **Requisitos associados** | 16, 17, 20|
+| **Fluxo Principal** | 1. Administrador vai promover usuário|
+
+#### UC18 – Médico pode cadastrar consulta para paciente
+
+| **Descrição** | Médico pode cadastrar consulta para paciente|
+| --- | --- |
+| **Atores** | Médico|
+| **Prioridade** | Essencial|
+| **Requisitos associados** | 18, 11, 5|
+| **Fluxo Principal** | 1. Médico escolhe o usário 2. Médico põe data e horário 3. Médico salva a consulta|
+
+#### UC19 – Médico pode cadastrar paciente não cadastrado
+
+| **Descrição** | Médico pode cadastrar paciente não cadastrado|
+| --- | --- |
+| **Atores** | Médico|
+| **Prioridade** | Essencial|
+| **Requisitos associados** | 19|
+| **Fluxo Principal** | 1. Médico coloca os cadastros do usuário|
+
+#### UC20 – Cadastro de usuário
+
+| **Descrição** | Usuario faz cadastro no sistema|
+| --- | --- |
+| **Atores** | Usuário|
+| **Prioridade** | Essencial|
+| **Requisitos associados** | 20|
+| **Fluxo Principal** | 1. Usuário coloca os dados para cadastro 2. usuário salva|
+
+#### UC21 – Login de usuário
 
 | **Descrição** | Usuario faz login no sistema|
 | --- | --- |
-| **Atores** | Paciente, Médico|
-| **Prioridade** | 1|
-| **Requisitos associados** | 11|
+| **Atores** | Usuárioo|
+| **Prioridade** | Essencial|
+| **Requisitos associados** | 20, 19|
 | **Fluxo Principal** | 1. Usuário coloca login e senha 2. Usuário clica em login|
+
 
 
 Exemplos de Histórias de Usuário:
