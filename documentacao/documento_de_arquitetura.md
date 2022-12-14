@@ -489,7 +489,7 @@ _Apresente os cenários de testes utilizados na realização dos testes da sua a
 | **Mecanismo:** | Aplciação deve ser desenvolvida usando bibliotecaas que funcionarão em dispositivos Android. |
 | **Medida de Resposta:** | Olhar no pub-dev bibliotecas que são compativeis com o Android, antes de implementa-las. |
 
-(imagens/instalável.jpg)
+![Instalavel](imagens/instalável.jpg)
 
 
 | **Atributo de Qualidade:** | Interoperabilidade |
@@ -502,8 +502,8 @@ _Apresente os cenários de testes utilizados na realização dos testes da sua a
 | **Mecanismo:** | A ficha médica é cadastrada pelo médico e visualizada pelo paciente |
 | **Medida de Resposta:** | A ficha médica deve ser visualizada no mobile e no web, sem que configurações adicionais sejam feitas |
 
-(imagens/interoperabilidade1.jpg)
-(imagens/interoperabilidade2.jpg)
+[Web](imagens/interoperabilidade1.jpg)
+[Mobile](imagens/interoperabilidade2.jpg)
 
 | **Atributo de Qualidade:** | Manutenibilidade |
 | --- | --- |
@@ -515,7 +515,7 @@ _Apresente os cenários de testes utilizados na realização dos testes da sua a
 | **Mecanismo:** | O desenvolvimento deve fazer uma manutenção ou evolução no código |
 | **Medida de Resposta:** | Classe e variáveis com nomes intuitivos, sistema em MVC |
 
-(imagens/manutenibilidade.jpg)
+.[MVC](imagens/manutenibilidade.jpg)
 
 | **Atributo de Qualidade:** | Desempenho |
 | --- | --- |
@@ -526,7 +526,7 @@ _Apresente os cenários de testes utilizados na realização dos testes da sua a
 | **Estímulo:** | Uusário utilizando funcionalidades que dependem do tempo de resposta |
 | **Mecanismo:** | Consultar o tempo de resposta das requisições fazer uma média entre elas |
 | **Medida de Resposta:** | Analisar o tempo médio de resposta de cada requisição e mudar consultas se for necessário. |
-(imagens/desempenho.jpg)
+.[Desempenho](imagens/desempenho.jpg)
 
 | **Atributo de Qualidade:** | Responsividade |
 | --- | --- |
@@ -537,8 +537,8 @@ _Apresente os cenários de testes utilizados na realização dos testes da sua a
 | **Estímulo:** | Acesso ao sistema a partir de um celular ou notebook. |
 | **Mecanismo:** | O sistema web deve ser acessível para resoluções a partir de 1025 pixels de largura, e resoluções mobile até 360 pixels de largura |
 | **Medida de Resposta:** | Utilizar de columns e rows, entre outros componentes responsivos |
-(imagens/responsividade1.jpg)
-(imagens/responsividade2.jpg)
+.[Responsividade](imagens/responsividade1.jpg)
+.[Responsividade](imagens/responsividade2.jpg)
 
 
 **Considerações sobre a arquitetura:**
