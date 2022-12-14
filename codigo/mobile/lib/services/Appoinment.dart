@@ -39,8 +39,8 @@ class AppointmentService{
   postAppointment(idMedico, dataConsulta, horaConsulta, id) async{
     Response idUsuario = await dio.get(
           "https://fichamedicadigital.herokuapp.com/pacientes/$id");
-    DateTime newDate1 = new DateTime(dataConsulta.year, dataConsulta.month, dataConsulta.day, horaConsulta.hour, (horaConsulta.minute+30));
-    DateTime newDate = new DateTime(dataConsulta.year, dataConsulta.month, dataConsulta.day, horaConsulta.hour, horaConsulta.minute);
+    DateTime newDate1 = DateTime(dataConsulta.year, dataConsulta.month, dataConsulta.day, horaConsulta.hour, (horaConsulta.minute+30));
+    DateTime newDate = DateTime(dataConsulta.year, dataConsulta.month, dataConsulta.day, horaConsulta.hour, horaConsulta.minute);
     dio.options.headers['Content-Type'] = 'application/json';
     try {
       Response response = await dio.post(

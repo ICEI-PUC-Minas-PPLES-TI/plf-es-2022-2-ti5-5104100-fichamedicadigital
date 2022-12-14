@@ -1,4 +1,3 @@
-import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -52,12 +51,10 @@ class _SegundaTelaState extends State<SegundaTela> {
       desmaioOuConvulsao = value['desmaioOuConvulsao'];
       internado = value['internado'];
       transfusao = value['transfusao'];
-      dataTransfusao = value['dataTransfusao'] == null
-          ? DateTime.now()
-          : value['dataTransfusao'];
+      dataTransfusao = value['dataTransfusao'] ?? DateTime.now();
       tipoSanguineo = value['tipoSanguineo'].toString();
       vacinas = value['vacinas'];
-      if(!vacinas.isEmpty){
+      if(vacinas.isNotEmpty){
         while (i < vacinas.length) {
           data.add(
               VacinaData(nome: vacinas[i]['nome'], doses: vacinas[i]['doses']));
@@ -169,8 +166,8 @@ class _SegundaTelaState extends State<SegundaTela> {
                               data.isEmpty
                                   ? Column()
                                   : Column(
-                                      children: [
-                                        const Padding(
+                                      children: const [
+                                        Padding(
                                             padding: EdgeInsets.only(top: 15),
                                             child: Text("Dados de Vacinação: ",
                                                 style: TextStyle(
