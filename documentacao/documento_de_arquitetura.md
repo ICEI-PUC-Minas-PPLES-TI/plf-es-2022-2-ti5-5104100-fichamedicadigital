@@ -489,7 +489,7 @@ _Apresente os cenários de testes utilizados na realização dos testes da sua a
 | **Mecanismo:** | Aplciação deve ser desenvolvida usando bibliotecaas que funcionarão em dispositivos Android. |
 | **Medida de Resposta:** | Olhar no pub-dev bibliotecas que são compativeis com o Android, antes de implementa-las. |
 
-![Instalavel](imagens/instalável.jpg)
+![Instalavel](imagens/instalavel.jpg)
 
 
 | **Atributo de Qualidade:** | Interoperabilidade |
@@ -539,8 +539,8 @@ _Apresente os cenários de testes utilizados na realização dos testes da sua a
 | **Mecanismo:** | O sistema web deve ser acessível para resoluções a partir de 1025 pixels de largura, e resoluções mobile até 360 pixels de largura |
 | **Medida de Resposta:** | Utilizar de columns e rows, entre outros componentes responsivos |
 
-![Responsividade](imagens/responsividade1.png)
-![Responsividade](imagens/responsividade2.png)
+![Responsividade](imagens/responsivel1.png)
+![Responsividade](imagens/responsivel2.png)
 
 
 **Considerações sobre a arquitetura:**
