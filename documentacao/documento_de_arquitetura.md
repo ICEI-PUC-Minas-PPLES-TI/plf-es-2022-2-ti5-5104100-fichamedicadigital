@@ -489,7 +489,7 @@ _Apresente os cenários de testes utilizados na realização dos testes da sua a
 | **Mecanismo:** | Aplciação deve ser desenvolvida usando bibliotecaas que funcionarão em dispositivos Android. |
 | **Medida de Resposta:** | Olhar no pub-dev bibliotecas que são compativeis com o Android, antes de implementa-las. |
 
-![Instalavel](imagens/instalavel.jpg)
+![Instalavel](imagens/instalavel.png)
 
 
 | **Atributo de Qualidade:** | Interoperabilidade |
