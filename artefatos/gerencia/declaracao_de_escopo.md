@@ -76,6 +76,7 @@ _Instituto de Informática e Ciências Exatas – Pontifícia Universidade de Mi
 ## Marcos agendados
 
 | Nome do Marco | Entregáveis Previstos |
+| --- | --- |
 | Sprint 1 | Planejamento geral do projeto, Definição do projeto. |
 | Sprint 2 | Declaração de Escopo, Registro das Partes Interessadas, Termo de Abertura do Projeto, Estrutura Analítica do projeto, Documento de Arquitetura.|
 | Sprint 3 | Protótipo das Interfaces, funcionalidade de login e cadastro do usuário, ata de reunião semanal. |
